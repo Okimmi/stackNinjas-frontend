@@ -1,5 +1,5 @@
-import { Wrapper } from "components/Global/Global.styled";
+import { Wrapper } from 'components/Global/Global.styled';
 
 export const HomePage = () => {
-  return <Wrapper></Wrapper>;
+  return <></>;
 };

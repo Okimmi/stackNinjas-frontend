@@ -1,11 +1,14 @@
-import { Outlet } from "react-router-dom";
-import { Header } from "./Header/Header";
+import { Outlet } from 'react-router-dom';
+import { Header } from './Header/Header';
+import { Wrapper } from './Global/Global.styled';
 
 export const SharedLayout = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <Wrapper>
+        <Outlet />
+      </Wrapper>
     </>
   );
 };
