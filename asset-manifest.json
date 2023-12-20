@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/stackNinjas-frontend/static/css/main.cd2e038f.css",
+    "main.js": "/stackNinjas-frontend/static/js/main.88431e4b.js",
+    "index.html": "/stackNinjas-frontend/index.html",
+    "main.cd2e038f.css.map": "/stackNinjas-frontend/static/css/main.cd2e038f.css.map",
+    "main.88431e4b.js.map": "/stackNinjas-frontend/static/js/main.88431e4b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cd2e038f.css",
+    "static/js/main.88431e4b.js"
+  ]
+}
