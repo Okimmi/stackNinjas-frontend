@@ -1,18 +1,7 @@
-import { createGlobalStyle } from "styled-components";
-import "modern-normalize";
+import { createGlobalStyle } from 'styled-components';
+import 'modern-normalize';
 
 export const GlobalStyle = createGlobalStyle`
-:root{
-  --Primery-Color-White: #FFFFFF;
-  --Primery-Color-Black: #2F2F2F;
-  --Primery-Color-Blue: #407BFF;
-
-  --Secondary-color-2: #ECF2FF;
-  --Secondary-color-3: #EF5050;
-  --Secondary-color-4: #9EBBFF;
-  --Secondary-color-5: #FF9D43;
-  --Secondary-color-5: #D7E3FF;
-}
 
 body {
   font-family: 'Roboto', sans-serif;;
@@ -43,3 +32,16 @@ img {
 }
 
 `;
+
+export const theme = {
+  colors: {
+    primeryWhite: '#FFFFFF',
+    primeryBlack: '#2F2F2F',
+    primeryBlue: '#407BFF',
+    secondary2: '#ECF2FF',
+    secondary3: '#EF5050',
+    secondary4: '#9EBBFF',
+    secondary5: '#FF9D43',
+    secondary6: '#D7E3FF',
+  },
+};
