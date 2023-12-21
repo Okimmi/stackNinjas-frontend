@@ -14,10 +14,10 @@ export const SightInContainer = styled.div`
 export const ForFormContainer = styled.div`
    @media screen and (min-width: 1440px) {
     display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
+    flex-direction: column;
+    justify-self: center;
   }
-`
+`  
 
 export  const BottleStyled = styled(Bottle)`
     z-index: -1;
@@ -38,13 +38,13 @@ export  const BottleStyled = styled(Bottle)`
 export const FormHead = styled.h2`
     color: ${theme.colors.primeryBlack};
     font-size: 26px;
-    font-style: normal;
     font-weight: 500;
     line-height: 1.2; 
 
 `
 
 export  const StyledForm = styled(Form)`
+    
     display: flex;
     flex-direction:column;
     border-radius: 5px;
@@ -53,12 +53,13 @@ export  const StyledForm = styled(Form)`
   @media screen and (min-width: 768px) {
     justify-content: start;
     width: 336px;
+  
   }
 `
 
 export const ErMsg = styled(ErrorMessage )`
     font-size: 12px;  
-    color: red;
+    color: ${theme.colors.secondary3};
 `;
 
 export const StyledField = styled(Field)`
