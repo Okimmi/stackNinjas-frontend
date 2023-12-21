@@ -1,17 +1,10 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import {
-  BottleStyled,
-  ErMsg,
-  FormBtnStyled,
-  SightInContainer,
-  SightUp,
-  StyledBtn,
-  StyledField,
-  StyledForm,
-  Styledlabel,
-} from './SignIn.styled';
+
+import { BackgroundImg, BottleStyled, ErMsg, FormBtnStyled, SightInContainer, SightUp, StyledBtn, StyledField, StyledForm, Styledlabel } from './SignIn.styled';
+
+
 import { logIn } from '../../redux/auth/operations';
 
 import iconeye from '../../images/show_icon.svg';
@@ -94,11 +87,15 @@ export const SignIn = () => {
             <ErMsg component="span" name="password" />
             <FormBtnStyled type="submit">Sign In</FormBtnStyled>
 
-            <SightUp>Sight Up</SightUp>
-          </StyledForm>
-        </Formik>
-        <BottleStyled />
-      </SightInContainer>
-    </>
-  );
-};
+
+          <SightUp>Sight Up</SightUp>
+        </StyledForm>
+       
+      </Formik> 
+           <BottleStyled />
+           <BackgroundImg/>
+        </SightInContainer>
+        
+         </>
+  }
+

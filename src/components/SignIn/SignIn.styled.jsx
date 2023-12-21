@@ -1,14 +1,27 @@
 import { Form, ErrorMessage, Field  } from 'formik';
 import styled from 'styled-components';
 import { ReactComponent as Bottle } from '../../images/Bottle.svg';
+import { ReactComponent as Background } from '../../images/Background.svg';
 import { theme } from 'components/GlobalStyle';
 
+export  const BackgroundImg = styled(Background)`
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    
+`
 
 export const SightInContainer = styled.div`
+    overflow:hidden;
    @media screen and (min-width: 1440px) {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(10, 121px);
+
+
+
   }
 `
 export const ForFormContainer = styled.div`
@@ -16,22 +29,27 @@ export const ForFormContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-self: center;
+
   }
 `  
 
 export  const BottleStyled = styled(Bottle)`
     z-index: -1;
+    viewBox: 0 0 270 220;
+
   @media screen and (min-width: 768px) {
     position: absolute;
     top: 52px;
-    left: calc(50% - 275px);
+    left: calc(50% - 170px);
     width: 736px;
     height: 548px;
   }
   @media screen and (min-width: 1440px) {
-   
+    position:static;
     width: 916px;
     height: 680px;
+    grid-column: 1/3;
+    grid-row: 1;
   }
 `
 
@@ -44,16 +62,24 @@ export const FormHead = styled.h2`
 `
 
 export  const StyledForm = styled(Form)`
-    
+
     display: flex;
     flex-direction:column;
     border-radius: 5px;
     width: 280px;
     gap: 16px;
   @media screen and (min-width: 768px) {
-    justify-content: start;
     width: 336px;
   
+  }
+
+  @media screen and (min-width: 1440px) {
+    justify-content: start;
+    width: 384px;
+    grid-column:7/9;
+    grid-row: 1;
+    align-self: center;
+    
   }
 `
 
@@ -73,6 +99,7 @@ export const StyledField = styled(Field)`
     border-radius: 6px;
     border: 1px solid ${theme.colors.secondary6};
     background: ${theme.colors.primeryWhite};
+    
 
 `
 
