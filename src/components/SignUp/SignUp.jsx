@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 
-import { logIn, register } from '../../redux/auth/operations';
+import {  register } from '../../redux/auth/operations';
 
 import iconeye from '../../images/show_icon.svg';
 import hidepas from '../../images/hide_icon.svg';
