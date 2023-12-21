@@ -6,19 +6,15 @@ export const P = styled.h6`
 `;
 export const Logo = styled.img`
     width: 40px;
-    height: 48px;
     margin-right: 4px;
 `;
 export const LogoDiv = styled.div`
     width: 102px;
-    height: 48px;
     display: flex;
     align-items: center;
 `;
-export const Icon = styled.div`
-    background-color: grey;
+export const Icon = styled.img`
     width: 16px;
-    height: 16px;
 `
 export const Avatar = styled.div`
     border-radius: 50%;
@@ -53,6 +49,7 @@ export const MyDailyNormaDiv = styled.div`
     background-color: ${theme.colors.primeryWhite};
     border: 1px solid ${theme.colors.secondary2};
     padding: 7px 19px 7px 19px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 export const MyDailyNorma = styled.p`
     font-size: 18px;
@@ -74,4 +71,6 @@ export const Div = styled.div`
 display: flex;
 align-items: end;
 `;
-export const Img = styled.img``
+export const Img = styled.img`
+
+`

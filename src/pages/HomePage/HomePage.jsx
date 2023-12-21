@@ -1,23 +1,21 @@
 import { Wrapper } from 'components/Global/Global.styled';
-import { P, Logo, LogoDiv, Icon, Avatar, UserName, UserDiv, HeaderDiv, MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Img } from './HomePage.styled';
-
+import { P, Logo, LogoDiv, Icon, Avatar, UserName, UserDiv, HeaderDiv, MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Background, Img } from './HomePage.styled';
 
 export const HomePage = () => {
+  
   return (
     <>
-      <Wrapper>
-        
         <HeaderDiv>
 
           <LogoDiv>
-            <Logo src="Logo.png" alt="Logo" />
+            <Logo src="logo.png" alt="Logo" />
             <P>TRACKER OF WATER</P>
           </LogoDiv>
         
           <UserDiv>
             <UserName>UserName</UserName>
             <Avatar></Avatar>
-            <Icon></Icon>
+            <Icon src="img/Vector.png" alt="Icon"></Icon>
           </UserDiv>
 
         </HeaderDiv>
@@ -29,11 +27,8 @@ export const HomePage = () => {
           <Edit>Edit</Edit>
           </Div>
         </MyDailyNormaDiv>
-        {/* <Div>
-        <Img src="Frame.png" alt="Background"></Img></Div> */}
-      </Wrapper>
+        
+        <Img src="img/Frame_18.png" alt="Background"/>
     </>
   );
 };
-
-
