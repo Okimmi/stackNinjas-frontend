@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { BottleStyled, ErMsg, ForFormContainer, FormBtnStyled, SightInContainer, SightUp, StyledBtn, StyledField, StyledForm, Styledlabel } from './SignIn.styled';
+import { BackgroundImg, BottleStyled, ErMsg, FormBtnStyled, SightInContainer, SightUp, StyledBtn, StyledField, StyledForm, Styledlabel } from './SignIn.styled';
 import { logIn } from '../../redux/auth/operations';
 
 import iconeye from '../../images/show_icon.svg';
@@ -80,6 +80,8 @@ const SignupSchema = Yup.object().shape({
        
       </Formik> 
            <BottleStyled />
+           <BackgroundImg/>
         </SightInContainer>
+        
          </>
   }
