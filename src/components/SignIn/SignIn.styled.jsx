@@ -1,7 +1,23 @@
 import { Form, ErrorMessage, Field  } from 'formik';
 import styled from 'styled-components';
 import { ReactComponent as Bottle } from '../../images/Bottle.svg';
+import { theme } from 'components/GlobalStyle';
 
+
+export const SightInContainer = styled.div`
+   @media screen and (min-width: 1440px) {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+`
+export const ForFormContainer = styled.div`
+   @media screen and (min-width: 1440px) {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+`
 
 export  const BottleStyled = styled(Bottle)`
     z-index: -1;
@@ -13,18 +29,19 @@ export  const BottleStyled = styled(Bottle)`
     height: 548px;
   }
   @media screen and (min-width: 1440px) {
+   
     width: 916px;
     height: 680px;
   }
 `
 
 export const FormHead = styled.h2`
-    color: var(--Primery-Color-Black, #2F2F2F);
-    font-family: Roboto;
+    color: ${theme.colors.primeryBlack};
     font-size: 26px;
     font-style: normal;
     font-weight: 500;
-    line-height: 32px; /* 123.077% */76
+    line-height: 1.2; 
+
 `
 
 export  const StyledForm = styled(Form)`
@@ -53,27 +70,23 @@ export const StyledField = styled(Field)`
     align-items: flex-start;
     gap: 10px;
     border-radius: 6px;
-    border: 1px solid var(--Secondary-color-5, #D7E3FF);
-    background: var(--Primery-Color-White, #FFF);
+    border: 1px solid ${theme.colors.secondary6};
+    background: ${theme.colors.primeryWhite};
 
 `
 
 export const Styledlabel = styled.label`
-        color: var(--Primery-Color-Black, #2F2F2F);
+        color: ${theme.colors.primeryBlack};
         position: relative;
-        font-family: Roboto;
         font-size: 18px;
-        font-style: normal;
         font-weight: 400;
-        line-height: 24px; /* 133.333% */
+        line-height: 1.33; 
     ::placeholder, 
     ::-webkit-input-placeholder{
-        color: var(--Secondary-color-4, #9EBBFF);
-        font-family: Roboto;
+        color: ${theme.colors.secondary4};
         font-size: 16px;
-        font-style: normal;
         font-weight: 400;
-        line-height: 20px; /* 125% */
+        line-height: 0.8; 
     }
 `
 
@@ -85,26 +98,24 @@ export const FormBtnStyled = styled.button`
     align-items: center;
     gap: 10px;
     border-radius: 10px;
-    background: var(--Primery-Color-Blue, #407BFF);
+    background: ${theme.colors.primeryBlue};
     box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
     outline: none;
     border: none;
-    color: var(--Primery-Color-White, #FFF);
+    color:${theme.colors.primeryWhite};
     text-align: center;
-    font-family: Roboto;
     font-size: 16px;
-    font-style: normal;
     font-weight: 500;
-    line-height: 20px; /* 125% */
+    line-height: 1.25;
+    cursor: pointer;
 `
 
 export const SightUp = styled.p`
-    color: var(--Primery-Color-Blue, #407BFF);
-    font-family: Roboto;
+    color: ${theme.colors.primeryBlue};
     font-size: 16px;
-    font-style: normal;
     font-weight: 400;
-    line-height: 20px; /* 125% */
+    line-height: 0.8; 
+    cursor: pointer;
 `
 
 export const StyledBtn = styled.div`

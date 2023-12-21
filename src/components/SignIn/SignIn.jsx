@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { BottleStyled, ErMsg, FormBtnStyled, SightUp, StyledBtn, StyledField, StyledForm, Styledlabel } from './SignIn.styled';
+import { BottleStyled, ErMsg, FormBtnStyled, SightInContainer, SightUp, StyledBtn, StyledField, StyledForm, Styledlabel } from './SignIn.styled';
 import { logIn } from '../../redux/auth/operations';
 
 import iconeye from '../../images/show_icon.svg';
@@ -11,10 +11,11 @@ import { useState } from 'react';
 const SignupSchema = Yup.object().shape({
     email: Yup.string()
     .email('Invalid email address')
+    .matches(/^[-?\w.?%?]+@\w+.{1}\w{2,4}$/, 'Enter a valid email. For example user@gmail.com')
     .required('Required'),
   password: Yup.string()
-    .min(5, 'Too Short!')
-    .max(50, 'Too Long!')
+    .min(8, 'Too Short!')
+    .max(48, 'Too Long!')
     .matches(/[a-zA-Z]/, 'Must contain at least one letter')
     .required('Required'),
   });
@@ -26,7 +27,7 @@ const SignupSchema = Yup.object().shape({
    
     const dispatch = useDispatch();
       return <>
-          
+          <SightInContainer>
           <Formik
         initialValues={{
           email: '',
@@ -78,6 +79,6 @@ const SignupSchema = Yup.object().shape({
         </StyledForm>
       </Formik>
            <BottleStyled />
-
+        </SightInContainer>
          </>
   }
