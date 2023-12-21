@@ -1,9 +1,12 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { ErMsg, FormBtnStyled, FormContainer, StyledField, StyledForm, Styledlabel } from './SignIn.styled';
+import { BottleStyled, ErMsg, FormBtnStyled, SightUp, StyledBtn, StyledField, StyledForm, Styledlabel } from './SignIn.styled';
 import { logIn } from '../../redux/auth/operations';
 
+import iconeye from '../../images/show_icon.svg';
+import hidepas from '../../images/hide_icon.svg';
+import { useState } from 'react';
 
 const SignupSchema = Yup.object().shape({
     email: Yup.string()
@@ -18,9 +21,12 @@ const SignupSchema = Yup.object().shape({
   
 
   export const SignIn  = ( ) =>{
+    const [showPassword, setShowPassword] = useState(false);
+
+   
     const dispatch = useDispatch();
       return <>
-          <FormContainer>
+          
           <Formik
         initialValues={{
           email: '',
@@ -35,27 +41,43 @@ const SignupSchema = Yup.object().shape({
           }));
         }
       }
-      >
+      > 
         <StyledForm>
             <h2>Sign In</h2>
-          <Styledlabel htmlFor="email">Enter your email</Styledlabel>
+          <Styledlabel htmlFor="email">Enter your email
           <StyledField id="email" name="email" 
-          placeholder="email" 
+          placeholder="E-mail" 
           />
           <ErMsg component="span" name="email" />
-  
-          <Styledlabel htmlFor="password">Enter your password</Styledlabel>
+        </Styledlabel>
+          <Styledlabel htmlFor="password">Enter your password
           <StyledField id="password" 
+              type={showPassword ? 'text' : 'password'}
               name="password"   
-              type="password"
-              placeholder="password" 
-              title="password number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              placeholder="Password" 
+              title="password"
            />
+           <StyledBtn onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? (
+                <img src={iconeye} width={18} height={18} alt="Hide Password" />
+              ) : (
+                <img
+                  src={hidepas}
+                  IconEye
+                  width={18}
+                  height={18}
+                  alt="Show Password"
+                />
+              )}
+            </StyledBtn>
+            </Styledlabel>
             <ErMsg component="span" name="password" />
           <FormBtnStyled type="submit">Sign In</FormBtnStyled>
+
+          <SightUp>Sight Up</SightUp>
         </StyledForm>
       </Formik>
-           
-          </FormContainer>
+           <BottleStyled />
+
          </>
   }
