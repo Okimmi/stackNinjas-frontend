@@ -1,13 +1,16 @@
 {
   "files": {
     "main.css": "/stackNinjas-frontend/static/css/main.cd2e038f.css",
-    "main.js": "/stackNinjas-frontend/static/js/main.88431e4b.js",
+    "main.js": "/stackNinjas-frontend/static/js/main.947d56f5.js",
+    "static/media/Bottle.svg": "/stackNinjas-frontend/static/media/Bottle.cc08c58fe1dee530d2bab08a060e642e.svg",
     "index.html": "/stackNinjas-frontend/index.html",
+    "static/media/hide_icon.svg": "/stackNinjas-frontend/static/media/hide_icon.28fb84cfca4bb2e793b4f4a9f755df30.svg",
+    "static/media/show_icon.svg": "/stackNinjas-frontend/static/media/show_icon.054bcb83c278f3920dc3ef23282ae113.svg",
     "main.cd2e038f.css.map": "/stackNinjas-frontend/static/css/main.cd2e038f.css.map",
-    "main.88431e4b.js.map": "/stackNinjas-frontend/static/js/main.88431e4b.js.map"
+    "main.947d56f5.js.map": "/stackNinjas-frontend/static/js/main.947d56f5.js.map"
   },
   "entrypoints": [
     "static/css/main.cd2e038f.css",
-    "static/js/main.88431e4b.js"
+    "static/js/main.947d56f5.js"
   ]
 }
