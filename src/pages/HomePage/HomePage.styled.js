@@ -201,3 +201,48 @@ top: 101%;
 width: 100%;
 `
 
+export const AddWaterButton = styled.button`
+    margin-top: 16px;
+    width: 280px;
+    height: 36px;
+    z-index: 1;
+position: absolute;
+top: 105%; 
+  background-color: ${theme.colors.primeryBlue};
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 0
+`
+
+export const AddWater = styled.p`
+  font-size: 16px;
+  width: 94px;
+  color: ${theme.colors.primeryWhite};
+  margin-left: 10px;
+`
+export const DivAddWater = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+export const DivTodayAndMonth = styled.div`
+  background-color: ${theme.colors.secondary2};
+  position: absolute;
+  top: 117%;
+  height: 100%
+  width: 100%;
+  margin-top: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 24px 8px 24px 8px;
+`
+
+export const DivTodayList = styled.div`
+  
+`
+
+export const PToday = styled.p`
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: ${theme.colors.primeryBlack};
+`

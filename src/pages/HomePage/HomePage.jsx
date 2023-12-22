@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Wrapper } from 'components/Global/Global.styled';
-import { P, Logo, LogoDiv, Icon, Avatar, UserName, UserDiv, HeaderDiv, MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Background, Img, BackgroundImage, Today, DivToday, SliderInput, Per, Percents, SliderDiv } from './HomePage.styled.js';
+import { DivTodayList, PToday, P, Logo, LogoDiv, Icon, Avatar, UserName, UserDiv, HeaderDiv, MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Background, Img, BackgroundImage, Today, DivToday, SliderInput, Per, Percents, SliderDiv, AddWaterButton, AddWater, DivAddWater, DivTodayAndMonth } from './HomePage.styled.js';
 
 export const HomePage = () => {
   const [sliderValue, setSliderValue] = useState(0);
@@ -52,6 +52,20 @@ export const HomePage = () => {
               <Per>100%</Per>
             </Percents>
         </DivToday>
+
+        
+        <AddWaterButton type="button">
+          <DivAddWater>
+            <Img src="img/outline.png" alt="Plus"/>
+            <AddWater>Add Water</AddWater>
+          </DivAddWater>
+        </AddWaterButton>
+        
+        <DivTodayAndMonth>
+          <DivTodayList>
+            <PToday>Today</PToday>
+          </DivTodayList>
+        </DivTodayAndMonth>
       </Background>
     </>
   );
