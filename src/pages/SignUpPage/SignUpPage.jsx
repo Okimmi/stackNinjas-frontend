@@ -1,5 +1,8 @@
-import { Wrapper } from 'components/Global/Global.styled';
+import { SignUp } from "components/SignUp/SignUp";
+
 
 export const SignUpPage = () => {
-  return <></>;
+  return <>
+  <SignUp/>
+  </>;
 };
