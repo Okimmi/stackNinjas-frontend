@@ -45,6 +45,7 @@ export  const BottleStyled = styled(Bottle)`
     height: 548px;
   }
   @media screen and (min-width: 1440px) {
+    margin-top: 107px;
     position:static;
     width: 916px;
     height: 680px;
