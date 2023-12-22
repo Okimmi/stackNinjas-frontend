@@ -8,7 +8,43 @@ export const HomePage = () => {
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
   };
+  const [data, setData] = useState([]);
+  const [editingEntryData, setEditingEntryData] = useState(null);
+  const [newEntryData, setNewEntryData] = useState({ amount: '' });
 
+  const onEditClick = (item) => {
+    setEditingEntryData({ ...item });
+  };
+
+  const onDeleteClick = (item) => {
+    const isConfirmed = window.confirm('Are you sure you want to delete this entry?');
+    if (isConfirmed) {
+      setData(data.filter((i) => i.id !== item.id));
+    }
+  };
+
+  const onSaveEdit = () => {
+    const nextData = data.map((item) => {
+      if (item.id === editingEntryData?.id) {
+        return editingEntryData;
+      }
+      return item;
+    });
+    setData(nextData);
+    setEditingEntryData(null);
+  };
+
+  const onCancelEdit = () => {
+    setEditingEntryData(null);
+  };
+
+  const onAdd = () => {
+    setData([
+      ...data,
+      { ...newEntryData, id: Date.now().toString(), date: new Date().toISOString() },
+    ]);
+    setNewEntryData({ amount: '' });
+  };
   return (
     <>
       <Background>
@@ -62,8 +98,49 @@ export const HomePage = () => {
         </AddWaterButton>
         
         <DivTodayAndMonth>
+          <PToday>Today</PToday>
           <DivTodayList>
-            <PToday>Today</PToday>
+          <div>
+      <h1>List of water entries</h1>
+      {editingEntryData ? (
+        <div style={{ marginTop: 20, display: 'flex', gap: 10 }}>
+          <input
+            value={editingEntryData.amount}
+            onChange={(e) => setEditingEntryData({ ...editingEntryData, amount: e.target.value })}
+          />
+          <button onClick={onSaveEdit}>Save</button>
+          <button onClick={onCancelEdit}>Cancel</button>
+        </div>
+      ) : (
+        <div style={{ marginTop: 20 }}>
+          <input
+            value={newEntryData.amount}
+            onChange={(e) => setNewEntryData({ ...newEntryData, amount: e.target.value })}
+          />
+          <button onClick={onAdd}>Add</button>
+        </div>
+      )}
+      <div style={{ marginTop: 20 }}>
+        {data.map((item) => (
+          <div style={{ display: 'flex', gap: 10 }} key={item.id}>
+            <span>{item.amount}</span>
+            <span>{item.date}</span>
+            <button
+              disabled={item.id === editingEntryData?.id}
+              onClick={() => onEditClick(item)}
+            >
+              Edit
+            </button>
+            <button
+              disabled={item.id === editingEntryData?.id}
+              onClick={() => onDeleteClick(item)}
+            >
+              Delete
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
           </DivTodayList>
         </DivTodayAndMonth>
       </Background>
