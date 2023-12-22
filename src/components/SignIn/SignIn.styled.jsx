@@ -45,6 +45,7 @@ export  const BottleStyled = styled(Bottle)`
     height: 548px;
   }
   @media screen and (min-width: 1440px) {
+    margin-top: 107px;
     position:static;
     width: 916px;
     height: 680px;
@@ -96,9 +97,13 @@ export const StyledField = styled(Field)`
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+    outline: none;
     border-radius: 6px;
     border: 1px solid ${theme.colors.secondary6};
     background: ${theme.colors.primeryWhite};
+    &:invalid{
+        border-color: ${theme.colors.secondary3};
+    }
     
 
 `
