@@ -50,6 +50,7 @@ export const MyDailyNormaDiv = styled.div`
     border: 1px solid ${theme.colors.secondary2};
     padding: 7px 19px 7px 19px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px;
 `;
 export const MyDailyNorma = styled.p`
     font-size: 18px;
@@ -74,3 +75,129 @@ align-items: end;
 export const Img = styled.img`
 
 `
+export const Background = styled.div`
+
+position: relative;
+`
+export const BackgroundImage = styled.div`
+  background-image: url('img/Frame_18.png'); /* Replace with your actual image path */
+  background-size: cover;
+  position: absolute;
+  top: 108px; /* Adjust the margin-top value as needed */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+`;
+export const Today = styled.p`
+    font-size: 18px;
+    color: ${theme.colors.primeryBlue};
+    &::before {
+        content: '';
+        width: 1px;
+        height: 8px;
+        background: ${theme.colors.secondary6};
+        position: absolute;
+        top: 100%; 
+        transform: translateY(-50%); 
+        left: 265px;
+        z-index: -1;
+      }
+`
+export const DivToday = styled.div`
+    margin-top: 16px;
+    
+`
+
+export const SliderInput = styled.input`
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: ${theme.colors.secondary6};
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: ${theme.colors.primeryWhite};
+    border: 2px solid ${theme.colors.primeryBlue};
+    cursor: pointer;
+    transform: translateY(-20%);
+  }
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(to right, ${theme.colors.secondary4} 0%, ${theme.colors.secondary4} ${(props) => props.value}%, ${theme.colors.secondary6} ${(props) => props.value}%, ${theme.colors.secondary6} 100%);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+  }
+  
+  &::after {
+    content: '';
+    width: 1px;
+    height: 8px;
+    background: ${theme.colors.secondary6};
+    position: absolute;
+    top: 100%; /* Зсув на половину висоти відносно повзунка */
+    transform: translateY(-50%); 
+
+    left: 10px;
+    z-index: -1;
+  }
+  &::before {
+    content: '';
+    width: 1px;
+    height: 8px;
+    background: ${theme.colors.secondary6};
+    position: absolute;
+    top: 100%; 
+    transform: translateY(-50%); 
+    left: 132px;
+    z-index: -1;
+  }
+  &::before {
+    content: '';
+    width: 1px;
+    height: 8px;
+    background: ${theme.colors.secondary6};
+    position: absolute;
+    top: 100%; 
+    transform: translateY(-50%); 
+    left: 132px;
+    z-index: -1;
+  }
+`
+export const SliderDiv = styled.div`
+padding-left: 10px;
+    padding-right: 14px`
+
+export const Per = styled.p`
+font-size: 12px;
+color: ${theme.colors.primeryBlue};
+z-index: 2
+`
+
+export const Percents = styled.div`
+display: flex;
+justify-content: space-between;
+margin-top: 16px
+z-index: 1;
+position: absolute;
+top: 101%; 
+width: 100%;
+`
+

@@ -1,34 +1,58 @@
+import React, { useState } from 'react';
 import { Wrapper } from 'components/Global/Global.styled';
-import { P, Logo, LogoDiv, Icon, Avatar, UserName, UserDiv, HeaderDiv, MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Background, Img } from './HomePage.styled';
+import { P, Logo, LogoDiv, Icon, Avatar, UserName, UserDiv, HeaderDiv, MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Background, Img, BackgroundImage, Today, DivToday, SliderInput, Per, Percents, SliderDiv } from './HomePage.styled.js';
 
 export const HomePage = () => {
-  
+  const [sliderValue, setSliderValue] = useState(0);
+
+  const handleSliderChange = (event) => {
+    setSliderValue(event.target.value);
+  };
+
   return (
     <>
+      <Background>
+        <BackgroundImage />
         <HeaderDiv>
-
           <LogoDiv>
             <Logo src="logo.png" alt="Logo" />
             <P>TRACKER OF WATER</P>
           </LogoDiv>
-        
+
           <UserDiv>
             <UserName>UserName</UserName>
             <Avatar></Avatar>
             <Icon src="img/Vector.png" alt="Icon"></Icon>
           </UserDiv>
-
         </HeaderDiv>
 
         <MyDailyNormaDiv>
           <MyDailyNorma>My daily norma</MyDailyNorma>
           <Div>
-          <Litr>1.5 L</Litr>
-          <Edit>Edit</Edit>
+            <Litr>1.5 L</Litr>
+            <Edit>Edit</Edit>
           </Div>
         </MyDailyNormaDiv>
-        
-        <Img src="img/Frame_18.png" alt="Background"/>
+        <Img src="img/Frame.png" alt="Bottle" />
+
+        <DivToday>
+          <Today>Today</Today>
+          <SliderDiv>
+            <SliderInput
+              type="range"
+              min="1"
+              max="100"
+              value={sliderValue}
+              onChange={handleSliderChange}
+            />
+            </SliderDiv>
+            <Percents>
+              <Per>0%</Per>
+              <Per>50%</Per>
+              <Per>100%</Per>
+            </Percents>
+        </DivToday>
+      </Background>
     </>
   );
 };
