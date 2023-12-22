@@ -1,6 +1,12 @@
 import styled from 'styled-components';
-import { ReactComponent as CloseIcon } from '../icons/outline.svg';
-import { ReactComponent as IconUpload } from '../icons/upload.svg';
+import { ReactComponent as CloseIcon } from './icons/outline.svg';
+import { ReactComponent as IconUpload } from './icons/upload.svg';
+import { ReactComponent as IconToggle } from './icons/icon_show_hide.svg';
+
+export const Container = styled.div`
+  padding: 0 20px;
+  margin: 0px auto;
+`;
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -54,7 +60,7 @@ export const Topic = styled.h1`
   margin-bottom: 24px;
 `;
 
-export const TopicUserPhoto = styled.h2`
+export const Title = styled.h2`
   margin-bottom: 8px;
   font-size: 18px;
   font-style: normal;
@@ -77,6 +83,11 @@ export const IconUploadImage = styled(IconUpload)`
   height: 16px;
 `;
 
+export const ToggleIcon = styled(IconToggle)`
+  width: 16px;
+  height: 16px;
+`;
+
 export const UploadInput = styled.input`
   display: none;
 `;
@@ -88,6 +99,7 @@ export const Label = styled.label`
   font-style: normal;
   font-weight: 500;
   line-height: 1.28;
+  cursor: pointer;
 `;
 
 export const MainWrapper = styled.div`

@@ -40,7 +40,7 @@ export const Modal = () => {
   };
 
   return createPortal(
-    <div>
+    <>
       <button type="button" onClick={toggleModal}>
         Open Modal
       </button>
@@ -55,15 +55,11 @@ export const Modal = () => {
 
             <UploadPhoto />
 
-            <FormModal />
-
-            <button type="button" onClick={toggleModal}>
-              Save
-            </button>
+            <FormModal onClose={onClose} />
           </ModalContent>
         </Backdrop>
       )}
-    </div>,
+    </>,
     modalRoot
   );
 };

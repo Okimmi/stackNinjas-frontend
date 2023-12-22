@@ -1,6 +1,6 @@
-import logo from '../icons/Ellipse 1.jpg';
+import logo from './icons/Ellipse 1.jpg';
 import {
-  TopicUserPhoto,
+  Title,
   MainWrapper,
   UploadInput,
   UploadWrapper,
@@ -12,7 +12,7 @@ import {
 export const UploadPhoto = () => {
   return (
     <>
-      <TopicUserPhoto>Your photo</TopicUserPhoto>
+      <Title>Your photo</Title>
 
       <MainWrapper>
         {' '}
