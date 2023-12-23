@@ -17,13 +17,18 @@ export const UserLogo = () => {
   const userName = userData.name ? userData.name : usernameFromEmail;
   const userAvatar = userData.avatar;
 
-  const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const handleDropdownClick = () => {
-    setDropdownVisible(!isDropdownVisible);
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const handleDropdownOpen = () => {
+    setDropdownOpen(true);
+  };
+
+  const handleDropdownClose = () => {
+    setDropdownOpen(false);
   };
 
   return (
-    <UserLogoStyled onClick={handleDropdownClick}>
+    <UserLogoStyled onClick={handleDropdownOpen}>
       <User>
         <UserName>{userName}</UserName>
         <UserAvatar
@@ -33,7 +38,7 @@ export const UserLogo = () => {
         ></UserAvatar>
       </User>
       <IconOpenUserMenu src={openIcon} alt="Open menu" />
-      <UserLogoModal isOpen={isDropdownVisible} />
+      <UserLogoModal isOpen={isDropdownOpen} onClose={handleDropdownClose} />
     </UserLogoStyled>
   );
 };

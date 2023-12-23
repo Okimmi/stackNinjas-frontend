@@ -1,4 +1,4 @@
-// import { useEffect } from 'react'; // Видаліть useState із цього імпорту
+import { useState } from 'react';
 
 import {
   DropdownContainer,
@@ -8,16 +8,25 @@ import {
 } from './UserLogoModal.styled';
 import settingIcon from '../../images/header/settingIcon.svg';
 import logoutIcon from '../../images/header/logoutIcon.svg';
+import { UserLogoutModal } from 'components/UserLogoutModal/UserLogoutModal';
 
 export const UserLogoModal = ({ isOpen, onClose }) => {
-  const handleButtonSettingClick = () => {
-    //  код для відкриття модалки Setting
-    onClose();
+  const [LogoutActive, SetLogoutActive] = useState(false);
+
+  const handleOnSetting = () => {
+    // КОД ДЛЯ ВІДКРИТТЯ МОДАЛКИ НАЛАШТУВАНЬ ПРОФІЛЮ ЮЗЕРА
   };
 
-  const handleButtonLogoutClick = () => {
-    //  код для відкриття модалки Log out
-    onClose();
+  const handleOnLogout = () => {
+    // відкриття модалки Log out
+
+    SetLogoutActive(true);
+    console.log('handleOnLogout is called');
+  };
+
+  const handleCloseLogout = () => {
+    // закриття модалки Log out
+    SetLogoutActive(false);
   };
 
   // useEffect(() => {
@@ -43,15 +52,22 @@ export const UserLogoModal = ({ isOpen, onClose }) => {
   // }, [isOpen, onClose]);
 
   return (
-    <DropdownContainer className="dropdown-container" isOpen={isOpen}>
-      <DropdownItem onClick={handleButtonSettingClick}>
-        <IconSetting src={settingIcon} alt="Setting" />
-        Setting
-      </DropdownItem>
-      <DropdownItem onClick={handleButtonLogoutClick}>
-        <IconLogout src={logoutIcon} alt="Log out" />
-        Log out
-      </DropdownItem>
-    </DropdownContainer>
+    isOpen && (
+      <DropdownContainer onClick={onClose}>
+        <DropdownItem onClick={handleOnSetting}>
+          <IconSetting src={settingIcon} alt="Setting" />
+          Setting
+        </DropdownItem>
+        <DropdownItem onClick={handleOnLogout}>
+          <IconLogout src={logoutIcon} alt="Log out" />
+          Log out
+        </DropdownItem>
+
+        <UserLogoutModal
+          isLogoutActive={LogoutActive}
+          onLogoutClose={handleCloseLogout}
+        />
+      </DropdownContainer>
+    )
   );
 };
