@@ -5,7 +5,7 @@ import { ReactComponent as IconToggle } from './icons/icon_show_hide.svg';
 
 export const Container = styled.div`
   padding: 0 20px;
-  margin: 0px auto;
+  margin: 0 auto;
 `;
 
 export const Backdrop = styled.div`
@@ -21,15 +21,26 @@ export const ModalContent = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   width: 100%;
   border-radius: 10px;
   background-color: ${({ theme: { colors } }) => colors.primeryWhite};
+  padding: 32px 24px;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (max-width: 768px) {
     max-width: 320px;
     padding: 32px 12px;
-    gap: 24px;
+    min-height: 852px;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+  }
+
+  @media screen and (min-width: 1140px) {
+    max-width: 1140px;
   }
 `;
 
@@ -84,8 +95,13 @@ export const IconUploadImage = styled(IconUpload)`
 `;
 
 export const ToggleIcon = styled(IconToggle)`
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
   width: 16px;
   height: 16px;
+  cursor: pointer;
 `;
 
 export const UploadInput = styled.input`
@@ -104,6 +120,7 @@ export const Label = styled.label`
 
 export const MainWrapper = styled.div`
   display: flex;
+  margin-bottom: 24px;
 `;
 
 export const UploadWrapper = styled.div`

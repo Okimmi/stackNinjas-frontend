@@ -1,6 +1,5 @@
 // import * as yup from 'yup';
-
-import { Title } from './SettingModal.styled';
+// import { useFormik } from 'formik';
 import {
   Base,
   ErrMessage,
@@ -9,76 +8,117 @@ import {
   Gender,
   GenderWrapper,
   Password,
+  RadioField,
+  SaveBtn,
   TopicGender,
+  Wrapper,
   // LabelsPassword,
 } from './SettingsFormModal.styled';
-
-import { ToggleIcon } from './SettingModal.styled';
+import { Title, ToggleIcon } from './SettingModal.styled';
 
 export const FormModal = ({ onClose }) => {
+  // const formik = useFormik({
+  //   initialValues: {
+  //     // ваші початкові значення тут
+  //   },
+  //   onSubmit: values => {
+  //     // ваша логіка відправки форми тут
+  //   },
+  // });
+
   return (
     <>
       <Base>
         <FormUser>
-          <div>
+          <Wrapper>
             <TopicGender>Your gender identity</TopicGender>
             <div>
               <GenderWrapper>
-                <FieldForm type="radio" name="picked" />
+                <RadioField type="radio" name="picked" />
                 <Gender>Girl</Gender>
               </GenderWrapper>
-              <FieldForm type="radio" name="picked" />
+              <RadioField type="radio" name="picked" />
               <Gender>Man</Gender>
             </div>
-          </div>
+          </Wrapper>
 
-          <div>
-            <TopicGender>Your name</TopicGender>
-            <div>
+          <Wrapper>
+            <Title>Your name</Title>
+            <div style={{ position: 'relative' }}>
               {' '}
-              <FieldForm type="text" />
+              <FieldForm
+                type="text"
+                placeholder="David"
+                autoComplete="off"
+                // style={
+                //   formik.errors.David && formik.touched.myField
+                //     ? { borderColor: 'red' }
+                //     : null
+                // }
+                style={{ color: '#407BFF' }}
+              />
             </div>
-          </div>
+          </Wrapper>
 
-          <div>
-            <TopicGender>E-mail</TopicGender>
-            <div>
+          <Wrapper>
+            <Title>E-mail</Title>
+            <div style={{ position: 'relative' }}>
               {' '}
-              <FieldForm type="text" />
+              <FieldForm
+                type="text"
+                placeholder="david01@gmail.com"
+                autoComplete="off"
+              />
             </div>
-          </div>
+          </Wrapper>
 
-          <div>
-            <Title>Password</Title>
+          <Wrapper>
+            {/* <div> */}
+            <TopicGender>Password</TopicGender>
             <Password htmlFor="">Outdated password</Password>
-            <div>
-              <FieldForm type="password" name="" id="" />
+            <div style={{ position: 'relative', marginBottom: '12px' }}>
+              <FieldForm
+                type="password"
+                name=""
+                id=""
+                placeholder="Password"
+                autoComplete="off"
+              />
+
+              <ToggleIcon />
+
+              <ErrMessage name="password" component="p" />
+              {/* </div> */}
+            </div>
+
+            {/* <div> */}
+            <Password htmlFor="">New password</Password>
+            <div style={{ position: 'relative', marginBottom: '12px' }}>
+              <FieldForm
+                type="password"
+                name=""
+                id=""
+                placeholder="Password"
+                autoComplete="off"
+              />
               <ErrMessage name="password" component="p" />
               <ToggleIcon />
             </div>
+            {/* </div> */}
 
-            <div>
-              <Password htmlFor="">New password</Password>
-            </div>
-            <div>
-              <FieldForm type="password" name="" id="" />
-              <ErrMessage name="password" component="p" />
+            {/* <div> */}
+            <Password htmlFor="">Outdated password</Password>
+            <div style={{ position: 'relative', marginBottom: '12px' }}>
+              <FieldForm type="password" name="" id="" placeholder="Password" />
               <ToggleIcon />
+              <ErrMessage name="password" component="p" autoComplete="off" />
             </div>
+            {/* </div> */}
+          </Wrapper>
 
-            <div>
-              <Password htmlFor="">Outdated password</Password>
-              <div>
-                <FieldForm type="password" name="" id="" />
-                <ErrMessage name="password" component="p" />
-                <ToggleIcon />
-              </div>
-            </div>
-          </div>
-
-          <button type="button" onClick={() => onClose()}>
+          <SaveBtn type="button" onClick={() => onClose()}>
             Save
-          </button>
+          </SaveBtn>
         </FormUser>
       </Base>
     </>
