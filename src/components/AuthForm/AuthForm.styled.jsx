@@ -1,10 +1,37 @@
 import { Form, ErrorMessage, Field  } from 'formik';
 import styled from 'styled-components';
-import { ReactComponent as Bottle } from '../../images/Bottle.svg';
-import { ReactComponent as Background } from '../../images/Background.svg';
+import { ReactComponent as Bottle } from '../../images/AuthForm/Bottle.svg';
+import { ReactComponent as Background } from '../../images/AuthForm/Background.svg';
+import { ReactComponent as Bubles720 } from '../../images/AuthForm/Bubles720.svg';
+import { ReactComponent as Bubles320 } from '../../images/AuthForm/Bubles320.svg';
+import { ReactComponent as Bottle320 } from '../../images/AuthForm/Bottle320.svg';
+
+
 import { theme } from 'components/GlobalStyle';
 
 export  const BackgroundImg = styled(Background)`
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    
+`
+
+
+
+export  const BackgroundImg720 = styled(Bubles720)`
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    
+`
+
+export  const BackgroundImg320 = styled(Bubles320)`
     position: absolute;
     z-index: -1;
     top: 0;
@@ -31,11 +58,10 @@ export const ForFormContainer = styled.div`
     justify-self: center;
 
   }
-`  
 
+`  
 export  const BottleStyled = styled(Bottle)`
     z-index: -1;
-    viewBox: 0 0 270 220;
 
   @media screen and (min-width: 768px) {
     position: absolute;
@@ -54,6 +80,13 @@ export  const BottleStyled = styled(Bottle)`
   }
 `
 
+export  const BottleMobil = styled(Bottle320)`
+    z-index: -1;
+    
+`
+
+
+
 export const FormHead = styled.h2`
     color: ${theme.colors.primeryBlack};
     font-size: 26px;
@@ -68,7 +101,6 @@ export  const StyledForm = styled(Form)`
     flex-direction:column;
     border-radius: 5px;
     width: 280px;
-    gap: 16px;
   @media screen and (min-width: 768px) {
     width: 336px;
   
@@ -90,7 +122,7 @@ export const ErMsg = styled(ErrorMessage )`
 `;
 
 export const StyledField = styled(Field)`
-   
+    margin-top: 8px;
     display: flex;
     padding: 12px 10px;
     width: 100%;
@@ -101,29 +133,29 @@ export const StyledField = styled(Field)`
     border-radius: 6px;
     border: 1px solid ${theme.colors.secondary6};
     background: ${theme.colors.primeryWhite};
-    &:invalid{
-        border-color: ${theme.colors.secondary3};
+    &::placeholder{
+        color: ${theme.colors.secondary4};
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.23; 
     }
     
 
 `
 
 export const Styledlabel = styled.label`
+        margin-top: 16px;
         color: ${theme.colors.primeryBlack};
         position: relative;
         font-size: 18px;
         font-weight: 400;
         line-height: 1.33; 
-    ::placeholder, 
-    ::-webkit-input-placeholder{
-        color: ${theme.colors.secondary4};
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 0.8; 
-    }
+ 
+    
 `
 
 export const FormBtnStyled = styled.button`
+    margin-top: 16px;
     width: 100%;
     display: flex;
     padding: 10px 30px;
@@ -141,9 +173,17 @@ export const FormBtnStyled = styled.button`
     font-weight: 500;
     line-height: 1.25;
     cursor: pointer;
+    @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 1.33;
+  
+  }
+
 `
 
+
 export const SightUp = styled.p`
+    margin-top: 16px;
     color: ${theme.colors.primeryBlue};
     font-size: 16px;
     font-weight: 400;
@@ -154,7 +194,7 @@ export const SightUp = styled.p`
 export const StyledBtn = styled.div`
     position: absolute;
     border: none;
-    top: calc(50% + 4px);
+    top: calc(50% + 34px);
     right: 4%;
     cursor: pointer;
 `
