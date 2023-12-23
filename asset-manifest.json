@@ -1,20 +1,31 @@
 {
   "files": {
     "main.css": "/stackNinjas-frontend/static/css/main.1a24fdc4.css",
-    "main.js": "/stackNinjas-frontend/static/js/main.93737b15.js",
+    "main.js": "/stackNinjas-frontend/static/js/main.7ed38223.js",
+    "static/media/BgMainPage-tab.png": "/stackNinjas-frontend/static/media/BgMainPage-tab.0c4824a52fdfb0d79a06.png",
+    "static/media/logo.svg": "/stackNinjas-frontend/static/media/logo.c26d3c0b5ece3e8563320496404cbbe3.svg",
+    "static/media/BgMainPage-desk.png": "/stackNinjas-frontend/static/media/BgMainPage-desk.f64e661baefac36f8e09.png",
     "static/media/Bottle.svg": "/stackNinjas-frontend/static/media/Bottle.eae0ede6ab50a01d35fc5a77b8179a75.svg",
     "static/media/Bottle320.svg": "/stackNinjas-frontend/static/media/Bottle320.6899e336d0dd2224787e52162a67eec4.svg",
+    "static/media/BgElMainPage-desk.png": "/stackNinjas-frontend/static/media/BgElMainPage-desk.aebdcb013b3a8eef40c4.png",
+    "static/media/BgMainPage-mob.png": "/stackNinjas-frontend/static/media/BgMainPage-mob.a0d79c3b82dd6a1f5639.png",
     "static/media/Background.svg": "/stackNinjas-frontend/static/media/Background.31291302a4b0733cc1b42191c530491f.svg",
     "static/media/Bubles720.svg": "/stackNinjas-frontend/static/media/Bubles720.b302bf13877dc20b86b25d238c27ae80.svg",
     "static/media/Bubles320.svg": "/stackNinjas-frontend/static/media/Bubles320.1bb037562d83a1d38b0f3c95be363d56.svg",
+    "static/media/settingIcon.svg": "/stackNinjas-frontend/static/media/settingIcon.f51f8540aef0e09991553dc14cf94326.svg",
     "index.html": "/stackNinjas-frontend/index.html",
     "static/media/hide_icon.svg": "/stackNinjas-frontend/static/media/hide_icon.28fb84cfca4bb2e793b4f4a9f755df30.svg",
+    "static/media/habitDriveIcon.svg": "/stackNinjas-frontend/static/media/habitDriveIcon.2a5c4120a9beff9d1f9b5de5609360fc.svg",
+    "static/media/openUserMenuIcon.svg": "/stackNinjas-frontend/static/media/openUserMenuIcon.a137ac0aad5f1c2865b0e85a720df622.svg",
+    "static/media/signIn.svg": "/stackNinjas-frontend/static/media/signIn.870af65d61b35cf143624ceeb90468b1.svg",
     "static/media/show_icon.svg": "/stackNinjas-frontend/static/media/show_icon.054bcb83c278f3920dc3ef23282ae113.svg",
+    "static/media/logoutIcon.svg": "/stackNinjas-frontend/static/media/logoutIcon.1ab73ef24bbb64a7a3f18c7901172751.svg",
+    "static/media/statisticIcon.svg": "/stackNinjas-frontend/static/media/statisticIcon.39c6f2f5a0d69a5c53775d403cc20fbd.svg",
     "main.1a24fdc4.css.map": "/stackNinjas-frontend/static/css/main.1a24fdc4.css.map",
-    "main.93737b15.js.map": "/stackNinjas-frontend/static/js/main.93737b15.js.map"
+    "main.7ed38223.js.map": "/stackNinjas-frontend/static/js/main.7ed38223.js.map"
   },
   "entrypoints": [
     "static/css/main.1a24fdc4.css",
-    "static/js/main.93737b15.js"
+    "static/js/main.7ed38223.js"
   ]
 }
