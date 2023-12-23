@@ -1,5 +1,14 @@
 // import { Link } from 'react-router-dom';
 // import { Content, ProfMod } from './Modal.styled';
+import closeIcon from '../../images/header/closeIcon.svg';
+import {
+    ButtonContainer,
+  Content,
+  IconClose,
+  LogoutStyled,
+  Title,
+  TitleWrap,
+} from './UserLogoutModal.styled';
 
 export const UserLogoutModal = ({ isLogoutActive, onLogoutClose }) => {
   const handleCancelClick = () => {
@@ -15,14 +24,26 @@ export const UserLogoutModal = ({ isLogoutActive, onLogoutClose }) => {
     // додаткова логіка для очищення глобального стейту
     // ...
   };
-
+  if (isLogoutActive) {
+   document.body.classList.add('modal-open');
+  } else {
+   document.body.classList.remove('modal-open');
+  }
   return (
     isLogoutActive && (
-      <div onclick={onLogoutClose}>
-        <p>Do you really want to leave?</p>
-        <button onClick={handleCancelClick}>Cancel</button>
-        <button onClick={handleConfirmLogout}>Log out</button>
-      </div>
+      <LogoutStyled onClick={onLogoutClose}>
+        <Content>
+          <TitleWrap>
+           <Title> Log out</Title>
+            <IconClose src={closeIcon} alt="Close" />
+          </TitleWrap>
+          <p>Do you really want to leave?</p>
+ <ButtonContainer>
+              <button onClick={handleCancelClick}>Log out</button>
+              <button onClick={handleConfirmLogout}>Cancel</button>
+ </ButtonContainer>
+        </Content>
+      </LogoutStyled>
     )
   );
 };

@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { selectUser } from '../../redux/auth/selectors';
 import openIcon from '../../images/header/openUserMenuIcon.svg';
-import { UserLogoModal } from 'components/UserLogoModal/UserLogoModal';
+// import { UserLogoModal } from 'components/UserLogoModal/UserLogoModal';
 import {
   IconOpenUserMenu,
   User,
@@ -10,6 +10,7 @@ import {
   UserLogoStyled,
   UserName,
 } from './UserLogo.styled';
+import { UserLogoutModal } from 'components/UserLogoutModal/UserLogoutModal';
 
 export const UserLogo = () => {
   const userData = useSelector(selectUser);
@@ -17,18 +18,36 @@ export const UserLogo = () => {
   const userName = userData.name ? userData.name : usernameFromEmail;
   const userAvatar = userData.avatar;
 
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  // const [isDropdownOpen, setDropdownOpen] = useState(false);
 
-  const handleDropdownOpen = () => {
-    setDropdownOpen(true);
+  // const handleDropdownOpen = () => {
+  //   setDropdownOpen(true);
+  // };
+
+  // const handleDropdownClose = () => {
+  //   setDropdownOpen(false);
+  // };
+
+
+  const [LogoutActive, SetLogoutActive] = useState(false);
+
+ 
+
+  const handleOnLogout = () => {
+    // відкриття модалки Log out
+
+    SetLogoutActive(true);
+    console.log('handleOnLogout is called');
   };
 
-  const handleDropdownClose = () => {
-    setDropdownOpen(false);
+  const handleCloseLogout = () => {
+    // закриття модалки Log out
+    SetLogoutActive(false);
   };
 
   return (
-    <UserLogoStyled onClick={handleDropdownOpen}>
+    // <UserLogoStyled onClick={handleDropdownOpen}>
+    <UserLogoStyled onClick={handleOnLogout}>
       <User>
         <UserName>{userName}</UserName>
         <UserAvatar
@@ -38,7 +57,11 @@ export const UserLogo = () => {
         ></UserAvatar>
       </User>
       <IconOpenUserMenu src={openIcon} alt="Open menu" />
-      <UserLogoModal isOpen={isDropdownOpen} onClose={handleDropdownClose} />
+      {/* <UserLogoModal isOpen={isDropdownOpen} onClose={handleDropdownClose} /> */}
+      <UserLogoutModal
+        isLogoutActive={LogoutActive}
+        onLogoutClose={handleCloseLogout}
+      />
     </UserLogoStyled>
   );
 };

@@ -18,7 +18,7 @@ export const WhyDrinkWaterStyled = styled.div`
   }
 
   h2 {
-    font-weight: 500px;
+    font-weight: 500;
     font-size: 18px;
     line-height: 1.1;
 
