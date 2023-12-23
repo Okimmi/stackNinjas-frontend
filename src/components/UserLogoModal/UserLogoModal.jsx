@@ -8,7 +8,7 @@ import {
 } from './UserLogoModal.styled';
 import settingIcon from '../../images/header/settingIcon.svg';
 import logoutIcon from '../../images/header/logoutIcon.svg';
-import { UserLogoutModal } from 'components/UserLogoutModal/UserLogoutModal';
+import { UserLogoutModal } from '../../components/UserLogoutModal/UserLogoutModal';
 
 export const UserLogoModal = ({ isOpen, onClose }) => {
   const [LogoutActive, SetLogoutActive] = useState(false);
