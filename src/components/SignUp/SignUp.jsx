@@ -19,7 +19,11 @@ const SignupSchema = Yup.object().shape({
     .max(48, 'Too Long!')
     .matches(/[a-zA-Z]/, 'Must contain at least one letter')
     .required('Required'),
+    passwordRepeat: Yup.string()
+    .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .required("Required"),
   });
+  
 
 export const SignUp = () => {
     
@@ -33,6 +37,7 @@ export const SignUp = () => {
         initialValues={{
           email: '',
           password: '',
+          passwordRepeat: '',
         }}
         validationSchema={SignupSchema}
         onSubmit={(values, action) => {
@@ -40,6 +45,7 @@ export const SignUp = () => {
           dispatch(register({
             email: values.email,
             password: values.password,
+            passwordRepeat: values.passwordRepeat,
           }));
         }
       }
@@ -73,12 +79,12 @@ export const SignUp = () => {
               )}
             </StyledBtn>
             </Styledlabel>
-            <Styledlabel htmlFor="RepeatPassword">Repeat password
-          <StyledField id="RepeatPassword" 
+            <Styledlabel htmlFor="passwordRepeat">Repeat password
+          <StyledField id="passwordRepeat" 
               type={showPassword ? 'text' : 'password'}
-              name="RepeatPassword"   
+              name="passwordRepeat"   
               placeholder="Repeat password" 
-              title="RepeatPassword"
+              title="passwordRepeat"
            />
            <StyledBtn onClick={() => setShowPassword(!showPassword)}>
               {showPassword ? (
@@ -94,7 +100,7 @@ export const SignUp = () => {
               )}
             </StyledBtn>
             </Styledlabel>
-            <ErMsg component="span" name="password" />
+            <ErMsg component="span" name="passwordRepeat" />
           <FormBtnStyled type="submit">Sign Up</FormBtnStyled>
 
           <SightUp>Sign in</SightUp>
