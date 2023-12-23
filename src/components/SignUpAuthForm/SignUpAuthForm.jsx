@@ -38,8 +38,8 @@ export const SignUpAuthForm = () => {
 
   const [screenSize, setScreenSize] = useState({
     isDesctopScreen: typeof window !== 'undefined' && window.innerWidth >= 1440,
-    isTabletScreen: false,
-    isMobileScreen: false,
+    isTabletScreen: window.innerWidth >= 768 && window.innerWidth <=1440,
+    isMobileScreen: window.innerWidth >= 320 && window.innerWidth <=768,
   });
     const navigate  = useNavigate();
     const [showPassword, setShowPassword] = useState(false);

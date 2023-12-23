@@ -35,7 +35,6 @@ export const AuthForm = () => {
     isMobileScreen: window.innerWidth >= 320 && window.innerWidth <=768,
   });
 
-  console.log(screenSize);
  
   const [showPassword, setShowPassword] = useState(false);
   const navigate  = useNavigate();
