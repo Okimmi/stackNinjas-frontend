@@ -1,17 +1,20 @@
 {
   "files": {
-    "main.css": "/stackNinjas-frontend/static/css/main.cd2e038f.css",
-    "main.js": "/stackNinjas-frontend/static/js/main.4e05fec6.js",
+    "main.css": "/stackNinjas-frontend/static/css/main.1a24fdc4.css",
+    "main.js": "/stackNinjas-frontend/static/js/main.93737b15.js",
     "static/media/Bottle.svg": "/stackNinjas-frontend/static/media/Bottle.eae0ede6ab50a01d35fc5a77b8179a75.svg",
-    "static/media/Background.svg": "/stackNinjas-frontend/static/media/Background.4c5bad02e73a083ec74fa9992791e116.svg",
+    "static/media/Bottle320.svg": "/stackNinjas-frontend/static/media/Bottle320.6899e336d0dd2224787e52162a67eec4.svg",
+    "static/media/Background.svg": "/stackNinjas-frontend/static/media/Background.31291302a4b0733cc1b42191c530491f.svg",
+    "static/media/Bubles720.svg": "/stackNinjas-frontend/static/media/Bubles720.b302bf13877dc20b86b25d238c27ae80.svg",
+    "static/media/Bubles320.svg": "/stackNinjas-frontend/static/media/Bubles320.1bb037562d83a1d38b0f3c95be363d56.svg",
     "index.html": "/stackNinjas-frontend/index.html",
     "static/media/hide_icon.svg": "/stackNinjas-frontend/static/media/hide_icon.28fb84cfca4bb2e793b4f4a9f755df30.svg",
     "static/media/show_icon.svg": "/stackNinjas-frontend/static/media/show_icon.054bcb83c278f3920dc3ef23282ae113.svg",
-    "main.cd2e038f.css.map": "/stackNinjas-frontend/static/css/main.cd2e038f.css.map",
-    "main.4e05fec6.js.map": "/stackNinjas-frontend/static/js/main.4e05fec6.js.map"
+    "main.1a24fdc4.css.map": "/stackNinjas-frontend/static/css/main.1a24fdc4.css.map",
+    "main.93737b15.js.map": "/stackNinjas-frontend/static/js/main.93737b15.js.map"
   },
   "entrypoints": [
-    "static/css/main.cd2e038f.css",
-    "static/js/main.4e05fec6.js"
+    "static/css/main.1a24fdc4.css",
+    "static/js/main.93737b15.js"
   ]
 }
