@@ -7,6 +7,7 @@ const initialState = {
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
+    isError: false,
   };
 
 
@@ -24,6 +25,7 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+
       })
       builder.addCase(logOut.fulfilled, (state, action) => {
         state.user = { name: null, email: null };
@@ -48,6 +50,14 @@ const authSlice = createSlice({
       //rejected
       builder.addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
+      })
+      builder.addCase(logIn.rejected, (state, action) => {
+        state.isRefreshing = false;
+        state.isError = action.payload;
+      })
+      builder.addCase(register.rejected, (state, payload) => {
+        state.isRefreshing = false;
+        state.isError = payload.payload;
       })
     },
   });
