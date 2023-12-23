@@ -1,5 +1,10 @@
+import { MonthStatesTable } from "components/MonthStatesTable/MonthStatesTable";
 
 
 export const HomePage = () => {
-  return <></>;
+  return  (
+    <div>    
+      {/* <MonthStatesTable/> */}
+    </div>
+  );
 };
