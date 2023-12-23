@@ -16,7 +16,6 @@ export const Modal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const toggleModal = () => setModalIsOpen(prevState => !prevState);
-
   const onClose = () => setModalIsOpen(false);
 
   useEffect(() => {

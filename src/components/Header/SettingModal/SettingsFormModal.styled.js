@@ -45,17 +45,49 @@ export const Gender = styled.span`
 
 export const Base = styled(Formik)``;
 
-export const Wrapper = styled.div`
-  display: flex;
-
+export const RadioWrapper = styled.div`
   margin-bottom: 24px;
 
-  @media screen and (min-width: 320px) and (max-width: 1139px) {
-    flex-direction: column;
+  @media screen and (min-width: 1140px) {
+    margin-bottom: 52px;
   }
 `;
 
-export const FormUser = styled(Form)``;
+export const NameWrapper = styled.div`
+  margin-bottom: 24px;
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  @media screen and (min-width: 1140px) {
+    flex-basis: calc((100% - 24px) / 2);
+  }
+`;
+
+export const Container = styled.div`
+  position: relative;
+
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 392px;
+  }
+`;
+
+export const FormUser = styled(Form)`
+  @media screen and (min-width: 1140px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+`;
 
 export const LabelForm = styled.label``;
 
@@ -64,6 +96,7 @@ export const LabelsPassword = styled.label`
 `;
 
 export const ErrMessage = styled(ErrorMessage)`
+  margin-top: 4px;
   color: ${({ theme: { colors } }) => colors.secondary3};
   font-size: 14px;
   font-style: normal;

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { ReactComponent as CloseIcon } from './icons/outline.svg';
 import { ReactComponent as IconUpload } from './icons/upload.svg';
-import { ReactComponent as IconToggle } from './icons/icon_show_hide.svg';
+import { ReactComponent as Eye } from './icons/blueEye.svg';
+import { ReactComponent as Hide } from './icons/icon_show_hide.svg';
 
 export const Container = styled.div`
   padding: 0 20px;
@@ -15,6 +16,10 @@ export const Backdrop = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${({ theme: { colors } }) => colors.primeryBlack};
+
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 export const ModalContent = styled.div`
@@ -47,7 +52,7 @@ export const ModalContent = styled.div`
 export const ButtonCloseModal = styled.button`
   position: absolute;
   top: 32px;
-  right: 12px;
+  right: 24px;
   border: none;
   cursor: pointer;
   background-color: transparent;
@@ -58,6 +63,10 @@ export const ButtonCloseModal = styled.button`
   &:hover,
   &:focus {
     transform: scale(1.2);
+  }
+
+  @media screen and (max-width: 767px) {
+    right: 12px;
   }
 `;
 
@@ -71,7 +80,7 @@ export const Topic = styled.h1`
   margin-bottom: 24px;
 `;
 
-export const Title = styled.h2`
+export const Title = styled.label`
   margin-bottom: 8px;
   font-size: 18px;
   font-style: normal;
@@ -94,14 +103,22 @@ export const IconUploadImage = styled(IconUpload)`
   height: 16px;
 `;
 
-export const ToggleIcon = styled(IconToggle)`
+export const ToggleIcon = styled.div`
   position: absolute;
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
+  cursor: pointer;
+`;
+
+export const EyeIcon = styled(Eye)`
   width: 16px;
   height: 16px;
-  cursor: pointer;
+`;
+
+export const HideIcon = styled(Hide)`
+  width: 16px;
+  height: 16px;
 `;
 
 export const UploadInput = styled.input`
