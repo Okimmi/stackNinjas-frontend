@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/stackNinjas-frontend/static/css/main.1a24fdc4.css",
-    "main.js": "/stackNinjas-frontend/static/js/main.7ed38223.js",
+    "main.js": "/stackNinjas-frontend/static/js/main.cf6ef9da.js",
     "static/media/BgMainPage-tab.png": "/stackNinjas-frontend/static/media/BgMainPage-tab.0c4824a52fdfb0d79a06.png",
     "static/media/logo.svg": "/stackNinjas-frontend/static/media/logo.c26d3c0b5ece3e8563320496404cbbe3.svg",
     "static/media/BgMainPage-desk.png": "/stackNinjas-frontend/static/media/BgMainPage-desk.f64e661baefac36f8e09.png",
@@ -22,10 +22,10 @@
     "static/media/logoutIcon.svg": "/stackNinjas-frontend/static/media/logoutIcon.1ab73ef24bbb64a7a3f18c7901172751.svg",
     "static/media/statisticIcon.svg": "/stackNinjas-frontend/static/media/statisticIcon.39c6f2f5a0d69a5c53775d403cc20fbd.svg",
     "main.1a24fdc4.css.map": "/stackNinjas-frontend/static/css/main.1a24fdc4.css.map",
-    "main.7ed38223.js.map": "/stackNinjas-frontend/static/js/main.7ed38223.js.map"
+    "main.cf6ef9da.js.map": "/stackNinjas-frontend/static/js/main.cf6ef9da.js.map"
   },
   "entrypoints": [
     "static/css/main.1a24fdc4.css",
-    "static/js/main.7ed38223.js"
+    "static/js/main.cf6ef9da.js"
   ]
 }
