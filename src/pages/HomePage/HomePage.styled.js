@@ -240,8 +240,10 @@ export const DivTodayAndMonth = styled.div`
 `
 
 export const DivTodayList = styled.div`
-  height: 220px;
+  max-height: 212px;
   width: 100%;
+  overflow-y: auto;
+  
 `
 
 export const PToday = styled.p`
@@ -255,23 +257,36 @@ export const ButtonAddWater = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  align-items: center;
+  text-align: center;
 `
 
 export const ButtonEdit = styled.button`
   width: 16px;
   height: 16px;
   border: none;
+  margin-left: 38px;
 `
 export const ButtonDelete = styled.button`
   width: 16px;
   height: 16px;
   border: none;
   margin-left: 18px;
+  
 `
 export const DivListItem = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
+  &.delete-line::after {
+    content: '';
+    width: 254px;
+    height: 1px;
+    background: ${theme.colors.secondary6};
+    position: absolute;
+    top: 145%; 
+    z-index: 2;
+  }
+  margin-bottom: 24px;
 `
 export const SpanDate = styled.span`
   margin-left: 12px;
@@ -286,3 +301,9 @@ export const SpanWater = styled.span`
 export const SvgPlus = styled.svg`
   margin-right: 8px;
 `
+export const SpanCount = styled.span`
+  margin-left: 12px;
+  font-size: 18px;
+  color: ${theme.colors.primeryBlue};
+`
+

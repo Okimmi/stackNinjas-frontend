@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Wrapper } from 'components/Global/Global.styled';
-import { SvgPlus, SpanDate, DivListItem, ButtonDelete, ButtonEdit, ButtonAddWater, DivTodayList, PToday, P, Logo, LogoDiv, Icon, Avatar, UserName, UserDiv, HeaderDiv, MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Background, Img, BackgroundImage, Today, DivToday, SliderInput, Per, Percents, SliderDiv, AddWaterButton, AddWater, DivAddWater, DivTodayAndMonth } from './HomePage.styled.js';
+import { SpanCount, SvgPlus, SpanDate, DivListItem, ButtonDelete, ButtonEdit, ButtonAddWater, DivTodayList, PToday, P, Logo, LogoDiv, Icon, Avatar, UserName, UserDiv, HeaderDiv, MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Background, Img, BackgroundImage, Today, DivToday, SliderInput, Per, Percents, SliderDiv, AddWaterButton, AddWater, DivAddWater, DivTodayAndMonth } from './HomePage.styled.js';
 
 export const HomePage = () => {
   
@@ -19,10 +19,8 @@ export const HomePage = () => {
   };
 
   const onDeleteClick = (item) => {
-    const isConfirmed = window.confirm('Are you sure you want to delete this entry?');
-    if (isConfirmed) {
       setData(data.filter((i) => i.id !== item.id));
-    }
+    
   };
 
   const onSaveEdit = () => {
@@ -61,7 +59,13 @@ export const HomePage = () => {
           <UserDiv>
             <UserName>UserName</UserName>
             <Avatar></Avatar>
-            <Icon src="img/Vector.png" alt="Icon"></Icon>
+            <svg style={{ display: 'none' }}>
+              <symbol id="icon" viewBox="0 0 55 32">
+              <path stroke="#407BFF" d="M29.045 31.329c-0.429 0.428-1.010 0.668-1.615 0.668s-1.187-0.24-1.615-0.668l-22.857-22.857c-0.404-0.433-0.624-1.006-0.613-1.599s0.25-1.157 0.669-1.576 0.984-0.659 1.576-0.669c0.592-0.010 1.165 0.209 1.599 0.613l21.242 21.242 21.242-21.242c0.209-0.225 0.462-0.405 0.742-0.53s0.583-0.192 0.89-0.197c0.307-0.005 0.612 0.051 0.896 0.166s0.543 0.286 0.76 0.503c0.217 0.217 0.389 0.476 0.503 0.76s0.171 0.589 0.166 0.896c-0.005 0.307-0.073 0.61-0.197 0.89s-0.305 0.533-0.529 0.742l-22.857 22.857z"></path>
+            </symbol></svg>
+              <svg width="11" height="11" >
+                <use xlinkHref="#icon"></use>
+              </svg>
           </UserDiv>
         </HeaderDiv>
 
@@ -128,7 +132,7 @@ export const HomePage = () => {
       )}
         <div>
           {data.map((item) => (
-            <DivListItem key={item.id}>
+            <DivListItem key={item.id} className="delete-line">
               <svg style={{ display: 'none' }}><symbol id="icon-Glass" viewBox="0 0 25 32">
                 <path stroke="#407BFF" strokeWidth="0.75" d="M0.759 0.379l2.247 31.156v0.085h19.342l2.247-31.144v-0.097h-23.836zM21.553 30.748h-17.747l-1.685-23.337h0.926l1.524 20.567c0.009 0.108 0.057 0.209 0.136 0.283s0.181 0.116 0.288 0.117h0.036c0.056-0.004 0.11-0.019 0.16-0.044s0.095-0.060 0.131-0.103c0.037-0.043 0.065-0.093 0.082-0.146s0.025-0.111 0.021-0.167l-1.524-20.506h19.336l-1.685 23.337zM23.298 6.538h-19.462l-0.335-4.546c-0.010-0.111-0.062-0.214-0.144-0.288s-0.188-0.114-0.298-0.112c-0.113 0.011-0.217 0.066-0.29 0.153s-0.111 0.2-0.104 0.314l0.335 4.486h-0.938l-0.382-5.298h22.001l-0.382 5.292z"></path>
                 <path stroke="#407BFF" strokeWidth="0.75" d="M7.601 16.376c0.004 0.282 0.089 0.557 0.247 0.79s0.379 0.414 0.637 0.519 0.542 0.131 0.814 0.073c0.273-0.058 0.522-0.196 0.717-0.397s0.327-0.457 0.38-0.734 0.023-0.564-0.086-0.824c-0.108-0.26-0.29-0.482-0.522-0.638s-0.505-0.238-0.783-0.237c-0.186 0.001-0.37 0.039-0.542 0.112s-0.327 0.181-0.458 0.315-0.234 0.294-0.303 0.47c-0.069 0.175-0.104 0.363-0.102 0.552zM9.561 16.376c0 0.111-0.033 0.221-0.094 0.313s-0.148 0.165-0.249 0.208c-0.102 0.043-0.213 0.054-0.321 0.032s-0.207-0.076-0.285-0.154-0.131-0.179-0.152-0.289c-0.021-0.109-0.010-0.223 0.032-0.326s0.113-0.191 0.205-0.253 0.199-0.095 0.309-0.095c0.147 0 0.289 0.059 0.393 0.165s0.163 0.249 0.163 0.399z"></path>
@@ -143,9 +147,12 @@ export const HomePage = () => {
               <svg width="26" height="26" >
                 <use xlinkHref="#icon-Glass"></use>
               </svg>
+              <SpanCount >{'200 ml'}</SpanCount>
+              <SpanDate>{'14:00 PM'}</SpanDate>
+              
+              {/* ДОДАТИ ДАНІ З ФОРМИ
               <span >{item.amount}</span>
-              <SpanDate>{item.date}</SpanDate>
-              {/* ДОДАТИ ДАНІ З ФОРМИ */}
+              <SpanDate>{item.date}</SpanDate> */}
             <ButtonEdit
               disabled={item.id === editingEntryData?.id}
               onClick={() => onEditClick(item)}
@@ -167,12 +174,12 @@ export const HomePage = () => {
                 <use xlinkHref="#icon-outline"></use>
               </svg>
             </ButtonEdit>
-            <ButtonDelete
+            <ButtonDelete 
               disabled={item.id === editingEntryData?.id}
               onClick={() => onDeleteClick(item)}
             >
               <svg style={{ display: 'none' }}> 
-              <symbol id="icon-Vector" viewBox="0 0 27 32">
+              <symbol id="icon-Delete" viewBox="0 0 27 32">
               <path strokeLinejoin="round" 
                 strokeLinecap="round" 
                 strokeMiterlimit="4" 
@@ -182,7 +189,7 @@ export const HomePage = () => {
                 d="M17.89 11.429l-0.527 13.714M10.066 25.143l-0.527-13.714M24.728 6.537c0.521 0.079 1.039 0.163 1.557 0.253M24.728 6.537l-1.627 21.155c-0.067 0.861-0.456 1.666-1.090 2.253s-1.466 0.913-2.33 0.912h-11.934c-0.864 0-1.696-0.326-2.33-0.912s-1.023-1.391-1.090-2.253l-1.627-21.155M24.728 6.537c-1.759-0.266-3.527-0.468-5.3-0.605M2.7 6.537c-0.521 0.078-1.039 0.162-1.557 0.251M2.7 6.537c1.759-0.266 3.526-0.468 5.3-0.605M19.429 5.932v-1.396c0-1.798-1.387-3.297-3.185-3.354-1.686-0.054-3.373-0.054-5.059 0-1.798 0.056-3.185 1.557-3.185 3.354v1.396M19.429 5.932c-3.804-0.294-7.625-0.294-11.429 0"></path>
               </symbol></svg>
               <svg width="16" height="16">
-                <use xlinkHref="#icon-Vector"></use>
+                <use xlinkHref="#icon-Delete"></use>
               </svg>
             </ButtonDelete>
           </DivListItem>
