@@ -33,11 +33,10 @@ const Modal = ({ children, closeModal, portalParent=document.body }) => {
     <ModalBackdrop onClick={(e) => closeModal(e)}>
       <ModalContainer onClick={e => e.stopPropagation()}>
         
-        <CloseBtnContainer onClick={(e) => closeModal(e)}>
-          <CloseBtn>
+          <CloseBtn onClick={(e) => closeModal(e)}>
             <IconCloseModal size={24}/>
           </CloseBtn>
-        </CloseBtnContainer>
+
 
         {children}
 

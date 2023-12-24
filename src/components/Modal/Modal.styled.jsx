@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ModalBackdrop = styled.div`
-  position: absolute;
+  /* position: absolute; */
   z-index: 4;
   top: 0;
   left: 0;
@@ -11,11 +11,11 @@ export const ModalBackdrop = styled.div`
 `;
 
 export const ModalContainer = styled.div`
-  position: fixed;
+  position: relative;
   z-index: 5;
   box-sizing: border-box;
   min-width: 240px;
-  padding: 14px;
+  padding: 24px 12px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -38,13 +38,16 @@ export const CloseBtnContainer = styled.div`
 `;
 
 export const CloseBtn = styled.button`
+  position: absolute;
+  top: 24px;
+  right: 12px;
   padding: 0;
   border: 0;
   margin: 0;
   width: 24px;
   height: 24px;
   /* background-color: white; */
-  background-color: ${({ bg }) => bg || '#fff'};
+  background-color: ${({ bg }) => bg || 'transparent'};
   cursor: pointer;
   &:hover {
     box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
