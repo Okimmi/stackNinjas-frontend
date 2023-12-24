@@ -219,7 +219,7 @@ export const SliderDiv = styled.div`
 export const Per = styled.p`
 font-size: 12px;
 color: ${theme.colors.primeryBlue};
-z-index: 2
+z-index: 2;
 `;
 
 export const Percents = styled.div`
@@ -228,7 +228,7 @@ justify-content: space-between;
 margin-top: 16px
 z-index: 1;
 position: absolute;
-top: 101%; 
+top: 10px; 
 width: 100%;
 @media screen and (min-width: 768px) {
   width: 356px;
@@ -279,6 +279,7 @@ export const DivTodayAndMonth = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 24px 8px 24px 8px;
+
   @media screen and (min-width: 768px) {
     padding: 32px 24px 32px 24px;
     margin-top: 0px;
