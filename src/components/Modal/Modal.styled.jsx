@@ -15,6 +15,7 @@ export const ModalContainer = styled.div`
   z-index: 5;
   box-sizing: border-box;
   min-width: 240px;
+  width: 280px;
   padding: 24px 12px;
   top: 50%;
   left: 50%;

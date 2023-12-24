@@ -3,13 +3,21 @@ import Modal from "components/Modal/Modal";
 
 import { 
   BoxFormula,
+  BoxRate,
+  BoxRequiredLitresPerDay,
   BoxTextPostScriptum, 
+  BoxWaterDrink, 
+  ButtonSave, 
+  FormRate, 
   Formula, 
   FormulaColorText, 
   ItemFormula, 
   ListFormula, 
   MarkPSText, 
   PSText, 
+  RequiredText, 
+  SubTitle, 
+  Text, 
   Title } from "./DailyNormalModal.styled";
 
 const DailyNormalModal = ({closeModal}) => {
@@ -44,6 +52,44 @@ const DailyNormalModal = ({closeModal}) => {
             </BoxTextPostScriptum>
 
           </BoxFormula>
+
+          <BoxRate>
+            <SubTitle>Calculate your rate:</SubTitle>
+            <FormRate>
+              <label htmlFor="">For girl
+                <input type="checkbox" />
+              </label>
+              
+              <label htmlFor="">For man
+                <input type="checkbox" />
+              </label>
+
+              <label htmlFor="">Your weight in kilograms:
+                <input type="number" />
+              </label>
+              
+              <label htmlFor="">The time of active participation in sports or other activities with a high physical. load:
+                <input type="number" />
+              </label>
+              
+            </FormRate>
+
+            <BoxRequiredLitresPerDay>
+              <Text>The required amount of water in liters per day:</Text>
+              <RequiredText>1.8 L</RequiredText>
+            </BoxRequiredLitresPerDay>
+
+          </BoxRate>
+
+          <BoxWaterDrink>
+            <SubTitle>Write down how much water you will drink:</SubTitle>
+            
+            <label htmlFor="">
+                <input type="number" />
+              </label>
+          </BoxWaterDrink>
+
+          <ButtonSave>Save</ButtonSave>
 
         </Modal>
     </>
