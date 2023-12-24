@@ -90,7 +90,7 @@ export const ImgBottle = styled.img`
 }
 `;
 
-=[]
+
 export const Background = styled.div`
 position: relative;
 
