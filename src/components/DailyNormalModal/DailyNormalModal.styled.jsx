@@ -63,6 +63,23 @@ export const BoxRate =  styled.div`
 
 export const FormRate =  styled.div`
 `;
+export const BoxGender =  styled.div`
+  margin-bottom: 16px;
+`;
+export const Fieldset =  styled.fieldset`
+  border: none;
+  padding: 0;
+  margin: 0;
+`;
+
+
+export const BoxWeight =  styled.div`
+  margin-bottom: 16px;
+`;
+export const BoxTime =  styled.div`
+  margin-bottom: 16px;
+`;
+
 
 export const BoxRequiredLitresPerDay =  styled.div`
   display: flex;
@@ -95,7 +112,7 @@ export const BoxWaterDrink =  styled.div`
 
 
 
-export const ButtonSave =  styled.button`
+export const ButtonSave = styled.button`
   display: block;
   width: 256px;
   height: 36px;

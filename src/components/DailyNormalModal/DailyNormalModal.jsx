@@ -3,11 +3,15 @@ import Modal from "components/Modal/Modal";
 
 import { 
   BoxFormula,
+  BoxGender,
   BoxRate,
   BoxRequiredLitresPerDay,
   BoxTextPostScriptum, 
+  BoxTime, 
   BoxWaterDrink, 
+  BoxWeight, 
   ButtonSave, 
+  Fieldset, 
   FormRate, 
   Formula, 
   FormulaColorText, 
@@ -53,44 +57,53 @@ const DailyNormalModal = ({closeModal}) => {
 
           </BoxFormula>
 
-          <BoxRate>
-            <SubTitle>Calculate your rate:</SubTitle>
-            <FormRate>
-              <label htmlFor="">For girl
-                <input type="checkbox" />
-              </label>
-              
-              <label htmlFor="">For man
-                <input type="checkbox" />
-              </label>
-
-              <label htmlFor="">Your weight in kilograms:
-                <input type="number" />
-              </label>
-              
-              <label htmlFor="">The time of active participation in sports or other activities with a high physical. load:
-                <input type="number" />
-              </label>
-              
-            </FormRate>
-
-            <BoxRequiredLitresPerDay>
-              <Text>The required amount of water in liters per day:</Text>
-              <RequiredText>1.8 L</RequiredText>
-            </BoxRequiredLitresPerDay>
-
-          </BoxRate>
-
-          <BoxWaterDrink>
-            <SubTitle>Write down how much water you will drink:</SubTitle>
+          <FormRate>
+            <BoxRate>
+              <SubTitle>Calculate your rate:</SubTitle>
             
-            <label htmlFor="">
-                <input type="number" />
+              <BoxGender>
+                <Fieldset>
+                  <label htmlFor="girl">
+                    <input type="radio" id="girl" name="gender" value="girl" checked/>
+                    For girl
+                  </label>
+
+                  <label htmlFor="man">
+                    <input type="radio" id="man" name="gender" value="man" />
+                    For man
+                  </label>
+                </Fieldset>
+              </BoxGender>
+              
+              <BoxWeight>
+                <label htmlFor="">Your weight in kilograms:
+                  <input type="number" />
+                </label>
+              </BoxWeight>
+              
+              <BoxTime>
+                <label htmlFor="">The time of active participation in sports or other activities with a high physical. load:
+                  <input type="number" />
+                </label>
+              </BoxTime>
+              
+              <BoxRequiredLitresPerDay>
+                <Text>The required amount of water in liters per day:</Text>
+                <RequiredText>1.8 L</RequiredText>
+              </BoxRequiredLitresPerDay>
+
+            </BoxRate>
+
+            <BoxWaterDrink>
+              <SubTitle>Write down how much water you will drink:</SubTitle>
+            
+              <label htmlFor="">
+              <input type="number" />
               </label>
-          </BoxWaterDrink>
+            </BoxWaterDrink>
 
-          <ButtonSave>Save</ButtonSave>
-
+            <ButtonSave type="submit">Save</ButtonSave>
+          </FormRate>
         </Modal>
     </>
     
