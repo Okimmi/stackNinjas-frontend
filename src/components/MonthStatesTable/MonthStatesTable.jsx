@@ -1,5 +1,6 @@
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import {
   Container,
   Calendar,
@@ -12,6 +13,8 @@ import {
 } from './MonsStateTable.Styled';
 
 import { DayState } from 'components/DayState/DayState';
+import { calendarData, findData, daysInMonth  } from './helpers';
+import axios from 'axios';
 
 const date = new Date();
 
@@ -21,9 +24,14 @@ function subtractMonths(date, months) {
 }
 
 export const MonthStatesTable = () => {
-  const [today, setToday] = useState(date.getTime());
+  const [today, setToday] = useState(() => date.getTime());
+  const [monthState, setMonthState] = useState([]);
   const [targetElement, setTargetElement] = useState(null);
   const [position, setPosition] = useState(0);
+
+  useEffect(() => {
+    getMonthState({ year: date.getFullYear(), month: date.getMonth() });
+  }, []);
 
   const toggleModal = (id, position) => {
     setTargetElement(prev => (prev === id ? 0 : id));
@@ -32,32 +40,39 @@ export const MonthStatesTable = () => {
 
   const closeModal = () => setTargetElement(null);
 
-  const incrementMonth = () => {
-    setToday(prev => subtractMonths(new Date(prev), -1).getTime());
-  };
-  const decrementMonth = () => {
-    setToday(prev => subtractMonths(new Date(prev), 1).getTime());
-  };
-
-  const curDate = new Date(today);
-  const days = new Date(
-    curDate.getFullYear(),
-    curDate.getMonth() + 1,
-    0
-  ).getDate();
-  const dayList = [];
-
-  while (dayList.length < days) {
-    const dayNumber = dayList.length + 1;
-    dayList.push(dayNumber);
-  }
-
-  function btnDisable() {
-    if (date - curDate > 0) {
-      return false;
+  const getMonthState = async ({ month, year }) => {
+    try {
+      const response = await axios.get(
+        `/api/hydration-entries//month-progress?month=${month + 1}&year=${year}`
+      );
+      setMonthState(response.data);
+    } catch (error) {
+      toast.error('Oops! Something went wrong! Try reloading the page!');
     }
-    return true;
-  }
+  };
+
+  const incrementMonth = () => {
+    const newDate = subtractMonths(new Date(today), -1);
+    getMonthState({ year: newDate.getFullYear(), month: newDate.getMonth() });
+    setToday(newDate.getTime());
+  };
+
+  const decrementMonth = () => {
+    const newDate = subtractMonths(new Date(today), 1);
+    getMonthState({ year: newDate.getFullYear(), month: newDate.getMonth() });
+    setToday(newDate.getTime());
+  };
+
+ 
+  const currentDate = new Date(today);
+ 
+ 
+  const btnDisable = () => {
+    // console.log(date - curDate);
+    return date - currentDate >= 86400000 ? false : true;
+  };
+
+  const dayList = calendarData(findData(monthState), daysInMonth(currentDate));
 
   return (
     <Container>
@@ -69,8 +84,8 @@ export const MonthStatesTable = () => {
               <SlArrowLeft size={14} />
             </PaginationBTN>
             <PaginationText>
-              {curDate.toLocaleString('en-GB', { month: 'long' })}, &nbsp;
-              {curDate.getFullYear()}
+              {currentDate.toLocaleString('en-GB', { month: 'long' })}, &nbsp;
+              {currentDate.getFullYear()}
             </PaginationText>
             <PaginationBTN
               type="button"
@@ -82,17 +97,27 @@ export const MonthStatesTable = () => {
           </Pagination>
         </Heder>
         <CalendarList>
-          {dayList.map(i => (
-            <DayState
-              key={i}
-              day={i}
-              targetDay={targetElement}
-              modalPosition={position}
-              toggleModal={toggleModal}
-              closeModal={closeModal}
-             
-            />
-          ))}
+          {dayList.map(
+            ({
+              date,
+              entriesQuantity,
+              dailyWaterRequirement,
+              dailyProgress,
+            }) => (
+              <DayState
+                key={date}
+                day={date}
+                month={currentDate.toLocaleString('en-GB', { month: 'long' })}
+                dailyNorma={dailyWaterRequirement}
+                dailyProgress={dailyProgress}
+                entries={entriesQuantity}
+                targetDay={targetElement}
+                modalPosition={position}
+                toggleModal={toggleModal}
+                closeModal={closeModal}
+              />
+            )
+          )}
         </CalendarList>
       </Calendar>
     </Container>
