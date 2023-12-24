@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { toast } from 'react-toastify';
+
 import Modal from "components/Modal/Modal";
 
+//style
 import { 
   BoxFormula,
   BoxGender,
@@ -23,8 +28,39 @@ import {
   SubTitle, 
   Text, 
   Title } from "./DailyNormalModal.styled";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors";
+
+
 
 const DailyNormalModal = ({closeModal}) => {
+  // const dispatch = useDispatch();
+  const [volume, setVolume] = useState(0);
+  const user = useSelector(selectUser);
+  console.log(user);
+
+  let koefWeight = 0;
+  let koefActiveTime = 0;
+
+  const dailyNormalSchema = Yup.object().shape({
+    weight: Yup.number()
+      .required('Field required')
+      .positive('Only positive')
+      .integer('Only integer number'),
+      // .min(1, 'Need to eat more porridge')
+      // .more(700, 'You have very hard weight'),
+    activeTreningHours: Yup.number()
+      .required('Field required')
+      .positive('Only positive')
+      .integer('Only integer number'),
+      // .min(0)
+      // .more(40000, "People don't live that long..."),
+    water: Yup.number()
+      .required('Field required')
+      .positive('Only positive')
+      .integer('Only integer number'),
+      // .more(700, 'You have very hard weight'),
+  });
 
 
   return (
@@ -33,17 +69,16 @@ const DailyNormalModal = ({closeModal}) => {
           <Title>My daily norma</Title>
 
           <BoxFormula>
-            
             <ListFormula>
               <ItemFormula>
                 <Formula>
-                  For girl:&nbsp;<FormulaColorText>V=(M*0,03) + (T*0,4)</FormulaColorText>
+                  For girl:&nbsp;<FormulaColorText>V=(W*0,03) + (T*0,4)</FormulaColorText>
                 </Formula>
               </ItemFormula>
 
               <ItemFormula>
                 <Formula>
-                  For man:&nbsp;<FormulaColorText>V=(M*0,03) + (T*0,4)</FormulaColorText>
+                  For man:&nbsp;<FormulaColorText>V=(W*0,04) + (T*0,6)</FormulaColorText>
                 </Formula>
               </ItemFormula>
             </ListFormula>
@@ -57,6 +92,22 @@ const DailyNormalModal = ({closeModal}) => {
 
           </BoxFormula>
 
+          <Formik
+            initialValues={{
+              weight: 0,
+              activeTraningHours: 0,
+              water: user.dailyWaterRequirement,
+            }}
+            validationSchema={dailyNormalSchema}
+            onSubmit={(values, action) => {
+              console.log(values);
+
+              action.resetForm();
+              toast.success('All good');
+              // // dispatch(register({
+              // }));
+            }}
+          >
           <FormRate>
             <BoxRate>
               <SubTitle>Calculate your rate:</SubTitle>
@@ -64,12 +115,31 @@ const DailyNormalModal = ({closeModal}) => {
               <BoxGender>
                 <Fieldset>
                   <label htmlFor="girl">
-                    <input type="radio" id="girl" name="gender" value="girl" checked/>
+                    <input 
+                      type="radio" 
+                      id="girl" 
+                      name="gender" 
+                      value="girl" 
+                      checked
+                      onChange={(e) => {
+                        koefWeight = 0.03;
+                        koefActiveTime = 0.4;
+                      }}
+                    />
                     For girl
                   </label>
 
                   <label htmlFor="man">
-                    <input type="radio" id="man" name="gender" value="man" />
+                    <input 
+                      type="radio" 
+                      id="man" 
+                      name="gender" 
+                      value="man"
+                      onChange={() => {
+                        koefWeight = 0.04;
+                        koefActiveTime = 0.6;
+                      }}
+                    />
                     For man
                   </label>
                 </Fieldset>
@@ -77,7 +147,12 @@ const DailyNormalModal = ({closeModal}) => {
               
               <BoxWeight>
                 <label htmlFor="">Your weight in kilograms:
-                  <input type="number" />
+                  <input  
+                    type="number"
+                    onChange={() => {
+                      const vol = koefWeight * values.weight + values.activeTraningHours * koefActiveTime;
+                      setVolume(vol);
+                      }}/>
                 </label>
               </BoxWeight>
               
@@ -89,7 +164,7 @@ const DailyNormalModal = ({closeModal}) => {
               
               <BoxRequiredLitresPerDay>
                 <Text>The required amount of water in liters per day:</Text>
-                <RequiredText>1.8 L</RequiredText>
+                <RequiredText>{ }</RequiredText>
               </BoxRequiredLitresPerDay>
 
             </BoxRate>
@@ -104,6 +179,7 @@ const DailyNormalModal = ({closeModal}) => {
 
             <ButtonSave type="submit">Save</ButtonSave>
           </FormRate>
+          </Formik>
         </Modal>
     </>
     
