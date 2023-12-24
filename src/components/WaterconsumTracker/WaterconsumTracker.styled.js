@@ -7,7 +7,7 @@ export const WaterconsumTrackerStyled = styled.div`
   }
   h2 {
     font-size: 28px;
-    font-weight: 700px;
+    font-weight: 700;
     line-height: 1.1;
     margin-bottom: 16px;
 

@@ -4,7 +4,7 @@ import 'modern-normalize';
 export const GlobalStyle = createGlobalStyle`
 
 body {
-  font-family: 'Roboto', sans-serif;;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.5;
 }
 
