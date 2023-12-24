@@ -74,7 +74,6 @@ export const Topic = styled.h1`
   color: ${({ theme: { colors } }) => colors.primeryBlack};
   font-family: Roboto;
   font-size: 26px;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.23;
   margin-bottom: 24px;
@@ -83,7 +82,6 @@ export const Topic = styled.h1`
 export const Title = styled.label`
   margin-bottom: 8px;
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.111;
 `;
@@ -129,13 +127,13 @@ export const Label = styled.label`
   display: inline-flex;
   color: ${({ theme: { colors } }) => colors.primeryBlue};
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.28;
   cursor: pointer;
 `;
 
 export const MainWrapper = styled.div`
+  margin-top: 8px;
   display: flex;
   margin-bottom: 24px;
 `;

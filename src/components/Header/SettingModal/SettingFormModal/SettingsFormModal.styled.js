@@ -4,7 +4,6 @@ import { Formik, Form, ErrorMessage, Field } from 'formik';
 export const TopicGender = styled.label`
   margin-bottom: 12px;
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.111;
 `;
@@ -13,7 +12,6 @@ export const Password = styled.label`
   margin-bottom: 8px;
   color: ${({ theme: { colors } }) => colors.primeryBlack};
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: 1.25;
 `;
@@ -22,7 +20,6 @@ export const Title = styled.label`
   margin-bottom: 8px;
   color: ${({ theme: { colors } }) => colors.primeryBlack};
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.111; /* 111.111% */
 `;
@@ -30,7 +27,6 @@ export const Title = styled.label`
 export const LabelGender = styled.label`
   color: ${({ theme: { colors } }) => colors.primeryBlack};
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: 1.25;
 `;
@@ -99,7 +95,6 @@ export const ErrMessage = styled(ErrorMessage)`
   margin-top: 4px;
   color: ${({ theme: { colors } }) => colors.secondary3};
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: 1.28;
 `;
@@ -126,7 +121,6 @@ export const SaveBtn = styled.button`
   color: ${({ theme: { colors } }) => colors.primeryWhite};
   text-align: center;
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.333;
   border-radius: 10px;
@@ -162,7 +156,6 @@ export const SaveBtn = styled.button`
     margin-left: auto;
     min-width: 160px;
     font-size: 18px;
-    font-style: normal;
     font-weight: 500;
     line-height: 1.333; /* 133.333% */
     padding: 10px 30px;

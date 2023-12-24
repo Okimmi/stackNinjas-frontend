@@ -18,23 +18,21 @@ import {
   TopicGender,
   Wrapper,
 } from './SettingsFormModal.styled';
-import { EyeIcon, HideIcon, Title, ToggleIcon } from './SettingModal.styled';
+import { EyeIcon, HideIcon, Title, ToggleIcon } from '../SettingModal.styled';
 
 const replacePassword = yup.object().shape({
   name: yup
     .string()
-    .matches(/^[a-zA-Zа-яА-Я\s'-]*$/, 'Name should not contain numbers')
-    .required(),
+    .matches(/^[a-zA-Zа-яА-Я\s'-]*$/, 'Name should not contain numbers'),
+
   email: yup
     .string()
     .email('Invalid email format')
-    .matches(/^(?!.*@[^,]*,)/)
+    .matches(/^[-?\w.?%?]+@\w+.{1}\w{2,4}$/)
     .required('Email is required'),
 
-  outdatedPassword: yup
-    .string()
-    .matches(/^(?=.*[A-Z])/, 'Must Contain 8 Characters')
-    .required('Please Enter your password'),
+  outdatedPassword: yup.string(),
+  // .required('Please Enter your outdated password password'),
 
   newPassword: yup
     .string()

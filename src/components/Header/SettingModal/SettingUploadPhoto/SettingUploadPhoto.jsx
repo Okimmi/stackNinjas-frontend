@@ -1,4 +1,4 @@
-import logo from './icons/Ellipse 1.jpg';
+import logo from '../icons/Ellipse 1.jpg';
 import {
   Title,
   MainWrapper,
@@ -7,7 +7,7 @@ import {
   Label,
   IconUploadImage,
   Span,
-} from './SettingModal.styled';
+} from '../SettingModal.styled';
 
 export const UploadPhoto = () => {
   return (

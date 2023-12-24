@@ -1,9 +1,9 @@
-import { Modal } from './SettingModal/SettingModal';
+import { SettingModal } from './SettingModal/SettingModal';
 
 export const Header = () => {
   return (
     <>
-      <Modal />
+      <SettingModal />
     </>
   );
 };

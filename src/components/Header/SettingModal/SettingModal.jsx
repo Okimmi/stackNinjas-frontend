@@ -7,12 +7,12 @@ import {
   Topic,
 } from './SettingModal.styled';
 import { createPortal } from 'react-dom';
-import { UploadPhoto } from './SettingUploadPhoto';
-import { FormModal } from './SettingFormModal';
+import { UploadPhoto } from './SettingUploadPhoto/SettingUploadPhoto';
+import { FormModal } from './SettingFormModal/SettingFormModal';
 
 const modalRoot = document.getElementById('modal-root');
 
-export const Modal = () => {
+export const SettingModal = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const toggleModal = () => setModalIsOpen(prevState => !prevState);
