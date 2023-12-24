@@ -67,6 +67,11 @@ export const Edit = styled.p`
     height: 20px;
     margin-left: 16px;
     color: #8BAEFF;
+    cursor: pointer;
+
+    &:hover {
+      color: ${theme.colors.primeryBlue};
+    }
 `;
 export const Div = styled.div`
 display: flex;
@@ -194,7 +199,7 @@ z-index: 2
 export const Percents = styled.div`
 display: flex;
 justify-content: space-between;
-margin-top: 16px
+margin-top: 16px;
 z-index: 1;
 position: absolute;
 top: 101%; 
@@ -229,7 +234,7 @@ export const DivTodayAndMonth = styled.div`
   background-color: ${theme.colors.secondary2};
   position: absolute;
   top: 117%;
-  height: 100%
+  height: 100%;
   width: 100%;
   margin-top: 40px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
