@@ -28,20 +28,21 @@ const replacePassword = yup.object().shape({
   email: yup
     .string()
     .email('Invalid email format')
-    .matches(/^[-?\w.?%?]+@\w+.{1}\w{2,4}$/)
-    .required('Email is required'),
+    .matches(/^[-?\w.?%?]+@\w+.{1}\w{2,4}$/),
 
   outdatedPassword: yup.string(),
   // .required('Please Enter your outdated password password'),
 
   newPassword: yup
     .string()
+    .min(8, 'Too short')
+    .max(48, 'Too long')
     .required('Please Enter your password')
-    .matches(/^(?=.*[A-Z])/, 'Must Contain 8 Characters'),
+    .matches(/[a-zA-Z]/, 'Must contain at least one letter'),
 
   repeadPassword: yup
     .string()
-    .required()
+    // .required()
     .oneOf([yup.ref('password'), null], 'Passwords must match'),
 });
 
