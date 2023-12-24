@@ -88,6 +88,7 @@ export const BackgroundImage = styled.div`
   right: 0;
   bottom: 0;
   z-index: -1;
+  height: 100%
 `;
 export const Today = styled.p`
     font-size: 18px;
@@ -219,6 +220,7 @@ export const AddWater = styled.p`
   width: 94px;
   color: ${theme.colors.primeryWhite};
   margin-left: 10px;
+  cursor: pointer;
 `
 export const DivAddWater = styled.div`
   display: flex;
@@ -229,7 +231,7 @@ export const DivTodayAndMonth = styled.div`
   background-color: ${theme.colors.secondary2};
   position: absolute;
   top: 117%;
-  height: 100%
+  height: 100%;
   width: 100%;
   margin-top: 40px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -238,11 +240,49 @@ export const DivTodayAndMonth = styled.div`
 `
 
 export const DivTodayList = styled.div`
-  
+  height: 220px;
+  width: 100%;
 `
 
 export const PToday = styled.p`
   font-size: 24px;
   margin-bottom: 16px;
   color: ${theme.colors.primeryBlack};
+`
+export const ButtonAddWater = styled.button`
+  font-size: 16px;
+  color: ${theme.colors.primeryBlue};
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+`
+
+export const ButtonEdit = styled.button`
+  width: 16px;
+  height: 16px;
+  border: none;
+`
+export const ButtonDelete = styled.button`
+  width: 16px;
+  height: 16px;
+  border: none;
+  margin-left: 18px;
+`
+export const DivListItem = styled.div`
+  display: flex;
+  align-items: center;
+`
+export const SpanDate = styled.span`
+  margin-left: 12px;
+  font-size: 12px;
+  color: ${theme.colors.primeryBlack};
+`
+export const SpanWater = styled.span`
+  font-size: 18px;
+  color: ${theme.colors.primeryBlue}
+  gap: 12px;
+`
+export const SvgPlus = styled.svg`
+  margin-right: 8px;
 `
