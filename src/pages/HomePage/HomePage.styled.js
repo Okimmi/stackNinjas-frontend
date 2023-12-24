@@ -75,20 +75,34 @@ align-items: end;
 export const Img = styled.img`
 
 `
-export const Background = styled.div`
+export const ImgBottle = styled.img`
+content: url('img/Frame.png');
 
+@media screen and (min-width: 768px) {
+  /* Зображення для екранів шириною 768px і більше */
+  content: url('img/Bottle.png');
+}
+
+}
+`
+export const Background = styled.div`
 position: relative;
 `
 export const BackgroundImage = styled.div`
-  background-image: url('img/Frame_18.png'); /* Replace with your actual image path */
-  background-size: cover;
-  position: absolute;
-  top: 108px; /* Adjust the margin-top value as needed */
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  height: 100%
+background-image: url('img/Frame_18.png'); /* Замініть на ваш шлях до зображення */
+background-size: cover;
+position: absolute;
+top: 108px; /* Адаптуйте значення margin-top за необхідності */
+left: 0;
+right: 0;
+bottom: 0;
+z-index: -1;
+height: 100%;
+
+@media screen and (min-width: 768px) {
+  background-image: url('img/Background.png'); /* Замініть на ваш шлях до іншого зображення */
+  top: 88px;
+}
 `;
 export const Today = styled.p`
     font-size: 18px;
@@ -103,11 +117,16 @@ export const Today = styled.p`
         transform: translateY(-50%); 
         left: 265px;
         z-index: -1;
+        @media screen and (min-width: 768px) {
+          left: 341px;
+        }
       }
 `
 export const DivToday = styled.div`
     margin-top: 16px;
-    
+    @media screen and (min-width: 768px) {
+      width: 356px;
+    }
 `
 
 export const SliderInput = styled.input`
@@ -155,9 +174,9 @@ export const SliderInput = styled.input`
     position: absolute;
     top: 100%; /* Зсув на половину висоти відносно повзунка */
     transform: translateY(-50%); 
-
     left: 10px;
     z-index: -1;
+    
   }
   &::before {
     content: '';
@@ -169,22 +188,16 @@ export const SliderInput = styled.input`
     transform: translateY(-50%); 
     left: 132px;
     z-index: -1;
-  }
-  &::before {
-    content: '';
-    width: 1px;
-    height: 8px;
-    background: ${theme.colors.secondary6};
-    position: absolute;
-    top: 100%; 
-    transform: translateY(-50%); 
-    left: 132px;
-    z-index: -1;
+    @media screen and (min-width: 768px) {
+      left: 170px;
+    }
   }
 `
 export const SliderDiv = styled.div`
-padding-left: 10px;
-    padding-right: 14px`
+  padding-left: 10px;
+    padding-right: 14px
+    
+`
 
 export const Per = styled.p`
 font-size: 12px;
@@ -200,6 +213,9 @@ z-index: 1;
 position: absolute;
 top: 101%; 
 width: 100%;
+@media screen and (min-width: 768px) {
+  width: 356px;
+}
 `
 
 export const AddWaterButton = styled.button`
@@ -237,13 +253,27 @@ export const DivTodayAndMonth = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 24px 8px 24px 8px;
+  @media screen and (min-width: 768px) {
+    padding: 32px 24px 32px 24px;
+  }
 `
 
 export const DivTodayList = styled.div`
   max-height: 212px;
   width: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 4px; 
+  }
   
+  &::-webkit-scrollbar-thumb {
+    background-color: ${theme.colors.secondary4}; 
+  }
+  
+  &::-webkit-scrollbar-track {
+    background-color: ${theme.colors.secondary6}; 
+  }
 `
 
 export const PToday = styled.p`
@@ -258,35 +288,52 @@ export const ButtonAddWater = styled.button`
   border: none;
   cursor: pointer;
   text-align: center;
+  position: relative
+  &.add-water-button {
+    position: absolute;
+    bottom: 0; /* Встановлюємо кнопку внизу відносно батьківського div */
+    left: 50%; /* Вирівнюємо по горизонталі по центру */
+    transform: translateX(-50%); /* Коригуємо положення для точного центрування */
+  }
 `
 
 export const ButtonEdit = styled.button`
   width: 16px;
   height: 16px;
   border: none;
-  margin-left: 38px;
+  padding: 0
 `
 export const ButtonDelete = styled.button`
   width: 16px;
   height: 16px;
   border: none;
   margin-left: 18px;
-  
+  padding: 0
 `
 export const DivListItem = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   position: relative;
   &.delete-line::after {
     content: '';
     width: 254px;
+    
     height: 1px;
     background: ${theme.colors.secondary6};
     position: absolute;
     top: 145%; 
     z-index: 2;
+    @media screen and (min-width: 768px) {
+      width: 646px;
+    }
   }
   margin-bottom: 24px;
+`
+export const DivTodayAndButton = styled.div`
+@media screen and (min-width: 768px) {
+  display: flex;
+}
 `
 export const SpanDate = styled.span`
   margin-left: 12px;
@@ -300,10 +347,18 @@ export const SpanWater = styled.span`
 `
 export const SvgPlus = styled.svg`
   margin-right: 8px;
+
+  @media screen and (min-width: 768px) {
+    width: 12px;
+    height: 12px
+  }
 `
 export const SpanCount = styled.span`
   margin-left: 12px;
   font-size: 18px;
   color: ${theme.colors.primeryBlue};
 `
-
+export const DivFirstPart = styled.div`
+  display: flex;
+  align-items: center;
+`
