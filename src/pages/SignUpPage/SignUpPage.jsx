@@ -1,5 +1,8 @@
-// import { Wrapper } from 'components/Global/Global.styled';
+import { SignUpAuthForm } from "components/SignUpAuthForm/SignUpAuthForm";
 
 export const SignUpPage = () => {
-  return <></>;
+  return <>
+  <SignUpAuthForm/>
+
+  </>;
 };
