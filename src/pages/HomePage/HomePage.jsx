@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { DivTodayList, PToday, P, Logo, LogoDiv, Icon, Avatar, UserName, UserDiv, HeaderDiv, MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Background, Img, BackgroundImage, Today, DivToday, SliderInput, Per, Percents, SliderDiv, AddWaterButton, AddWater, DivAddWater, DivTodayAndMonth } from './HomePage.styled.js';
+import DailyNormalModal from 'components/DailyNormalModal/DailyNormalModal.jsx';
 
 export const HomePage = () => {
   const [sliderValue, setSliderValue] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () => setShowModal(!showModal);
 
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
@@ -29,7 +32,11 @@ export const HomePage = () => {
           <MyDailyNorma>My daily norma</MyDailyNorma>
           <Div>
             <Litr>1.5 L</Litr>
-            <Edit>Edit</Edit>
+            
+              <Edit onClick={toggleModal}>
+                Edit
+              </Edit>
+           
           </Div>
         </MyDailyNormaDiv>
         <Img src="img/Frame.png" alt="Bottle" />
@@ -66,6 +73,8 @@ export const HomePage = () => {
           </DivTodayList>
         </DivTodayAndMonth>
       </Background>
+
+      {showModal && <DailyNormalModal closeModal={toggleModal}/>}
     </>
   );
 };
