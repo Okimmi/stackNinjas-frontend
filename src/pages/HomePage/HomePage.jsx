@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Wrapper } from 'components/Global/Global.styled';
-import { DivTodayAndButton, ImgBottle, DivFirstPart, SpanCount, SvgPlus, SpanDate, DivListItem, ButtonDelete, ButtonEdit, ButtonAddWater, DivTodayList, PToday, P, Logo, LogoDiv, Icon, Avatar, UserName, UserDiv, HeaderDiv, MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Background, Img, BackgroundImage, Today, DivToday, SliderInput, Per, Percents, SliderDiv, AddWaterButton, AddWater, DivAddWater, DivTodayAndMonth } from './HomePage.styled.js';
+import { Div2, DivBottle, DivLeftPart, DivFlex, DivTodayAndButton, ImgBottle, DivFirstPart, SpanCount, SvgPlus, SpanDate, DivListItem, ButtonDelete, ButtonEdit, ButtonAddWater, DivTodayList, PToday, P, Logo, LogoDiv, Icon, Avatar, UserName, UserDiv, HeaderDiv, MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Background, Img, BackgroundImage, Today, DivToday, SliderInput, Per, Percents, SliderDiv, AddWaterButton, AddWater, DivAddWater, DivTodayAndMonth } from './HomePage.styled.js';
 
 export const HomePage = () => {
   
@@ -68,7 +68,8 @@ export const HomePage = () => {
               </svg>
           </UserDiv>
         </HeaderDiv>
-
+<Div2>
+        <DivLeftPart>
         <MyDailyNormaDiv>
           <MyDailyNorma>My daily norma</MyDailyNorma>
           <Div>
@@ -76,10 +77,11 @@ export const HomePage = () => {
             <Edit>Edit</Edit>
           </Div>
         </MyDailyNormaDiv>
-        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
+
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <ImgBottle className="bottle-image" alt="Bottle" /></div>
 
-        <div style={{display: 'flex'}}>
+        <DivFlex>
         <DivToday>
           <Today>Today</Today>
           <SliderDiv>
@@ -98,15 +100,16 @@ export const HomePage = () => {
             </Percents>
         </DivToday>
         
-        
+
         <AddWaterButton type="button">
           <DivAddWater>
             <Img src="img/outline.png" alt="Plus"/>
             <AddWater>Add Water</AddWater>
           </DivAddWater>
         </AddWaterButton>
-       
-        </div>
+        </DivFlex>
+        </DivLeftPart>
+
         <DivTodayAndMonth>
           <PToday>Today</PToday>
           <DivTodayList >
@@ -205,6 +208,7 @@ export const HomePage = () => {
     </div>
           </DivTodayList>
         </DivTodayAndMonth>
+        </Div2>
       </Background>
     </>
   );
