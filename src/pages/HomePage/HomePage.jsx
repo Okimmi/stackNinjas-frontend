@@ -4,8 +4,8 @@ import DailyNormalModal from 'components/DailyNormalModal/DailyNormalModal.jsx';
 
 export const HomePage = () => {
   const [sliderValue, setSliderValue] = useState(0);
-  const [showModal, setShowModal] = useState(false);
-  const toggleModal = () => setShowModal(!showModal);
+  const [showDailyNormalModal, setDailyNormalModal] = useState(false);
+  const toggleModal = () => setDailyNormalModal(!showDailyNormalModal);
 
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
@@ -74,7 +74,7 @@ export const HomePage = () => {
         </DivTodayAndMonth>
       </Background>
 
-      {showModal && <DailyNormalModal closeModal={toggleModal}/>}
+      {showDailyNormalModal && <DailyNormalModal closeModal={toggleModal}/>}
     </>
   );
 };
