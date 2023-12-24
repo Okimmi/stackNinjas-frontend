@@ -28,7 +28,6 @@ const Modal = ({ children, closeModal, portalParent=document.body }) => {
 
   }, [closeModal]);
 
-  console.log(children);
 
   return createPortal(
     <ModalBackdrop onClick={(e) => closeModal(e)}>
