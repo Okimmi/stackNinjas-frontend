@@ -7,6 +7,7 @@ import glass from '../../icons/Glass.svg'
 import edit from '../../icons/Edit.svg'
 import delet from '../../icons/Delete.svg'
 
+
 export const HomePage = () => {
   
   const [sliderValue, setSliderValue] = useState(0);
@@ -15,7 +16,7 @@ export const HomePage = () => {
     setPopupVisible(!isPopupVisible);
   };
 
-  const handleSliderChange = (event) => {
+  const handleSliderChange = event => {
     setSliderValue(event.target.value);
   };
   
@@ -141,12 +142,12 @@ export const HomePage = () => {
               value={sliderValue}
               onChange={handleSliderChange}
             />
-            </SliderDiv>
-            <Percents>
-              <Per>0%</Per>
-              <Per>50%</Per>
-              <Per>100%</Per>
-            </Percents>
+          </SliderDiv>
+          <Percents>
+            <Per>0%</Per>
+            <Per>50%</Per>
+            <Per>100%</Per>
+          </Percents>
         </DivToday>
         
 
