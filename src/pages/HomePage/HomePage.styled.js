@@ -187,16 +187,16 @@ export const Today = styled.p`
         height: 8px;
         background: ${theme.colors.secondary6};
         position: absolute;
-        top: 430px; 
+        top: 360px; 
         transform: translateY(-50%); 
         left: 265px;
         z-index: -1;
         @media screen and (min-width: 768px) {
           left: 341px;
-          top: 621px;
+          top: 555px;
         }
         @media screen and (min-width: 1440px) {
-        top: 730px;
+          top: 685px;
         }
       }
 `;
@@ -254,15 +254,15 @@ export const SliderInput = styled.input`
     height: 8px;
     background: ${theme.colors.secondary6};
     position: absolute;
-    top: 430px;  /* Зсув на половину висоти відносно повзунка */
+    top: 360px;  
     transform: translateY(-50%); 
     left: 10px;
     z-index: -1;
     @media screen and (min-width: 768px) {
-      top: 621px;
+      top: 555px;
     }
     @media screen and (min-width: 1440px) {
-      top: 730px;
+      top: 685px;
       }
   }
   &::before {
@@ -271,16 +271,16 @@ export const SliderInput = styled.input`
     height: 8px;
     background: ${theme.colors.secondary6};
     position: absolute;
-    top: 430px;  
+    top: 360px;  
     transform: translateY(-50%); 
     left: 132px;
     z-index: -1;
     @media screen and (min-width: 768px) {
       left: 170px;
-      top: 621px
+      top: 555px;
     }
     @media screen and (min-width: 1440px) {
-      top: 730px;
+      top: 685px;
       }
   }
 `;
@@ -303,14 +303,14 @@ justify-content: space-between;
 margin-top: 16px;
 z-index: 1;
 position: absolute;
-top: 420px; 
+top: 350px; 
 width: 100%;
 @media screen and (min-width: 768px) {
   width: 356px;
-  top: 613px;
+  top: 545px;
 }
 @media screen and (min-width: 1440px) {
-  top: 720px;
+  top: 675px;
 }
 `;
 
@@ -420,8 +420,8 @@ export const ButtonAddWater = styled.button`
   gap: 8px;
 
   &:hover, &:focus {
-    imgPlusAdd path {
-    stroke: ${theme.colors.secondary5};
+    & img {
+      filter: invert(86%) sepia(60%) saturate(124%) hue-rotate(327deg) brightness(94%) contrast(93%);
   }}
   
   &:hover, &:focus {
