@@ -67,10 +67,8 @@ export const MonthStatesTable = () => {
   const currentDate = new Date(today);
  
  
-  const btnDisable = () => {
-    // console.log(date - curDate);
-    return date - currentDate >= 86400000 ? false : true;
-  };
+  const btnDisable = () =>  date - currentDate >= 86400000 ? false : true;
+
 
   const dayList = calendarData(findData(monthState), daysInMonth(currentDate));
 
