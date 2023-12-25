@@ -1,9 +1,18 @@
 import styled from 'styled-components';
 
+export const LogoutOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+`;
+
 export const Content = styled.div`
   position: absolute;
   top: 80px;
-  left: 20px;
+  left: 50%;
+  transform: translate(-50%);
+
   border-radius: 10px;
   background: ${props => props.theme.colors.primeryWhite};
   color: ${props => props.theme.colors.primeryBlack};
@@ -15,10 +24,11 @@ export const Content = styled.div`
   justify-content: center;
   align-items: center;
   gap: 24px;
+  z-index: 3000;
 
   @media screen and (min-width: 768px) {
     top: 200px;
-    left: 88px;
+
     width: 592px;
     height: 208px;
     align-items: flex-start;
@@ -26,7 +36,6 @@ export const Content = styled.div`
 
   @media screen and (min-width: 1440px) {
     top: 296px;
-    left: 424px;
   }
 
   p {
@@ -59,18 +68,6 @@ export const Content = styled.div`
       height: 44px;
     }
   }
-`;
-
-export const LogoutStyled = styled.div`
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.5);
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const IconClose = styled.img``;
