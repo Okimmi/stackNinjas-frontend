@@ -24,6 +24,8 @@ export const Backdrop = styled.div`
 
 export const ModalContent = styled.div`
   position: absolute;
+  overflow-y: auto;
+  max-height: 80vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);

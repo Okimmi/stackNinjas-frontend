@@ -20,7 +20,7 @@ import {
 } from './SettingsFormModal.styled';
 import { EyeIcon, HideIcon, Title, ToggleIcon } from '../SettingModal.styled';
 
-const replacePassword = yup.object().shape({
+const replacePasswordSchema = yup.object().shape({
   name: yup
     .string()
     .matches(/^[a-zA-Zа-яА-Я\s'-]*$/, 'Name should not contain numbers'),
@@ -46,7 +46,7 @@ const replacePassword = yup.object().shape({
     .oneOf([yup.ref('password'), null], 'Passwords must match'),
 });
 
-export const FormModal = ({ onClose }) => {
+export const FormModal = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const toggle = () => {
@@ -54,23 +54,16 @@ export const FormModal = ({ onClose }) => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    const {
-      name,
-      email,
-      outdatedPassword,
-      newPassword,
-      repeadPassword,
-      picked,
-    } = values;
+    // const {
+    //   name,
+    //   email,
+    //   outdatedPassword,
+    //   newPassword,
+    //   repeadPassword,
+    //   picked,
+    // } = values;
 
-    console.log(
-      name,
-      email,
-      outdatedPassword,
-      newPassword,
-      repeadPassword,
-      picked
-    );
+    console.log(values);
     resetForm();
   };
 
@@ -86,18 +79,18 @@ export const FormModal = ({ onClose }) => {
           newPassword: '',
           repeadPassword: '',
         }}
-        validationSchema={replacePassword}
         onSubmit={handleSubmit}
+        validationSchema={replacePasswordSchema}
       >
         <FormUser>
           <Wrapper>
             <TopicGender>Your gender identity</TopicGender>
             <RadioWrapper>
               <GenderWrapper>
-                <RadioField type="radio" name="picked" value="Girl" />
+                <RadioField type="radio" name="picked" value="femail" />
                 <Gender>Girl</Gender>
               </GenderWrapper>
-              <RadioField type="radio" name="picked" value="Man" />
+              <RadioField type="radio" name="picked" value="mail" />
               <Gender>Man</Gender>
             </RadioWrapper>
 
@@ -108,7 +101,6 @@ export const FormModal = ({ onClose }) => {
                 type="text"
                 name="name"
                 placeholder="David"
-                autoComplete="off"
                 // style={
                 //   formik.errors.David && formik.touched.myField
                 //     ? { borderColor: 'red' }
@@ -121,11 +113,10 @@ export const FormModal = ({ onClose }) => {
             <Title>Your email</Title>
             <FieldForm
               id="email"
-              type={showPassword ? 'text' : 'password'}
               name="email"
               placeholder="david01@gmail.com"
-              autoComplete="off"
               title="email"
+              autoComplete="on"
             />
           </Wrapper>
 
@@ -135,19 +126,20 @@ export const FormModal = ({ onClose }) => {
             <Container>
               <FieldForm
                 id="outdatedPassword"
-                name="outdatedPassword"
+                name="password"
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Password"
                 title="outdatedPassword"
-                autoComplete="off"
+                autoComplete="on"
               />
 
               <ToggleIcon onClick={toggle}>
                 {showPassword ? <EyeIcon /> : <HideIcon />}
               </ToggleIcon>
 
-              <ErrMessage name="outdatedPassword" component="p" />
+              <ErrMessage name="password" component="p" />
             </Container>
+
             <Password htmlFor="">New password:</Password>
 
             <Container>
@@ -157,7 +149,7 @@ export const FormModal = ({ onClose }) => {
                 type={showPassword ? 'text' : 'password'}
                 title="newPassword"
                 placeholder="Password"
-                autoComplete="off"
+                autoComplete="on"
               />
               <ErrMessage name="newPassword" component="p" />
               <ToggleIcon onClick={toggle}>
@@ -165,7 +157,7 @@ export const FormModal = ({ onClose }) => {
               </ToggleIcon>
             </Container>
 
-            <Password htmlFor="">Repeat new password:</Password>
+            <Password htmlFor="repeadPassword">Repeat new password:</Password>
 
             <Container>
               <FieldForm
@@ -173,17 +165,13 @@ export const FormModal = ({ onClose }) => {
                 id="repeadPassword"
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Password"
-                autoComplete="off"
+                autoComplete="on"
               />
               <ToggleIcon onClick={toggle}>
                 {showPassword ? <EyeIcon /> : <HideIcon />}
               </ToggleIcon>
 
-              <ErrMessage
-                name="repeadPassword"
-                component="p"
-                autoComplete="off"
-              />
+              <ErrMessage name="repeadPassword" component="p" />
             </Container>
           </Wrapper>
           <SaveBtn type="submit">Save</SaveBtn>
