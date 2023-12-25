@@ -30,7 +30,7 @@ export const NumberInputLiveFeedback = ({ label, aboveText, helpText, ...props }
       {aboveText?.trim() && <FieldTextAbove>{aboveText}</FieldTextAbove>}
 
       <FieldBox
-        valid = {showFeedback ? (meta.error ? 'error' : 'success') : 'default'}
+        $valid = {showFeedback ? (meta.error ? 'error' : 'success') : 'default'}
       >
 
         <FieldLabel htmlFor={props.id}>
@@ -39,7 +39,7 @@ export const NumberInputLiveFeedback = ({ label, aboveText, helpText, ...props }
           <FieldPosition >
             
             <FieldInput
-              valid = {showFeedback ? (meta.error ? 'invalid' : 'valid') : 'default'}
+              $valid = {showFeedback ? (meta.error ? 'invalid' : 'valid') : 'default'}
               type="number"
               name="name"
               // pattern="^[a-zA-Zа-яА-ЯіІїЇєЄ]+(([' \-][a-zA-Zа-яА-ЯіІїЇєЄ])?[a-zA-Zа-яА-ЯіІїЇєЄ]*)*$"

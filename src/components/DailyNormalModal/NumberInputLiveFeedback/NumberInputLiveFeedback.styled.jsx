@@ -8,20 +8,23 @@ const colorsValid = {
   invalid: 'red',     // border input
 }
 
-export const FieldBox = styled.div`
+export const FieldBox = styled.div.attrs(props => ({
+  // we can define static props
+  type: "text",
+
+  // or we can define dynamic ones
+  $valid: colorsValid[props.$valid] || props.color || 'gray',
+}))`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   /* position: relative; */
   color: ${props => props.theme.colors.primeryBlack};
   background-color: ${props => props.theme.colors.primeryWhite};
+  color: ${(props) => props.$valid};
 
   /* margin-bottom: 1rem;
   margin-top: 1rem; */
-
-  color: ${(props) => 
-    colorsValid[props.valid] ?? 'gray'
-  }; 
 `
 
 export const FieldLabel = styled.label`
@@ -36,7 +39,7 @@ export const FieldInput = styled.input.attrs(props => ({
   type: "text",
 
   // or we can define dynamic ones
-  $valid: colorsValid[props.valid] || 'gray',
+  $valid: colorsValid[props.$valid] || props.color || 'gray',
 }))`
   display: block;
   width: calc(100% - 2*4px);
@@ -59,16 +62,16 @@ export const FieldInput = styled.input.attrs(props => ({
   }
 
   /* Chrome, Safari, Edge, Opera */
-  -webkit-outer-spin-button,
+  /* -webkit-outer-spin-button,
   -webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-  }
+  } */
 
   /* Firefox */
-  input[type=number] {
+  /* input[type=number] {
     -moz-appearance: textfield;
-  }
+  } */
 `
 export const FieldTextAbove = styled.p`
   width: 100%;
