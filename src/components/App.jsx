@@ -47,10 +47,7 @@ export const App = () => {
           <Route
             path="/signup"
             element={
-              <RestrictedRoute
-                redirectTo="/"
-                privateComponent={<SignUpPage />}
-              />
+              <RestrictedRoute redirectTo="/" component={<SignUpPage />} />
             }
           />
           <Route
