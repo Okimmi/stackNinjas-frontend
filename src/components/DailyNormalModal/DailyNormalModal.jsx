@@ -1,14 +1,14 @@
-import React, { } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Form, FormikProvider, useFormik } from 'formik';
 import * as Yup from 'yup';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import Modal from "components/DailyNormalModal/Modal/Modal";
 import { NumberInputLiveFeedback } from "./NumberInputLiveFeedback/NumberInputLiveFeedback";
 import CalcFieldDailyNormal from "./CalcFieldDailyNormal";
 
-import { selectUser } from "../../redux/auth/selectors";
+import { selectIsError, selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
 
 //style
 import { 
@@ -33,12 +33,33 @@ import {
   SubTitle, 
   Text, 
   Title } from "./DailyNormalModal.styled";
+import { refreshUser } from "../../redux/auth/operations";
 
 const DailyNormalModal = ({closeModal}) => {
+  // const [dailyWater, setDailyWater] = useState(0)
 
-  // const dispatch = useDispatch();
-  const user = useSelector(selectUser);
-  console.log(user);
+  const dispatch = useDispatch();
+
+  const loading = useSelector(selectIsLoggedIn);
+  const error = useSelector(selectIsError);
+  const authetification = useSelector(selectUser);
+  console.log(loading);
+  console.log(error);
+  console.log(authetification);
+
+  useEffect(() =>  {
+    if (!authetification) return
+
+    try {
+      
+    } catch (error) {
+      toast.error(error.message)
+    }
+
+    // dispatch(refreshUser());
+  }, [dispatch, authetification]);
+
+
 
   // ==== configForm
   const configFormik = useFormik({
@@ -62,13 +83,14 @@ const DailyNormalModal = ({closeModal}) => {
 
   const handleSubmit = async (values) => {
     console.log(values);
-    // const { userEmail:email, userPassword:password } = values;
+    const { waterVolume } = values;
    
-    // dispatch(
-    //   loginUserThunk({
-    //     email,
-    //     password,
-    // }));
+    try {
+  //    dispatch(refreshUser({ dailyWaterRequirement: waterVolume, })); 
+      toast.success('All well')    
+    } catch (error) {
+      toast.error(error.message)
+    }
   }  
 
   return (
@@ -171,7 +193,7 @@ const DailyNormalModal = ({closeModal}) => {
                       name="waterVolume"
                       placeholder="0" 
                       helpText=""
-                      defaultValue={user.dailyWaterRequirement} 
+                      defaultValue={1000} 
                     />
                 </BoxWaterDrink>
 
