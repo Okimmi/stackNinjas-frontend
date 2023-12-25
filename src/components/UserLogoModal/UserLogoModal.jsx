@@ -8,43 +8,47 @@ import {
 } from './UserLogoModal.styled';
 import settingIcon from '../../images/header/settingIcon.svg';
 import logoutIcon from '../../images/header/logoutIcon.svg';
-// import { SettingModal } from 'components/Header/SettingModal/SettingModal';
-// import { useState, useEffect } from 'react';
+import { SettingModal } from 'components/Header/SettingModal/SettingModal';
+import { useState, useEffect } from 'react';
+import {
+  Topic,
+  ButtonCloseModal,
+  IconCloseModal,
+} from 'components/Header/SettingModal/SettingModal.styled';
+import { UploadPhoto } from 'components/Header/SettingModal/SettingUploadPhoto/SettingUploadPhoto';
+import { FormModal } from 'components/Header/SettingModal/SettingFormModal/SettingFormModal';
 
 export const UserLogoModal = ({ isOpen, onClose }) => {
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  // const toggleModal = () => setModalIsOpen(prevState => !prevState);
+  const toggleModal = () => setModalIsOpen(prevState => !prevState);
   // const onCloseModal = () => setModalIsOpen(false);
 
-  // useEffect(() => {
-  //   const handleKeyDown = e => {
-  //     if (e.code === 'Escape') {
-  //       onCloseModal();
-  //     }
-  //   };
+  const onCloseModal = () => setModalIsOpen(false);
 
-  //   window.addEventListener('keydown', handleKeyDown);
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.code === 'Escape') {
+        onCloseModal();
+      }
+    };
 
-  //   return () => {
-  //     window.removeEventListener('keydown', handleKeyDown);
-  //   };
-  // }, [modalIsOpen]);
+    window.addEventListener('keydown', handleKeyDown);
 
-  // const handleClickBackDrop = e => {
-  //   if (e.currentTarget === e.target) {
-  //     onCloseModal();
-  //   }
-  // };
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [modalIsOpen]);
 
   const handleButtonSettingClick = () => {
     //  код для відкриття модалки Setting
-    onClose();
+    // onClose();
+    toggleModal();
   };
 
   const handleButtonLogoutClick = () => {
     //  код для відкриття модалки Log out
-    onClose();
+    // onClose();
   };
 
   // useEffect(() => {
@@ -73,12 +77,22 @@ export const UserLogoModal = ({ isOpen, onClose }) => {
     <DropdownContainer className="dropdown-container" isOpen={isOpen}>
       <DropdownItem onClick={handleButtonSettingClick}>
         <IconSetting src={settingIcon} alt="Setting" />
-        Setting
-        {/* <button type="button" onClick={toggleModal}>
+
+        <button type="button" onClick={toggleModal}>
           Setting
         </button>
 
-        {modalIsOpen && <SettingModal />} */}
+        {modalIsOpen && (
+          <SettingModal>
+            {' '}
+            <Topic>Setting</Topic>
+            <ButtonCloseModal type="button" onClick={toggleModal}>
+              <IconCloseModal />
+            </ButtonCloseModal>
+            <UploadPhoto />
+            <FormModal onCloseModal={onClose} />
+          </SettingModal>
+        )}
       </DropdownItem>
       <DropdownItem onClick={handleButtonLogoutClick}>
         <IconLogout src={logoutIcon} alt="Log out" />

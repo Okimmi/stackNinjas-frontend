@@ -146,6 +146,9 @@ export const UploadWrapper = styled.div`
   margin-left: 8px;
 `;
 
-export const Span = styled.span`
+export const UploadBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  color: ${({ theme: { colors } }) => colors.primeryBlue};
   margin-left: 8px;
 `;

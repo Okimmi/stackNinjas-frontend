@@ -2,7 +2,6 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000/",
   "homepage": "https://Okimmi.github.io/stackNinjas-frontend/",
   "dependencies": {
     "@react-oauth/google": "^0.12.1",

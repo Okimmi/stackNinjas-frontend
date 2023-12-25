@@ -6,24 +6,31 @@ import {
   UploadWrapper,
   Label,
   IconUploadImage,
-  Span,
+  UploadBtn,
 } from '../SettingModal.styled';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import { useCallback, useState } from 'react';
 import axios from 'axios';
+
+const BASE_URL = 'https://stackninjas-backend.onrender.com/';
 
 export const UploadPhoto = () => {
   const [img, setImg] = useState(null);
   const [avatar, setAvatar] = useState(null);
 
   const sendFile = useCallback(async () => {
+    if (!img) {
+      toast.error('Please choose your avatar');
+      return;
+    }
+
     try {
       const formData = new FormData();
 
       formData.append('avatar', img);
 
       await axios
-        .patch('api/auth/avatars', formData, {
+        .patch(`${BASE_URL}api/auth/avatars`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -45,16 +52,23 @@ export const UploadPhoto = () => {
         ) : (
           <img src={logo} alt="user_photo" />
         )}
-        <UploadInput
-          type="file"
-          id="file-input"
-          onChange={e => setImg(e.target.files[0])}
-          accept="image/*, .png,.jpeg,.gif, .web"
-        />
         <UploadWrapper>
+          {/* <input type="file" onChange={e => e.target.files[0]} />
+
+          <button type="button" onClick={sendFile}>
+            Upload{' '}
+          </button> */}
+
           <Label htmlFor="file-input">
-            <IconUploadImage /> <Span onClick={sendFile}>Upload a photo</Span>
+            <UploadInput
+              type="file"
+              id="file-input"
+              onChange={e => setImg(e.target.files[0])}
+              accept="image/*, .png,.jpeg,.gif, .web"
+            />
+            <IconUploadImage />{' '}
           </Label>
+          <UploadBtn onClick={sendFile}>Upload a photo</UploadBtn>
         </UploadWrapper>
         <ToastContainer />
       </MainWrapper>

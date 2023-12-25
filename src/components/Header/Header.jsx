@@ -10,6 +10,7 @@ import {
 } from './Header.styled';
 import { AuthNav } from 'components/AuthNav/AuthNav';
 import { UserLogo } from 'components/UserLogo/UserLogo';
+import { SettingModal } from './SettingModal/SettingModal';
 
 export const Header = () => {
   const authentificated = useSelector(selectIsLoggedIn);
@@ -21,6 +22,8 @@ export const Header = () => {
         </StyledNavLink>
         {authentificated ? <UserLogo /> : <AuthNav />}
         {/* {authentificated ? <AuthNav /> : <UserLogo />} */}
+
+        <SettingModal />
       </HeaderWrap>
     </HeaderStyled>
   );
