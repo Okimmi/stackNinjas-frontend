@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   DivTodayList,
   PToday,
@@ -29,20 +29,13 @@ import {
   DivAddWater,
   DivTodayAndMonth,
 } from './HomePage.styled.js';
-import { useDispatch } from 'react-redux';
-import { refreshUser } from '../../redux/auth/operations.js';
 
 export const HomePage = () => {
-  const dispstch = useDispatch();
   const [sliderValue, setSliderValue] = useState(0);
 
   const handleSliderChange = event => {
     setSliderValue(event.target.value);
   };
-
-  useEffect(() => {
-    dispstch(refreshUser());
-  }, [dispstch]);
 
   return (
     <>
