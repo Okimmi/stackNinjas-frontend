@@ -126,6 +126,7 @@ const DailyNormalModal = ({closeModal}) => {
           </BoxFormula>
 
           <FormikProvider value={configFormik}>
+          {({ values }) => (
             <Form>
               <BoxForm>
                 <BoxRate>
@@ -167,7 +168,7 @@ const DailyNormalModal = ({closeModal}) => {
                         />
                         For man
                       </LabelGender>
-                        
+                      <div>{values}</div>  
                     </div>
                   </BoxGender>
                         
@@ -232,6 +233,7 @@ const DailyNormalModal = ({closeModal}) => {
                 <ButtonSave type="submit">Save</ButtonSave>
               </BoxForm>
             </Form>
+          )}
           </FormikProvider>
         </Modal>
     </>
