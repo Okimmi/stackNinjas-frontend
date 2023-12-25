@@ -189,6 +189,10 @@ export const SightUp = styled.p`
     font-weight: 400;
     line-height: 0.8; 
     cursor: pointer;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover{
+      color: ${theme.colors.secondary5};;
+    }
 `
 
 export const StyledBtn = styled.div`
@@ -197,4 +201,5 @@ export const StyledBtn = styled.div`
     top: calc(50% + 34px);
     right: 4%;
     cursor: pointer;
+    
 `

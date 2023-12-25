@@ -28,19 +28,22 @@ const SignupSchema = Yup.object().shape({
 });
 
 export const AuthForm = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const error = useSelector(selectIsError)
+  const [showPassword, setShowPassword] = useState(false);
+
   const [screenSize, setScreenSize] = useState({
     isDesctopScreen: typeof window !== 'undefined' && window.innerWidth >= 1440,
-    isTabletScreen: window.innerWidth >= 768 && window.innerWidth <=1440,
+    isTabletScreen: window.innerWidth >= 768 && window.innerWidth <=1439,
     isMobileScreen: window.innerWidth >= 320 && window.innerWidth <=768,
   });
-
- 
-  const [showPassword, setShowPassword] = useState(false);
   const navigate  = useNavigate();
   const dispatch = useDispatch();
   
-  useEffect(()=>{ toast.error(error)},[error])
+
+ 
+    if(isSubmitted)
+    {toast.error(error)};
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -75,7 +78,9 @@ export const AuthForm = () => {
                 email: values.email,
                 password: values.password,
               })
-            );
+             
+            ); 
+            setIsSubmitted(true)
           }}
         >
           <StyledForm>
