@@ -38,6 +38,7 @@ const DailyNormalModal = ({closeModal}) => {
 
   // const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  console.log(user);
 
   // ==== configForm
   const configFormik = useFormik({

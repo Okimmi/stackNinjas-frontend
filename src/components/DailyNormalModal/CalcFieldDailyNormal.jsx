@@ -6,8 +6,8 @@ const CalcFieldDailyNormal = (props) => {
   const {
     values: { gender, weight, activeTraningHours },
     touched,
-    setFieldValue,
-  } = useFormikContext();
+    setFieldValue, } = useFormikContext();
+
   // const [field, meta] = useField(props);
   const [volume, setVolume] = useState(0);
 
@@ -24,8 +24,6 @@ const CalcFieldDailyNormal = (props) => {
       touched.weight &&
       touched.gender
     ) {
-
-      console.log(gender, touched.gender);
       if (gender === 'man') {
         koefWeight = 0.04;
         koefActiveTime = 0.6;
@@ -34,7 +32,6 @@ const CalcFieldDailyNormal = (props) => {
       const vol = koefWeight * weight + koefActiveTime * activeTraningHours;
 
       setVolume(vol)
-      console.log(vol, props.name);
       setFieldValue(props.name, `${vol}`);
     }
   }, [
@@ -50,8 +47,8 @@ const CalcFieldDailyNormal = (props) => {
 
   return (
     <>
-        <RequiredText>{ volume.toFixed(2) } L</RequiredText>
-        {/* <div {...props} {...field}></div> */}
+      <RequiredText>{ volume.toFixed(2) } L</RequiredText>
+      {/* <div {...props} {...field}></div> */}
     </>
   );
 };
