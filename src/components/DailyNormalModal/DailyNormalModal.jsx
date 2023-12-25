@@ -7,6 +7,7 @@ import Modal from "components/Modal/Modal";
 
 //style
 import { 
+  BoxForm,
   BoxFormula,
   BoxGender,
   BoxRate,
@@ -126,108 +127,110 @@ const DailyNormalModal = ({closeModal}) => {
 
           <FormikProvider value={configFormik}>
             <Form>
-              <BoxRate>
-                <SubTitle>Calculate your rate:</SubTitle>
+              <BoxForm>
+                <BoxRate>
+                  <SubTitle>Calculate your rate:</SubTitle>
 
-                <BoxGender id="my-radio-group">
-                  <div role="group" aria-labelledby="my-radio-group">
+                  <BoxGender id="my-radio-group">
+                    <div role="group" aria-labelledby="my-radio-group">
 
-                    <LabelGender>
-                      <FieldGenger
-                        id='girl'
-                        value='girl'
-                        name="gender"
-                        type='radio' 
+                      <LabelGender>
+                        <FieldGenger
+                          id='girl'
+                          value='girl'
+                          name="gender"
+                          type='radio' 
 
-                        onSelect={(e) => {
+                          onSelect={(e) => {
+                              setDailyNormalWater((prev) => {
+                                return {...prev, koefWeight: 0.03, koefActiveTime: 0.4}
+                              });
+                              //calcVolume({...dailyNormalWater, koefWeight: 0.03, koefActiveTime: 0.4});
+                            }} 
+                        />
+                        For girl
+                      </LabelGender>
+                          
+                      <LabelGender>
+                        <FieldGenger
+                          type='radio' 
+                          id='man'
+                          name="gender"
+                          value="man"
+
+                          onSelect={(e) => {
                             setDailyNormalWater((prev) => {
-                              return {...prev, koefWeight: 0.03, koefActiveTime: 0.4}
+                              return {...prev, koefWeight: 0.04, koefActiveTime: 0.6}
                             });
-                            //calcVolume({...dailyNormalWater, koefWeight: 0.03, koefActiveTime: 0.4});
-                          }} 
-                      />
-                      For girl
-                    </LabelGender>
-                    
-                    <LabelGender>
-                      <FieldGenger
-                        type='radio' 
-                        id='man'
-                        name="gender"
-                        value="man"
-
-                        onSelect={(e) => {
+                            //calcVolume({...dailyNormalWater, koefWeight: 0.04, koefActiveTime: 0.6});
+                          }}
+                        />
+                        For man
+                      </LabelGender>
+                        
+                    </div>
+                  </BoxGender>
+                        
+                  <BoxWeight>
+                      <NumberInputLiveFeedback  
+                        aboveText="Your weight in kilograms:"
+                        label=""
+                        type="number"
+                        id='weight'
+                        name="weight"
+                        placeholder="0"
+                        helpText="Press your weight in kilograms"
+                        onChange={(e) => {
                           setDailyNormalWater((prev) => {
-                            return {...prev, koefWeight: 0.04, koefActiveTime: 0.6}
+                            return {...prev, weight: Number(e.target.value)}
                           });
-                          //calcVolume({...dailyNormalWater, koefWeight: 0.04, koefActiveTime: 0.6});
+                          //calcVolume({...dailyNormalWater, weight: Number(e.target.value)});
                         }}
                       />
-                      For man
-                    </LabelGender>
-                    
-                  </div>
-                </BoxGender>
+                  </BoxWeight>
                       
-                <BoxWeight>
-                    <NumberInputLiveFeedback  
-                      aboveText="Your weight in kilograms:"
+                  <BoxTime>
+                    <NumberInputLiveFeedback 
+                      aboveText="The time of active participation in sports or other activities with a high physical. load:"
                       label=""
                       type="number"
-                      id='weight'
-                      name="weight"
-                      placeholder="0"
-                      helpText="Press your weight in kilograms"
+                      id="activeTraningHours"
+                      name="activeTraningHours"
+                      placeholder="0" 
+                      helpText="How many hours per day you active"
                       onChange={(e) => {
                         setDailyNormalWater((prev) => {
-                          return {...prev, weight: Number(e.target.value)}
+                          return {...prev, activeTraningHours: Number(e.target.value)}
                         });
-                        //calcVolume({...dailyNormalWater, weight: Number(e.target.value)});
-                      }}
+                        //calcVolume({...dailyNormalWater, activeTraningHours: Number(e.target.value)});
+                        }}
                     />
-                </BoxWeight>
-                  
-                <BoxTime>
-                  <NumberInputLiveFeedback 
-                    aboveText="The time of active participation in sports or other activities with a high physical. load:"
-                    label=""
-                    type="number"
-                    id="activeTraningHours"
-                    name="activeTraningHours"
-                    placeholder="0" 
-                    helpText="How many hours per day you active"
-                    onChange={(e) => {
-                      setDailyNormalWater((prev) => {
-                        return {...prev, activeTraningHours: Number(e.target.value)}
-                      });
-                      //calcVolume({...dailyNormalWater, activeTraningHours: Number(e.target.value)});
-                      }}
-                  />
-                </BoxTime>
-                    
-                <BoxRequiredLitresPerDay>
-                  <Text>The required amount of water in liters per day:</Text>
-                  <RequiredText>{ volume.toFixed(2) } L</RequiredText>
-                </BoxRequiredLitresPerDay>
+                  </BoxTime>
+                      
+                  <BoxRequiredLitresPerDay>
+                    <Text>The required amount of water in liters per day:</Text>
+                    <RequiredText>{ volume.toFixed(2) } L</RequiredText>
+                  </BoxRequiredLitresPerDay>
 
-              </BoxRate>
+                </BoxRate>
 
-              <BoxWaterDrink>
-                <SubTitle>Write down how much water you will drink:</SubTitle>
-                    
-                  <NumberInputLiveFeedback 
-                    aboveText=""
-                    label=""
-                    type="number"
-                    id="waterVolume"
-                    name="waterVolume"
-                    placeholder="0" 
-                    helpText=""
-                    defaultValue={user.dailyWaterRequirement} 
-                  />
-              </BoxWaterDrink>
+                <BoxWaterDrink>
+                  <SubTitle>Write down how much water you will drink:</SubTitle>
+                      
+                    <NumberInputLiveFeedback 
+                      aboveText=""
+                      label=""
+                      type="number"
+                      id="waterVolume"
+                      name="waterVolume"
+                      placeholder="0" 
+                      helpText=""
+                      defaultValue={user.dailyWaterRequirement} 
+                    />
+                </BoxWaterDrink>
 
-              <ButtonSave type="submit">Save</ButtonSave>
+                <ButtonSave type="submit">Save</ButtonSave>
+              </BoxForm>
             </Form>
           </FormikProvider>
         </Modal>

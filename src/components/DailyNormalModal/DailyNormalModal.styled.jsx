@@ -115,7 +115,9 @@ export const BoxWaterDrink =  styled.div`
   margin-bottom: 24px;
 `;
 
-
+export const BoxForm = styled.div`
+  margin: 0 auto;
+`
 
 export const ButtonSave = styled.button`
   display: block;
