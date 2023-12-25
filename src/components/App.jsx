@@ -31,11 +31,15 @@ export const App = () => {
 
   return isRefreshing ? (
     (<Blocks
-      height="80"
-      width="80"
+      height="200"
+      width="200"
       color="#407BFF"
       ariaLabel="blocks-loading"
-      wrapperStyle={{}}
+      wrapperStyle={{
+        position: "fixed",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",}}
       wrapperClass="blocks-wrapper"
       visible={true}
       />)
