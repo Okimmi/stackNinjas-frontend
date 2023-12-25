@@ -3,7 +3,7 @@ import { Form, FormikProvider, useFormik } from 'formik';
 import * as Yup from 'yup';
 // import { toast } from 'react-toastify';
 
-import Modal from "components/Modal/Modal";
+import Modal from "components/DailyNormalModal/Modal/Modal";
 
 //style
 import { 
@@ -57,10 +57,12 @@ const DailyNormalModal = ({closeModal}) => {
   // },[dailyNormalWater])
 
 
-  const calcVolume = ({koefWeight, koefActiveTime, weight, activeTraningHours}) => {
-    setDailyNormalWater((prev) => {
-      return {...prev, koefWeight, koefActiveTime, weight, activeTraningHours}
-    })
+  const calcVolume = () => 
+  {
+    const {koefWeight, koefActiveTime, weight, activeTraningHours} = dailyNormalWater
+    // setDailyNormalWater((prev) => {
+    //   return {...prev, koefWeight, koefActiveTime, weight, activeTraningHours}
+    // })
 
     const vol = koefWeight * weight + koefActiveTime * activeTraningHours;
     setVolume(vol);
@@ -126,7 +128,7 @@ const DailyNormalModal = ({closeModal}) => {
           </BoxFormula>
 
           <FormikProvider value={configFormik}>
-          {({ values }) => (
+          {/* {({ values }) => ( */}
             <Form>
               <BoxForm>
                 <BoxRate>
@@ -146,7 +148,7 @@ const DailyNormalModal = ({closeModal}) => {
                               setDailyNormalWater((prev) => {
                                 return {...prev, koefWeight: 0.03, koefActiveTime: 0.4}
                               });
-                              //calcVolume({...dailyNormalWater, koefWeight: 0.03, koefActiveTime: 0.4});
+                              calcVolume({...dailyNormalWater, koefWeight: 0.03, koefActiveTime: 0.4});
                             }} 
                         />
                         For girl
@@ -163,12 +165,12 @@ const DailyNormalModal = ({closeModal}) => {
                             setDailyNormalWater((prev) => {
                               return {...prev, koefWeight: 0.04, koefActiveTime: 0.6}
                             });
-                            //calcVolume({...dailyNormalWater, koefWeight: 0.04, koefActiveTime: 0.6});
+                            calcVolume({...dailyNormalWater, koefWeight: 0.04, koefActiveTime: 0.6});
                           }}
                         />
                         For man
                       </LabelGender>
-                      <div>{values}</div>  
+                      {/* <div>{values}</div>   */}
                     </div>
                   </BoxGender>
                         
@@ -185,7 +187,7 @@ const DailyNormalModal = ({closeModal}) => {
                           setDailyNormalWater((prev) => {
                             return {...prev, weight: Number(e.target.value)}
                           });
-                          //calcVolume({...dailyNormalWater, weight: Number(e.target.value)});
+                          calcVolume({...dailyNormalWater, weight: Number(e.target.value)});
                         }}
                       />
                   </BoxWeight>
@@ -203,7 +205,7 @@ const DailyNormalModal = ({closeModal}) => {
                         setDailyNormalWater((prev) => {
                           return {...prev, activeTraningHours: Number(e.target.value)}
                         });
-                        //calcVolume({...dailyNormalWater, activeTraningHours: Number(e.target.value)});
+                        calcVolume({...dailyNormalWater, activeTraningHours: Number(e.target.value)});
                         }}
                     />
                   </BoxTime>
@@ -233,7 +235,7 @@ const DailyNormalModal = ({closeModal}) => {
                 <ButtonSave type="submit">Save</ButtonSave>
               </BoxForm>
             </Form>
-          )}
+          {/* )} */}
           </FormikProvider>
         </Modal>
     </>

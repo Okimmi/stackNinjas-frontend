@@ -7,7 +7,7 @@ import {
   ModalContainer,
   CloseBtn,
 } from './Modal.styled';
-import IconCloseModal from '../../images/modal/IconCloseModal';
+import IconCloseModal from '../../../images/modal/IconCloseModal';
 
 
 const Modal = ({ children, closeModal, portalParent=document.body }) => {
