@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Dialog } from '@headlessui/react';
+import { useNavigate } from 'react-router-dom';
 
 import { logOut } from '../../redux/auth/operations';
 import closeIcon from '../../images/header/closeIcon.svg';
@@ -13,15 +14,17 @@ import {
 } from './UserLogoutModal.styled';
 
 export const UserLogoutModal = ({ isLogoutActive, onLogoutClose }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const handleCancelClick = () => {
     onLogoutClose();
   };
 
-  const dispatch = useDispatch();
-
   const handleConfirmLogout = () => {
     dispatch(logOut());
     onLogoutClose();
+    navigate('/');
   };
 
   return (

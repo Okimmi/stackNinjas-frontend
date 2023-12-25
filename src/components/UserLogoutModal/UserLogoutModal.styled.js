@@ -35,7 +35,9 @@ export const Content = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    top: 296px;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   p {
@@ -57,8 +59,7 @@ export const Content = styled.div`
     width: 232px;
     height: 36px;
 
-    &:hover,
-    &:focus {
+    &:hover {
       box-shadow: 0px 4px 8px 0px ${props => props.theme.colors.primeryBlue};
       background-color: ${props => props.theme.colors.secondary3};
       color: ${props => props.theme.colors.primeryWhite};

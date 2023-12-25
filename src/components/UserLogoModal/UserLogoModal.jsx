@@ -15,17 +15,15 @@ export const UserLogoModal = ({ isOpen, onClose }) => {
 
   const handleOnSetting = () => {
     // КОД ДЛЯ ВІДКРИТТЯ МОДАЛКИ НАЛАШТУВАНЬ ПРОФІЛЮ ЮЗЕРА
+    onClose();
   };
 
   const handleOnLogout = () => {
-    // відкриття модалки Log out
-
     SetLogoutActive(true);
-    console.log('handleOnLogout is called');
+    onClose();
   };
 
   const handleCloseLogout = () => {
-    // закриття модалки Log out
     SetLogoutActive(false);
   };
 
@@ -53,7 +51,7 @@ export const UserLogoModal = ({ isOpen, onClose }) => {
 
   return (
     isOpen && (
-      <DropdownContainer onClick={onClose}>
+      <DropdownContainer className="dropdown-container" onClick={onClose}>
         <DropdownItem onClick={handleOnSetting}>
           <IconSetting src={settingIcon} alt="Setting" />
           Setting
