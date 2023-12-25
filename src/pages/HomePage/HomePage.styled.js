@@ -228,7 +228,7 @@ justify-content: space-between;
 margin-top: 16px
 z-index: 1;
 position: absolute;
-top: 10px; 
+top: 10%; 
 width: 100%;
 @media screen and (min-width: 768px) {
   width: 356px;
