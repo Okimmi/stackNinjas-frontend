@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Wrapper } from 'components/Global/Global.styled';
-import { PDiv, DivSettings, DivLogOut, IconWrapper, SvgTrigger, NewDiv, Div2, DivBottle, DivLeftPart, DivFlex, DivTodayAndButton, ImgBottle, DivFirstPart, SpanCount, SvgPlus, SpanDate, DivListItem, ButtonDelete, ButtonEdit, ButtonAddWater, DivTodayList, PToday, P, Logo, LogoDiv, Icon, Avatar, UserName, UserDiv, HeaderDiv, MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Background, Img, BackgroundImage, Today, DivToday, SliderInput, Per, Percents, SliderDiv, AddWaterButton, AddWater, DivAddWater, DivTodayAndMonth } from './HomePage.styled.js';
+import { ImgPlusAdd, ImgPlus, Div2, DivLeftPart, DivFlex, ImgBottle, DivFirstPart, SpanCount, SvgPlus, SpanDate, DivListItem, ButtonDelete, ButtonEdit, ButtonAddWater, DivTodayList, PToday,  MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Background,  BackgroundImage, Today, DivToday, SliderInput, Per, Percents, SliderDiv, AddWaterButton, AddWater, DivAddWater, DivTodayAndMonth } from './HomePage.styled.js';
+import plus from '../../icons/Plus.svg';
+import plusAdd from '../../icons/PlusAdd.svg'
 
 export const HomePage = () => {
   
@@ -55,7 +57,7 @@ export const HomePage = () => {
     <>
       <Background>
         <BackgroundImage />
-        <HeaderDiv>
+        {/* <HeaderDiv>
           <LogoDiv>
             <Logo src="logo.png" alt="Logo" />
             <P>TRACKER OF WATER</P>
@@ -111,8 +113,8 @@ export const HomePage = () => {
               </IconWrapper>
               
           </UserDiv>
-        </HeaderDiv>
-<Div2>
+        </HeaderDiv> */}
+      <Div2>
         <DivLeftPart>
         <MyDailyNormaDiv>
           <MyDailyNorma>My daily norma</MyDailyNorma>
@@ -147,14 +149,13 @@ export const HomePage = () => {
 
         <AddWaterButton type="button">
           <DivAddWater>
-            <svg style={{ display: 'none' }}>
-            <symbol id="icon-plus" viewBox="0 0 32 32">
-            <path stroke="#FFFFFF" fill="transparent" strokeLinejoin="round" strokeLinecap="round" strokeMiterlimit="4" strokeWidth="2.6667" d="M16 12v8M20 16h-8M28 16c0 1.576-0.31 3.136-0.913 4.592s-1.487 2.779-2.601 3.893c-1.114 1.114-2.437 1.998-3.893 2.601s-3.016 0.913-4.592 0.913-3.136-0.31-4.592-0.913c-1.456-0.603-2.779-1.487-3.893-2.601s-1.998-2.437-2.601-3.893c-0.603-1.456-0.913-3.016-0.913-4.592 0-3.183 1.264-6.235 3.515-8.485s5.303-3.515 8.485-3.515c3.183 0 6.235 1.264 8.485 3.515s3.515 5.303 3.515 8.485z"></path>
-            </symbol>
-            </svg>
-            <svg width="24" height="24" >
-                <use xlinkHref="#icon-plus"></use>
-            </svg>
+            <ImgPlus
+                    src={plus}
+                    width={24}
+                    height={24}
+                    alt="Plus"
+                    
+                  />
             <AddWater>Add Water</AddWater>
           </DivAddWater>
         </AddWaterButton>
@@ -175,15 +176,15 @@ export const HomePage = () => {
             <button onClick={onCancelEdit}>Cancel</button>
          </div>
       ) : (
-         <div>  
+         <div style={{ display: 'flex' }}>  
           <ButtonAddWater onClick={onAdd} className='add-water-button'>
-          <svg style={{ display: 'none' }}>
-            <symbol id="icon-Vector" viewBox="0 0 32 32">
-            <path strokeLinejoin="round" strokeLinecap="round" strokeMiterlimit="4" strokeWidth="3.2" d="M16 3.2v25.6M28.8 16h-25.6" stroke="#407BFF"></path>
-            </symbol></svg>
-            <SvgPlus width="8" height="8" >
-                <use xlinkHref="#icon-Vector"></use>
-            </SvgPlus>
+          <ImgPlusAdd 
+                    src={plusAdd}
+                    width={8}
+                    height={8}
+                    alt="PlusAdd"
+                    
+                  />
               Add water</ButtonAddWater>
          </div>
       )}

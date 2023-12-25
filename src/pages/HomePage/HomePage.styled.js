@@ -4,15 +4,15 @@ import {theme} from '../../components/GlobalStyle.js'
 export const P = styled.h6`
     color: ${theme.colors.primeryBlue};
 `;
-export const Logo = styled.img`
-    width: 40px;
-    margin-right: 4px;
-`;
-export const LogoDiv = styled.div`
-    width: 102px;
-    display: flex;
-    align-items: center;
-`;
+// export const Logo = styled.img`
+// //     width: 40px;
+// //     margin-right: 4px;
+// // `;
+// export const LogoDiv = styled.div`
+//     width: 102px;
+//     display: flex;
+//     align-items: center;
+// `;
 export const Icon = styled.img`
     width: 16px;
 `;
@@ -21,53 +21,53 @@ export const Avatar = styled.div`
     margin-right: 4px;
     margin-left: 8px;
 `;
-export const UserName = styled.p`
-    color: ${theme.colors.primeryBlue};
-    width: 66px;
-    height: 20px;
-    font-size: 14px;
-    text-align: right;
-    &:hover{
-      color: ${theme.colors.secondary5};
-      transition: opacity 0.3s ease;
-    }
-    &:focus {
-      color: ${theme.colors.secondary5};
-      transition: opacity 0.3s ease;
-    }
-`;
-export const UserDiv = styled.div`
-    width: 122px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    &:hover .NewDiv,
-    &:focus .NewDiv {
-        display: block;
-        opacity: 1;
-    }
-`;
+// export const UserName = styled.p`
+//     color: ${theme.colors.primeryBlue};
+//     width: 66px;
+//     height: 20px;
+//     font-size: 14px;
+//     text-align: right;
+//     &:hover{
+//       color: ${theme.colors.secondary5};
+//       transition: opacity 0.3s ease;
+//     }
+//     &:focus {
+//       color: ${theme.colors.secondary5};
+//       transition: opacity 0.3s ease;
+//     }
+// `;
+// export const UserDiv = styled.div`
+//     width: 122px;
+//     height: 28px;
+//     display: flex;
+//     align-items: center;
+//     &:hover .NewDiv,
+//     &:focus .NewDiv {
+//         display: block;
+//         opacity: 1;
+//     }
+// `;
 
 export const NewDiv = styled.div`
-position: absolute;
-width: 118px;
-height: 88px;
-top: 100%;
-right: -65px;
-transform: translateX(-50%);
-background-color: #fff;
-border: none;
-border-radius: 10px;
-padding: 16px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-margin-top: 10px;
-display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
-`;
+// position: absolute;
+// width: 118px;
+// height: 88px;
+// top: 100%;
+// right: -65px;
+// transform: translateX(-50%);
+// background-color: #fff;
+// border: none;
+// border-radius: 10px;
+// padding: 16px;
+// box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+// margin-top: 10px;
+// display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
+// `;
 
-export const IconWrapper = styled.div`
-position: relative;
+// export const IconWrapper = styled.div`
+// position: relative;
 
-`; 
+// `; 
 
 export const SvgTrigger = styled.svg`
     width: 11px;
@@ -78,11 +78,11 @@ export const SvgTrigger = styled.svg`
         opacity: 1;
     }
 `;
-export const HeaderDiv = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-`;
+// export const HeaderDiv = styled.div`
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+// `;
 export const MyDailyNormaDiv = styled.div`
     margin-top: 24px;
     border-radius: 10px;
@@ -409,12 +409,12 @@ export const ButtonAddWater = styled.button`
   border: none;
   cursor: pointer;
   text-align: center;
-  position: relative
+  position: relative;
   &.add-water-button {
     position: absolute;
-    bottom: 0; /* Встановлюємо кнопку внизу відносно батьківського div */
-    left: 50%; /* Вирівнюємо по горизонталі по центру */
-    transform: translateX(-50%); /* Коригуємо положення для точного центрування */
+    bottom: 0; 
+    left: 50%; 
+    transform: translateX(-50%); 
   }
   &:hover, &:focus {
     svg path {
@@ -562,19 +562,27 @@ export const Div2 = styled.div`
   justify-content: space-between;
 }
 `
-export const DivSettings = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
-`
+// export const DivSettings = styled.div`
+//   display: flex;
+//   align-items: center;
+//   gap: 8px;
+//   margin-bottom: 16px;
+// `
 
-export const DivLogOut = styled.div`
-display: flex;
-  align-items: center;
-  gap: 8px;
-`
+// export const DivLogOut = styled.div`
+// display: flex;
+//   align-items: center;
+//   gap: 8px;
+// `
 
 export const PDiv = styled.p`
   color: ${theme.colors.primeryBlue}
+`
+
+export const ImgPlus = styled.img`
+  fill: ${theme.colors.primeryWhite};
+`
+
+export const ImgPlusAdd = styled.img`
+  fill: ${theme.colors.primeryBlue};
 `
