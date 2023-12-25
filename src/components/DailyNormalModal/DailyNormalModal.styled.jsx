@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Field } from 'formik';
 
 export const Title = styled.h2`
   font-family: 'Roboto';
@@ -13,6 +14,8 @@ export const Title = styled.h2`
 export const BoxFormula = styled.div`
 `;
 export const ListFormula = styled.ul`
+  display: flex;
+  flex-direction: column;
   margin-bottom: 12px;
 `;
 export const ItemFormula = styled.li`
@@ -71,7 +74,16 @@ export const Fieldset =  styled.fieldset`
   padding: 0;
   margin: 0;
 `;
+export const LabelGender = styled.label`
+  margin-right: 24px;
+`;
 
+export const FieldGenger = styled(Field)`
+  margin-right: 6px;
+`
+export const FieldInteger = styled(Field)`
+  width: 100%;
+`
 
 export const BoxWeight =  styled.div`
   margin-bottom: 16px;
@@ -88,6 +100,7 @@ export const BoxRequiredLitresPerDay =  styled.div`
 `;
 export const Text =  styled.p`
   display: block;
+  width: 190px;
   font-family: 'Roboto';
   font-size: 16px;
   font-weight: 400;
@@ -97,7 +110,6 @@ export const Text =  styled.p`
 `;
 export const RequiredText =  styled.p`
   display: block;
-  min-width: 57px;
   font-family: 'Roboto';
   font-size: 18px;
   font-weight: 700;
