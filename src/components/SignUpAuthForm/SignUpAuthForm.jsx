@@ -32,20 +32,21 @@ const SignupSchema = Yup.object().shape({
 export const SignUpAuthForm = () => {
 
   const error = useSelector(selectIsError)
+  const [isSubmitted, setIsSubmitted] = useState(false);
  
-
-  useEffect(()=>{ toast.error(error)},[error])
-
+  const [showPassword, setShowPassword] = useState(false);
   const [screenSize, setScreenSize] = useState({
     isDesctopScreen: typeof window !== 'undefined' && window.innerWidth >= 1440,
     isTabletScreen: window.innerWidth >= 768 && window.innerWidth <=1440,
     isMobileScreen: window.innerWidth >= 320 && window.innerWidth <=768,
   });
     const navigate  = useNavigate();
-    const [showPassword, setShowPassword] = useState(false);
-
-   
     const dispatch = useDispatch();
+
+
+    if(isSubmitted)
+  {toast.error(error)};
+    
 
     
   useEffect(() => {
@@ -80,6 +81,7 @@ export const SignUpAuthForm = () => {
             password: values.password,
             passwordRepeat: values.passwordRepeat,
           }));
+          setIsSubmitted(true);
         }
       }
       > 
