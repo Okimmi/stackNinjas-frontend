@@ -1,3 +1,4 @@
+
 import { SharedLayout } from "./SharedLayout";
 import { MainPage } from "pages/MainPage/MainPage";
 import { Route, Routes } from "react-router-dom";
@@ -12,8 +13,7 @@ import { useAuth } from "../redux/hooks/useAuth";
 import { refreshUser } from "../redux/auth/operations.js";
 import { useEffect } from "react";
 import { PrivateRoute } from "./PrivateRoute";
-import { Blocks } from 'react-loader-spinner'
-;
+import { Blocks } from 'react-loader-spinner';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -68,6 +68,7 @@ export const App = () => {
   <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 </Route>
 </Routes>
+
       <GlobalStyle />
     </>
   );
