@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { } from "react";
+import { useSelector } from "react-redux";
 import { Form, FormikProvider, useFormik } from 'formik';
 import * as Yup from 'yup';
 // import { toast } from 'react-toastify';
 
 import Modal from "components/DailyNormalModal/Modal/Modal";
+import { NumberInputLiveFeedback } from "./NumberInputLiveFeedback/NumberInputLiveFeedback";
+import CalcFieldDailyNormal from "./CalcFieldDailyNormal";
+
+import { selectUser } from "../../redux/auth/selectors";
 
 //style
 import { 
@@ -25,48 +30,14 @@ import {
   ListFormula, 
   MarkPSText, 
   PSText, 
-  RequiredText, 
   SubTitle, 
   Text, 
   Title } from "./DailyNormalModal.styled";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/selectors";
-
-import { NumberInputLiveFeedback } from "./NumberInputLiveFeedback/NumberInputLiveFeedback";
-
-
 
 const DailyNormalModal = ({closeModal}) => {
+
   // const dispatch = useDispatch();
-  const [dailyNormalWater, setDailyNormalWater] = useState({ 
-    koefWeight: 0, 
-    koefActiveTime: 0, 
-    weight: 0, 
-    activeTraningHours: 0, 
-  });
-  const [volume, setVolume] = useState(0);
   const user = useSelector(selectUser);
-  console.log(dailyNormalWater);
-
-  // useEffect(() => {
-  //   const calcVolume = ({koefWeight, koefActiveTime, weight, activeTraningHours, volume}) => {
-  //     const vol = koefWeight * weight + koefActiveTime * activeTraningHours;
-  //     setVolume(vol);
-  //   }
-  //   calcVolume(dailyNormalWater);
-  // },[dailyNormalWater])
-
-
-  const calcVolume = () => 
-  {
-    const {koefWeight, koefActiveTime, weight, activeTraningHours} = dailyNormalWater
-    // setDailyNormalWater((prev) => {
-    //   return {...prev, koefWeight, koefActiveTime, weight, activeTraningHours}
-    // })
-
-    const vol = koefWeight * weight + koefActiveTime * activeTraningHours;
-    setVolume(vol);
-  }
 
   // ==== configForm
   const configFormik = useFormik({
@@ -128,7 +99,6 @@ const DailyNormalModal = ({closeModal}) => {
           </BoxFormula>
 
           <FormikProvider value={configFormik}>
-          {/* {({ values }) => ( */}
             <Form>
               <BoxForm>
                 <BoxRate>
@@ -143,13 +113,6 @@ const DailyNormalModal = ({closeModal}) => {
                           value='girl'
                           name="gender"
                           type='radio' 
-
-                          onSelect={(e) => {
-                              setDailyNormalWater((prev) => {
-                                return {...prev, koefWeight: 0.03, koefActiveTime: 0.4}
-                              });
-                              calcVolume({...dailyNormalWater, koefWeight: 0.03, koefActiveTime: 0.4});
-                            }} 
                         />
                         For girl
                       </LabelGender>
@@ -160,17 +123,9 @@ const DailyNormalModal = ({closeModal}) => {
                           id='man'
                           name="gender"
                           value="man"
-
-                          onSelect={(e) => {
-                            setDailyNormalWater((prev) => {
-                              return {...prev, koefWeight: 0.04, koefActiveTime: 0.6}
-                            });
-                            calcVolume({...dailyNormalWater, koefWeight: 0.04, koefActiveTime: 0.6});
-                          }}
                         />
                         For man
                       </LabelGender>
-                      {/* <div>{values}</div>   */}
                     </div>
                   </BoxGender>
                         
@@ -183,12 +138,6 @@ const DailyNormalModal = ({closeModal}) => {
                         name="weight"
                         placeholder="0"
                         helpText="Press your weight in kilograms"
-                        onChange={(e) => {
-                          setDailyNormalWater((prev) => {
-                            return {...prev, weight: Number(e.target.value)}
-                          });
-                          calcVolume({...dailyNormalWater, weight: Number(e.target.value)});
-                        }}
                       />
                   </BoxWeight>
                       
@@ -201,20 +150,13 @@ const DailyNormalModal = ({closeModal}) => {
                       name="activeTraningHours"
                       placeholder="0" 
                       helpText="How many hours per day you active"
-                      onChange={(e) => {
-                        setDailyNormalWater((prev) => {
-                          return {...prev, activeTraningHours: Number(e.target.value)}
-                        });
-                        calcVolume({...dailyNormalWater, activeTraningHours: Number(e.target.value)});
-                        }}
                     />
                   </BoxTime>
                       
                   <BoxRequiredLitresPerDay>
                     <Text>The required amount of water in liters per day:</Text>
-                    <RequiredText>{ volume.toFixed(2) } L</RequiredText>
-                  </BoxRequiredLitresPerDay>
-
+                    <CalcFieldDailyNormal name="dailyNormal"/>
+                  </BoxRequiredLitresPerDay>    
                 </BoxRate>
 
                 <BoxWaterDrink>
@@ -235,11 +177,9 @@ const DailyNormalModal = ({closeModal}) => {
                 <ButtonSave type="submit">Save</ButtonSave>
               </BoxForm>
             </Form>
-          {/* )} */}
           </FormikProvider>
         </Modal>
     </>
-    
   )
 }
 
