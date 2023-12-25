@@ -203,7 +203,9 @@ export const HomePage = () => {
           </DivLeftPart>
 
           <DivTodayAndMonth>
-            <PToday>Today</PToday>
+            <PToday>Today</PToday>       
+        </DivTodayAndMonth>
+
             <DivTodayList>
               <div>
                 {editingEntryData ? (

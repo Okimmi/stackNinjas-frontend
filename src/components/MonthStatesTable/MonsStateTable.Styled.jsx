@@ -3,25 +3,24 @@ import styled from "styled-components";
 export const Container = styled.div `
   margin-left: auto;
   margin-right: auto;
-  /* position : relative; */
 /* Mobile responsive container */
-@media screen and (min-width: 320px) {
+/* @media screen and (min-width: 320px) {
   width: calc(280px + 2 * 20px);  
   padding-left: 20px;
   padding-right: 20px;
-}
+} */
 /* Tablet adaptive container */
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
     width: calc(704px + 2 * 32px);
     padding-left: 32px;
-    padding-right: 32px;   
-  }
+    padding-right: 32px;    */
+  /* } */
   /* Desktop adaptive container */
-@media screen and (min-width: 1440px) {
+/* @media screen and (min-width: 1440px) {
     width: calc(1289px + 39px + 112px);    
     padding-right: 112px; 
     padding-bottom: 40px;
-  }
+  } */
 `
 
 
@@ -29,7 +28,7 @@ export const Calendar = styled.div `
 background-color: #ECF2FF;
 border-bottom-left-radius: 10px;
 border-bottom-right-radius: 10px;
-box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
+/* box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3); */
 @media screen and (min-width: 320px) {
     padding-left: 8px;
     padding-right: 8px;
