@@ -155,7 +155,7 @@ const DailyNormalModal = ({closeModal}) => {
                       
                   <BoxRequiredLitresPerDay>
                     <Text>The required amount of water in liters per day:</Text>
-                    <CalcFieldDailyNormal name="dailyNormal"/>
+                    <CalcFieldDailyNormal name="calcDailyNormal"/>
                   </BoxRequiredLitresPerDay>    
                 </BoxRate>
 
