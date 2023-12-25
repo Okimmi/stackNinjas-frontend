@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 import {theme} from '../../components/GlobalStyle.js'
+import frame from '../../images/Frame.png'
+import bottle from '../../images/Bottle.png'
+import botle_home from '../../images/Botle_Home.png'
+import frame_18 from '../../images/Frame_18.png'
+import background from '../../images/Background.png'
+import main_page from '../../images/Main_Page.png'
 
 export const P = styled.h6`
     color: ${theme.colors.primeryBlue};
@@ -125,14 +131,14 @@ export const Img = styled.img`
 
 `;
 export const ImgBottle = styled.img`
-  content: url('img/Frame.png');
-  
+  content: url(${frame});
+  background-repeat: no-repeat;
  
   @media screen and (min-width: 768px) {
-    content: url('img/Bottle.png');
+    content: url(${bottle});
   }
   @media screen and (min-width: 1440px) {
-    content: url('img/Botle_Home.png');
+    content: url(${botle_home});
     position: absolute;
     top: 82px; 
     left: -50px;
@@ -151,7 +157,7 @@ position: relative;
 `;
 
 export const BackgroundImage = styled.div`
-content: url('img/Frame_18.png'); 
+content: url(${frame_18});
 position: absolute;
 top: 108px; 
 left: -20px;
@@ -161,13 +167,13 @@ z-index: -1;
 
 
 @media screen and (min-width: 768px) {
-  content: url('img/Background.png'); 
+  content: url(${background});
   top: 88px;
   left: -32px;
 }
 
 @media screen and (min-width: 1440px) {
-  content: url('img/Main_Page.png');
+  content: url(${main_page});
   left: -112px;
 }
 `;
@@ -403,21 +409,18 @@ export const PToday = styled.p`
   
 `
 export const ButtonAddWater = styled.button`
-  font-size: 16px;
+  font-size: 18px;
   color: ${theme.colors.primeryBlue};
   background-color: transparent;
   border: none;
   cursor: pointer;
   text-align: center;
-  position: relative;
-  &.add-water-button {
-    position: absolute;
-    bottom: 0; 
-    left: 50%; 
-    transform: translateX(-50%); 
-  }
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
   &:hover, &:focus {
-    svg path {
+    imgPlusAdd path {
     stroke: ${theme.colors.secondary5};
   }}
   
@@ -461,7 +464,7 @@ export const ButtonDelete = styled.button`
       
       left: 94%;
       width: 16px;
-      margin-top: 4px;
+      margin-top: 8px;
       height: 1px;
       background-color: ${theme.colors.secondary3};
       z-index: 6; 
@@ -482,11 +485,10 @@ export const DivListItem = styled.div`
   &.delete-line::after {
     content: '';
     width: 254px;
-    
     height: 1px;
     background: ${theme.colors.secondary6};
     position: absolute;
-    top: 145%; 
+    top: 133%; 
     z-index: 2;
     @media screen and (min-width: 768px) {
       width: 646px;
@@ -585,4 +587,16 @@ export const ImgPlus = styled.img`
 
 export const ImgPlusAdd = styled.img`
   fill: ${theme.colors.primeryBlue};
+`
+
+export const ImgGlass = styled.img`
+  fill: ${theme.colors.primeryBlue};
+`
+
+export const ImgEdit = styled.img`
+
+`
+
+export const ImgDelete = styled.img`
+
 `
