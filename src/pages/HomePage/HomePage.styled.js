@@ -18,23 +18,65 @@ export const Icon = styled.img`
 `;
 export const Avatar = styled.div`
     border-radius: 50%;
-    width: 28px;
-    height: 28px;
-    background-color: grey;
     margin-right: 4px;
-    margin-left: 8px
+    margin-left: 8px;
 `;
 export const UserName = styled.p`
-    color: ${theme.colors.primeryBlack};
+    color: ${theme.colors.primeryBlue};
     width: 66px;
     height: 20px;
-    font-size: 14px
+    font-size: 14px;
+    text-align: right;
+    &:hover{
+      color: ${theme.colors.secondary5};
+      transition: opacity 0.3s ease;
+    }
+    &:focus {
+      color: ${theme.colors.secondary5};
+      transition: opacity 0.3s ease;
+    }
 `;
 export const UserDiv = styled.div`
     width: 122px;
     height: 28px;
     display: flex;
     align-items: center;
+    &:hover .NewDiv,
+    &:focus .NewDiv {
+        display: block;
+        opacity: 1;
+    }
+`;
+
+export const NewDiv = styled.div`
+position: absolute;
+width: 118px;
+height: 88px;
+top: 100%;
+right: -65px;
+transform: translateX(-50%);
+background-color: #fff;
+border: none;
+border-radius: 10px;
+padding: 16px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+margin-top: 10px;
+display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
+`;
+
+export const IconWrapper = styled.div`
+position: relative;
+
+`; 
+
+export const SvgTrigger = styled.svg`
+    width: 11px;
+    height: 11px;
+    &:hover + ${NewDiv},
+    &:focus + ${NewDiv} {
+        display: block;
+        opacity: 1;
+    }
 `;
 export const HeaderDiv = styled.div`
     display: flex;
@@ -64,28 +106,40 @@ export const Litr = styled.p`
     font-size: 20px;
     height: 22px;
     color: ${theme.colors.primeryBlue};
+    font-weight: bold;
 `;
-export const Edit = styled.p`
+export const Edit = styled.button`
     font-size: 16px;
     height: 20px;
     margin-left: 16px;
     color: #8BAEFF;
+    border: none;
+    background: transparent;
+    cursor: pointer;
 `;
 export const Div = styled.div`
-display: flex;
-align-items: end;
-
+  display: flex;
+  align-items: end;
 `;
 export const Img = styled.img`
 
 `;
 export const ImgBottle = styled.img`
   content: url('img/Frame.png');
-
+  
+ 
   @media screen and (min-width: 768px) {
     content: url('img/Bottle.png');
   }
-  
+  @media screen and (min-width: 1440px) {
+    content: url('img/Botle_Home.png');
+    position: absolute;
+    top: 82px; 
+    left: -50px;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
   
 }
 `;
@@ -97,10 +151,10 @@ position: relative;
 `;
 
 export const BackgroundImage = styled.div`
-bcontent: url('img/Frame_18.png'); 
+content: url('img/Frame_18.png'); 
 position: absolute;
 top: 108px; 
-left: 0;
+left: -20px;
 right: 0;
 bottom: 0;
 z-index: -1;
@@ -109,11 +163,12 @@ z-index: -1;
 @media screen and (min-width: 768px) {
   content: url('img/Background.png'); 
   top: 88px;
+  left: -32px;
 }
 
 @media screen and (min-width: 1440px) {
   content: url('img/Main_Page.png');
-
+  left: -112px;
 }
 `;
 
@@ -126,12 +181,16 @@ export const Today = styled.p`
         height: 8px;
         background: ${theme.colors.secondary6};
         position: absolute;
-        top: 100%; 
+        top: 430px; 
         transform: translateY(-50%); 
         left: 265px;
         z-index: -1;
         @media screen and (min-width: 768px) {
           left: 341px;
+          top: 621px;
+        }
+        @media screen and (min-width: 1440px) {
+        top: 730px;
         }
       }
 `;
@@ -141,6 +200,7 @@ export const DivToday = styled.div`
     @media screen and (min-width: 768px) {
       width: 356px;
     }
+    
 `;
 
 export const SliderInput = styled.input`
@@ -188,11 +248,16 @@ export const SliderInput = styled.input`
     height: 8px;
     background: ${theme.colors.secondary6};
     position: absolute;
-    top: 100%; /* Зсув на половину висоти відносно повзунка */
+    top: 430px;  /* Зсув на половину висоти відносно повзунка */
     transform: translateY(-50%); 
     left: 10px;
     z-index: -1;
-    
+    @media screen and (min-width: 768px) {
+      top: 621px;
+    }
+    @media screen and (min-width: 1440px) {
+      top: 730px;
+      }
   }
   &::before {
     content: '';
@@ -200,13 +265,17 @@ export const SliderInput = styled.input`
     height: 8px;
     background: ${theme.colors.secondary6};
     position: absolute;
-    top: 100%; 
+    top: 430px;  
     transform: translateY(-50%); 
     left: 132px;
     z-index: -1;
     @media screen and (min-width: 768px) {
       left: 170px;
+      top: 621px
     }
+    @media screen and (min-width: 1440px) {
+      top: 730px;
+      }
   }
 `;
 
@@ -225,25 +294,30 @@ z-index: 2;
 export const Percents = styled.div`
 display: flex;
 justify-content: space-between;
-margin-top: 16px
+margin-top: 16px;
 z-index: 1;
 position: absolute;
-top: 10%; 
+top: 420px; 
 width: 100%;
 @media screen and (min-width: 768px) {
   width: 356px;
+  top: 613px;
+}
+@media screen and (min-width: 1440px) {
+  top: 720px;
 }
 `;
 
 export const AddWaterButton = styled.button`
-    margin-top: 16px;
+    margin-top: 36px;
     width: 280px;
     height: 36px;
     z-index: 1;
+    cursor: pointer;
 top: 105%; 
   background-color: ${theme.colors.primeryBlue};
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   border: none;
   @media screen and (min-width: 768px) {
     width: 336px;
@@ -252,7 +326,16 @@ top: 105%;
   @media screen and (min-width: 1440px) {
     width: 178px;
     height: 44px;
+    margin-left: 36px;
   }
+  &:hover, &:focus{
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    transition: opacity 0.3s ease;
+  }
+  &:active{
+    box-shadow: none;
+  }
+
 `;
 
 export const AddWater = styled.p`
@@ -261,6 +344,7 @@ export const AddWater = styled.p`
   color: ${theme.colors.primeryWhite};
   margin-left: 10px;
   cursor: pointer;
+  
 `;
 
 export const DivAddWater = styled.div`
@@ -282,7 +366,7 @@ export const DivTodayAndMonth = styled.div`
 
   @media screen and (min-width: 768px) {
     padding: 32px 24px 32px 24px;
-    margin-top: 0px;
+    margin-top: 40px;
     height: 688px;
   }
   @media screen and (min-width: 1440px) {
@@ -332,20 +416,63 @@ export const ButtonAddWater = styled.button`
     left: 50%; /* Вирівнюємо по горизонталі по центру */
     transform: translateX(-50%); /* Коригуємо положення для точного центрування */
   }
+  &:hover, &:focus {
+    svg path {
+    stroke: ${theme.colors.secondary5};
+  }}
+  
+  &:hover, &:focus {
+    color: ${theme.colors.secondary5};
+  }
 `;
 
 export const ButtonEdit = styled.button`
   width: 16px;
   height: 16px;
   border: none;
-  padding: 0
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  &:hover, &:focus{
+    &::after {
+      content: ''; 
+      position: absolute;
+      top: 18px;
+      left: 0;
+      width: 16px;
+      height: 1px;
+      background-color: ${theme.colors.secondary4};
+      z-index: 5; 
+    }
+  }
 `
 export const ButtonDelete = styled.button`
   width: 16px;
   height: 16px;
   border: none;
   margin-left: 18px;
-  padding: 0
+  padding: 0;
+  cursor: pointer;
+  &:hover, &:focus{
+    &::after {
+      content: ''; 
+      position: absolute;
+      top: 18px;
+      
+      left: 94%;
+      width: 16px;
+      margin-top: 4px;
+      height: 1px;
+      background-color: ${theme.colors.secondary3};
+      z-index: 6; 
+      @media screen and (min-width: 736px) {
+        left: 97.5%;
+      }
+      @media screen and (min-width: 1440px) {
+        left: 97%;
+      }
+    }
+  }
 `
 export const DivListItem = styled.div`
   display: flex;
@@ -393,6 +520,7 @@ export const SvgPlus = styled.svg`
     width: 12px;
     height: 12px
   }
+
 `;
 
 export const SpanCount = styled.span`
@@ -414,12 +542,13 @@ export const DivFlex = styled.div`
 @media screen and (min-width: 768px) {
   display: flex;
    align-items: end;
-   justify-content: space-between
+   justify-content: space-between;
 }
 @media screen and (min-width: 1440px) {
   display: flex;
    align-items: end;
-   justify-content: space-between
+   justify-content: space-between;
+    margin-top: 466px;
 }
 `;
 
@@ -432,4 +561,20 @@ export const Div2 = styled.div`
   display: flex;
   justify-content: space-between;
 }
+`
+export const DivSettings = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+`
+
+export const DivLogOut = styled.div`
+display: flex;
+  align-items: center;
+  gap: 8px;
+`
+
+export const PDiv = styled.p`
+  color: ${theme.colors.primeryBlue}
 `
