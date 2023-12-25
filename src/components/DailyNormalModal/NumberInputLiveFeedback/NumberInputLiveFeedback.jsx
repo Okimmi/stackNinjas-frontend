@@ -30,7 +30,7 @@ export const NumberInputLiveFeedback = ({ label, aboveText, helpText, ...props }
       {aboveText?.trim() && <FieldTextAbove>{aboveText}</FieldTextAbove>}
 
       <FieldBox
-        $valid = {showFeedback ? (meta.error ? 'error' : 'success') : 'default'}
+        valid = {showFeedback ? (meta.error ? 'error' : 'success') : 'default'}
       >
 
         <FieldLabel htmlFor={props.id}>
@@ -39,12 +39,12 @@ export const NumberInputLiveFeedback = ({ label, aboveText, helpText, ...props }
           <FieldPosition >
             
             <FieldInput
-              $valid = {showFeedback ? (meta.error ? 'invalid' : 'valid') : 'default'}
-              type="text"
+              valid = {showFeedback ? (meta.error ? 'invalid' : 'valid') : 'default'}
+              type="number"
               name="name"
               // pattern="^[a-zA-Zа-яА-ЯіІїЇєЄ]+(([' \-][a-zA-Zа-яА-ЯіІїЇєЄ])?[a-zA-Zа-яА-ЯіІїЇєЄ]*)*$"
               // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
+              
               {...props}
               {...field}
               aria-describedby={`${props.id}-feedback ${props.id}-help`}

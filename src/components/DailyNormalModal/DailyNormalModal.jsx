@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Form, FormikProvider, useFormik } from 'formik';
 import * as Yup from 'yup';
 // import { toast } from 'react-toastify';
@@ -16,8 +16,7 @@ import {
   BoxWaterDrink, 
   BoxWeight, 
   ButtonSave, 
-  FieldGenger, 
-  Fieldset, 
+  FieldGenger,  
   Formula, 
   FormulaColorText, 
   ItemFormula, 
@@ -48,13 +47,23 @@ const DailyNormalModal = ({closeModal}) => {
   const user = useSelector(selectUser);
   console.log(dailyNormalWater);
 
-  useEffect(() => {
-    const calcVolume = ({koefWeight, koefActiveTime, weight, activeTraningHours, volume}) => {
-      const vol = koefWeight * weight + koefActiveTime * activeTraningHours;
-      setVolume(vol);
-    }
-    calcVolume(dailyNormalWater);
-  },[dailyNormalWater])
+  // useEffect(() => {
+  //   const calcVolume = ({koefWeight, koefActiveTime, weight, activeTraningHours, volume}) => {
+  //     const vol = koefWeight * weight + koefActiveTime * activeTraningHours;
+  //     setVolume(vol);
+  //   }
+  //   calcVolume(dailyNormalWater);
+  // },[dailyNormalWater])
+
+
+  const calcVolume = ({koefWeight, koefActiveTime, weight, activeTraningHours}) => {
+    setDailyNormalWater((prev) => {
+      return {...prev, koefWeight, koefActiveTime, weight, activeTraningHours}
+    })
+
+    const vol = koefWeight * weight + koefActiveTime * activeTraningHours;
+    setVolume(vol);
+  }
 
   // ==== configForm
   const configFormik = useFormik({
@@ -120,34 +129,34 @@ const DailyNormalModal = ({closeModal}) => {
               <BoxRate>
                 <SubTitle>Calculate your rate:</SubTitle>
 
-                <BoxGender>
-                {/* <div id="my-radio-group">Picked</div>
-                <div role="group" aria-labelledby="my-radio-group"> */}
+                <BoxGender id="my-radio-group">
+                  <div role="group" aria-labelledby="my-radio-group">
 
-                  <Fieldset>
                     <LabelGender>
-                      <FieldGenger 
+                      <FieldGenger
                         id='girl'
-                        type='radio' 
+                        value='girl'
                         name="gender"
+                        type='radio' 
 
-                        onChange={(e) => {
-                          setDailyNormalWater((prev) => {
-                            return {...prev, koefWeight: 0.03, koefActiveTime: 0.4}
-                          });
-                          //calcVolume({...dailyNormalWater, koefWeight: 0.03, koefActiveTime: 0.4});
-                        }}
+                        onSelect={(e) => {
+                            setDailyNormalWater((prev) => {
+                              return {...prev, koefWeight: 0.03, koefActiveTime: 0.4}
+                            });
+                            //calcVolume({...dailyNormalWater, koefWeight: 0.03, koefActiveTime: 0.4});
+                          }} 
                       />
                       For girl
                     </LabelGender>
                     
                     <LabelGender>
-                      <FieldGenger 
+                      <FieldGenger
                         type='radio' 
                         id='man'
                         name="gender"
-                        defaultValue='man' 
-                        onChange={(e) => {
+                        value="man"
+
+                        onSelect={(e) => {
                           setDailyNormalWater((prev) => {
                             return {...prev, koefWeight: 0.04, koefActiveTime: 0.6}
                           });
@@ -156,8 +165,8 @@ const DailyNormalModal = ({closeModal}) => {
                       />
                       For man
                     </LabelGender>
-                  </Fieldset>
-                {/* </div> */}
+                    
+                  </div>
                 </BoxGender>
                       
                 <BoxWeight>

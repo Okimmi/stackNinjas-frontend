@@ -69,20 +69,13 @@ export const FormRate =  styled.div`
 export const BoxGender =  styled.div`
   margin-bottom: 16px;
 `;
-export const Fieldset =  styled.fieldset`
-  border: none;
-  padding: 0;
-  margin: 0;
-`;
+
 export const LabelGender = styled.label`
   margin-right: 24px;
 `;
 
 export const FieldGenger = styled(Field)`
   margin-right: 6px;
-`
-export const FieldInteger = styled(Field)`
-  width: 100%;
 `
 
 export const BoxWeight =  styled.div`
