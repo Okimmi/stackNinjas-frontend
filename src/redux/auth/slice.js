@@ -18,16 +18,19 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+      state.isRefreshing = false;
     });
     builder.addCase(logIn.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+      state.isRefreshing = false;
     });
     builder.addCase(logOut.fulfilled, (state, action) => {
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
+      state.isRefreshing = false;
     });
     builder.addCase(refreshUser.fulfilled, (state, action) => {
       state.user = action.payload;
@@ -60,4 +63,3 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-
