@@ -1,41 +1,73 @@
 import React, { useState } from 'react';
-import { Wrapper } from 'components/Global/Global.styled';
-import { ImgEdit, ImgDelete, ImgGlass, ImgPlusAdd, ImgPlus, Div2, DivLeftPart, DivFlex, ImgBottle, DivFirstPart, SpanCount, SvgPlus, SpanDate, DivListItem, ButtonDelete, ButtonEdit, ButtonAddWater, DivTodayList, PToday,  MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Background,  BackgroundImage, Today, DivToday, SliderInput, Per, Percents, SliderDiv, AddWaterButton, AddWater, DivAddWater, DivTodayAndMonth } from './HomePage.styled.js';
+import {
+  ImgEdit,
+  ImgDelete,
+  ImgGlass,
+  ImgPlusAdd,
+  ImgPlus,
+  Div2,
+  DivLeftPart,
+  DivFlex,
+  ImgBottle,
+  DivFirstPart,
+  SpanCount,
+  SpanDate,
+  DivListItem,
+  ButtonDelete,
+  ButtonEdit,
+  ButtonAddWater,
+  DivTodayList,
+  PToday,
+  MyDailyNormaDiv,
+  MyDailyNorma,
+  Litr,
+  Edit,
+  Div,
+  Background,
+  BackgroundImage,
+  Today,
+  DivToday,
+  SliderInput,
+  Per,
+  Percents,
+  SliderDiv,
+  AddWaterButton,
+  AddWater,
+  DivAddWater,
+  DivTodayAndMonth,
+} from './HomePage.styled.js';
 import plus from '../../icons/Plus.svg';
-import plusAdd from '../../icons/PlusAdd.svg'
-import glass from '../../icons/Glass.svg'
-import edit from '../../icons/Edit.svg'
-import delet from '../../icons/Delete.svg'
-
+import plusAdd from '../../icons/PlusAdd.svg';
+import glass from '../../icons/Glass.svg';
+import edit from '../../icons/Edit.svg';
+import delet from '../../icons/Delete.svg';
 
 export const HomePage = () => {
-  
   const [sliderValue, setSliderValue] = useState(0);
-  const [isPopupVisible, setPopupVisible] = useState(false);
-  const togglePopup = () => {
-    setPopupVisible(!isPopupVisible);
-  };
+  // const [isPopupVisible, setPopupVisible] = useState(false);
+  // const togglePopup = () => {
+  //   setPopupVisible(!isPopupVisible);
+  // };
 
   const handleSliderChange = event => {
     setSliderValue(event.target.value);
   };
-  
+
   const [data, setData] = useState([]);
   const [editingEntryData, setEditingEntryData] = useState(null);
   const [newEntryData, setNewEntryData] = useState({ amount: '' });
-  const [newEntry, setNewEntry] = useState('');
+  // const [newEntry, setNewEntry] = useState('');
 
-  const onEditClick = (item) => {
+  const onEditClick = item => {
     setEditingEntryData({ ...item });
   };
 
-  const onDeleteClick = (item) => {
-      setData(data.filter((i) => i.id !== item.id));
-    
+  const onDeleteClick = item => {
+    setData(data.filter(i => i.id !== item.id));
   };
 
   const onSaveEdit = () => {
-    const nextData = data.map((item) => {
+    const nextData = data.map(item => {
       if (item.id === editingEntryData?.id) {
         return editingEntryData;
       }
@@ -52,11 +84,15 @@ export const HomePage = () => {
   const onAdd = () => {
     setData([
       ...data,
-      { ...newEntryData, id: Date.now().toString(), date: new Date().toISOString() },
+      {
+        ...newEntryData,
+        id: Date.now().toString(),
+        date: new Date().toISOString(),
+      },
     ]);
     setNewEntryData({ amount: '' });
   };
-  
+
   return (
     <>
       <Background>
@@ -118,129 +154,135 @@ export const HomePage = () => {
               
           </UserDiv>
         </HeaderDiv> */}
-      <Div2>
-        <DivLeftPart>
-        <MyDailyNormaDiv>
-          <MyDailyNorma>My daily norma</MyDailyNorma>
-          <Div>
-            <Litr>1.5 L</Litr>
-            <Edit>Edit</Edit>
-          </Div>
-        </MyDailyNormaDiv>
+        <Div2>
+          <DivLeftPart>
+            <MyDailyNormaDiv>
+              <MyDailyNorma>My daily norma</MyDailyNorma>
+              <Div>
+                <Litr>1.5 L</Litr>
+                <Edit>Edit</Edit>
+              </Div>
+            </MyDailyNormaDiv>
 
-          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-        <ImgBottle className="bottle-image" alt="Bottle" /></div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <ImgBottle className="bottle-image" alt="Bottle" />
+            </div>
 
-        <DivFlex>
-        <DivToday>
-          <Today>Today</Today>
-          <SliderDiv>
-            <SliderInput
-              type="range"
-              min="1"
-              max="100"
-              value={sliderValue}
-              onChange={handleSliderChange}
-            />
-          </SliderDiv>
-          <Percents>
-            <Per>0%</Per>
-            <Per>50%</Per>
-            <Per>100%</Per>
-          </Percents>
-        </DivToday>
-        
-
-        <AddWaterButton type="button">
-          <DivAddWater>
-            <ImgPlus
-                    src={plus}
-                    width={24}
-                    height={24}
-                    alt="Plus"
-                    
+            <DivFlex>
+              <DivToday>
+                <Today>Today</Today>
+                <SliderDiv>
+                  <SliderInput
+                    type="range"
+                    min="1"
+                    max="100"
+                    value={sliderValue}
+                    onChange={handleSliderChange}
                   />
-            <AddWater>Add Water</AddWater>
-          </DivAddWater>
-        </AddWaterButton>
-        </DivFlex>
-        </DivLeftPart>
+                </SliderDiv>
+                <Percents>
+                  <Per>0%</Per>
+                  <Per>50%</Per>
+                  <Per>100%</Per>
+                </Percents>
+              </DivToday>
 
-        <DivTodayAndMonth>
-          <PToday>Today</PToday>
-          <DivTodayList >
+              <AddWaterButton type="button">
+                <DivAddWater>
+                  <ImgPlus src={plus} width={24} height={24} alt="Plus" />
+                  <AddWater>Add Water</AddWater>
+                </DivAddWater>
+              </AddWaterButton>
+            </DivFlex>
+          </DivLeftPart>
 
-          <div>
-        {editingEntryData ? (
-          <div style={{ marginTop: 20, display: 'flex', gap: 10 }}>
-            <input
-            value={editingEntryData.amount}
-            onChange={(e) => setEditingEntryData({ ...editingEntryData, amount: e.target.value })}
-            />
-            <button onClick={onSaveEdit}>Save</button>
-            <button onClick={onCancelEdit}>Cancel</button>
-         </div>
-      ) : (
-         <div>  
-          <ButtonAddWater onClick={onAdd} className='add-water-button'>
-          <ImgPlusAdd 
-                    src={plusAdd}
-                    width={12}
-                    height={12}
-                    alt="PlusAdd"   
-                  />
-              Add water</ButtonAddWater>
-         </div>
-      )}
-        <div>
-          {data.map((item) => (
-            
-            <DivListItem key={item.id} className="delete-line">
-              <DivFirstPart>
-            
-              <ImgGlass 
-                    src={glass}
-                    width={26}
-                    height={26}
-                    alt="Glass"   
-                  />
-              
-              <SpanCount >{'200 ml'}</SpanCount>
-              <SpanDate>{'14:00 PM'}</SpanDate>
-              </DivFirstPart>
+          <DivTodayAndMonth>
+            <PToday>Today</PToday>
+            <DivTodayList>
               <div>
-              {/* ДОДАТИ ДАНІ З ФОРМИ
+                {editingEntryData ? (
+                  <div style={{ marginTop: 20, display: 'flex', gap: 10 }}>
+                    <input
+                      value={editingEntryData.amount}
+                      onChange={e =>
+                        setEditingEntryData({
+                          ...editingEntryData,
+                          amount: e.target.value,
+                        })
+                      }
+                    />
+                    <button onClick={onSaveEdit}>Save</button>
+                    <button onClick={onCancelEdit}>Cancel</button>
+                  </div>
+                ) : (
+                  <div>
+                    <ButtonAddWater
+                      onClick={onAdd}
+                      className="add-water-button"
+                    >
+                      <ImgPlusAdd
+                        src={plusAdd}
+                        width={12}
+                        height={12}
+                        alt="PlusAdd"
+                      />
+                      Add water
+                    </ButtonAddWater>
+                  </div>
+                )}
+                <div>
+                  {data.map(item => (
+                    <DivListItem key={item.id} className="delete-line">
+                      <DivFirstPart>
+                        <ImgGlass
+                          src={glass}
+                          width={26}
+                          height={26}
+                          alt="Glass"
+                        />
+
+                        <SpanCount>{'200 ml'}</SpanCount>
+                        <SpanDate>{'14:00 PM'}</SpanDate>
+                      </DivFirstPart>
+                      <div>
+                        {/* ДОДАТИ ДАНІ З ФОРМИ
               <span >{item.amount}</span>
               <SpanDate>{item.date}</SpanDate> */}
-            <ButtonEdit
-              disabled={item.id === editingEntryData?.id}
-              onClick={() => onEditClick(item)}
-            >
-              <ImgEdit
-                    src={edit}
-                    width={16}
-                    height={16}
-                    alt="Edit"   
-                  />
-            </ButtonEdit>
-            <ButtonDelete 
-              disabled={item.id === editingEntryData?.id}
-              onClick={() => onDeleteClick(item)}
-            >
-            <ImgDelete
-                    src={delet}
-                    width={14}
-                    height={14}
-                    alt="Delete"   
-                  />
-            </ButtonDelete>
-            </div>
-          </DivListItem>
-        ))}
-      </div>
-    </div>
-          </DivTodayList>
-        </DivTodayAndMonth>
+                        <ButtonEdit
+                          disabled={item.id === editingEntryData?.id}
+                          onClick={() => onEditClick(item)}
+                        >
+                          <ImgEdit
+                            src={edit}
+                            width={16}
+                            height={16}
+                            alt="Edit"
+                          />
+                        </ButtonEdit>
+                        <ButtonDelete
+                          disabled={item.id === editingEntryData?.id}
+                          onClick={() => onDeleteClick(item)}
+                        >
+                          <ImgDelete
+                            src={delet}
+                            width={14}
+                            height={14}
+                            alt="Delete"
+                          />
+                        </ButtonDelete>
+                      </div>
+                    </DivListItem>
+                  ))}
+                </div>
+              </div>
+            </DivTodayList>
+          </DivTodayAndMonth>
         </Div2>
       </Background>
     </>
