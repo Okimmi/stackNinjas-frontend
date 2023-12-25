@@ -1,12 +1,48 @@
-import React, { useState } from 'react';
-import { DivTodayList, PToday, P, Logo, LogoDiv, Icon, Avatar, UserName, UserDiv, HeaderDiv, MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Background, Img, BackgroundImage, Today, DivToday, SliderInput, Per, Percents, SliderDiv, AddWaterButton, AddWater, DivAddWater, DivTodayAndMonth } from './HomePage.styled.js';
+import React, { useEffect, useState } from 'react';
+import {
+  DivTodayList,
+  PToday,
+  P,
+  Logo,
+  LogoDiv,
+  Icon,
+  Avatar,
+  UserName,
+  UserDiv,
+  HeaderDiv,
+  MyDailyNormaDiv,
+  MyDailyNorma,
+  Litr,
+  Edit,
+  Div,
+  Background,
+  Img,
+  BackgroundImage,
+  Today,
+  DivToday,
+  SliderInput,
+  Per,
+  Percents,
+  SliderDiv,
+  AddWaterButton,
+  AddWater,
+  DivAddWater,
+  DivTodayAndMonth,
+} from './HomePage.styled.js';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from '../../redux/auth/operations.js';
 
 export const HomePage = () => {
+  const dispstch = useDispatch();
   const [sliderValue, setSliderValue] = useState(0);
 
-  const handleSliderChange = (event) => {
+  const handleSliderChange = event => {
     setSliderValue(event.target.value);
   };
+
+  useEffect(() => {
+    dispstch(refreshUser());
+  }, [dispstch]);
 
   return (
     <>
@@ -44,22 +80,21 @@ export const HomePage = () => {
               value={sliderValue}
               onChange={handleSliderChange}
             />
-            </SliderDiv>
-            <Percents>
-              <Per>0%</Per>
-              <Per>50%</Per>
-              <Per>100%</Per>
-            </Percents>
+          </SliderDiv>
+          <Percents>
+            <Per>0%</Per>
+            <Per>50%</Per>
+            <Per>100%</Per>
+          </Percents>
         </DivToday>
 
-        
         <AddWaterButton type="button">
           <DivAddWater>
-            <Img src="img/outline.png" alt="Plus"/>
+            <Img src="img/outline.png" alt="Plus" />
             <AddWater>Add Water</AddWater>
           </DivAddWater>
         </AddWaterButton>
-        
+
         <DivTodayAndMonth>
           <DivTodayList>
             <PToday>Today</PToday>
