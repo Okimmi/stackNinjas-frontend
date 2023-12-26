@@ -90,7 +90,7 @@ export const SvgTrigger = styled.svg`
 //     justify-content: space-between;
 // `;
 export const MyDailyNormaDiv = styled.div`
-    margin-top: 24px;
+    margin-top: 24px
     border-radius: 10px;
     width: 164px;
     height: 74px;
@@ -419,13 +419,18 @@ export const ButtonAddWater = styled.button`
   align-items: center;
   gap: 8px;
 
-  &:hover, &:focus {
+  &:hover {
+    color: ${theme.colors.secondary5};
     & img {
       filter: invert(86%) sepia(60%) saturate(124%) hue-rotate(327deg) brightness(94%) contrast(93%);
-  }}
-  
-  &:hover, &:focus {
-    color: ${theme.colors.secondary5};
+    }
+  }
+
+  &:active {
+    color: ${theme.colors.primeryBlue};
+    & img {
+      filter: none;
+    }
   }
 `;
 

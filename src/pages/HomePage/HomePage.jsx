@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Wrapper } from 'components/Global/Global.styled';
 import { ImgEdit, ImgDelete, ImgGlass, ImgPlusAdd, ImgPlus, Div2, DivLeftPart, DivFlex, ImgBottle, DivFirstPart, SpanCount, SvgPlus, SpanDate, DivListItem, ButtonDelete, ButtonEdit, ButtonAddWater, DivTodayList, PToday,  MyDailyNormaDiv, MyDailyNorma, Litr, Edit, Div, Background,  BackgroundImage, Today, DivToday, SliderInput, Per, Percents, SliderDiv, AddWaterButton, AddWater, DivAddWater, DivTodayAndMonth } from './HomePage.styled.js';
 import plus from '../../icons/Plus.svg';
@@ -6,15 +6,11 @@ import plusAdd from '../../icons/PlusAdd.svg'
 import glass from '../../icons/Glass.svg'
 import edit from '../../icons/Edit.svg'
 import delet from '../../icons/Delete.svg'
-
+// import { useSelector } from 'react-redux';
+// import { selectDailyWaterRequirement } from './selectors.js';
 export const HomePage = () => {
-  
   const [sliderValue, setSliderValue] = useState(0);
-  const [isPopupVisible, setPopupVisible] = useState(false);
-  const togglePopup = () => {
-    setPopupVisible(!isPopupVisible);
-  };
-
+  // const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
   };
@@ -22,8 +18,7 @@ export const HomePage = () => {
   const [data, setData] = useState([]);
   const [editingEntryData, setEditingEntryData] = useState(null);
   const [newEntryData, setNewEntryData] = useState({ amount: '' });
-  const [newEntry, setNewEntry] = useState('');
-
+  
   const onEditClick = (item) => {
     setEditingEntryData({ ...item });
   };
@@ -170,31 +165,20 @@ export const HomePage = () => {
           <DivTodayList >
 
           <div>
-        {editingEntryData ? (
-          <div style={{ marginTop: 20, display: 'flex', gap: 10 }}>
-            <input
-            value={editingEntryData.amount}
-            onChange={(e) => setEditingEntryData({ ...editingEntryData, amount: e.target.value })}
-            />
-            <button onClick={onSaveEdit}>Save</button>
-            <button onClick={onCancelEdit}>Cancel</button>
-         </div>
-      ) : (
-         <div>  
-          <ButtonAddWater onClick={onAdd} className='add-water-button'>
-          <ImgPlusAdd 
-                    src={plusAdd}
-                    width={12}
-                    height={12}
-                    alt="PlusAdd"   
-                  />
-              Add water</ButtonAddWater>
-         </div>
-      )}
-        <div>
-          {data.map((item) => (
-            
-            <DivListItem key={item.id} className="delete-line">
+  {editingEntryData ? (
+    <div style={{ marginTop: 20, display: 'flex', gap: 10 }}>
+      <input
+        value={editingEntryData.amount}
+        onChange={(e) => setEditingEntryData({ ...editingEntryData, amount: e.target.value })}
+      />
+      <button onClick={onSaveEdit}>Save</button>
+      <button onClick={onCancelEdit}>Cancel</button>
+    </div>
+  ) : null}
+
+  <div>
+    {data.map((item) => (
+      <DivListItem key={item.id} className="delete-line">
               <DivFirstPart>
             
               <ImgGlass 
@@ -234,16 +218,26 @@ export const HomePage = () => {
                   />
             </ButtonDelete>
             </div>
-          </DivListItem>
-        ))}
-      </div>
+            </DivListItem>
+    ))}
+  </div>
+
+  <div>
+    <ButtonAddWater onClick={onAdd}>
+      <ImgPlusAdd
+        src={plusAdd}
+        width={12}
+        height={12}
+        alt="PlusAdd"
+      />
+      Add water
+    </ButtonAddWater>
+  </div>
+
     </div>
           </DivTodayList>
-<<<<<<< Updated upstream
         </DivTodayAndMonth>
-=======
-          
->>>>>>> Stashed changes
+
         </Div2>
       </Background>
     </>
