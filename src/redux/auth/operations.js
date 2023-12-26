@@ -91,9 +91,8 @@ export const updateDailyNormal = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const res = await axios.patch('/api/aquatrack/daily-water-requirement', dailyNormal);
-      await axios.get('/api/auth/current');
-      
-      return res.data;
+     
+      return res.data.dailyWaterRequirement;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

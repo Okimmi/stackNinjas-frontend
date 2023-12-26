@@ -47,7 +47,7 @@ const authSlice = createSlice({
       state.isRefreshing = false;
     });
     builder.addCase(updateDailyNormal.fulfilled, (state, action) => {
-      state.user = action.payload;
+      state.user.dailyWaterRequirement = action.payload;
       state.isLoggedIn = true;
       state.isRefreshing = false;
     });
