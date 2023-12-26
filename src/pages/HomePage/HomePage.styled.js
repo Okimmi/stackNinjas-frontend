@@ -90,7 +90,7 @@ export const SvgTrigger = styled.svg`
 //     justify-content: space-between;
 // `;
 export const MyDailyNormaDiv = styled.div`
-    margin-top: 24px
+    margin-top: 24px;
     border-radius: 10px;
     width: 164px;
     height: 74px;
