@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Field } from 'formik';
 
 export const Title = styled.h2`
-  font-family: 'Roboto';
   font-size: 26;
   font-weight: 700;
   line-height: 1.23; // 32/26=1.23;
@@ -38,7 +37,6 @@ export const BoxTextPostScriptum = styled.div`
 `
 
 export const PSText = styled.p`
-  font-family: 'Roboto';
   font-size: 12px;
   line-height: 16px;
   text-align: left;
@@ -51,7 +49,6 @@ export const MarkPSText =  styled.span`
 `;
 
 export const SubTitle =  styled.h3`
-  font-family: Roboto;
   font-weight: 700;
   font-size: 18px;
   initial-letter: 1.11; // 20/18=1.11
@@ -94,7 +91,6 @@ export const BoxRequiredLitresPerDay =  styled.div`
 export const Text =  styled.p`
   display: block;
   width: 190px;
-  font-family: 'Roboto';
   font-size: 16px;
   font-weight: 400;
   initial-letter: 1.25; // 20/16=1.25
@@ -103,7 +99,6 @@ export const Text =  styled.p`
 `;
 export const RequiredText =  styled.p`
   display: block;
-  font-family: 'Roboto';
   font-size: 18px;
   font-weight: 700;
   initial-letter: 1.33; // 24/18=1.33
