@@ -45,12 +45,14 @@ import axios from 'axios';
 
 //const modalPlace = document.querySelector('#modal-root');
 
-const DailyNormalModal = ({ closeModal, dailyNormalVolume }) => {
+const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   // const dispatch = useDispatch();
 
   const error = useSelector(selectIsError);
   const authetification = useSelector(selectUser);
   // const token = useSelector(selectToken);
+  const initialDailyNorma = (dailyNormalVolume ?? authetification.dailyWaterRequirement ?? 2) / 1000;
+
 
   useEffect(() => {
     console.log('a', authetification);
@@ -62,17 +64,26 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume }) => {
   // ==== configForm
   const configFormik = useFormik({
     initialValues: {
-      gender: '',
+      gender: 'girl',
       weight: '',
       activeTraningHours: '',
-      waterVolume: authetification.dailyWaterRequirement ?? 2,
+      waterVolume: initialDailyNorma,
     },
     onSubmit: async values => handleSubmit(values),
     validationSchema: Yup.object({
       gender: Yup.string(),
-      weight: Yup.number().integer('Only integer number').required('Required'),
-      activeTraningHours: Yup.number().integer('Only integer number'),
-      waterVolume: Yup.number(),
+      weight: Yup
+        .number('Only number')
+        .integer('Only integer number')
+        .positive('Only positive')
+        .lessThan(700, 'You have a lot hard weigth')
+        .required('Required'),
+      activeTraningHours: Yup
+        .number('Only number')
+        .positive('Only positive')
+        .lessThan(24, 'You cannot active more 24 hours')
+        .integer('Only integer number'),
+      waterVolume: Yup.number().lessThan(50, 'You can could drown in that much water'),
     }),
   });
 
@@ -86,7 +97,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume }) => {
     try {
       const URL = 'https://stackninjas-backend.onrender.com'
       const url = '/api/aquatrack/daily-water-requirement'
-      const result = await axios.patch(URL+url, { dailyWaterRequirement: waterVolume });
+      const result = await axios.patch(URL+url, { dailyWaterRequirement: waterVolume * 1000 });
       console.log(result);
 
       toast.success('Goal set! Stay hydrated and track your progress!');
@@ -148,6 +159,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume }) => {
                         value="girl"
                         name="gender"
                         type="radio"
+                        defaultChecked
                       />
                       For girl
                     </LabelGender>
@@ -204,7 +216,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume }) => {
                   id="waterVolume"
                   name="waterVolume"
                   placeholder="0"
-                  helpText=""
+                  helpText="Enter daily normal water in Litre"
                 />
               </BoxWaterDrink>
 

@@ -24,7 +24,7 @@ export const NumberInputLiveFeedback = ({ label, aboveText, helpText, ...props }
   const [didFocus, setDidFocus] = useState(false);
   const handleFocus = () => setDidFocus(true);
   const showFeedback =
-    (!!didFocus && field.value.length > 2) || meta.touched;
+    (!!didFocus && field.value.length > 0) || meta.touched;
 
   return (
     <>
@@ -41,7 +41,7 @@ export const NumberInputLiveFeedback = ({ label, aboveText, helpText, ...props }
             
             <FieldInput
               $valid = {showFeedback ? (meta.error ? 'invalid' : 'valid') : 'default'}
-              type="number"
+              type={props.type}
               name={props.name}
               color={theme.colors.primeryBlue}
               // pattern="^[a-zA-Zа-яА-ЯіІїЇєЄ]+(([' \-][a-zA-Zа-яА-ЯіІїЇєЄ])?[a-zA-Zа-яА-ЯіІїЇєЄ]*)*$"

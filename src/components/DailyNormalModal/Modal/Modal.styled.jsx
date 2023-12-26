@@ -12,7 +12,7 @@ export const ModalBackdrop = styled.div`
 
 export const ModalContainer = styled.div`
   position: relative;
-  z-index: 5;
+  z-index: 1005;
   box-sizing: border-box;
   min-width: 240px;
   width: 280px;

@@ -19,9 +19,8 @@ const CalcFieldDailyNormal = (props) => {
     if (
       weight.trim() !== '' &&
       gender.trim() !== '' &&
-      (gender === 'girl' || gender === 'man') &&
-      touched.weight &&
-      touched.gender
+      (gender === 'girl' || gender === 'man') //&&
+      // touched.weight
     ) {
       if (gender === 'man') {
         koefWeight = 0.04;
