@@ -158,7 +158,7 @@ export const HomePage = () => {
               
           </UserDiv>
         </HeaderDiv> */}
-    
+
         <Div2>
           <DivLeftPart>
             <MyDailyNormaDiv>
@@ -284,7 +284,7 @@ export const HomePage = () => {
         </Div2>
       </Background>
 
-      {showDailyNormalModal && <DailyNormalModal closeModal={toggleModal}/>}
+      {showDailyNormalModal && <DailyNormalModal closeModal={toggleModal} />}
     </>
   );
 };
