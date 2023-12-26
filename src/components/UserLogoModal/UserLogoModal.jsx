@@ -29,7 +29,7 @@ export const UserLogoModal = ({ isOpen, onClose }) => {
 
   // useEffect(() => {
   //   const handleEscKeyPress = event => {
-  //     if (event.key === 'Escape' && isOpen) {
+  //     if (event.code === 'Escape' && isOpen) {
   //       onClose();
   //     }
   //   };

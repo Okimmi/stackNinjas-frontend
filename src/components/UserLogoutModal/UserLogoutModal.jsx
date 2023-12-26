@@ -12,6 +12,7 @@ import {
   Title,
   TitleWrap,
 } from './UserLogoutModal.styled';
+import { clearUserData } from '../../redux/auth/slice';
 
 export const UserLogoutModal = ({ isLogoutActive, onLogoutClose }) => {
   const navigate = useNavigate();
@@ -21,14 +22,53 @@ export const UserLogoutModal = ({ isLogoutActive, onLogoutClose }) => {
     onLogoutClose();
   };
 
+  // const handleConfirmLogout = () => {
+  //   dispatch(logOut());
+  //   onLogoutClose();
+  // setState(initialState);
+  //   navigate('/');
+  // };
+
   const handleConfirmLogout = () => {
-    dispatch(logOut());
-    onLogoutClose();
-    navigate('/');
+    try {
+      dispatch(logOut())
+        .then(() => {
+          dispatch(clearUserData());
+          onLogoutClose();
+          navigate('/');
+        })
+        .catch(error => {
+          console.error('Log out error:', error);
+        });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
+//  useEffect(() => {
+  //   const handleEscKeyPress = event => {
+  //     if (event.code === 'Escape' && isLogoutActive) {
+  //       onLogoutClose();
+  //     }
+  //   };
+
+  //   const handleOutsideClick = event => {
+  //     if (!event.target.closest('.logout-container') && isLogoutActive) {
+  //       onLogoutClose();
+  //     }
+  //   };
+
+  //   window.addEventListener('click', handleOutsideClick);
+  //   window.addEventListener('keydown', handleEscKeyPress);
+
+  //   return () => {
+  //     window.removeEventListener('click', handleOutsideClick);
+  //     window.removeEventListener('keydown', handleEscKeyPress);
+  //   };
+  // }, [isLogoutActive, onLogoutClose]);
+
   return (
-    <Dialog open={isLogoutActive} onClose={onLogoutClose}>
+    <Dialog className="logout-container" open={isLogoutActive} onClose={onLogoutClose}>
       <LogoutOverlay />
       <Content>
         <TitleWrap>
