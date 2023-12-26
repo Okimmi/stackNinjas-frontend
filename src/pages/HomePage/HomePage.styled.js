@@ -122,6 +122,10 @@ export const Edit = styled.button`
     border: none;
     background: transparent;
     cursor: pointer;
+    
+    &:hover {
+      color: ${theme.colors.primeryBlue};
+    }
 `;
 export const Div = styled.div`
   display: flex;

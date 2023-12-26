@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DailyNormalModal from 'components/DailyNormalModal/DailyNormalModal.jsx';
 import {
   ImgEdit,
   ImgDelete,
@@ -48,6 +49,9 @@ export const HomePage = () => {
   // const togglePopup = () => {
   //   setPopupVisible(!isPopupVisible);
   // };
+
+  const [showDailyNormalModal, setDailyNormalModal] = useState(false);
+  const toggleModal = () => setDailyNormalModal(!showDailyNormalModal);
 
   const handleSliderChange = event => {
     setSliderValue(event.target.value);
@@ -154,13 +158,14 @@ export const HomePage = () => {
               
           </UserDiv>
         </HeaderDiv> */}
+    
         <Div2>
           <DivLeftPart>
             <MyDailyNormaDiv>
               <MyDailyNorma>My daily norma</MyDailyNorma>
               <Div>
                 <Litr>1.5 L</Litr>
-                <Edit>Edit</Edit>
+                <Edit onClick={toggleModal}>Edit</Edit>
               </Div>
             </MyDailyNormaDiv>
 
@@ -278,6 +283,8 @@ export const HomePage = () => {
           </DivTodayList>
         </Div2>
       </Background>
+
+      {showDailyNormalModal && <DailyNormalModal closeModal={toggleModal}/>}
     </>
   );
 };
