@@ -239,7 +239,11 @@ export const HomePage = () => {
       </div>
     </div>
           </DivTodayList>
+<<<<<<< Updated upstream
         </DivTodayAndMonth>
+=======
+          <MonthStatesTable></MonthStatesTable>
+>>>>>>> Stashed changes
         </Div2>
       </Background>
     </>
