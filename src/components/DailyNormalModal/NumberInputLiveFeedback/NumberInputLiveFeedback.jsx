@@ -41,7 +41,7 @@ export const NumberInputLiveFeedback = ({ label, aboveText, helpText, ...props }
             <FieldInput
               $valid = {showFeedback ? (meta.error ? 'invalid' : 'valid') : 'default'}
               type="number"
-              name="name"
+              name={props.name}
               // pattern="^[a-zA-Zа-яА-ЯіІїЇєЄ]+(([' \-][a-zA-Zа-яА-ЯіІїЇєЄ])?[a-zA-Zа-яА-ЯіІїЇєЄ]*)*$"
               // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               
@@ -54,7 +54,7 @@ export const NumberInputLiveFeedback = ({ label, aboveText, helpText, ...props }
               <FieldFeedback 
                 id={`${props.id}-feedback`}
                 aria-live="polite">
-                  {meta.error && (<MdClose size={24} color="red"/>)}
+                  {meta.error && (<MdClose size={24} color='#EF5050'/>)} {/* red */}
                   {!meta.error && (<MdCheck size={24} color="green"/>)}
               </FieldFeedback>)}
           </FieldPosition>
@@ -73,7 +73,7 @@ export const NumberInputLiveFeedback = ({ label, aboveText, helpText, ...props }
             id={`${props.id}-feedback`}
             aria-live="polite"
             tabIndex="-1"
-            color='red'
+            color='#EF5050' // red
           >
             {meta.error}
           </FieldHelpText>

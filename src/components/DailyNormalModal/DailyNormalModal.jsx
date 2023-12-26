@@ -65,9 +65,9 @@ const DailyNormalModal = ({closeModal}) => {
   const configFormik = useFormik({
     initialValues: { 
       gender: "", 
-      weight: "",
-      activeTraningHours: "",
-      waterVolume: "",
+      weight: '',
+      activeTraningHours: '',
+      waterVolume: 1000,
     },
     onSubmit: async (values) => handleSubmit(values),
     validationSchema: Yup.object({
@@ -193,7 +193,6 @@ const DailyNormalModal = ({closeModal}) => {
                       name="waterVolume"
                       placeholder="0" 
                       helpText=""
-                      defaultValue={1000} 
                     />
                 </BoxWaterDrink>
 

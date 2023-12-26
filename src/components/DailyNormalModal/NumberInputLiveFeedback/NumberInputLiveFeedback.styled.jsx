@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 const colorsValid = { 
-  error: 'red',       // textError + textHelp
-  success: 'green',   // textError + textHelp
-  valid: 'green',     // border input
-  invalid: 'red',     // border input
+  error: '#EF5050',       // textError + textHelp   props.theme.colors.secondary3 
+  success: 'green',         // textError + textHelp   
+  valid: 'green',           // border input
+  invalid: '#EF5050',     // border input           props.theme.colors.secondary3
 }
 
 export const FieldBox = styled.div.attrs(props => ({
@@ -13,7 +13,10 @@ export const FieldBox = styled.div.attrs(props => ({
   type: "text",
 
   // or we can define dynamic ones
-  $valid: colorsValid[props.$valid] || props.color || 'gray',
+  $valid: 
+    (colorsValid[props.$valid]) ||
+    props.color ||
+    props.theme.colors.secondary8,
 }))`
   width: 100%;
   display: flex;
@@ -39,7 +42,11 @@ export const FieldInput = styled.input.attrs(props => ({
   type: "text",
 
   // or we can define dynamic ones
-  $valid: colorsValid[props.$valid] || props.color || 'gray',
+  // $valid: colorsValid[props.$valid] || props.color || 'gray',
+  $valid: 
+    colorsValid[props.$valid] ||
+    props.color ||
+    props.theme.colors.secondary8,
 }))`
   display: block;
   width: calc(100% - 2*4px);
@@ -55,9 +62,9 @@ export const FieldInput = styled.input.attrs(props => ({
 
   &:hover,
   &:focus-within {
-    outline: 1px solid blue;
+    outline: 1px solid ${props => props.theme.colors.primeryBlue};
     background-color: rgb(232, 240, 254);
-    color:  ${props => props.theme.colors.primeryBlack};;
+    color:  ${props => props.theme.colors.primeryBlack};
     transition: outline 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -77,7 +84,7 @@ export const FieldTextAbove = styled.p`
   width: 100%;
   margin-bottom: 8px;
   color: ${props => props.theme.colors.primeryBlack};
-  background-color:  ${props => props.theme.colors.primeryWhite};;
+  background-color:  ${props => props.theme.colors.primeryWhite};
 ` 
 
 export const FieldPosition = styled.span`
@@ -107,13 +114,13 @@ export const Link = styled(NavLink)`
   font-weight: 500;
   border-radius: 4px;
   border: none;
-  color:  #1976d2;;
+  color: ${props => props.theme.colors.primeryBlack};
 
   &:hover,
   &:focus {
-    color: orangered;
+    color: ${props => props.theme.colors.secondary5}; // orange
   }
   &:active {
-    color: red;
+    color: ${props => props.theme.colors.secondary3}; // red
   }
 `;
