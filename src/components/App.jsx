@@ -10,7 +10,6 @@ import { useAuth } from '../redux/hooks/useAuth';
 import { refreshUser } from '../redux/auth/operations.js';
 import { useEffect } from 'react';
 import { Blocks } from 'react-loader-spinner';
-import { PrivateRoute } from './PrivateRoute';
 import { HomePage } from 'pages/HomePage/HomePage';
 import { MainPage } from 'pages/MainPage/MainPage';
 
@@ -61,15 +60,6 @@ export const App = () => {
                 component={<ForgotPasswordPage />}
               />
             }
-          />
-          <Route 
-          path="/" 
-          element={
-          <PrivateRoute 
-          redirectTo="/" 
-          component={<HomePage />} 
-              />
-            } 
           />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
