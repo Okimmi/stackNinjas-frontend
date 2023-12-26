@@ -44,6 +44,7 @@ import edit from '../../icons/Edit.svg';
 import delet from '../../icons/Delete.svg';
 import { useSelector } from 'react-redux';
 import { selectDailyWaterRequirement } from '../../redux/auth/selectors.js';
+import {MonthStatesTable} from '../../components/MonthStatesTable/MonthStatesTable.jsx'
 
 export const HomePage = () => {
   const [sliderValue, setSliderValue] = useState(0);
@@ -167,7 +168,7 @@ export const HomePage = () => {
             <MyDailyNormaDiv>
               <MyDailyNorma>My daily norma</MyDailyNorma>
               <Div>
-                <Litr>{dailyWaterRequirement} L</Litr>
+                <Litr>{dailyWaterRequirement/1000} L</Litr>
                 <Edit onClick={toggleModal}>Edit</Edit>
               </Div>
             </MyDailyNormaDiv>
@@ -286,7 +287,9 @@ export const HomePage = () => {
                 </div>
               </div>
             </DivTodayList>
+            <MonthStatesTable></MonthStatesTable>
           </DivTodayAndMonth>
+          
         </Div2>
       </Background>
 
