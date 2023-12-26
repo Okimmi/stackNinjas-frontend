@@ -50,7 +50,7 @@ export const App = () => {
           <Route
             path="/signin"
             element={
-              <RestrictedRoute redirectTo="/home" component={<SignInPage />} />
+              <RestrictedRoute redirectTo="/" component={<SignInPage />} />
             }
           />
           <Route
