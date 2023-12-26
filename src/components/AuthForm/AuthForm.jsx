@@ -19,11 +19,11 @@ import {
   Styledlabel,
 } from './AuthForm.styled';
 import { useNavigate } from 'react-router-dom';
-import { logIn, refreshUser } from '../../redux/auth/operations';
+import { logIn } from '../../redux/auth/operations';
 import iconeye from '../../images/AuthForm/show_icon.svg';
 import hidepas from '../../images/AuthForm/hide_icon.svg';
 import { useEffect, useState } from 'react';
-import { selectIsError, selectIsLoggedIn } from '../../redux/auth/selectors';
+import { selectIsError } from '../../redux/auth/selectors';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -41,9 +41,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 export const AuthForm = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const error = useSelector(selectIsError);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
   const [showPassword, setShowPassword] = useState(false);
 
   const [screenSize, setScreenSize] = useState({
@@ -54,10 +52,7 @@ export const AuthForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  if (isSubmitted) {
-    toast.error(error);
-  }
-
+  useEffect(() => {toast.error(error);}, [error])
   useEffect(() => {
     const handleWindowResize = () => {
       setScreenSize({
@@ -90,10 +85,7 @@ export const AuthForm = () => {
                 password: values.password,
               })
             );
-            setIsSubmitted(true);
-            if (isLoggedIn) {
-              dispatch(refreshUser());
-            }
+
           }}
         >
           <StyledForm>
@@ -134,7 +126,7 @@ export const AuthForm = () => {
             <ErMsg component="span" name="password" />
             <FormBtnStyled type="submit">Sign In</FormBtnStyled>
 
-            <SightUp onClick={() => navigate('/signup')}>Sight Up</SightUp>
+            <SightUp onClick={() => navigate('/signup')}>Sign up</SightUp>
           </StyledForm>
         </Formik>
         {screenSize.isDesctopScreen && <BottleStyled />}

@@ -25,9 +25,8 @@ const authSlice = createSlice({
     //fullfilled
     builder.addCase(register.fulfilled, (state, action) => {
       state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLoggedIn = true;
       state.isRefreshing = false;
+      
     });
     builder.addCase(logIn.fulfilled, (state, action) => {
       state.user = action.payload.user;
@@ -64,9 +63,9 @@ const authSlice = createSlice({
       state.isRefreshing = false;
       state.isError = action.payload;
     });
-    builder.addCase(register.rejected, (state, payload) => {
+    builder.addCase(register.rejected, (state, action) => {
       state.isRefreshing = false;
-      state.isError = payload.payload;
+      state.isError = action.payload;
     });
   },
 });
