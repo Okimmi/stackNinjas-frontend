@@ -19,7 +19,11 @@ export const UserLogo = () => {
 
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const handleDropdownClick = () => {
-    setDropdownVisible(!isDropdownVisible);
+    setDropdownVisible(true);
+  };
+
+  const handleDropdownClose = () => {
+    setDropdownVisible(false);
   };
 
   return (
@@ -33,7 +37,7 @@ export const UserLogo = () => {
         ></UserAvatar>
       </User>
       <IconOpenUserMenu src={openIcon} alt="Open menu" />
-      <UserLogoModal isOpen={isDropdownVisible} />
+      <UserLogoModal isOpen={isDropdownVisible} onClose={handleDropdownClose} />
     </UserLogoStyled>
   );
 };

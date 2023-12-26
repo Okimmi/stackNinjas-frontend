@@ -28,8 +28,7 @@ export const DropdownItem = styled.div`
   border-radius: 5px;
   cursor: pointer;
 
-  &:hover,
-  &:focus {
+  &:hover {
     box-shadow: 0px 4px 8px 0px ${props => props.theme.colors.primeryBlue};
   }
 `;

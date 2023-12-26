@@ -28,7 +28,7 @@ export const WaterconsumTrackerStyled = styled.div`
   }
   h3 {
     font-size: 18px;
-    font-weight: 500px;
+    font-weight: 500;
     line-height: 1.1;
     margin-bottom: 12px;
   }
@@ -72,7 +72,7 @@ export const WaterconsumTrackerStyled = styled.div`
 
 export const Titlelist = styled.h6`
   font-size: 18px;
-  font-weight: 500px;
+  font-weight: 500;
   line-height: 1.1;
   margin-bottom: 12px;
 `;
@@ -85,13 +85,14 @@ export const ButtonTryTracker = styled.button`
   border-radius: 10px;
   padding: 8px 30px;
   font-size: 16px;
-  font-weight: 500px;
+  font-weight: 500;
   line-height: 1.25;
   cursor: pointer;
   width: 280px;
   height: 36px;
 
-  &:hover {
+  &:hover,
+  &:focus {
     box-shadow: 0px 4px 14px 0px ${props => props.theme.colors.primeryBlue};
   }
   &:active {

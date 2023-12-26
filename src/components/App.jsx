@@ -1,12 +1,12 @@
-import { SharedLayout } from './SharedLayout';
-import { MainPage } from 'pages/MainPage/MainPage';
-import { Route, Routes } from 'react-router-dom';
-import { SignUpPage } from 'pages/SignUpPage/SignUpPage';
-import { SignInPage } from 'pages/SignInPage/SignInPage';
-import { ForgotPasswordPage } from 'pages/ForgotPasswordPage/SignUpPage';
-import { HomePage } from 'pages/HomePage/HomePage';
-import { GlobalStyle } from './GlobalStyle';
-import { RestrictedRoute } from './RestrictedRoute';
+import { SharedLayout } from "./SharedLayout";
+import { MainPage } from "pages/MainPage/MainPage";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { SignUpPage } from "pages/SignUpPage/SignUpPage";
+import { SignInPage } from "pages/SignInPage/SignInPage";
+import { ForgotPasswordPage } from "pages/ForgotPasswordPage/SignUpPage";
+import { HomePage } from "pages/HomePage/HomePage";
+import { GlobalStyle } from "./GlobalStyle";
+import { RestrictedRoute } from "./RestrictedRoute";
 import { useDispatch } from 'react-redux';
 import { useAuth } from '../redux/hooks/useAuth';
 import { refreshUser } from '../redux/auth/operations.js';
@@ -63,9 +63,8 @@ export const App = () => {
                 redirectTo="/"
                 component={<ForgotPasswordPage />}
               />
-            }
-          />
-        </Route>
+        <Route path="*" element={<Navigate to="/" />} />
+          </Route>
       </Routes>
 
       <GlobalStyle />

@@ -1,4 +1,4 @@
-// import { useEffect } from 'react'; // Видаліть useState із цього імпорту
+import { useState } from 'react';
 
 import {
   DropdownContainer,
@@ -8,21 +8,28 @@ import {
 } from './UserLogoModal.styled';
 import settingIcon from '../../images/header/settingIcon.svg';
 import logoutIcon from '../../images/header/logoutIcon.svg';
+import { UserLogoutModal } from '../../components/UserLogoutModal/UserLogoutModal';
 
 export const UserLogoModal = ({ isOpen, onClose }) => {
-  const handleButtonSettingClick = () => {
-    //  код для відкриття модалки Setting
+  const [LogoutActive, SetLogoutActive] = useState(false);
+
+  const handleOnSetting = () => {
+    // КОД ДЛЯ ВІДКРИТТЯ МОДАЛКИ НАЛАШТУВАНЬ ПРОФІЛЮ ЮЗЕРА
     onClose();
   };
 
-  const handleButtonLogoutClick = () => {
-    //  код для відкриття модалки Log out
+  const handleOnLogout = () => {
+    SetLogoutActive(true);
     onClose();
+  };
+
+  const handleCloseLogout = () => {
+    SetLogoutActive(false);
   };
 
   // useEffect(() => {
   //   const handleEscKeyPress = event => {
-  //     if (event.key === 'Escape' && isOpen) {
+  //     if (event.code === 'Escape' && isOpen) {
   //       onClose();
   //     }
   //   };
@@ -43,15 +50,22 @@ export const UserLogoModal = ({ isOpen, onClose }) => {
   // }, [isOpen, onClose]);
 
   return (
-    <DropdownContainer className="dropdown-container" isOpen={isOpen}>
-      <DropdownItem onClick={handleButtonSettingClick}>
-        <IconSetting src={settingIcon} alt="Setting" />
-        Setting
-      </DropdownItem>
-      <DropdownItem onClick={handleButtonLogoutClick}>
-        <IconLogout src={logoutIcon} alt="Log out" />
-        Log out
-      </DropdownItem>
-    </DropdownContainer>
+    isOpen && (
+      <DropdownContainer className="dropdown-container" onClick={onClose}>
+        <DropdownItem onClick={handleOnSetting}>
+          <IconSetting src={settingIcon} alt="Setting" />
+          Setting
+        </DropdownItem>
+        <DropdownItem onClick={handleOnLogout}>
+          <IconLogout src={logoutIcon} alt="Log out" />
+          Log out
+        </DropdownItem>
+
+        <UserLogoutModal
+          isLogoutActive={LogoutActive}
+          onLogoutClose={handleCloseLogout}
+        />
+      </DropdownContainer>
+    )
   );
 };

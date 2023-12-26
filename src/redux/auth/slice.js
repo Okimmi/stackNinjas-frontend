@@ -12,6 +12,15 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    clearUserData: state => {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
+      state.isRefreshing = false;
+      state.isError = false;
+    },
+  },
   extraReducers: builder => {
     //fullfilled
     builder.addCase(register.fulfilled, (state, action) => {
@@ -61,5 +70,5 @@ const authSlice = createSlice({
     });
   },
 });
-
+  export const { clearUserData } = authSlice.actions;
 export const authReducer = authSlice.reducer;
