@@ -7,7 +7,7 @@ import glass from '../../icons/Glass.svg'
 import edit from '../../icons/Edit.svg'
 import delet from '../../icons/Delete.svg'
 import { useSelector } from 'react-redux';
-import { selectToken, selectDailyWaterRequirement } from './selectors.js';
+import { selectToken, selectDailyWaterRequirement } from '../../redux/auth/selectors.js';
 export const HomePage = () => {
   const [sliderValue, setSliderValue] = useState(0);
 
@@ -120,7 +120,7 @@ export const HomePage = () => {
         <MyDailyNormaDiv>
           <MyDailyNorma>My daily norma</MyDailyNorma>
           <Div>
-            <Litr>{dailyWaterRequirement} L</Litr>
+            <Litr>{dailyWaterRequirement}:1000 L</Litr>
             <Edit>Edit</Edit>
           </Div>
         </MyDailyNormaDiv>
