@@ -7,7 +7,8 @@ import {
   ModalContainer,
   CloseBtn,
 } from './Modal.styled';
-import IconCloseModal from '../../../images/modal/IconCloseModal';
+// import IconCloseModal from '../../../images/modal/IconCloseModal';
+import iconCloseModal from '../../../images/modal/iconCloseModal.svg'
 
 
 const Modal = ({ children, closeModal, portalParent=document.body }) => {
@@ -33,7 +34,8 @@ const Modal = ({ children, closeModal, portalParent=document.body }) => {
       <ModalContainer onClick={e => e.stopPropagation()}>
         
         <CloseBtn onClick={(e) => closeModal(e)}>
-          <IconCloseModal size={24}/>
+          {/* <IconCloseModal size={24}/> */}
+          <img src={iconCloseModal} size={24} alt="Close modal"/>
         </CloseBtn>
 
         {children}
