@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 
 const colorsValid = { 
   error: '#EF5050',       // textError + textHelp   props.theme.colors.secondary3 
-  success: 'green',         // textError + textHelp   
-  valid: 'green',           // border input
+  success: '#407BFF',         // textError + textHelp   
+  valid: '#407BFF',           // border input
   invalid: '#EF5050',     // border input           props.theme.colors.secondary3
 }
 
@@ -53,7 +53,8 @@ export const FieldInput = styled.input.attrs(props => ({
   outline: 1px solid ${(props) => props.$valid};
     // colorsValid[props.valid] ?? 'rgba(33, 33, 33, 0.2)'}; 
   background-color:  ${props => props.theme.colors.primeryWhite};;
-  color: ${props => props.theme.colors.primeryBlue};
+  /* color: ${props => props.theme.colors.primeryBlue}; */
+  color:${props => props.$valid}; 
   border-radius: 4px;
   border: none;
   /* margin-top: 4px; */
@@ -64,7 +65,7 @@ export const FieldInput = styled.input.attrs(props => ({
   &:focus-within {
     outline: 1px solid ${props => props.theme.colors.primeryBlue};
     background-color: rgb(232, 240, 254);
-    color:  ${props => props.theme.colors.primeryBlack};
+    color:${props => props.$valid };
     transition: outline 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 

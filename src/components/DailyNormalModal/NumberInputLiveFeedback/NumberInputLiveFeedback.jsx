@@ -12,6 +12,7 @@ import {
   FieldHelpText, 
   FieldFeedback,
   FieldTextAbove} from "./NumberInputLiveFeedback.styled"
+import { theme } from 'components/GlobalStyle';
 
 
 export const NumberInputLiveFeedback = ({ label, aboveText, helpText, ...props }) => {
@@ -42,6 +43,7 @@ export const NumberInputLiveFeedback = ({ label, aboveText, helpText, ...props }
               $valid = {showFeedback ? (meta.error ? 'invalid' : 'valid') : 'default'}
               type="number"
               name={props.name}
+              color={theme.colors.primeryBlue}
               // pattern="^[a-zA-Zа-яА-ЯіІїЇєЄ]+(([' \-][a-zA-Zа-яА-ЯіІїЇєЄ])?[a-zA-Zа-яА-ЯіІїЇєЄ]*)*$"
               // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               
@@ -54,7 +56,7 @@ export const NumberInputLiveFeedback = ({ label, aboveText, helpText, ...props }
               <FieldFeedback 
                 id={`${props.id}-feedback`}
                 aria-live="polite">
-                  {meta.error && (<MdClose size={24} color='#EF5050'/>)} {/* red */}
+                  {meta.error && (<MdClose size={24} color={theme.colors.secondary3}/>)} {/* red */}
                   {!meta.error && (<MdCheck size={24} color="green"/>)}
               </FieldFeedback>)}
           </FieldPosition>
@@ -73,7 +75,7 @@ export const NumberInputLiveFeedback = ({ label, aboveText, helpText, ...props }
             id={`${props.id}-feedback`}
             aria-live="polite"
             tabIndex="-1"
-            color='#EF5050' // red
+            color={theme.colors.secondary3} // red
           >
             {meta.error}
           </FieldHelpText>
