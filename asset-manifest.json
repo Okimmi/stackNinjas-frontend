@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/stackNinjas-frontend/static/css/main.5ca734df.css",
-    "main.js": "/stackNinjas-frontend/static/js/main.be6c2204.js",
+    "main.js": "/stackNinjas-frontend/static/js/main.5bb15d1b.js",
     "static/media/Roboto-Medium.ttf": "/stackNinjas-frontend/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/Roboto-Regular.ttf": "/stackNinjas-frontend/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
     "static/media/Roboto-Bold.ttf": "/stackNinjas-frontend/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
@@ -25,22 +25,26 @@
     "index.html": "/stackNinjas-frontend/index.html",
     "static/media/hide_icon.svg": "/stackNinjas-frontend/static/media/hide_icon.28fb84cfca4bb2e793b4f4a9f755df30.svg",
     "static/media/habitDriveIcon.svg": "/stackNinjas-frontend/static/media/habitDriveIcon.2a5c4120a9beff9d1f9b5de5609360fc.svg",
+    "static/media/icon_show_hide.svg": "/stackNinjas-frontend/static/media/icon_show_hide.100aa40a3dc1600096ccfca0b6d1c7e5.svg",
     "static/media/openUserMenuIcon.svg": "/stackNinjas-frontend/static/media/openUserMenuIcon.a137ac0aad5f1c2865b0e85a720df622.svg",
     "static/media/Delete.svg": "/stackNinjas-frontend/static/media/Delete.746ecaf7a710105f0e8b6ebb9df24258.svg",
+    "static/media/blueEye.svg": "/stackNinjas-frontend/static/media/blueEye.7628099e68a52b07916442503fdeab59.svg",
     "static/media/Edit.svg": "/stackNinjas-frontend/static/media/Edit.d7adf85806312b234a26792153fbcd46.svg",
     "static/media/signIn.svg": "/stackNinjas-frontend/static/media/signIn.870af65d61b35cf143624ceeb90468b1.svg",
     "static/media/Plus.svg": "/stackNinjas-frontend/static/media/Plus.d614a7c0eddd72fb847dfe1e184fc40b.svg",
     "static/media/show_icon.svg": "/stackNinjas-frontend/static/media/show_icon.054bcb83c278f3920dc3ef23282ae113.svg",
     "static/media/logoutIcon.svg": "/stackNinjas-frontend/static/media/logoutIcon.1ab73ef24bbb64a7a3f18c7901172751.svg",
     "static/media/statisticIcon.svg": "/stackNinjas-frontend/static/media/statisticIcon.39c6f2f5a0d69a5c53775d403cc20fbd.svg",
+    "static/media/upload.svg": "/stackNinjas-frontend/static/media/upload.a522f37d5a6928d649f835e04a12332d.svg",
     "static/media/closeIcon.svg": "/stackNinjas-frontend/static/media/closeIcon.1773ad9c2d64c8e5f8dac9cb5fb2c98a.svg",
+    "static/media/outline.svg": "/stackNinjas-frontend/static/media/outline.522b2c595a77d1df50c4eaf35b522689.svg",
     "static/media/iconCloseModal.svg": "/stackNinjas-frontend/static/media/iconCloseModal.04faf8a22e33feb02ff7f8ef530f157d.svg",
     "static/media/PlusAdd.svg": "/stackNinjas-frontend/static/media/PlusAdd.f009a02ac759b50fd6c43db8c00baf79.svg",
     "main.5ca734df.css.map": "/stackNinjas-frontend/static/css/main.5ca734df.css.map",
-    "main.be6c2204.js.map": "/stackNinjas-frontend/static/js/main.be6c2204.js.map"
+    "main.5bb15d1b.js.map": "/stackNinjas-frontend/static/js/main.5bb15d1b.js.map"
   },
   "entrypoints": [
     "static/css/main.5ca734df.css",
-    "static/js/main.be6c2204.js"
+    "static/js/main.5bb15d1b.js"
   ]
 }
