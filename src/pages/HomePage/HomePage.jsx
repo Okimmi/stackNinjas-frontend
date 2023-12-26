@@ -48,12 +48,6 @@ import {MonthStatesTable} from '../../components/MonthStatesTable/MonthStatesTab
 
 export const HomePage = () => {
   const [sliderValue, setSliderValue] = useState(0);
-  // const [isPopupVisible, setPopupVisible] = useState(false);
-  // const togglePopup = () => {
-  //   setPopupVisible(!isPopupVisible);
-  // };
-
-  // const token = useSelector(selectToken);
   const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
 
   const [showDailyNormalModal, setDailyNormalModal] = useState(false);
