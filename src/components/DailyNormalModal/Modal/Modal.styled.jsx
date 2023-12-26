@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const ModalBackdrop = styled.div`
-  /* position: absolute; */
-  z-index: 4;
-  top: 0;
+  position: absolute;
+  z-index: 1004;
+  top: 64px;
   left: 0;
   width: 100%;
   height: 100%;
