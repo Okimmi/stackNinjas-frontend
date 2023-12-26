@@ -42,6 +42,8 @@ import plusAdd from '../../icons/PlusAdd.svg';
 import glass from '../../icons/Glass.svg';
 import edit from '../../icons/Edit.svg';
 import delet from '../../icons/Delete.svg';
+import { useSelector } from 'react-redux';
+import { selectDailyWaterRequirement } from '../../redux/auth/selectors.js';
 
 export const HomePage = () => {
   const [sliderValue, setSliderValue] = useState(0);
@@ -49,6 +51,9 @@ export const HomePage = () => {
   // const togglePopup = () => {
   //   setPopupVisible(!isPopupVisible);
   // };
+
+  // const token = useSelector(selectToken);
+  const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
 
   const [showDailyNormalModal, setDailyNormalModal] = useState(false);
   const toggleModal = () => setDailyNormalModal(!showDailyNormalModal);
@@ -60,7 +65,6 @@ export const HomePage = () => {
   const [data, setData] = useState([]);
   const [editingEntryData, setEditingEntryData] = useState(null);
   const [newEntryData, setNewEntryData] = useState({ amount: '' });
-  // const [newEntry, setNewEntry] = useState('');
 
   const onEditClick = item => {
     setEditingEntryData({ ...item });
@@ -158,13 +162,12 @@ export const HomePage = () => {
               
           </UserDiv>
         </HeaderDiv> */}
-
         <Div2>
           <DivLeftPart>
             <MyDailyNormaDiv>
               <MyDailyNorma>My daily norma</MyDailyNorma>
               <Div>
-                <Litr>1.5 L</Litr>
+                <Litr>{dailyWaterRequirement} L</Litr>
                 <Edit onClick={toggleModal}>Edit</Edit>
               </Div>
             </MyDailyNormaDiv>
@@ -209,27 +212,69 @@ export const HomePage = () => {
 
           <DivTodayAndMonth>
             <PToday>Today</PToday>
-          </DivTodayAndMonth>
-
-          <DivTodayList>
-            <div>
-              {editingEntryData ? (
-                <div style={{ marginTop: 20, display: 'flex', gap: 10 }}>
-                  <input
-                    value={editingEntryData.amount}
-                    onChange={e =>
-                      setEditingEntryData({
-                        ...editingEntryData,
-                        amount: e.target.value,
-                      })
-                    }
-                  />
-                  <button onClick={onSaveEdit}>Save</button>
-                  <button onClick={onCancelEdit}>Cancel</button>
-                </div>
-              ) : (
+            <DivTodayList>
+              <div>
+                {editingEntryData ? (
+                  <div style={{ marginTop: 20, display: 'flex', gap: 10 }}>
+                    <input
+                      value={editingEntryData.amount}
+                      onChange={e =>
+                        setEditingEntryData({
+                          ...editingEntryData,
+                          amount: e.target.value,
+                        })
+                      }
+                    />
+                    <button onClick={onSaveEdit}>Save</button>
+                    <button onClick={onCancelEdit}>Cancel</button>
+                  </div>
+                ) : null}
                 <div>
-                  <ButtonAddWater onClick={onAdd} className="add-water-button">
+                  {data.map(item => (
+                    <DivListItem key={item.id} className="delete-line">
+                      <DivFirstPart>
+                        <ImgGlass
+                          src={glass}
+                          width={26}
+                          height={26}
+                          alt="Glass"
+                        />
+
+                        <SpanCount>{'200 ml'}</SpanCount>
+                        <SpanDate>{'14:00 PM'}</SpanDate>
+                      </DivFirstPart>
+                      <div>
+                        {/* ДОДАТИ ДАНІ З ФОРМИ
+              <span >{item.amount}</span>
+              <SpanDate>{item.date}</SpanDate> */}
+                        <ButtonEdit
+                          disabled={item.id === editingEntryData?.id}
+                          onClick={() => onEditClick(item)}
+                        >
+                          <ImgEdit
+                            src={edit}
+                            width={16}
+                            height={16}
+                            alt="Edit"
+                          />
+                        </ButtonEdit>
+                        <ButtonDelete
+                          disabled={item.id === editingEntryData?.id}
+                          onClick={() => onDeleteClick(item)}
+                        >
+                          <ImgDelete
+                            src={delet}
+                            width={14}
+                            height={14}
+                            alt="Delete"
+                          />
+                        </ButtonDelete>
+                      </div>
+                    </DivListItem>
+                  ))}
+                </div>
+                <div>
+                  <ButtonAddWater onClick={onAdd}>
                     <ImgPlusAdd
                       src={plusAdd}
                       width={12}
@@ -239,48 +284,9 @@ export const HomePage = () => {
                     Add water
                   </ButtonAddWater>
                 </div>
-              )}
-              <div>
-                {data.map(item => (
-                  <DivListItem key={item.id} className="delete-line">
-                    <DivFirstPart>
-                      <ImgGlass
-                        src={glass}
-                        width={26}
-                        height={26}
-                        alt="Glass"
-                      />
-
-                      <SpanCount>{'200 ml'}</SpanCount>
-                      <SpanDate>{'14:00 PM'}</SpanDate>
-                    </DivFirstPart>
-                    <div>
-                      {/* ДОДАТИ ДАНІ З ФОРМИ
-              <span >{item.amount}</span>
-              <SpanDate>{item.date}</SpanDate> */}
-                      <ButtonEdit
-                        disabled={item.id === editingEntryData?.id}
-                        onClick={() => onEditClick(item)}
-                      >
-                        <ImgEdit src={edit} width={16} height={16} alt="Edit" />
-                      </ButtonEdit>
-                      <ButtonDelete
-                        disabled={item.id === editingEntryData?.id}
-                        onClick={() => onDeleteClick(item)}
-                      >
-                        <ImgDelete
-                          src={delet}
-                          width={14}
-                          height={14}
-                          alt="Delete"
-                        />
-                      </ButtonDelete>
-                    </div>
-                  </DivListItem>
-                ))}
               </div>
-            </div>
-          </DivTodayList>
+            </DivTodayList>
+          </DivTodayAndMonth>
         </Div2>
       </Background>
 
