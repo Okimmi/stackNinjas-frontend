@@ -30,10 +30,6 @@ img {
   max-width: 100%;
   height: auto;
 }
-body.modal-open {
-    overflow: hidden;
-  
-}
 `;
 
 export const theme = {
