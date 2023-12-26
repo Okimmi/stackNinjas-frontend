@@ -1,4 +1,4 @@
-import { createSelector } from 'reselect';
+import { createSelector } from '@reduxjs/toolkit';
 
 export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 
@@ -17,3 +17,6 @@ export const selectDailyWaterRequirement = createSelector(
   selectUser,
   (user) => user?.dailyWaterRequirement
 );
+
+export const selectIsError = state => state.auth.isError;
+

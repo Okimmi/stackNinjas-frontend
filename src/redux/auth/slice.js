@@ -70,5 +70,6 @@ const authSlice = createSlice({
     });
   },
 });
+
   export const { clearUserData } = authSlice.actions;
 export const authReducer = authSlice.reducer;
