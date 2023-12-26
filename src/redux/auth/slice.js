@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logIn, logOut, refreshUser, register } from './operations';
+import { logIn, logOut, refreshUser, register, addHydrationEntry } from './operations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -28,6 +28,11 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.isRefreshing = false;
+    });
+    builder.addCase(addHydrationEntry.fulfilled, (state, action) => {
+      const newEntry = action.payload;
+      // Assuming amount is an array in your user object
+      state.user.amount.push(newEntry.amount);
     });
     builder.addCase(logIn.fulfilled, (state, action) => {
       state.user = action.payload.user;

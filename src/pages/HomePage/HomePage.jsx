@@ -42,17 +42,32 @@ import plusAdd from '../../icons/PlusAdd.svg';
 import glass from '../../icons/Glass.svg';
 import edit from '../../icons/Edit.svg';
 import delet from '../../icons/Delete.svg';
-import { useSelector } from 'react-redux';
-import { selectDailyWaterRequirement } from '../../redux/auth/selectors.js';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectDailyWaterRequirement, selectAmount, selectTime } from '../../redux/auth/selectors.js';
 import {MonthStatesTable} from '../../components/MonthStatesTable/MonthStatesTable.jsx'
+import {addHydrationEntry} from '../../redux/auth/operations.js'
 
 export const HomePage = () => {
   const [sliderValue, setSliderValue] = useState(0);
   const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
+  // const amount = useSelector(selectAmount);
+  // const time = useSelector(selectTime);
+  // const dateTime = new Date(time);
 
+  // const hours = dateTime.getHours();
+  // const minutes = dateTime.getMinutes();
   const [showDailyNormalModal, setDailyNormalModal] = useState(false);
   const toggleModal = () => setDailyNormalModal(!showDailyNormalModal);
 
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+
+    const hydrationData = {
+      amount: sliderValue, // You may adjust this based on your logic
+      time: new Date().toISOString(), // Assuming you want the current time
+    }
+  
+    dispatch(addHydrationEntry(hydrationData));
   const handleSliderChange = event => {
     setSliderValue(event.target.value);
   };
@@ -235,13 +250,14 @@ export const HomePage = () => {
                           alt="Glass"
                         />
 
-                        <SpanCount>{'200 ml'}</SpanCount>
-                        <SpanDate>{'14:00 PM'}</SpanDate>
-                      </DivFirstPart>
+                        <SpanCount>{item.amount} ml</SpanCount>
+        <SpanDate>
+          {new Date(item.time).getHours().toString().padStart(2, '0')}:
+          {new Date(item.time).getMinutes().toString().padStart(2, '0')}
+        </SpanDate>
+        </DivFirstPart>
                       <div>
-                        {/* ДОДАТИ ДАНІ З ФОРМИ
-              <span >{item.amount}</span>
-              <SpanDate>{item.date}</SpanDate> */}
+
                         <ButtonEdit
                           disabled={item.id === editingEntryData?.id}
                           onClick={() => onEditClick(item)}
