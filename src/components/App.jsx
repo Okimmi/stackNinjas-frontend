@@ -14,9 +14,10 @@ import { PrivateRoute } from './PrivateRoute';
 import { HomePage } from 'pages/HomePage/HomePage';
 import { MainPage } from 'pages/MainPage/MainPage';
 
+
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
+  const { isRefreshing, isLoggedIn } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -41,7 +42,10 @@ export const App = () => {
     <>
       <Routes>
       <Route path="/" element={<SharedLayout />}>
-      <Route index  element={<MainPage />}/> 
+      <Route
+            index
+            element={isLoggedIn ? <HomePage /> : <MainPage />}
+          ></Route>
       <Route path="/signup" element={<SignUpPage />} />
           <Route
             path="/signin"
@@ -59,7 +63,7 @@ export const App = () => {
             }
           />
           <Route 
-          path="/home" 
+          path="/" 
           element={
           <PrivateRoute 
           redirectTo="/" 
