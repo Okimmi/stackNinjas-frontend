@@ -4,7 +4,7 @@ import 'modern-normalize';
 export const GlobalStyle = createGlobalStyle`
 
 body {
-  font-family: 'Roboto', sans-serif;;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.5;
 }
 
@@ -30,7 +30,6 @@ img {
   max-width: 100%;
   height: auto;
 }
-
 `;
 
 export const theme = {
@@ -43,5 +42,6 @@ export const theme = {
     secondary4: '#9EBBFF',
     secondary5: '#FF9D43',
     secondary6: '#D7E3FF',
+    secondary7: '#8F8F8F',
   },
 };

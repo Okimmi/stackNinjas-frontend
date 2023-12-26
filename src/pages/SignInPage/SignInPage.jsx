@@ -1,5 +1,8 @@
-import { Wrapper } from 'components/Global/Global.styled';
+import { AuthForm } from "components/AuthForm/AuthForm";
 
 export const SignInPage = () => {
-  return <></>;
+  return <>
+    <AuthForm />
+
+  </>;
 };

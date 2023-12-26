@@ -19,8 +19,6 @@ export const HeaderWrap = styled.div`
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
-  width: 280px;
 
   @media screen and (min-width: 768px) {
     width: 704px;

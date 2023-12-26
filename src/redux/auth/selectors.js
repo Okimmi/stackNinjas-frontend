@@ -1,7 +1,10 @@
-import { createSelector } from 'reselect';
+import { createSelector } from '@reduxjs/toolkit';
 
-// Вхідний селектор для отримання об'єкта user зі стейту
-const selectUser = (state) => state.user;
+export const selectIsLoggedIn = state => state.auth.isLoggedIn;
+
+export const selectUser = state => state.auth.user;
+
+export const selectIsRefreshing = state => state.auth.isRefreshing;
 
 // Селектор для отримання значення токену з об'єкта user
 export const selectToken = createSelector(
@@ -14,3 +17,6 @@ export const selectDailyWaterRequirement = createSelector(
   selectUser,
   (user) => user?.dailyWaterRequirement
 );
+
+export const selectIsError = state => state.auth.isError;
+
