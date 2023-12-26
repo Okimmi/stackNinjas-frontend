@@ -65,7 +65,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume }) => {
       gender: '',
       weight: '',
       activeTraningHours: '',
-      waterVolume: authetification.dailyWaterRequirement / 1000 ?? 2,
+      waterVolume: authetification.dailyWaterRequirement ?? 2,
     },
     onSubmit: async values => handleSubmit(values),
     validationSchema: Yup.object({
