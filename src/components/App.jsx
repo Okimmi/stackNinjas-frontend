@@ -1,10 +1,8 @@
 import { SharedLayout } from './SharedLayout';
-import { MainPage } from 'pages/MainPage/MainPage';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { SignUpPage } from 'pages/SignUpPage/SignUpPage';
 import { SignInPage } from 'pages/SignInPage/SignInPage';
 import { ForgotPasswordPage } from 'pages/ForgotPasswordPage/SignUpPage';
-import { HomePage } from 'pages/HomePage/HomePage';
 import { GlobalStyle } from './GlobalStyle';
 import { RestrictedRoute } from './RestrictedRoute';
 import { useDispatch } from 'react-redux';
@@ -12,6 +10,9 @@ import { useAuth } from '../redux/hooks/useAuth';
 import { refreshUser } from '../redux/auth/operations.js';
 import { useEffect } from 'react';
 import { Blocks } from 'react-loader-spinner';
+import { HomePage } from 'pages/HomePage/HomePage';
+import { MainPage } from 'pages/MainPage/MainPage';
+
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -39,17 +40,12 @@ export const App = () => {
   ) : (
     <>
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route
+      <Route path="/" element={<SharedLayout />}>
+      <Route
             index
             element={isLoggedIn ? <HomePage /> : <MainPage />}
           ></Route>
-          <Route
-            path="/signup"
-            element={
-              <RestrictedRoute redirectTo="/" component={<SignUpPage />} />
-            }
-          />
+      <Route path="/signup" element={<SignUpPage />} />
           <Route
             path="/signin"
             element={
@@ -67,6 +63,7 @@ export const App = () => {
           />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
+
       </Routes>
 
       <GlobalStyle />
