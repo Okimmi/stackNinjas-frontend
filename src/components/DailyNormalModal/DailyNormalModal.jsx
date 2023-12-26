@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 import Modal from "components/DailyNormalModal/Modal/Modal";
 import { NumberInputLiveFeedback } from "./NumberInputLiveFeedback/NumberInputLiveFeedback";
-import CalcFieldDailyNormal from "./CalcFieldDailyNormal";
+import CalcFieldDailyNormal from "./CalcFieldDailyNormal/CalcFieldDailyNormal";
 
 import { selectIsError, selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
 

@@ -1,6 +1,6 @@
 import  { useState, useEffect } from "react";
 import { useFormikContext } from "formik";
-import  { RequiredText } from "./DailyNormalModal.styled";
+import  { RequiredText } from "../DailyNormalModal.styled";
 
 const CalcFieldDailyNormal = (props) => {
   const {
