@@ -1,19 +1,17 @@
 import React, { useEffect, } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form, FormikProvider, useFormik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
+// redux-auth
+import { updateDailyNormal } from '../../redux/auth/operations';
+import { selectIsError, selectUser, } from '../../redux/auth/selectors';
+
+// components
 import Modal from 'components/DailyNormalModal/Modal/Modal';
 import { NumberInputLiveFeedback } from './NumberInputLiveFeedback/NumberInputLiveFeedback';
 import CalcFieldDailyNormal from './CalcFieldDailyNormal/CalcFieldDailyNormal';
-
-import {
-  selectIsError,
-  // selectIsLoggedIn,
-  // selectToken,
-  selectUser,
-} from '../../redux/auth/selectors';
 
 //style
 import {
@@ -39,29 +37,24 @@ import {
   Text,
   Title,
 } from './DailyNormalModal.styled';
-// import { refreshUser } from "../../redux/auth/operations";
-import axios from 'axios';
 
 
 //const modalPlace = document.querySelector('#modal-root');
 
 const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const error = useSelector(selectIsError);
   const authetification = useSelector(selectUser);
-  // const token = useSelector(selectToken);
   const initialDailyNorma = (dailyNormalVolume ?? authetification.dailyWaterRequirement ?? 2) / 1000;
 
-
   useEffect(() => {
-    console.log('a', authetification);
     if (!authetification) return;
     if (error) return toast.error(error.message);
   }, [authetification, error]);
 
 
-  // ==== configForm
+  // ==== configFormik
   const configFormik = useFormik({
     initialValues: {
       gender: 'girl',
@@ -87,28 +80,19 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
     }),
   });
 
+  // Press Save
   const handleSubmit = async values => {
     console.log(values);
     const { waterVolume } = values;
-    updateDailyNormal(waterVolume);
-  };
+    dispatch(updateDailyNormal({ dailyWaterRequirement: waterVolume * 1000 }));
 
-  const updateDailyNormal = async(waterVolume) => {
-    try {
-      const URL = 'https://stackninjas-backend.onrender.com'
-      const url = '/api/aquatrack/daily-water-requirement'
-      const result = await axios.patch(URL+url, { dailyWaterRequirement: waterVolume * 1000 });
-      console.log(result);
-
+    if (!error) {
       toast.success('Goal set! Stay hydrated and track your progress!');
       console.log('Goal set! Stay hydrated and track your progress!');
       
-      closeModal();
-    } catch (e) {
-      toast.error(error.message);
-      console.log(e.message);
+      setTimeout(() => { closeModal(); }, 3000);
     }
-  }
+  };
   
   return (
     <>
