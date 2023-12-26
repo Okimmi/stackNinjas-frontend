@@ -1,6 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 axios.defaults.baseURL = 'https://stackninjas-backend.onrender.com/';
 
 const setAuthHeader = token => {
@@ -18,39 +20,43 @@ export const register = createAsyncThunk(
     try {
       const res = await axios.post('/api/auth/signup', newUser);
       setAuthHeader(res.data.token);
-      console.log(res)
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
-
-
 
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
-    console.log(credentials);
-   
+    // console.log(credentials);
+
     try {
       const res = await axios.post('/api/auth/signin', credentials);
       setAuthHeader(res.data.token);
-      return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+
+      const resUser = await axios.get('/api/auth/current');
+
+      return { user: resUser.data, token: res.data.token };
+    } catch (AxiosError) {
+      console.log(AxiosError);
+      throw thunkAPI.rejectWithValue(AxiosError.response.data.message);
     }
   }
 );
 
-export const logOut = createAsyncThunk('/api/auth/signout', async (_, thunkAPI) => {
-  try {
-    await axios.post('/users/logout');
-    clearAuthHeader();
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+export const logOut = createAsyncThunk(
+  '/api/auth/signout',
+  async (_, thunkAPI) => {
+    try {
+      await axios.post('/users/logout');
+      clearAuthHeader();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
@@ -71,6 +77,3 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
-
-
-
