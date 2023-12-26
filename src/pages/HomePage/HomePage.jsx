@@ -120,7 +120,7 @@ export const HomePage = () => {
         <MyDailyNormaDiv>
           <MyDailyNorma>My daily norma</MyDailyNorma>
           <Div>
-            <Litr>{dailyWaterRequirement}:1000 L</Litr>
+            <Litr>{dailyWaterRequirement} L</Litr>
             <Edit>Edit</Edit>
           </Div>
         </MyDailyNormaDiv>
