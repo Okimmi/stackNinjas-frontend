@@ -87,7 +87,7 @@ const DailyNormalModal = ({closeModal}) => {
    
     try {
   //    dispatch(refreshUser({ dailyWaterRequirement: waterVolume, })); 
-      toast.success('All well')    
+      toast.success('Goal set! Stay hydrated and track your progress!')    
     } catch (error) {
       toast.error(error.message)
     }
