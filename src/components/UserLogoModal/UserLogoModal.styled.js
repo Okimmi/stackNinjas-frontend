@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const DropdownContainer = styled.div`
-  display: ${props => (props.isOpen ? 'flex' : 'none')};
+  display: flex;
   position: absolute;
   top: 100%;
   right: 0;

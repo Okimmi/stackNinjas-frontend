@@ -9,22 +9,29 @@ import {
 import settingIcon from '../../images/header/settingIcon.svg';
 import logoutIcon from '../../images/header/logoutIcon.svg';
 import { UserLogoutModal } from '../../components/UserLogoutModal/UserLogoutModal';
+import { SettingModal } from 'components/SettingModal/SettingModal';
 
 export const UserLogoModal = ({ isOpen, onClose }) => {
-  const [LogoutActive, SetLogoutActive] = useState(false);
+  const [logoutActive, setLogoutActive] = useState(false);
+  const [settingModalIsOpen, setSettingModalIsOpen] = useState(false);
 
   const handleOnSetting = () => {
-    // КОД ДЛЯ ВІДКРИТТЯ МОДАЛКИ НАЛАШТУВАНЬ ПРОФІЛЮ ЮЗЕРА
+    setSettingModalIsOpen(true);
+    onClose();
+  };
+
+  const handleCloseSetting = () => {
+    setSettingModalIsOpen(false);
     onClose();
   };
 
   const handleOnLogout = () => {
-    SetLogoutActive(true);
+    setLogoutActive(true);
     onClose();
   };
 
   const handleCloseLogout = () => {
-    SetLogoutActive(false);
+    setLogoutActive(false);
   };
 
   // useEffect(() => {
@@ -50,22 +57,27 @@ export const UserLogoModal = ({ isOpen, onClose }) => {
   // }, [isOpen, onClose]);
 
   return (
-    isOpen && (
-      <DropdownContainer className="dropdown-container" onClick={onClose}>
-        <DropdownItem onClick={handleOnSetting}>
-          <IconSetting src={settingIcon} alt="Setting" />
-          Setting
-        </DropdownItem>
-        <DropdownItem onClick={handleOnLogout}>
-          <IconLogout src={logoutIcon} alt="Log out" />
-          Log out
-        </DropdownItem>
-
-        <UserLogoutModal
-          isLogoutActive={LogoutActive}
-          onLogoutClose={handleCloseLogout}
-        />
-      </DropdownContainer>
-    )
+    <>
+      {isOpen && (
+        <DropdownContainer className="dropdown-container">
+          <DropdownItem onClick={handleOnSetting}>
+            <IconSetting src={settingIcon} alt="Setting" />
+            Setting
+          </DropdownItem>
+          <DropdownItem onClick={handleOnLogout}>
+            <IconLogout src={logoutIcon} alt="Log out" />
+            Log out
+          </DropdownItem>
+        </DropdownContainer>
+      )}
+      <UserLogoutModal
+        isLogoutActive={logoutActive}
+        onLogoutClose={handleCloseLogout}
+      />
+      <SettingModal
+        isModalOpen={settingModalIsOpen}
+        onModalClose={handleCloseSetting}
+      />
+    </>
   );
 };
