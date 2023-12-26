@@ -11,10 +11,12 @@ export const WhyDrinkWaterStyled = styled.div`
   padding: 24px 16px;
   width: 280px;
 
+
   @media screen and (min-width: 768px) {
     padding: 32px 24px;
     width: 494px;
     height: 332px;
+   
   }
 
   h2 {
@@ -27,11 +29,16 @@ export const WhyDrinkWaterStyled = styled.div`
   }
 
   ul {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: ${props => props.theme.colors.primeryBlack};
     list-style: none;
     padding: 0;
     display: flex;
     flex-direction: column;
     gap: 16px;
+
 
     li {
       line-height: 1.1;

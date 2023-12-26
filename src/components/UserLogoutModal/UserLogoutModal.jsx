@@ -22,13 +22,6 @@ export const UserLogoutModal = ({ isLogoutActive, onLogoutClose }) => {
     onLogoutClose();
   };
 
-  // const handleConfirmLogout = () => {
-  //   dispatch(logOut());
-  //   onLogoutClose();
-  // setState(initialState);
-  //   navigate('/');
-  // };
-
   const handleConfirmLogout = () => {
     try {
       dispatch(logOut())
@@ -45,31 +38,12 @@ export const UserLogoutModal = ({ isLogoutActive, onLogoutClose }) => {
     }
   };
 
-//  useEffect(() => {
-  //   const handleEscKeyPress = event => {
-  //     if (event.code === 'Escape' && isLogoutActive) {
-  //       onLogoutClose();
-  //     }
-  //   };
-
-  //   const handleOutsideClick = event => {
-  //     if (!event.target.closest('.logout-container') && isLogoutActive) {
-  //       onLogoutClose();
-  //     }
-  //   };
-
-  //   window.addEventListener('click', handleOutsideClick);
-  //   window.addEventListener('keydown', handleEscKeyPress);
-
-  //   return () => {
-  //     window.removeEventListener('click', handleOutsideClick);
-  //     window.removeEventListener('keydown', handleEscKeyPress);
-  //   };
-  // }, [isLogoutActive, onLogoutClose]);
-
   return (
-    <Dialog className="logout-container" open={isLogoutActive} onClose={onLogoutClose}>
-      <LogoutOverlay />
+    <Dialog
+      open={isLogoutActive}
+      onClose={onLogoutClose}
+    >
+      <LogoutOverlay onClick={onLogoutClose} />
       <Content>
         <TitleWrap>
           <Title> Log out</Title>

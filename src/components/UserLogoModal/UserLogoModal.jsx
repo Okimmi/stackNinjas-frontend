@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {
   DropdownContainer,
   DropdownItem,
+  DropdownOverlay,
   IconLogout,
   IconSetting,
 } from './UserLogoModal.styled';
@@ -34,46 +35,28 @@ export const UserLogoModal = ({ isOpen, onClose }) => {
     setLogoutActive(false);
   };
 
-  // useEffect(() => {
-  //   const handleEscKeyPress = event => {
-  //     if (event.code === 'Escape' && isOpen) {
-  //       onClose();
-  //     }
-  //   };
-
-  //   const handleOutsideClick = event => {
-  //     if (!event.target.closest('.dropdown-container') && isOpen) {
-  //       onClose();
-  //     }
-  //   };
-
-  //   window.addEventListener('click', handleOutsideClick);
-  //   window.addEventListener('keydown', handleEscKeyPress);
-
-  //   return () => {
-  //     window.removeEventListener('click', handleOutsideClick);
-  //     window.removeEventListener('keydown', handleEscKeyPress);
-  //   };
-  // }, [isOpen, onClose]);
-
   return (
     <>
       {isOpen && (
-        <DropdownContainer className="dropdown-container">
-          <DropdownItem onClick={handleOnSetting}>
-            <IconSetting src={settingIcon} alt="Setting" />
-            Setting
-          </DropdownItem>
-          <DropdownItem onClick={handleOnLogout}>
-            <IconLogout src={logoutIcon} alt="Log out" />
-            Log out
-          </DropdownItem>
-        </DropdownContainer>
+        <>
+          <DropdownContainer className="dropdown-container">
+            <DropdownItem onClick={handleOnSetting}>
+              <IconSetting src={settingIcon} alt="Setting" />
+              Setting
+            </DropdownItem>
+            <DropdownItem onClick={handleOnLogout}>
+              <IconLogout src={logoutIcon} alt="Log out" />
+              Log out
+            </DropdownItem>
+          </DropdownContainer>
+          <DropdownOverlay onClick={onClose} />
+        </>
       )}
       <UserLogoutModal
         isLogoutActive={logoutActive}
         onLogoutClose={handleCloseLogout}
       />
+
       <SettingModal
         isModalOpen={settingModalIsOpen}
         onModalClose={handleCloseSetting}
