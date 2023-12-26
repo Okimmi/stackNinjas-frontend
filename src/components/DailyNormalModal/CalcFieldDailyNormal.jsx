@@ -12,7 +12,6 @@ const CalcFieldDailyNormal = (props) => {
   const [volume, setVolume] = useState(0);
 
   useEffect(() => {
-    // set the value of textC, based on textA and textB
 
     let koefWeight = 0.03;
     let koefActiveTime = 0.4;
