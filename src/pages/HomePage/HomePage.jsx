@@ -6,11 +6,14 @@ import plusAdd from '../../icons/PlusAdd.svg'
 import glass from '../../icons/Glass.svg'
 import edit from '../../icons/Edit.svg'
 import delet from '../../icons/Delete.svg'
-// import { useSelector } from 'react-redux';
-// import { selectDailyWaterRequirement } from './selectors.js';
+import { useSelector } from 'react-redux';
+import { selectToken, selectDailyWaterRequirement } from './selectors.js';
 export const HomePage = () => {
   const [sliderValue, setSliderValue] = useState(0);
-  // const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
+
+  const token = useSelector(selectToken);
+  const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
+
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
   };
@@ -117,7 +120,7 @@ export const HomePage = () => {
         <MyDailyNormaDiv>
           <MyDailyNorma>My daily norma</MyDailyNorma>
           <Div>
-            <Litr>1.5 L</Litr>
+            <Litr>{dailyWaterRequirement} L</Litr>
             <Edit>Edit</Edit>
           </Div>
         </MyDailyNormaDiv>
