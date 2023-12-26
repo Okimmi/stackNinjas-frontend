@@ -42,5 +42,6 @@ export const theme = {
     secondary4: '#9EBBFF',
     secondary5: '#FF9D43',
     secondary6: '#D7E3FF',
+    secondary7: '#8F8F8F',
   },
 };
