@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LogoutOverlay = styled.div`
+export const WaterDelOverlay = styled.div`
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
@@ -19,7 +19,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 280px;
-  height: 260px;
+  height: 280px;
   padding: 32px 24px;
   justify-content: center;
   align-items: center;
@@ -91,8 +91,5 @@ export const ButtonContainer = styled.h2`
   @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: flex-end;
-  }
-  @media screen and (min-width: 1440px) {
-    justify-content: flex-start;
   }
 `;

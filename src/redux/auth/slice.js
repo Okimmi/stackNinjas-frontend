@@ -13,13 +13,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    clearUserData: state => {
-      state.user = { name: null, email: null };
-      state.token = null;
-      state.isLoggedIn = false;
-      state.isRefreshing = false;
-      state.isError = false;
-    },
+    clearUserData: () => initialState,
   },
   extraReducers: builder => {
     //fullfilled
@@ -81,5 +75,5 @@ const authSlice = createSlice({
   },
 });
 
-  export const { clearUserData } = authSlice.actions;
+export const { clearUserData } = authSlice.actions;
 export const authReducer = authSlice.reducer;
