@@ -15,6 +15,7 @@ import CalcFieldDailyNormal from './CalcFieldDailyNormal/CalcFieldDailyNormal';
 
 //style
 import {
+  BoxButton,
   BoxForm,
   BoxFormula,
   BoxGender,
@@ -25,7 +26,6 @@ import {
   BoxWaterDrink,
   BoxWeight,
   ButtonSave,
-  ContainerModal,
   FieldGenger,
   Formula,
   FormulaColorText,
@@ -97,11 +97,10 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   
   return (
     <>
-      <ContainerModal>
-        <Modal 
+      <Modal 
           closeModal={closeModal} 
           // portalParent={modalPlace}
-        >
+        >      
           <Title>My daily norma</Title>
 
           <BoxFormula>
@@ -205,12 +204,14 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
                   />
                 </BoxWaterDrink>
 
-                <ButtonSave type="submit" onSubmit={handleSubmit}>Save</ButtonSave>
+                <BoxButton>
+                  <ButtonSave type="submit" onSubmit={handleSubmit}>Save</ButtonSave>
+                </BoxButton>
+
               </BoxForm>
             </Form>
           </FormikProvider>
-        </Modal>
-      </ContainerModal>
+      </Modal>
     </>
   );
 };

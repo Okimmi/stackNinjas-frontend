@@ -28,16 +28,22 @@ export const ModalContainer = styled.div`
   border: 1px solid rgba(220, 227, 229, 0.8);
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 
-  /* @media screen and (min-width: 331) and (max-width: 767px) {
-    max-width: 703px;
+  /* Mobile responsive container */
+  @media screen and (min-width: 320px) {
+    min-width: 320px;
+    max-width: calc(767px-40px);
   }
 
+  /* Tablet adaptive container */
   @media screen and (min-width: 768px) {
-    width: 704px;
+    min-width: 704px;
+    max-width: 0;
   }
+
+  /* Desktop adaptive container */
   @media screen and (min-width: 1440px) {
-    width: 592px;
-  } */
+    min-width: 569px;
+  }
 `;
 
 export const CloseBtnContainer = styled.div`
@@ -51,7 +57,7 @@ export const CloseBtn = styled.button`
   padding: 0;
   border: 0;
   margin: 0;
-  background-color: 'transparent';
+  background-color: ${props => props.theme.colors.primeryWhite};
   cursor: pointer;
 
   &:hover, &:focus {

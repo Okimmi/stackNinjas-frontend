@@ -1,15 +1,6 @@
 import styled from "styled-components";
 import { Field } from 'formik';
 
-export const ContainerModal = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-width: 240px;
-  max-width: 280px;
-`
-
-
-
 export const Title = styled.h2`
   font-size: 26;
   font-weight: 700;
@@ -127,7 +118,10 @@ export const BoxWaterDrink =  styled.div`
 export const BoxForm = styled.div`
   margin: 0 auto;
 `
-
+export const BoxButton = styled.div`
+  display: flex;
+  justify-content: center;
+`
 export const ButtonSave = styled.button`
   display: block;
   width: 256px;
