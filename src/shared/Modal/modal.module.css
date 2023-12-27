@@ -1,0 +1,56 @@
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1200;
+  }
+  
+  .Modal {
+    position: relative;
+    min-width: 280px;
+    min-height: 540PX;
+    padding: 24px 12px 24px 12px;
+    border-radius: 10px;
+    background-color: white;
+  }
+
+  .CloseButton {
+    position: absolute;
+    top: 36px;
+    right: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+  }
+
+  .title{
+    line-height: 36px;
+    margin-bottom: 24px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .Modal {
+      min-width: 704px;
+      min-height: 504px;
+      padding: 32px 24px 32px 24px;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    .Modal {
+      min-width: 592px;
+      min-height: 504px;
+    }
+  }

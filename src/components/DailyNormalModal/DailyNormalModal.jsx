@@ -1,5 +1,5 @@
-import React, { useEffect, } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form, FormikProvider, useFormik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
@@ -10,8 +10,7 @@ import CalcFieldDailyNormal from './CalcFieldDailyNormal/CalcFieldDailyNormal';
 
 import {
   selectIsError,
-  // selectIsLoggedIn,
-  // selectToken,
+  selectIsLoggedIn,
   selectUser,
 } from '../../redux/auth/selectors';
 
@@ -40,24 +39,29 @@ import {
   Title,
 } from './DailyNormalModal.styled';
 // import { refreshUser } from "../../redux/auth/operations";
-import axios from 'axios';
 
+const DailyNormalModal = ({ closeModal }) => {
+  // const [dailyWater, setDailyWater] = useState(0)
 
-//const modalPlace = document.querySelector('#modal-root');
+  const dispatch = useDispatch();
 
-const DailyNormalModal = ({ closeModal, dailyNormalVolume }) => {
-  // const dispatch = useDispatch();
-
+  const loading = useSelector(selectIsLoggedIn);
   const error = useSelector(selectIsError);
   const authetification = useSelector(selectUser);
-  // const token = useSelector(selectToken);
+  console.log(loading);
+  console.log(error);
+  console.log(authetification);
 
   useEffect(() => {
-    console.log('a', authetification);
     if (!authetification) return;
-    if (error) return toast.error(error.message);
-  }, [authetification, error]);
 
+    try {
+    } catch (error) {
+      toast.error(error.message);
+    }
+
+    // dispatch(refreshUser());
+  }, [dispatch, authetification]);
 
   // ==== configForm
   const configFormik = useFormik({
@@ -65,7 +69,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume }) => {
       gender: '',
       weight: '',
       activeTraningHours: '',
-      waterVolume: authetification.dailyWaterRequirement / 1000 ?? 2,
+      waterVolume: 1000,
     },
     onSubmit: async values => handleSubmit(values),
     validationSchema: Yup.object({
@@ -78,33 +82,19 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume }) => {
 
   const handleSubmit = async values => {
     console.log(values);
-    const { waterVolume } = values;
-    updateDailyNormal(waterVolume);
+    // const { waterVolume } = values;
+
+    try {
+      //    dispatch(refreshUser({ dailyWaterRequirement: waterVolume, }));
+      toast.success('Goal set! Stay hydrated and track your progress!');
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
-  const updateDailyNormal = async(waterVolume) => {
-    try {
-      const URL = 'https://stackninjas-backend.onrender.com'
-      const url = '/api/aquatrack/daily-water-requirement'
-      const result = await axios.patch(URL+url, { dailyWaterRequirement: waterVolume });
-      console.log(result);
-
-      toast.success('Goal set! Stay hydrated and track your progress!');
-      console.log('Goal set! Stay hydrated and track your progress!');
-      
-      closeModal();
-    } catch (e) {
-      toast.error(error.message);
-      console.log(e.message);
-    }
-  }
-  
   return (
     <>
-      <Modal 
-        closeModal={closeModal} 
-        // portalParent={modalPlace}
-      >
+      <Modal closeModal={closeModal}>
         <Title>My daily norma</Title>
 
         <BoxFormula>
@@ -208,7 +198,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume }) => {
                 />
               </BoxWaterDrink>
 
-              <ButtonSave type="submit" onSubmit={handleSubmit}>Save</ButtonSave>
+              <ButtonSave type="submit">Save</ButtonSave>
             </BoxForm>
           </Form>
         </FormikProvider>

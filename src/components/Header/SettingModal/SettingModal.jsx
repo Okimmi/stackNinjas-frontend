@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Backdrop,
   ButtonCloseModal,
@@ -12,11 +12,16 @@ import { FormModal } from './SettingFormModal/SettingFormModal';
 
 const modalRoot = document.getElementById('modal-root');
 
-export const SettingModal = ({ isModalOpen, onModalClose }) => {
+export const SettingModal = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const toggleModal = () => setModalIsOpen(prevState => !prevState);
+  const onClose = () => setModalIsOpen(false);
+
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
-        onModalClose();
+        onClose();
       }
     };
 
@@ -25,27 +30,31 @@ export const SettingModal = ({ isModalOpen, onModalClose }) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [onModalClose]);
+  }, [modalIsOpen]);
 
   const handleClickBackDrop = e => {
     if (e.currentTarget === e.target) {
-      onModalClose();
+      onClose();
     }
   };
 
   return createPortal(
     <>
-      {isModalOpen && (
+      <button type="button" onClick={toggleModal}>
+        Open Modal
+      </button>
+
+      {modalIsOpen && (
         <Backdrop onClick={handleClickBackDrop}>
           <ModalContent>
             <Topic>Setting</Topic>
-            <ButtonCloseModal type="button" onClick={onModalClose}>
+            <ButtonCloseModal type="button" onClick={toggleModal}>
               <IconCloseModal />
             </ButtonCloseModal>
 
             <UploadPhoto />
 
-            <FormModal onClose={onModalClose} />
+            <FormModal onClose={onClose} />
           </ModalContent>
         </Backdrop>
       )}

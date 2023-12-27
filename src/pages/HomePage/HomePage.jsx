@@ -42,12 +42,20 @@ import plusAdd from '../../icons/PlusAdd.svg';
 import glass from '../../icons/Glass.svg';
 import edit from '../../icons/Edit.svg';
 import delet from '../../icons/Delete.svg';
+import AddWaterModal from 'components/AddWaterModal/AddWaterModal.jsx';
+import Modal from 'shared/Modal/Modal.jsx';
 import { useSelector } from 'react-redux';
 import { selectDailyWaterRequirement } from '../../redux/auth/selectors.js';
-import {MonthStatesTable} from '../../components/MonthStatesTable/MonthStatesTable.jsx'
 
 export const HomePage = () => {
   const [sliderValue, setSliderValue] = useState(0);
+  const [showAddWaterModal, setShowAddWaterModal] = useState(false);
+  // const [isPopupVisible, setPopupVisible] = useState(false);
+  // const togglePopup = () => {
+  //   setPopupVisible(!isPopupVisible);
+  // };
+
+  // const token = useSelector(selectToken);
   const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
 
   const [showDailyNormalModal, setDailyNormalModal] = useState(false);
@@ -82,6 +90,14 @@ export const HomePage = () => {
 
   const onCancelEdit = () => {
     setEditingEntryData(null);
+  };
+
+  const addWaterModalShow = () => {
+    setShowAddWaterModal(true);
+  }
+
+  const closeModal = () => {
+    setShowAddWaterModal(false);
   };
 
   const onAdd = () => {
@@ -162,7 +178,7 @@ export const HomePage = () => {
             <MyDailyNormaDiv>
               <MyDailyNorma>My daily norma</MyDailyNorma>
               <Div>
-                <Litr>{dailyWaterRequirement/1000} L</Litr>
+                <Litr>{dailyWaterRequirement} L</Litr>
                 <Edit onClick={toggleModal}>Edit</Edit>
               </Div>
             </MyDailyNormaDiv>
@@ -197,7 +213,7 @@ export const HomePage = () => {
               </DivToday>
 
               <AddWaterButton type="button">
-                <DivAddWater>
+                <DivAddWater onClick={addWaterModalShow}>
                   <ImgPlus src={plus} width={24} height={24} alt="Plus" />
                   <AddWater>Add Water</AddWater>
                 </DivAddWater>
@@ -281,12 +297,15 @@ export const HomePage = () => {
                 </div>
               </div>
             </DivTodayList>
-            <MonthStatesTable></MonthStatesTable>
           </DivTodayAndMonth>
-          
         </Div2>
       </Background>
 
+      {showAddWaterModal && (
+        <Modal close={closeModal} title={'Add water'}>
+          <AddWaterModal/>
+        </Modal>
+      )}
       {showDailyNormalModal && <DailyNormalModal closeModal={toggleModal} />}
     </>
   );

@@ -8,7 +8,6 @@ import {
   User,
   UserAvatar,
   UserLogoStyled,
-  UserLogoWrapper,
   UserName,
 } from './UserLogo.styled';
 
@@ -19,7 +18,6 @@ export const UserLogo = () => {
   const userAvatar = userData.avatar;
 
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-
   const handleDropdownClick = () => {
     setDropdownVisible(true);
   };
@@ -29,21 +27,17 @@ export const UserLogo = () => {
   };
 
   return (
-    <UserLogoWrapper>
-      <UserLogoStyled
-        onClick={!isDropdownVisible ? handleDropdownClick : handleDropdownClose}
-      >
-        <User>
-          <UserName>{userName}</UserName>
-          <UserAvatar
-            src={userAvatar}
-            defoultAvatar={userName.charAt(0).toUpperCase()}
-            alt="User avatar"
-          ></UserAvatar>
-        </User>
-        <IconOpenUserMenu src={openIcon} alt="Open menu" />
-      </UserLogoStyled>
+    <UserLogoStyled onClick={handleDropdownClick}>
+      <User>
+        <UserName>{userName}</UserName>
+        <UserAvatar
+          src={userAvatar}
+          defoultAvatar={userName.charAt(0).toUpperCase()}
+          alt="User avatar"
+        ></UserAvatar>
+      </User>
+      <IconOpenUserMenu src={openIcon} alt="Open menu" />
       <UserLogoModal isOpen={isDropdownVisible} onClose={handleDropdownClose} />
-    </UserLogoWrapper>
+    </UserLogoStyled>
   );
 };

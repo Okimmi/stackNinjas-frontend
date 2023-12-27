@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-export const UserLogoWrapper = styled.div`
-  position: relative;
-`;
-
 export const User = styled.div`
   display: flex;
   align-items: center;
@@ -52,6 +48,7 @@ export const IconOpenUserMenu = styled.img`
 `;
 
 export const UserLogoStyled = styled.button`
+  position: relative;
   display: flex;
   align-items: center;
   gap: 4px;
