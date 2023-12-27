@@ -76,7 +76,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
         .positive('Only positive')
         .lessThan(24, 'You cannot active more 24 hours')
         .integer('Only integer number'),
-      waterVolume: Yup.number().lessThan(50, 'You can could drown in that much water'),
+      waterVolume: Yup.number().lessThan(15, 'You can could drown in that much water'),
     }),
   });
 
