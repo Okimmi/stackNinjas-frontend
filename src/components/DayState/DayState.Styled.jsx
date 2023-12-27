@@ -14,7 +14,7 @@ export const DateWrapper = styled.div `
 display:flex;
 width: 32px;
 height: 32px;
-background-color: #FFFFFF;
+background-color: ${(props) =>props.theme.colors.primeryWhite};;
 border-radius:20px;
 border: 1px;
 justify-content: center;
@@ -26,7 +26,7 @@ height: 34px;
 }
 `
 export const Day = styled.p`
-color: #2F2F2F;
+color: ${(props) =>props.theme.colors.primeryBlack};;
 font-size: 14px;
 font-weight: 400;
 line-height: 1.29;
@@ -36,7 +36,7 @@ line-height: 1.29;
   line-height: 1.25;
 }`
 export const DailyProgress = styled.p`
-color: #9EBBFF;
+color: ${(props) =>props.theme.colors.secondary4};;
 font-size: 10px;
 font-weight: 400;
 line-height: 1.6;

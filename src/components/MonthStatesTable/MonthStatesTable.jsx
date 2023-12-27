@@ -2,8 +2,6 @@ import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import {
-  Container,
-  Calendar,
   CalendarList,
   Heder,
   Pagination,
@@ -73,8 +71,7 @@ export const MonthStatesTable = () => {
   const dayList = calendarData(findData(monthState), daysInMonth(currentDate));
 
   return (
-    <Container>
-      <Calendar>
+    <>
         <Heder>
           <Title>Month</Title>
           <Pagination>
@@ -102,7 +99,8 @@ export const MonthStatesTable = () => {
               dailyWaterRequirement,
               dailyProgress,
             }) => (
-              <DayState
+              <li  key={date}>
+                <DayState               
                 key={date}
                 day={date}
                 month={currentDate.toLocaleString('en-GB', { month: 'long' })}
@@ -114,10 +112,10 @@ export const MonthStatesTable = () => {
                 toggleModal={toggleModal}
                 closeModal={closeModal}
               />
+              </li>
             )
           )}
         </CalendarList>
-      </Calendar>
-    </Container>
+    </>
   );
 };
