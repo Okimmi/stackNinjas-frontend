@@ -123,5 +123,11 @@ export const ButtonSave = styled.button`
   color: ${props => props.theme.colors.primeryWhite};
   background-color: ${props => props.theme.colors.primeryBlue};
   box-shadow: none;
+  border: none;
+  outline: none;
+
+  &:hover {
+    box-shadow: 0px 4px 14px 0px  ${props => props.theme.colors.primeryBlue};
+  }
 `;
 
