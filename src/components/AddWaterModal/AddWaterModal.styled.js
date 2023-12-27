@@ -113,10 +113,10 @@ export const FormStyled = styled.form`
     margin-bottom: 24px;
     appearance: none;
     padding: 12px 10px;
-  
+    outline: none;
     border: 1px solid #407BFF;
     border-radius: 6px;
-  
+    color: #407bff;
     color: '#92b1f6;
     font-size: 16px;
     font-weight: 400;

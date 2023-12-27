@@ -285,7 +285,7 @@ export const HomePage = () => {
                   ))}
                 </div>
                 <div>
-                  <ButtonAddWater onClick={onAdd}>
+                  <ButtonAddWater onClick={addWaterModalShow}>
                     <ImgPlusAdd
                       src={plusAdd}
                       width={12}
