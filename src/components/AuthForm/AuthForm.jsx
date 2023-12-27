@@ -46,19 +46,21 @@ export const AuthForm = () => {
 
   const [screenSize, setScreenSize] = useState({
     isDesctopScreen: typeof window !== 'undefined' && window.innerWidth >= 1440,
-    isTabletScreen: window.innerWidth >= 768 && window.innerWidth <= 1439,
-    isMobileScreen: window.innerWidth >= 320 && window.innerWidth <= 768,
+    isTabletScreen: window.innerWidth >= 768 && window.innerWidth < 1440,
+    isMobileScreen: window.innerWidth >= 320 && window.innerWidth < 768,
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(() => {toast.error(error);}, [error])
+  useEffect(() => {
+    toast.error(error);
+  }, [error]);
   useEffect(() => {
     const handleWindowResize = () => {
       setScreenSize({
         isDesctopScreen: window.innerWidth >= 1440,
-        isTabletScreen: window.innerWidth >= 768 && window.innerWidth <= 1440,
-        isMobileScreen: window.innerWidth >= 320 && window.innerWidth <= 768,
+        isTabletScreen: window.innerWidth >= 768 && window.innerWidth < 1440,
+        isMobileScreen: window.innerWidth >= 320 && window.innerWidth < 768,
       });
     };
 
@@ -85,7 +87,6 @@ export const AuthForm = () => {
                 password: values.password,
               })
             );
-
           }}
         >
           <StyledForm>
