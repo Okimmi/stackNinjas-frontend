@@ -1,5 +1,4 @@
 import Lottie from "lottie-react";
-
 import dropletsAnimData from "../../images/animation/droplets.json";
 import { DivSuspenseLoaderWrapper } from "./Loader.styled";
 

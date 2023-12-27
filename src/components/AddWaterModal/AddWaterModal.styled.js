@@ -54,6 +54,10 @@ export const BtnWrapper = styled.div`
     background: #FFFFFF;
     box-shadow: 0px 2px 4px 0px rgba(64, 123, 255, 0.2);
     cursor: pointer;
+    &:hover, &:focus{
+      box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+      transition: opacity 0.3s ease;
+    }
   }
 
   span {
@@ -67,7 +71,6 @@ export const BtnWrapper = styled.div`
     border-radius: 40px;
     background: #d7e3ff;
     color: #407BFF;
-
     font-size: 18px;
     font-weight: 700;
     line-height: 1.33;
@@ -91,11 +94,33 @@ export const AmountText = styled.p`
 export const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
-
   label {
     display: flex;
     flex-direction: column;
     gap: 12px;
+  }
+
+  input {
+    width: 120px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    outline: none;
+    border-radius: 6px;
+    padding: 12px 10px;
+    border: 1px solid #407BFF;
+    margin-bottom: 24px;
+    appearance: none;
+    font-size: 16px;
+    appearance: none;
+    color: #407bff;
+  font-weight: 400;
+ line-height: 1.25;
+   letter-spacing: 0em;
+  text-align: left;
+  &:hover, &:focus{
+    background-color: rgb(232, 240, 254);
+  }
   }
 
   label:nth-child(2) {
@@ -104,27 +129,6 @@ export const FormStyled = styled.form`
     font-weight: 500;
     line-height: 1.1;
   }
-
-  input {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 24px;
-    appearance: none;
-    padding: 12px 10px;
-  
-    border: 1px solid #407BFF;
-    border-radius: 6px;
-  
-    color: #92b1f6;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.25;
-    letter-spacing: 0em;
-    text-align: left;
-  }
-
 
   @media screen and (min-width: 768px) {
     input,
@@ -145,6 +149,7 @@ export const BtnSaveWrapper = styled.div`
     color: #407BFF;
     font-size: 18px;
     font-weight: 700;
+    align-items: center;
     line-height: 1.33;
   }
 
@@ -154,13 +159,17 @@ export const BtnSaveWrapper = styled.div`
     padding: 10px 30px;
     justify-content: center;
     align-items: center;
+    outline: none;
     gap: 10px;
     border-radius: 10px;
     border: none;
     background: #407BFF;
     color: #FFFFFF;
     box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-
+    &:hover, &:focus{
+      box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+      transition: opacity 0.3s ease;
+    }
     font-size: 18px;
     font-weight: 500;
     line-height: 1.33;
@@ -171,6 +180,7 @@ export const BtnSaveWrapper = styled.div`
   @media screen and (min-width: 768px) {
     gap: 24px;
     flex-direction: row;
+    
     justify-content: flex-end;
 
     button {
@@ -256,9 +266,12 @@ export const TimeGlobalStyles = createGlobalStyle`
 }
 
 .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item:hover{
-      padding-left: 16px;
-      border-left: 2px solid #ff9d43;
-      transition: all 0.3s ease;
+
+      border-left: 2px solid #407BFF;
+      border-right: 2px solid #407BFF;
+      border-top: 2px solid #407BFF;
+      border-bottom: 2px solid #407BFF;
+    
 }
 .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item{
   transition: all 0.5s ease;

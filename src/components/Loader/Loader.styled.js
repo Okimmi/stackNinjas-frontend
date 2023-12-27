@@ -9,7 +9,7 @@ export const DivLoaderWrapper = styled.div`
   display: grid;
   place-items: center;
   background: rgba(0, 0, 0, 0.3);
-  // backdrop-filter: blur(3px);
+ backdrop-filter: blur(3px);
 `;
 
 export const DivSuspenseLoaderWrapper = styled.div`
@@ -20,20 +20,20 @@ export const DivSuspenseLoaderWrapper = styled.div`
 
   & > div {
     width: 260px;
-    height: 260px;
+    height: 560px;
   }
 
   @media screen and (min-width: 768px) {
     & > div {
       width: 656px;
-      height: 300px;
+      height: 500px;
     }
   }
 
   @media screen and (min-width: 1440px) {
     & > div {
       width: 538px;
-      height: 276px;
+      height: 576px;
     }
   }
 `;
