@@ -16,8 +16,13 @@ export const ListFormula = styled.ul`
   display: flex;
   flex-direction: column;
   margin-bottom: 12px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 export const ItemFormula = styled.li`
+  margin-right: 24px;
   margin-bottom: 16px;
 `;
 export const Formula = styled.p`
@@ -96,6 +101,10 @@ export const Text =  styled.p`
   initial-letter: 1.25; // 20/16=1.25
   text-align: left;
   color: ${props => props.theme.colors.primeryBlack};
+
+  @media screen and (min-width: 768px) {
+    width: 328px;
+  }
 `;
 export const RequiredText =  styled.p`
   display: block;
@@ -113,7 +122,10 @@ export const BoxWaterDrink =  styled.div`
 export const BoxForm = styled.div`
   margin: 0 auto;
 `
-
+export const BoxButton = styled.div`
+  display: flex;
+  justify-content: center;
+`
 export const ButtonSave = styled.button`
   display: block;
   width: 256px;
@@ -122,6 +134,22 @@ export const ButtonSave = styled.button`
   border-radius: 10px;
   color: ${props => props.theme.colors.primeryWhite};
   background-color: ${props => props.theme.colors.primeryBlue};
-  box-shadow: none;
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+  @media screen and (min-width: 768px) {
+    width: 160px;
+    height: 44px;
+  }
+
+  &:hover, &:focus {
+    box-shadow: 0px 4px 14px 0px  ${props => props.theme.colors.primeryBlue};
+    transition: opacity 0.3s ease;
+  }
+  &:active{
+    box-shadow: none;
+  }
 `;
 

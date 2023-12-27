@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ModalBackdrop = styled.div`
   position: absolute;
   z-index: 1004;
-  top: 64px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
@@ -12,10 +12,13 @@ export const ModalBackdrop = styled.div`
 
 export const ModalContainer = styled.div`
   position: relative;
-  z-index: 5;
+  z-index: 1005;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
+  width: 100%;
   min-width: 240px;
-  width: 280px;
+  max-width: 280px;
   padding: 24px 12px;
   top: 50%;
   left: 50%;
@@ -25,12 +28,22 @@ export const ModalContainer = styled.div`
   border: 1px solid rgba(220, 227, 229, 0.8);
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 
-  @media screen and (max-width: 767px) {
-    max-width: 303px;
+  /* Mobile responsive container */
+  @media screen and (min-width: 320px) {
+    min-width: 320px;
+    max-width: calc(767px-40px);
   }
 
+  /* Tablet adaptive container */
   @media screen and (min-width: 768px) {
-    width: 396px;
+    min-width: 704px;
+    max-width: 0;
+    padding: 32px 24px;
+  }
+
+  /* Desktop adaptive container */
+  @media screen and (min-width: 1440px) {
+    min-width: 569px;
   }
 `;
 
@@ -45,12 +58,16 @@ export const CloseBtn = styled.button`
   padding: 0;
   border: 0;
   margin: 0;
-  width: 24px;
-  height: 24px;
-  /* background-color: white; */
-  background-color: ${({ bg }) => bg || 'transparent'};
+  background-color: ${props => props.theme.colors.primeryWhite};
   cursor: pointer;
-  &:hover {
+
+  &:hover, &:focus {
     box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
+  }
+
+  /* Tablet adaptive container */
+  @media screen and (min-width: 768px) {
+    top: 32px;
+    right: 24px;
   }
 `;
