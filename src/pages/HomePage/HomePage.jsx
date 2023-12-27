@@ -43,6 +43,7 @@ import glass from '../../icons/Glass.svg';
 import edit from '../../icons/Edit.svg';
 import delet from '../../icons/Delete.svg';
 import AddWaterModal from 'components/AddWaterModal/AddWaterModal.jsx';
+import EditWaterModal from 'components/EditWaterModal/EditWaterModal.jsx';
 import Modal from 'shared/Modal/Modal.jsx';
 import { useSelector } from 'react-redux';
 import { selectDailyWaterRequirement } from '../../redux/auth/selectors.js';
@@ -50,6 +51,8 @@ import { selectDailyWaterRequirement } from '../../redux/auth/selectors.js';
 export const HomePage = () => {
   const [sliderValue, setSliderValue] = useState(0);
   const [showAddWaterModal, setShowAddWaterModal] = useState(false);
+  const [showEditWaterModal, setShowEditWaterModal] = useState(false);
+
   // const [isPopupVisible, setPopupVisible] = useState(false);
   // const togglePopup = () => {
   //   setPopupVisible(!isPopupVisible);
@@ -304,6 +307,11 @@ export const HomePage = () => {
       {showAddWaterModal && (
         <Modal close={closeModal} title={'Add water'}>
           <AddWaterModal/>
+        </Modal>
+      )}
+      {showEditWaterModal && (
+        <Modal close={closeModal} title={'Edit water'}>
+          <EditWaterModal/>
         </Modal>
       )}
       {showDailyNormalModal && <DailyNormalModal closeModal={toggleModal} />}
