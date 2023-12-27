@@ -38,6 +38,7 @@ export const ModalContainer = styled.div`
   @media screen and (min-width: 768px) {
     min-width: 704px;
     max-width: 0;
+    padding: 32px 24px;
   }
 
   /* Desktop adaptive container */
@@ -62,5 +63,11 @@ export const CloseBtn = styled.button`
 
   &:hover, &:focus {
     box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
+  }
+
+  /* Tablet adaptive container */
+  @media screen and (min-width: 768px) {
+    top: 32px;
+    right: 24px;
   }
 `;

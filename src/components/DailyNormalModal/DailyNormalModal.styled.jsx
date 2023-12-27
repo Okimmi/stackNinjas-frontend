@@ -101,6 +101,10 @@ export const Text =  styled.p`
   initial-letter: 1.25; // 20/16=1.25
   text-align: left;
   color: ${props => props.theme.colors.primeryBlack};
+
+  @media screen and (min-width: 768px) {
+    width: 328px;
+  }
 `;
 export const RequiredText =  styled.p`
   display: block;
@@ -136,10 +140,8 @@ export const ButtonSave = styled.button`
   outline: none;
 
   @media screen and (min-width: 768px) {
-    
-  }
-  @media screen and (min-width: 1440px) {
-  
+    width: 160px;
+    height: 44px;
   }
 
   &:hover, &:focus {
