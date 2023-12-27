@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Field } from 'formik';
 
+
 export const Title = styled.h2`
   font-size: 26;
   font-weight: 700;
@@ -103,7 +104,7 @@ export const Text =  styled.p`
   color: ${props => props.theme.colors.primeryBlack};
 
   @media screen and (min-width: 768px) {
-    width: 328px;
+    width: 330px;
   }
 `;
 export const RequiredText =  styled.p`

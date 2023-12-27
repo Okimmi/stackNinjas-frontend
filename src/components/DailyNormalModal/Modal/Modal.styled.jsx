@@ -29,9 +29,9 @@ export const ModalContainer = styled.div`
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 
   /* Mobile responsive container */
+  /* and (max-width: 767px) */
   @media screen and (min-width: 320px) {
-    min-width: 320px;
-    max-width: calc(767px-40px);
+    min-width: 90%;
   }
 
   /* Tablet adaptive container */
