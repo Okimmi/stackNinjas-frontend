@@ -1,47 +1,64 @@
-// import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Backdrop,
-  // ButtonCloseModal,
-  // IconCloseModal,
+  ButtonCloseModal,
+  IconCloseModal,
   ModalContent,
-  // Topic,
+  Topic,
 } from './SettingModal.styled';
 import { createPortal } from 'react-dom';
-// import { UploadPhoto } from './SettingUploadPhoto/SettingUploadPhoto';
-// import { FormModal } from './SettingFormModal/SettingFormModal';
+import { UploadPhoto } from './SettingUploadPhoto/SettingUploadPhoto';
+import { FormModal } from './SettingFormModal/SettingFormModal';
 
 const modalRoot = document.getElementById('modal-root');
 
-export const SettingModal = props => {
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
+export const SettingModal = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  // const toggleModal = () => setModalIsOpen(prevState => !prevState);
-  // const onClose = () => setModalIsOpen(false);
+  const toggleModal = () => setModalIsOpen(prevState => !prevState);
+  const onClose = () => setModalIsOpen(false);
 
-  // useEffect(() => {
-  //   const handleKeyDown = e => {
-  //     if (e.code === 'Escape') {
-  //       onClose();
-  //     }
-  //   };
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.code === 'Escape') {
+        onClose();
+      }
+    };
 
-  //   window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
 
-  //   return () => {
-  //     window.removeEventListener('keydown', handleKeyDown);
-  //   };
-  // }, [modalIsOpen]);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [modalIsOpen]);
 
   const handleClickBackDrop = e => {
     if (e.currentTarget === e.target) {
-      // onClose();
+      onClose();
     }
   };
 
   return createPortal(
-    <Backdrop onClick={handleClickBackDrop}>
-      <ModalContent>{props.children}</ModalContent>
-    </Backdrop>,
+    <>
+      <button type="button" onClick={toggleModal}>
+        Open Modal
+      </button>
+
+      {modalIsOpen && (
+        <Backdrop onClick={handleClickBackDrop}>
+          <ModalContent>
+            <Topic>Setting</Topic>
+            <ButtonCloseModal type="button" onClick={toggleModal}>
+              <IconCloseModal />
+            </ButtonCloseModal>
+
+            <UploadPhoto />
+
+            <FormModal onCloseModal={onClose} />
+          </ModalContent>
+        </Backdrop>
+      )}
+    </>,
     modalRoot
   );
 };

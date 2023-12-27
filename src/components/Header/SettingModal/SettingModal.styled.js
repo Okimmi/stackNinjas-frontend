@@ -15,7 +15,7 @@ export const Backdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${({ theme: { colors } }) => colors.primeryBlack};
+  background-color: rgba(0, 0, 0, 0.8);
 
   opacity: 1;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -101,6 +101,12 @@ export const IconCloseModal = styled(CloseIcon)`
 export const IconUploadImage = styled(IconUpload)`
   width: 16px;
   height: 16px;
+`;
+
+export const IconUser = styled.img`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
 `;
 
 export const ToggleIcon = styled.div`

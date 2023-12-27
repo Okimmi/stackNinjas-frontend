@@ -7,20 +7,28 @@ import {
   Label,
   IconUploadImage,
   UploadBtn,
+  IconUser,
 } from '../SettingModal.styled';
 import { ToastContainer, toast } from 'react-toastify';
-import { useCallback, useState } from 'react';
+import { useRef, useState } from 'react';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAvatar } from '../../../../redux/auth/selectors';
+import { refreshUser } from '../../../../redux/auth/operations';
 
-const BASE_URL = 'https://stackninjas-backend.onrender.com/';
+export const BASE_URL = 'https://stackninjas-backend.onrender.com';
 
 export const UploadPhoto = () => {
-  const [img, setImg] = useState(null);
-  const [avatar, setAvatar] = useState(null);
+  const input = useRef();
+  const dispatch = useDispatch();
+  const current = useSelector(selectAvatar);
 
-  const sendFile = useCallback(async () => {
+  const [img, setImg] = useState();
+  const [avatar, setAvatar] = useState(current);
+
+  const sendFile = async () => {
     if (!img) {
-      toast.error('Please choose your avatar');
+      toast.error('Please, choose your avatar');
       return;
     }
 
@@ -30,16 +38,19 @@ export const UploadPhoto = () => {
       formData.append('avatar', img);
 
       await axios
-        .patch(`${BASE_URL}api/auth/avatars`, formData, {
+        .patch(`${BASE_URL}/api/auth/avatars`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         })
-        .then(res => setAvatar(res.data.path));
+        .then(response => {
+          setAvatar(response.data.avatar);
+          dispatch(refreshUser());
+        });
     } catch (error) {
       console.log(error.message);
     }
-  }, [img]);
+  };
 
   return (
     <>
@@ -48,25 +59,22 @@ export const UploadPhoto = () => {
       <MainWrapper>
         {' '}
         {avatar ? (
-          <img src={avatar} alt="user_photo" />
+          <IconUser src={avatar} alt="user_photo" />
         ) : (
-          <img src={logo} alt="user_photo" />
+          <IconUser src={logo} alt="user_photo" />
         )}
         <UploadWrapper>
-          {/* <input type="file" onChange={e => e.target.files[0]} />
-
-          <button type="button" onClick={sendFile}>
-            Upload{' '}
-          </button> */}
-
-          <Label htmlFor="file-input">
+          <Label>
             <UploadInput
+              ref={input}
               type="file"
               id="file-input"
-              onChange={e => setImg(e.target.files[0])}
+              onChange={e => {
+                setImg(e.target.files[0]);
+              }}
               accept="image/*, .png,.jpeg,.gif, .web"
             />
-            <IconUploadImage />{' '}
+            <IconUploadImage />
           </Label>
           <UploadBtn onClick={sendFile}>Upload a photo</UploadBtn>
         </UploadWrapper>

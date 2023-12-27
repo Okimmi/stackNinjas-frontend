@@ -1,7 +1,6 @@
 import * as yup from 'yup';
-// import { useFormik } from 'formik';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Base,
   Container,
@@ -19,6 +18,12 @@ import {
   Wrapper,
 } from './SettingsFormModal.styled';
 import { EyeIcon, HideIcon, Title, ToggleIcon } from '../SettingModal.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsError, selectUser } from '../../../../redux/auth/selectors';
+import axios from 'axios';
+import { BASE_URL } from '../SettingUploadPhoto/SettingUploadPhoto';
+import { refreshUser } from '../../../../redux/auth/operations';
+import { ToastContainer, toast } from 'react-toastify';
 
 const replacePasswordSchema = yup.object().shape({
   name: yup
@@ -30,153 +35,182 @@ const replacePasswordSchema = yup.object().shape({
     .email('Invalid email format')
     .matches(/^[-?\w.?%?]+@\w+.{1}\w{2,4}$/),
 
-  outdatedPassword: yup.string(),
-  // .required('Please Enter your outdated password password'),
+  passwordOutdated: yup.string(),
 
-  newPassword: yup
+  password: yup
     .string()
     .min(8, 'Too short')
     .max(48, 'Too long')
-    .required('Please Enter your password')
-    .matches(/[a-zA-Z]/, 'Must contain at least one letter'),
+    .matches(/[a-zA-Z]/, 'Must contain at least one letter')
+    .required('Please Enter your password'),
 
-  repeadPassword: yup
+  passwordRepeat: yup
     .string()
-    // .required()
     .oneOf([yup.ref('password'), null], 'Passwords must match'),
 });
 
-export const FormModal = () => {
+export const FormModal = ({ onCloseModal }) => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const user = useSelector(selectUser);
+  const err = useSelector(selectIsError);
+  const dispatch = useDispatch();
+
+  const [userUpdate, setUserUpdate] = useState(user);
+
+  useEffect(() => {
+    toast.error(err);
+  }, [err]);
 
   const toggle = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (values, { resetForm }) => {
-    // const {
-    //   name,
-    //   email,
-    //   outdatedPassword,
-    //   newPassword,
-    //   repeadPassword,
-    //   picked,
-    // } = values;
+  const handleSubmit = async (values, { resetForm }) => {
+    try {
+      const response = await axios.put(`${BASE_URL}/api/auth/profile`, values, {
+        headers: { 'Content-Type': 'application/json' },
+      });
 
-    console.log(values);
-    resetForm();
+      setUserUpdate(response.data);
+
+      // if (response.status === 400) {
+      //   toast.error('Password is wrong');
+      // }
+
+      toast.success('Your profile data was successfully updated');
+      dispatch(refreshUser());
+      onCloseModal();
+
+      resetForm();
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
     <>
       <Base
         initialValues={{
-          picked: '',
-          gender: '',
+          gender: '' || user.gender,
           name: '',
           email: '',
-          outdatedPassword: '',
-          newPassword: '',
-          repeadPassword: '',
+          passwordOutdated: '',
+          password: '',
+          passwordRepeat: '',
         }}
-        onSubmit={handleSubmit}
         validationSchema={replacePasswordSchema}
+        onSubmit={handleSubmit}
       >
-        <FormUser>
-          <Wrapper>
-            <TopicGender>Your gender identity</TopicGender>
-            <RadioWrapper>
-              <GenderWrapper>
-                <RadioField type="radio" name="picked" value="femail" />
-                <Gender>Girl</Gender>
-              </GenderWrapper>
-              <RadioField type="radio" name="picked" value="mail" />
-              <Gender>Man</Gender>
-            </RadioWrapper>
+        {({ values }) => (
+          <FormUser>
+            <Wrapper>
+              <TopicGender>Your gender identity</TopicGender>
+              <RadioWrapper>
+                <GenderWrapper>
+                  <RadioField
+                    type="radio"
+                    name="gender"
+                    value="girl"
+                    checked={values.gender === 'girl'}
+                  />
 
-            <Title>Your name</Title>
+                  <Gender>Girl</Gender>
+                </GenderWrapper>
+                <RadioField
+                  type="radio"
+                  name="gender"
+                  value="man"
+                  checked={values.gender === 'man'}
+                />
+                <Gender>Man</Gender>
+              </RadioWrapper>
 
-            <NameWrapper>
+              <Title>Your name</Title>
+
+              <NameWrapper>
+                <FieldForm
+                  type="text"
+                  name="name"
+                  placeholder={user.name || 'Enter your name'}
+                  // style={
+                  //   formik.errors.David && formik.touched.myField
+                  //     ? { borderColor: 'red' }
+                  //     : null
+                  // }
+                  style={{ color: '#407BFF' }}
+                />{' '}
+              </NameWrapper>
+
+              <Title>Your email</Title>
               <FieldForm
-                type="text"
-                name="name"
-                placeholder="David"
-                // style={
-                //   formik.errors.David && formik.touched.myField
-                //     ? { borderColor: 'red' }
-                //     : null
-                // }
-                style={{ color: '#407BFF' }}
-              />{' '}
-            </NameWrapper>
-
-            <Title>Your email</Title>
-            <FieldForm
-              id="email"
-              name="email"
-              placeholder="david01@gmail.com"
-              title="email"
-              autoComplete="on"
-            />
-          </Wrapper>
-
-          <Wrapper>
-            <TopicGender>Password</TopicGender>
-            <Password htmlFor="">Outdated password:</Password>
-            <Container>
-              <FieldForm
-                id="outdatedPassword"
-                name="password"
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Password"
-                title="outdatedPassword"
+                id="email"
+                name="email"
+                placeholder={user.email || 'Email'}
+                title="email"
                 autoComplete="on"
               />
+            </Wrapper>
 
-              <ToggleIcon onClick={toggle}>
-                {showPassword ? <EyeIcon /> : <HideIcon />}
-              </ToggleIcon>
+            <Wrapper>
+              <TopicGender>Password</TopicGender>
+              <Password htmlFor="passwordOutdated">Outdated password:</Password>
+              <Container>
+                <FieldForm
+                  id="passwordOutdated"
+                  name="passwordOutdated"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder={'Password'}
+                  title="passwordOutdated"
+                  autoComplete="on"
+                />
 
-              <ErrMessage name="password" component="p" />
-            </Container>
+                <ToggleIcon onClick={toggle}>
+                  {showPassword ? <EyeIcon /> : <HideIcon />}
+                </ToggleIcon>
+                <ErrMessage name="passwordOutdated" component="p" />
+              </Container>
 
-            <Password htmlFor="">New password:</Password>
+              <Password htmlFor="password">New password:</Password>
 
-            <Container>
-              <FieldForm
-                name="newPassword"
-                id="newPassword"
-                type={showPassword ? 'text' : 'password'}
-                title="newPassword"
-                placeholder="Password"
-                autoComplete="on"
-              />
-              <ErrMessage name="newPassword" component="p" />
-              <ToggleIcon onClick={toggle}>
-                {showPassword ? <EyeIcon /> : <HideIcon />}
-              </ToggleIcon>
-            </Container>
+              <Container>
+                <FieldForm
+                  name="password"
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  title="Password"
+                  placeholder="Password"
+                  autoComplete="on"
+                />
 
-            <Password htmlFor="repeadPassword">Repeat new password:</Password>
+                <ToggleIcon onClick={toggle}>
+                  {showPassword ? <EyeIcon /> : <HideIcon />}
+                </ToggleIcon>
+                <ErrMessage name="password" component="p" />
+              </Container>
 
-            <Container>
-              <FieldForm
-                name="repeadPassword"
-                id="repeadPassword"
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Password"
-                autoComplete="on"
-              />
-              <ToggleIcon onClick={toggle}>
-                {showPassword ? <EyeIcon /> : <HideIcon />}
-              </ToggleIcon>
+              <Password htmlFor="passwordRepeat">Repeat new password:</Password>
 
-              <ErrMessage name="repeadPassword" component="p" />
-            </Container>
-          </Wrapper>
-          <SaveBtn type="submit">Save</SaveBtn>
-        </FormUser>
+              <Container>
+                <FieldForm
+                  name="passwordRepeat"
+                  id="passwordRepeat"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Password"
+                  autoComplete="on"
+                />
+                <ToggleIcon onClick={toggle}>
+                  {showPassword ? <EyeIcon /> : <HideIcon />}
+                </ToggleIcon>
+
+                <ErrMessage name="passwordRepeat" component="p" />
+              </Container>
+            </Wrapper>
+            <SaveBtn type="submit">Save</SaveBtn>
+          </FormUser>
+        )}
       </Base>
+      <ToastContainer />
     </>
   );
 };
