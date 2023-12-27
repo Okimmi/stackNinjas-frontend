@@ -123,6 +123,7 @@ export const ButtonSave = styled.button`
   color: ${props => props.theme.colors.primeryWhite};
   background-color: ${props => props.theme.colors.primeryBlue};
   box-shadow: none;
+  cursor: pointer;
   border: none;
   outline: none;
 
