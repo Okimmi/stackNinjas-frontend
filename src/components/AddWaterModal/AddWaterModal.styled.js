@@ -54,6 +54,10 @@ export const BtnWrapper = styled.div`
     background: #FFFFFF;
     box-shadow: 0px 2px 4px 0px rgba(64, 123, 255, 0.2);
     cursor: pointer;
+    &:hover, &:focus{
+      box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+      transition: opacity 0.3s ease;
+    }
   }
 
   span {
@@ -98,33 +102,32 @@ export const FormStyled = styled.form`
     gap: 12px;
   }
 
+  input {
+    width: 120px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    outline: none;
+    border-radius: 6px;
+    padding: 12px 10px;
+    border: 1px solid #407BFF;
+    margin-bottom: 24px;
+    appearance: none;
+    font-size: 16px;
+    appearance: none;
+    color: #407bff;
+  font-weight: 400;
+ line-height: 1.25;
+   letter-spacing: 0em;
+  text-align: left;
+  }
+
   label:nth-child(2) {
     color: black;
     font-size: 18px;
     font-weight: 500;
     line-height: 1.1;
   }
-
-  input {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 24px;
-    appearance: none;
-    padding: 12px 10px;
-    outline: none;
-    border: 1px solid #407BFF;
-    border-radius: 6px;
-    color: #407bff;
-    color: '#92b1f6;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.25;
-    letter-spacing: 0em;
-    text-align: left;
-  }
-
 
   @media screen and (min-width: 768px) {
     input,
@@ -145,6 +148,7 @@ export const BtnSaveWrapper = styled.div`
     color: #407BFF;
     font-size: 18px;
     font-weight: 700;
+    align-items: center;
     line-height: 1.33;
   }
 
@@ -160,7 +164,10 @@ export const BtnSaveWrapper = styled.div`
     background: #407BFF;
     color: #FFFFFF;
     box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-
+    &:hover, &:focus{
+      box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+      transition: opacity 0.3s ease;
+    }
     font-size: 18px;
     font-weight: 500;
     line-height: 1.33;
@@ -171,6 +178,7 @@ export const BtnSaveWrapper = styled.div`
   @media screen and (min-width: 768px) {
     gap: 24px;
     flex-direction: row;
+    
     justify-content: flex-end;
 
     button {
