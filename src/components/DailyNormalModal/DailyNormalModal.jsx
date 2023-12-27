@@ -1,4 +1,4 @@
-import React, { useEffect, } from 'react';
+import React, { useEffect, useState, } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, FormikProvider, useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -58,7 +58,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   // ==== configFormik
   const configFormik = useFormik({
     initialValues: {
-      gender: 'girl',
+      gender: '',
       weight: '',
       activeTraningHours: '',
       waterVolume: initialDailyNorma,
@@ -145,7 +145,6 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
                           value="girl"
                           name="gender"
                           type="radio"
-                          defaultChecked
                         />
                         For girl
                       </LabelGender>
