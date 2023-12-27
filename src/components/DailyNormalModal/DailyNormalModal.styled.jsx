@@ -1,6 +1,15 @@
 import styled from "styled-components";
 import { Field } from 'formik';
 
+export const ContainerModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-width: 240px;
+  max-width: 280px;
+`
+
+
+
 export const Title = styled.h2`
   font-size: 26;
   font-weight: 700;
@@ -16,8 +25,13 @@ export const ListFormula = styled.ul`
   display: flex;
   flex-direction: column;
   margin-bottom: 12px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 export const ItemFormula = styled.li`
+  margin-right: 24px;
   margin-bottom: 16px;
 `;
 export const Formula = styled.p`
@@ -122,13 +136,24 @@ export const ButtonSave = styled.button`
   border-radius: 10px;
   color: ${props => props.theme.colors.primeryWhite};
   background-color: ${props => props.theme.colors.primeryBlue};
-  box-shadow: none;
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   cursor: pointer;
   border: none;
   outline: none;
 
-  &:hover {
+  @media screen and (min-width: 768px) {
+    
+  }
+  @media screen and (min-width: 1440px) {
+  
+  }
+
+  &:hover, &:focus {
     box-shadow: 0px 4px 14px 0px  ${props => props.theme.colors.primeryBlue};
+    transition: opacity 0.3s ease;
+  }
+  &:active{
+    box-shadow: none;
   }
 `;
 

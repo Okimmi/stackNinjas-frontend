@@ -25,6 +25,7 @@ import {
   BoxWaterDrink,
   BoxWeight,
   ButtonSave,
+  ContainerModal,
   FieldGenger,
   Formula,
   FormulaColorText,
@@ -96,119 +97,121 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   
   return (
     <>
-      <Modal 
-        closeModal={closeModal} 
-        // portalParent={modalPlace}
-      >
-        <Title>My daily norma</Title>
+      <ContainerModal>
+        <Modal 
+          closeModal={closeModal} 
+          // portalParent={modalPlace}
+        >
+          <Title>My daily norma</Title>
 
-        <BoxFormula>
-          <ListFormula>
-            <ItemFormula>
-              <Formula>
-                For girl:&nbsp;
-                <FormulaColorText>V=(M*0,03) + (T*0,4)</FormulaColorText>
-              </Formula>
-            </ItemFormula>
+          <BoxFormula>
+            <ListFormula>
+              <ItemFormula>
+                <Formula>
+                  For girl:&nbsp;
+                  <FormulaColorText>V=(M*0,03) + (T*0,4)</FormulaColorText>
+                </Formula>
+              </ItemFormula>
 
-            <ItemFormula>
-              <Formula>
-                For man:&nbsp;
-                <FormulaColorText>V=(M*0,04) + (T*0,6)</FormulaColorText>
-              </Formula>
-            </ItemFormula>
-          </ListFormula>
+              <ItemFormula>
+                <Formula>
+                  For man:&nbsp;
+                  <FormulaColorText>V=(M*0,04) + (T*0,6)</FormulaColorText>
+                </Formula>
+              </ItemFormula>
+            </ListFormula>
 
-          <BoxTextPostScriptum>
-            <PSText>
-              <MarkPSText>*&nbsp;</MarkPSText>V is the volume of the water norm
-              in liters per day, M is your body weight, T is the time of active
-              sports, or another type of activity commensurate in terms of loads
-              (in the absence of these, you must set 0)
-            </PSText>
-          </BoxTextPostScriptum>
-        </BoxFormula>
+            <BoxTextPostScriptum>
+              <PSText>
+                <MarkPSText>*&nbsp;</MarkPSText>V is the volume of the water norm
+                in liters per day, M is your body weight, T is the time of active
+                sports, or another type of activity commensurate in terms of loads
+                (in the absence of these, you must set 0)
+              </PSText>
+            </BoxTextPostScriptum>
+          </BoxFormula>
 
-        <FormikProvider value={configFormik}>
-          <Form>
-            <BoxForm>
-              <BoxRate>
-                <SubTitle>Calculate your rate:</SubTitle>
+          <FormikProvider value={configFormik}>
+            <Form>
+              <BoxForm>
+                <BoxRate>
+                  <SubTitle>Calculate your rate:</SubTitle>
 
-                <BoxGender id="my-radio-group">
-                  <div role="group" aria-labelledby="my-radio-group">
-                    <LabelGender>
-                      <FieldGenger
-                        id="girl"
-                        value="girl"
-                        name="gender"
-                        type="radio"
-                        defaultChecked
-                      />
-                      For girl
-                    </LabelGender>
+                  <BoxGender id="my-radio-group">
+                    <div role="group" aria-labelledby="my-radio-group">
+                      <LabelGender>
+                        <FieldGenger
+                          id="girl"
+                          value="girl"
+                          name="gender"
+                          type="radio"
+                          defaultChecked
+                        />
+                        For girl
+                      </LabelGender>
 
-                    <LabelGender>
-                      <FieldGenger
-                        type="radio"
-                        id="man"
-                        name="gender"
-                        value="man"
-                      />
-                      For man
-                    </LabelGender>
-                  </div>
-                </BoxGender>
+                      <LabelGender>
+                        <FieldGenger
+                          type="radio"
+                          id="man"
+                          name="gender"
+                          value="man"
+                        />
+                        For man
+                      </LabelGender>
+                    </div>
+                  </BoxGender>
 
-                <BoxWeight>
+                  <BoxWeight>
+                    <NumberInputLiveFeedback
+                      aboveText="Your weight in kilograms:"
+                      label=""
+                      type="number"
+                      id="weight"
+                      name="weight"
+                      placeholder="0"
+                      helpText="Press your weight in kilograms"
+                    />
+                  </BoxWeight>
+
+                  <BoxTime>
+                    <NumberInputLiveFeedback
+                      aboveText="The time of active participation in sports or other activities with a high physical. load:"
+                      label=""
+                      type="number"
+                      id="activeTraningHours"
+                      name="activeTraningHours"
+                      placeholder="0"
+                      helpText="How many hours per day you active"
+                    />
+                  </BoxTime>
+
+                  <BoxRequiredLitresPerDay>
+                    <Text>The required amount of water in liters per day:</Text>
+                    <CalcFieldDailyNormal name="calcDailyNormal" />
+                  </BoxRequiredLitresPerDay>
+                </BoxRate>
+
+                <BoxWaterDrink>
+                  <SubTitle>Write down how much water you will drink:</SubTitle>
+
                   <NumberInputLiveFeedback
-                    aboveText="Your weight in kilograms:"
+                    aboveText=""
                     label=""
                     type="number"
-                    id="weight"
-                    name="weight"
+                    id="waterVolume"
+                    name="waterVolume"
                     placeholder="0"
-                    helpText="Press your weight in kilograms"
+                    helpText="Enter daily normal water in Litre"
                   />
-                </BoxWeight>
+                </BoxWaterDrink>
 
-                <BoxTime>
-                  <NumberInputLiveFeedback
-                    aboveText="The time of active participation in sports or other activities with a high physical. load:"
-                    label=""
-                    type="number"
-                    id="activeTraningHours"
-                    name="activeTraningHours"
-                    placeholder="0"
-                    helpText="How many hours per day you active"
-                  />
-                </BoxTime>
-
-                <BoxRequiredLitresPerDay>
-                  <Text>The required amount of water in liters per day:</Text>
-                  <CalcFieldDailyNormal name="calcDailyNormal" />
-                </BoxRequiredLitresPerDay>
-              </BoxRate>
-
-              <BoxWaterDrink>
-                <SubTitle>Write down how much water you will drink:</SubTitle>
-
-                <NumberInputLiveFeedback
-                  aboveText=""
-                  label=""
-                  type="number"
-                  id="waterVolume"
-                  name="waterVolume"
-                  placeholder="0"
-                  helpText="Enter daily normal water in Litre"
-                />
-              </BoxWaterDrink>
-
-              <ButtonSave type="submit" onSubmit={handleSubmit}>Save</ButtonSave>
-            </BoxForm>
-          </Form>
-        </FormikProvider>
-      </Modal>
+                <ButtonSave type="submit" onSubmit={handleSubmit}>Save</ButtonSave>
+              </BoxForm>
+            </Form>
+          </FormikProvider>
+        </Modal>
+      </ContainerModal>
     </>
   );
 };

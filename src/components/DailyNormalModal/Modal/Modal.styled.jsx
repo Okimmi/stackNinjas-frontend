@@ -5,17 +5,20 @@ export const ModalBackdrop = styled.div`
   z-index: 1004;
   top: 64px;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: #f7f6f960;
 `;
 
 export const ModalContainer = styled.div`
   position: relative;
   z-index: 1005;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
+  width: 100%;
   min-width: 240px;
-  width: 280px;
+  max-width: 280px;
   padding: 24px 12px;
   top: 50%;
   left: 50%;
@@ -25,13 +28,16 @@ export const ModalContainer = styled.div`
   border: 1px solid rgba(220, 227, 229, 0.8);
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 
-  @media screen and (max-width: 767px) {
-    max-width: 303px;
+  /* @media screen and (min-width: 331) and (max-width: 767px) {
+    max-width: 703px;
   }
 
   @media screen and (min-width: 768px) {
-    width: 396px;
+    width: 704px;
   }
+  @media screen and (min-width: 1440px) {
+    width: 592px;
+  } */
 `;
 
 export const CloseBtnContainer = styled.div`
@@ -45,12 +51,10 @@ export const CloseBtn = styled.button`
   padding: 0;
   border: 0;
   margin: 0;
-  width: 24px;
-  height: 24px;
-  /* background-color: white; */
-  background-color: ${({ bg }) => bg || 'transparent'};
+  background-color: 'transparent';
   cursor: pointer;
-  &:hover {
+
+  &:hover, &:focus {
     box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
   }
 `;
