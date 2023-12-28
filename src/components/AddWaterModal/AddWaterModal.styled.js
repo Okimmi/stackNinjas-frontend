@@ -267,13 +267,13 @@ export const TimeGlobalStyles = createGlobalStyle`
 
 .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item:hover{
 
-      border-left: 2px solid #407BFF;
-      border-right: 2px solid #407BFF;
-      border-top: 2px solid #407BFF;
-      border-bottom: 2px solid #407BFF;
+      border-left: 2px solid #FF9D43;
+      border-right: 2px solid #FF9D43;
+      border-top: 2px solid #FF9D43;
+      border-bottom: 2px solid #FF9D43;
     
 }
 .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item{
-  transition: all 0.5s ease;
+
 }
   `;
