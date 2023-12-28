@@ -42,9 +42,8 @@ const updateUserInfoSchema = yup.object().shape({
     .string()
     .when(['passwordOutdated', 'passwordRepeat'], {
       is: (passwordOutdated, passwordRepeat) =>
-        passwordOutdated || passwordRepeat,
+        passwordOutdated && passwordRepeat,
       then: yup.string().required('Password is required'),
-      // otherwise: yup.string().notRequired(),
     })
     .min(8, 'Too short')
     .max(48, 'Too long')
@@ -52,11 +51,6 @@ const updateUserInfoSchema = yup.object().shape({
 
   passwordRepeat: yup
     .string()
-    .when(['passwordOutdated', 'password'], {
-      is: (passwordOutdated, password) => passwordOutdated || password,
-      then: yup.string().required('Password is required'),
-      // otherwise: yup.string().notRequired(),
-    })
     .oneOf([yup.ref('password'), null], 'Passwords must match'),
 });
 
@@ -74,6 +68,13 @@ export const FormModal = ({ onCloseModal }) => {
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
+      const isFormEmpty = Object.values(values).every(value => !value);
+
+      if (isFormEmpty) {
+        toast.warning('Please enter some data before submitting the form.');
+        return;
+      }
+
       const response = await axios.put(`${BASE_URL}/api/auth/profile`, values, {
         headers: { 'Content-Type': 'application/json' },
       });
