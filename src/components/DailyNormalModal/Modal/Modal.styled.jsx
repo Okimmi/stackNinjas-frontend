@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { ReactComponent as CloseIcon } from './icons/iconCloseModal.svg';
+
 
 export const ModalBackdrop = styled.div`
   position: absolute;
@@ -37,14 +39,11 @@ export const ModalContainer = styled.div`
 
   /* Scrool */
   max-height: 100vh;
-  /* max-height: calc(100vh - 64px); */
   overflow-x: hidden;
   overflow-y: auto;
-  
-
 
   /* Mobile responsive container */
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     max-width: 90%;
     min-width: 280px;
     padding: 32px 12px;
@@ -66,6 +65,10 @@ export const CloseBtnContainer = styled.div`
   text-align: right;
 `;
 
+export const IconCloseModal = styled(CloseIcon)`
+ stroke: ${props => props.theme.colors.primeryBlue};
+`;
+
 export const CloseBtn = styled.button`
   position: absolute;
   top: 24px;
@@ -73,11 +76,20 @@ export const CloseBtn = styled.button`
   padding: 0;
   border: 0;
   margin: 0;
+
   background-color: ${props => props.theme.colors.primeryWhite};
   cursor: pointer;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover, &:focus {
-    box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
+  &:hover,
+  &:focus {
+    transform: scale(1.2);
+  }
+
+  &:hover svg,
+  &:focus svg {
+    stroke: ${props => props.theme.colors.secondary5};
+    transition: stroke ${({ theme }) => theme.transitionDurationAndFunc};
   }
 
   /* Tablet adaptive container */
@@ -86,3 +98,4 @@ export const CloseBtn = styled.button`
     right: 24px;
   }
 `;
+
