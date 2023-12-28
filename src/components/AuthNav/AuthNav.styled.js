@@ -33,4 +33,6 @@ export const StyledNavLink = styled(NavLink)`
 export const IconLogin = styled.img`
   width: 28px;
   height: 28px;
+  
+
 `;
