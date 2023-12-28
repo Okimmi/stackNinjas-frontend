@@ -19,6 +19,17 @@ export  const BackgroundImg = styled(Background)`
     
 `
 
+// export  const BublleWraper = styled.div`
+//   background-image: url(../../images/AuthForm/Bubles720.svg);
+//     position: absolute;
+//     z-index: -1;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+
+    
+// `
+
 
 
 export  const BackgroundImg720 = styled(Bubles720)`
@@ -27,7 +38,6 @@ export  const BackgroundImg720 = styled(Bubles720)`
     top: 0;
     left: 0;
     width: 100%;
-
     
 `
 
@@ -97,10 +107,12 @@ export const FormHead = styled.h2`
 
 export  const StyledForm = styled(Form)`
 
+ @media screen and (min-width: 320px) {
     display: flex;
     flex-direction:column;
     border-radius: 5px;
     width: 280px;
+ }
   @media screen and (min-width: 768px) {
     width: 336px;
   
@@ -172,7 +184,7 @@ export const FormBtnStyled = styled.button`
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
-    cursor: pointer;
+    cursor: url('../../images/AuthForm/Vector.png'), auto;
     @media screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 1.33;
