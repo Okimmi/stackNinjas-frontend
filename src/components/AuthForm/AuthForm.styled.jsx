@@ -92,6 +92,10 @@ export  const BottleStyled = styled(Bottle)`
 
 export  const BottleMobil = styled(Bottle320)`
     z-index: -1;
+    position: absolute;
+    bottom: calc(0% + 20px);
+    left:50%;
+    transform: translateX(-50%)
     
 `
 
@@ -184,7 +188,14 @@ export const FormBtnStyled = styled.button`
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
-    cursor: url('../../images/AuthForm/Vector.png'), auto;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover {
+      box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    }
+    &:active{
+      box-shadow: none;
+    }
+    cursor: pointer;
     @media screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 1.33;
