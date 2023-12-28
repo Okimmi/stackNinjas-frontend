@@ -1,5 +1,6 @@
 import {
   ButtonTryTracker,
+  Titlelist,
   WaterconsumTrackerStyled,
 } from './WaterconsumTracker.styled';
 import habitDriveIcon from '../../images/mainPage/habitDriveIcon.svg';
@@ -13,17 +14,17 @@ export const WaterconsumTracker = () => {
     <WaterconsumTrackerStyled>
       <h2>Water consumption tracker</h2>
       <p>Record daily water intake and track</p>
-      <h3>Tracker Benefits</h3>
+      <Titlelist>Tracker Benefits</Titlelist>
       <ul>
         <li>
-          <img src={habitDriveIcon} width={24} height={24} alt="Habit drive" />
+          <img src={habitDriveIcon} width={32} height={32} alt="Habit drive" />
           Habit drive
         </li>
         <li>
           <img
             src={statisticIcon}
-            width={24}
-            height={24}
+            width={32}
+            height={32}
             alt="View statistics"
           />
           View statistics
@@ -31,8 +32,8 @@ export const WaterconsumTracker = () => {
         <li>
           <img
             src={settingIcon}
-            width={24}
-            height={24}
+            width={32}
+            height={32}
             alt="Personal rate setting"
           />
           Personal rate setting

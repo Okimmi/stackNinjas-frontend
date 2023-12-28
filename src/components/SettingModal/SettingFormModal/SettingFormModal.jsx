@@ -19,9 +19,9 @@ import {
 } from './SettingsFormModal.styled';
 import { EyeIcon, HideIcon, Title, ToggleIcon } from '../SettingModal.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../../../redux/auth/selectors';
+import { selectUser } from '../../../redux/auth/selectors';
 import axios from 'axios';
-import { refreshUser } from '../../../../redux/auth/operations';
+import { refreshUser } from '../../../redux/auth/operations';
 import { ToastContainer, toast } from 'react-toastify';
 
 const BASE_URL = 'https://stackninjas-backend.onrender.com';
@@ -60,7 +60,7 @@ export const FormModal = ({ onCloseModal }) => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
-  const [userUpdate, setUserUpdate] = useState(user);
+  // const [userUpdate, setUserUpdate] = useState(user);
 
   const toggle = () => {
     setShowPassword(!showPassword);
@@ -80,7 +80,7 @@ export const FormModal = ({ onCloseModal }) => {
       });
 
       if (response.status === 200) {
-        setUserUpdate(response.data);
+        // setUserUpdate(response.data);
         dispatch(refreshUser());
         onCloseModal();
         resetForm();

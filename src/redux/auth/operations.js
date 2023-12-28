@@ -20,11 +20,8 @@ export const register = createAsyncThunk(
     try {
       const res = await axios.post('/api/auth/signup', newUser);
       setAuthHeader(res.data.token);
-      console.log(res.data);
       return res.data;
     } catch (error) {
-      console.log(error.response.data.message);
-
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
@@ -33,13 +30,12 @@ export const register = createAsyncThunk(
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
-    console.log(credentials);
-
     try {
       const res = await axios.post('/api/auth/signin', credentials);
       setAuthHeader(res.data.token);
+      const resUser = await axios.get('/api/auth/current');
 
-      return res.data;
+      return { user: resUser.data, token: res.data.token };
     } catch (AxiosError) {
       console.log(AxiosError);
       throw thunkAPI.rejectWithValue(AxiosError.response.data.message);
@@ -73,6 +69,30 @@ export const refreshUser = createAsyncThunk(
       setAuthHeader(persistedToken);
       const res = await axios.get('/api/auth/current');
       return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateDailyNormal = createAsyncThunk(
+  'auth/updateDailyNormal',
+  async (dailyNormal, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
+
+    try {
+      setAuthHeader(persistedToken);
+      const res = await axios.patch(
+        '/api/aquatrack/daily-water-requirement',
+        dailyNormal
+      );
+
+      return res.data.dailyWaterRequirement;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

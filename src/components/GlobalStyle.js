@@ -1,11 +1,26 @@
 import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
 
+export const theme = {
+  colors: {
+    primeryWhite: '#FFFFFF',
+    primeryBlack: '#2F2F2F',
+    primeryBlue: '#407BFF',
+    secondary2: '#ECF2FF',
+    secondary3: '#EF5050',
+    secondary4: '#9EBBFF',
+    secondary5: '#FF9D43',
+    secondary6: '#D7E3FF',
+    secondary7: '#8F8F8F',
+  },
+};
+
 export const GlobalStyle = createGlobalStyle`
 
 body {
-  font-family: 'Roboto', sans-serif;;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.5;
+  color: ${({ theme: { colors } }) => colors.primeryBlack};
 }
 
 h1,
@@ -30,18 +45,4 @@ img {
   max-width: 100%;
   height: auto;
 }
-
 `;
-
-export const theme = {
-  colors: {
-    primeryWhite: '#FFFFFF',
-    primeryBlack: '#2F2F2F',
-    primeryBlue: '#407BFF',
-    secondary2: '#ECF2FF',
-    secondary3: '#EF5050',
-    secondary4: '#9EBBFF',
-    secondary5: '#FF9D43',
-    secondary6: '#D7E3FF',
-  },
-};

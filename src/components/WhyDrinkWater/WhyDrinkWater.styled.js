@@ -18,7 +18,7 @@ export const WhyDrinkWaterStyled = styled.div`
   }
 
   h2 {
-    font-weight: 500px;
+    font-weight: 500;
     font-size: 18px;
     line-height: 1.1;
 
@@ -28,13 +28,15 @@ export const WhyDrinkWaterStyled = styled.div`
 
   ul {
     list-style: none;
-    padding: 0;
     display: flex;
     flex-direction: column;
     gap: 16px;
 
     li {
-      line-height: 1.1;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.25;
+      color: ${props => props.theme.colors.primeryBlack};
       position: relative;
       padding-left: 16px;
 

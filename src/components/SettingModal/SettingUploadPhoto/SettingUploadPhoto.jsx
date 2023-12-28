@@ -14,8 +14,8 @@ import {
 import { ToastContainer, toast } from 'react-toastify';
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAvatar } from '../../../../redux/auth/selectors';
-import { refreshUser } from '../../../../redux/auth/operations';
+import { selectAvatar } from '../../../redux/auth/selectors';
+import { refreshUser } from '../../../redux/auth/operations';
 
 const BASE_URL = 'https://stackninjas-backend.onrender.com';
 

@@ -1,36 +1,56 @@
 import { SharedLayout } from './SharedLayout';
-import { MainPage } from 'pages/MainPage/MainPage';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { SignUpPage } from 'pages/SignUpPage/SignUpPage';
 import { SignInPage } from 'pages/SignInPage/SignInPage';
 import { ForgotPasswordPage } from 'pages/ForgotPasswordPage/SignUpPage';
-import { HomePage } from 'pages/HomePage/HomePage';
 import { GlobalStyle } from './GlobalStyle';
 import { RestrictedRoute } from './RestrictedRoute';
+import { useDispatch } from 'react-redux';
+import { useAuth } from '../redux/hooks/useAuth';
+import { refreshUser } from '../redux/auth/operations.js';
+import { useEffect } from 'react';
+import Loader from './Loader/Loader';
+import { HomePage } from 'pages/HomePage/HomePage';
+import { MainPage } from 'pages/MainPage/MainPage';
 
 export const App = () => {
-  return (
+  const dispatch = useDispatch();
+  const { isRefreshing, isLoggedIn } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/home" element={<HomePage />} />
           <Route
-            path="signin"
+            index
+            element={isLoggedIn ? <HomePage /> : <MainPage />}
+          ></Route>
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route
+            path="/signin"
             element={
-              <RestrictedRoute redirectTo="/home" component={<SignInPage />} />
+              <RestrictedRoute redirectTo="/" component={<SignInPage />} />
             }
           />
           <Route
-            path="signup"
+            path="/forgot-password"
             element={
-              <RestrictedRoute redirectTo="/home" component={<SignUpPage />} />
+              <RestrictedRoute
+                redirectTo="/"
+                component={<ForgotPasswordPage />}
+              />
             }
           />
-
-          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
+
       <GlobalStyle />
     </>
   );

@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const UserLogoWrapper = styled.div`
+  position: relative;
+`;
+
 export const User = styled.div`
   display: flex;
   align-items: center;
@@ -9,8 +13,9 @@ export const User = styled.div`
 export const UserName = styled.span`
   color: ${props => props.theme.colors.primeryBlack};
   font-size: 16px;
-
-  @media screen and (min-width: 768px) {
+  line-height: 1.33;
+  
+   @media screen and (min-width: 768px) {
     font-size: 18px;
   }
 `;
@@ -48,7 +53,6 @@ export const IconOpenUserMenu = styled.img`
 `;
 
 export const UserLogoStyled = styled.button`
-  position: relative;
   display: flex;
   align-items: center;
   gap: 4px;

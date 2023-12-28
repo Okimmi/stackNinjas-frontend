@@ -1,64 +1,65 @@
+import { useState } from 'react';
 import {
   DropdownContainer,
   DropdownItem,
+  DropdownOverlay,
   IconLogout,
   IconSetting,
 } from './UserLogoModal.styled';
 import settingIcon from '../../images/header/settingIcon.svg';
 import logoutIcon from '../../images/header/logoutIcon.svg';
-// import { SettingModal } from 'components/Header/SettingModal/SettingModal';
-
-// import {
-//   Topic,
-//   ButtonCloseModal,
-//   IconCloseModal,
-// } from 'components/Header/SettingModal/SettingModal.styled';
-// import { UploadPhoto } from 'components/Header/SettingModal/SettingUploadPhoto/SettingUploadPhoto';
-// import { FormModal } from 'components/Header/SettingModal/SettingFormModal/SettingFormModal';
+import { UserLogoutModal } from '../../components/UserLogoutModal/UserLogoutModal';
+import { SettingModal } from 'components/SettingModal/SettingModal';
 
 export const UserLogoModal = ({ isOpen, onClose }) => {
-  const handleButtonSettingClick = () => {
-    //  код для відкриття модалки Setting
-    // onClose();
+  const [logoutActive, setLogoutActive] = useState(false);
+  const [settingModalIsOpen, setSettingModalIsOpen] = useState(false);
+
+  const handleOnSetting = () => {
+    setSettingModalIsOpen(true);
+    onClose();
   };
 
-  const handleButtonLogoutClick = () => {
-    //  код для відкриття модалки Log out
-    // onClose();
+  const handleCloseSetting = () => {
+    setSettingModalIsOpen(false);
+    onClose();
   };
 
-  // useEffect(() => {
-  //   const handleEscKeyPress = event => {
-  //     if (event.key === 'Escape' && isOpen) {
-  //       onClose();
-  //     }
-  //   };
+  const handleOnLogout = () => {
+    setLogoutActive(true);
+    onClose();
+  };
 
-  //   const handleOutsideClick = event => {
-  //     if (!event.target.closest('.dropdown-container') && isOpen) {
-  //       onClose();
-  //     }
-  //   };
-
-  //   window.addEventListener('click', handleOutsideClick);
-  //   window.addEventListener('keydown', handleEscKeyPress);
-
-  //   return () => {
-  //     window.removeEventListener('click', handleOutsideClick);
-  //     window.removeEventListener('keydown', handleEscKeyPress);
-  //   };
-  // }, [isOpen, onClose]);
+  const handleCloseLogout = () => {
+    setLogoutActive(false);
+  };
 
   return (
-    <DropdownContainer className="dropdown-container" isOpen={isOpen}>
-      <DropdownItem onClick={handleButtonSettingClick}>
-        <IconSetting src={settingIcon} alt="Setting" />
-        Setting
-      </DropdownItem>
-      <DropdownItem onClick={handleButtonLogoutClick}>
-        <IconLogout src={logoutIcon} alt="Log out" />
-        Log out
-      </DropdownItem>
-    </DropdownContainer>
+    <>
+      {isOpen && (
+        <>
+          <DropdownContainer className="dropdown-container">
+            <DropdownItem onClick={handleOnSetting}>
+              <IconSetting src={settingIcon} alt="Setting" />
+              Setting
+            </DropdownItem>
+            <DropdownItem onClick={handleOnLogout}>
+              <IconLogout src={logoutIcon} alt="Log out" />
+              Log out
+            </DropdownItem>
+          </DropdownContainer>
+          <DropdownOverlay onClick={onClose} />
+        </>
+      )}
+      <UserLogoutModal
+        isLogoutActive={logoutActive}
+        onLogoutClose={handleCloseLogout}
+      />
+
+      <SettingModal
+        isModalOpen={settingModalIsOpen}
+        onModalClose={handleCloseSetting}
+      />
+    </>
   );
 };
