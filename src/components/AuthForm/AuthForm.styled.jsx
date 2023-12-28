@@ -52,7 +52,6 @@ export  const BackgroundImg320 = styled(Bubles320)`
 `
 
 export const SightInContainer = styled.div`
-    overflow:hidden;
    @media screen and (min-width: 1440px) {
     display: grid;
     grid-template-columns: repeat(10, 121px);
