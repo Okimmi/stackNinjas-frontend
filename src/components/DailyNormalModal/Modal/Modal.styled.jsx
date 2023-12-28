@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { ReactComponent as CloseIcon } from './icons/iconCloseModal.svg';
+
 
 export const ModalBackdrop = styled.div`
   position: absolute;
@@ -7,48 +9,64 @@ export const ModalBackdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #f7f6f960;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: rgba(0, 0, 0, 0.8);
+  
+  body > & {
+    overflow: hidden;
+  }
 `;
 
 export const ModalContainer = styled.div`
   position: relative;
   z-index: 1005;
+  
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+
   width: 100%;
-  min-width: 240px;
-  max-width: 280px;
-  padding: 24px 12px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: ${({ bg }) => bg || '#fff'};
-  border-radius: 8px;
-  border: 1px solid rgba(220, 227, 229, 0.8);
-  box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  padding: 24px 12px;
+  border-radius: 10px;
+  background-color: ${({ theme: { colors } }) => colors.primeryWhite};
+  box-shadow: 0px 4px 8px rgba(64, 123, 255, 0.34);
+
+  /* Scrool */
+  max-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   /* Mobile responsive container */
-  @media screen and (min-width: 320px) {
-    min-width: 320px;
-    max-width: calc(767px-40px);
+  @media screen and (max-width: 768px) {
+    max-width: 90%;
+    min-width: 280px;
+    padding: 32px 12px;
   }
 
   /* Tablet adaptive container */
   @media screen and (min-width: 768px) {
-    min-width: 704px;
-    max-width: 0;
+    max-width: 704px;
     padding: 32px 24px;
   }
 
   /* Desktop adaptive container */
   @media screen and (min-width: 1440px) {
-    min-width: 569px;
+    max-width: 569px;
   }
 `;
 
 export const CloseBtnContainer = styled.div`
   text-align: right;
+`;
+
+export const IconCloseModal = styled(CloseIcon)`
+ stroke: ${props => props.theme.colors.primeryBlue};
 `;
 
 export const CloseBtn = styled.button`
@@ -58,11 +76,20 @@ export const CloseBtn = styled.button`
   padding: 0;
   border: 0;
   margin: 0;
+
   background-color: ${props => props.theme.colors.primeryWhite};
   cursor: pointer;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover, &:focus {
-    box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
+  &:hover,
+  &:focus {
+    transform: scale(1.2);
+  }
+
+  &:hover svg,
+  &:focus svg {
+    stroke: ${props => props.theme.colors.secondary5};
+    transition: stroke ${({ theme }) => theme.transitionDurationAndFunc};
   }
 
   /* Tablet adaptive container */
@@ -71,3 +98,4 @@ export const CloseBtn = styled.button`
     right: 24px;
   }
 `;
+
