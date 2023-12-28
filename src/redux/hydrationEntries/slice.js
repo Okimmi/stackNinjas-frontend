@@ -19,8 +19,7 @@ const handleRejected = (state, action) => {
 };
 
 const hydrationEntriesInitialState = { 
-  items: [],
-  progressToday: 0,
+  data: {items: [], progress: 0},
   itemsMonth: [],
   loading: false,
   error: null,
@@ -31,7 +30,8 @@ const hydrationEntriesSlice = createSlice({
   name: "hydrationEntries",
   initialState: hydrationEntriesInitialState,
   reducers: { 
-    // actions
+    // for actions 
+    // пересчет процесса за день
   }, 
   extraReducers: (builder) => 
     builder
@@ -41,11 +41,7 @@ const hydrationEntriesSlice = createSlice({
       .addCase(getTodayEntriesThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items = action.payload.data;
-        
-        console.log('SliseToday',  action.payload);
-
-        state.progressToday = action.payload.progress;
+        state.data = action.payload;
       })
       .addCase(getTodayEntriesThunk.rejected, handleRejected)
 
@@ -55,7 +51,6 @@ const hydrationEntriesSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.itemsMonth = action.payload;
-        console.log('SliseMonth',  action.payload);
       })
       .addCase(getMonthProgressThunk.rejected, handleRejected)
 
@@ -64,8 +59,8 @@ const hydrationEntriesSlice = createSlice({
       .addCase(addEntryThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items.push(action.payload);
-        // пересчитать прогресс за день
+        state.data.items.push(action.payload);
+        // пересчитать прогресс за день?
       })
       .addCase(addEntryThunk.rejected, handleRejected)
 
@@ -74,10 +69,10 @@ const hydrationEntriesSlice = createSlice({
       .addCase(getEntryFromIdThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items.find(
+        state.data.items.find(
           entry => entry.id === action.payload.id
         );
-        // пересчитать прогресс за день
+        // пересчитать прогресс за день?
       })
       .addCase(getEntryFromIdThunk.rejected, handleRejected)
 
@@ -86,11 +81,11 @@ const hydrationEntriesSlice = createSlice({
       .addCase(deleteEntryThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        const index = state.items.findIndex(
+        const index = state.data.items.findIndex(
           contact => contact.id === action.payload.id
         );
-        state.items.splice(index, 1);
-        // пересчитать прогресс за день
+        state.data.items.splice(index, 1);
+        // пересчитать прогресс за день?
       })
       .addCase(deleteEntryThunk.rejected, handleRejected)
 
@@ -102,8 +97,9 @@ const hydrationEntriesSlice = createSlice({
         const index = state.items.findIndex(
           entry => entry.id === action.payload.id
         );
-        state.items[index].time = action.payload.time;
-        state.items[index].amount = action.payload.amount;
+        state.data.items[index].time = action.payload.time;
+        state.data.items[index].amount = action.payload.amount;
+        // пересчитать прогресс за день?
       })
       .addCase(updateEntryThunk.rejected, handleRejected)
 
@@ -112,8 +108,7 @@ const hydrationEntriesSlice = createSlice({
       .addCase(clearEntriesThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items = action.payload;
-        state.progressToday = 0;
+        state.data = action.payload;
         state.itemsMonth = action.payload;
       })
       .addCase(clearEntriesThunk.rejected, handleRejected)

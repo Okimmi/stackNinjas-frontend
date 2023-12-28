@@ -10,8 +10,6 @@ export const getTodayEntriesThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await $instance.get("/api/hydration-entries/today");
-      
-      console.log(data);
 
       return data;
     } 
@@ -30,7 +28,7 @@ export const getMonthProgressThunk = createAsyncThunk(
       const { data } = await $instance.get(
         `/api/hydration-entries/month-progress?month=${month}&year=${year}`
       );
-      console.log(data);
+
       return data;
     } 
     catch (e) {
@@ -46,6 +44,7 @@ export const addEntryThunk = createAsyncThunk(
     const {time, amount,} = entry;
     try {
       const { data } = await $instance.post("/api/hydration-entries/", { time, amount, });
+
       return data;
     } 
     catch (e) {
@@ -60,6 +59,7 @@ export const getEntryFromIdThunk = createAsyncThunk(
   async (entryId, thunkAPI) => {
     try {
       const { data } = await $instance.get(`/api/hydration-entries/${entryId}`);
+      
       return data;
     } 
     catch (e) {
@@ -74,6 +74,7 @@ export const deleteEntryThunk = createAsyncThunk(
   async (entryId, thunkAPI) => {
     try {
       const { data } = await $instance.delete(`/api/hydration-entries/${entryId}`);
+      
       return data;
     } 
     catch (e) {

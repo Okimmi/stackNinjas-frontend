@@ -38,6 +38,8 @@ import {
   Text,
   Title,
 } from './DailyNormalModal.styled';
+// import { selectEntiesMonth, selectEntiesToday } from '../../redux/hydrationEntries/selectors';
+// import { getMonthProgressThunk, getTodayEntriesThunk } from '../../redux/hydrationEntries/operations';
 
 //const modalPlace = document.querySelector('#modal-root');
 
@@ -53,15 +55,13 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   // console.log(listWaterToday);
   // console.log(listWaterMonth);
 
-  // useEffect(() => {
-  //   if (!authetification) return;
-  //   if (error) return toast.error(error.message);
+  useEffect(() => {
+    if (!authetification) return;
+    if (error) return toast.error(error.message);
 
   //   dispatch( getTodayEntriesThunk());
   //   dispatch( getMonthProgressThunk({ month: 12, year: 2023 }));
-
-  //   console.log('1111');
-  // }, [authetification, error, dispatch,]);
+  }, [authetification, error, dispatch,]);
 
   
   // ==== configFormik
