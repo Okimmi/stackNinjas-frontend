@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   Base,
   Container,
@@ -19,13 +19,14 @@ import {
 } from './SettingsFormModal.styled';
 import { EyeIcon, HideIcon, Title, ToggleIcon } from '../SettingModal.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsError, selectUser } from '../../../../redux/auth/selectors';
+import { selectUser } from '../../../../redux/auth/selectors';
 import axios from 'axios';
-import { BASE_URL } from '../SettingUploadPhoto/SettingUploadPhoto';
 import { refreshUser } from '../../../../redux/auth/operations';
 import { ToastContainer, toast } from 'react-toastify';
 
-const replacePasswordSchema = yup.object().shape({
+const BASE_URL = 'https://stackninjas-backend.onrender.com';
+
+const updateUserInfoSchema = yup.object().shape({
   name: yup
     .string()
     .matches(/^[a-zA-Zа-яА-Я\s'-]*$/, 'Name should not contain numbers'),
@@ -39,13 +40,23 @@ const replacePasswordSchema = yup.object().shape({
 
   password: yup
     .string()
+    .when(['passwordOutdated', 'passwordRepeat'], {
+      is: (passwordOutdated, passwordRepeat) =>
+        passwordOutdated || passwordRepeat,
+      then: yup.string().required('Password is required'),
+      // otherwise: yup.string().notRequired(),
+    })
     .min(8, 'Too short')
     .max(48, 'Too long')
-    .matches(/[a-zA-Z]/, 'Must contain at least one letter')
-    .required('Please Enter your password'),
+    .matches(/[a-zA-Z]/, 'Must contain at least one letter'),
 
   passwordRepeat: yup
     .string()
+    .when(['passwordOutdated', 'password'], {
+      is: (passwordOutdated, password) => passwordOutdated || password,
+      then: yup.string().required('Password is required'),
+      // otherwise: yup.string().notRequired(),
+    })
     .oneOf([yup.ref('password'), null], 'Passwords must match'),
 });
 
@@ -53,14 +64,9 @@ export const FormModal = ({ onCloseModal }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const user = useSelector(selectUser);
-  const err = useSelector(selectIsError);
   const dispatch = useDispatch();
 
   const [userUpdate, setUserUpdate] = useState(user);
-
-  useEffect(() => {
-    toast.error(err);
-  }, [err]);
 
   const toggle = () => {
     setShowPassword(!showPassword);
@@ -72,17 +78,15 @@ export const FormModal = ({ onCloseModal }) => {
         headers: { 'Content-Type': 'application/json' },
       });
 
-      setUserUpdate(response.data);
+      if (response.status === 200) {
+        setUserUpdate(response.data);
+        dispatch(refreshUser());
+        onCloseModal();
+        resetForm();
+        toast.success('Your profile data was successfully updated');
+      }
 
-      // if (response.status === 400) {
-      //   toast.error('Password is wrong');
-      // }
-
-      toast.success('Your profile data was successfully updated');
-      dispatch(refreshUser());
-      onCloseModal();
-
-      resetForm();
+      toast.error('Failed to update profile. Please try again.');
     } catch (error) {
       console.log(error.message);
     }
@@ -99,7 +103,7 @@ export const FormModal = ({ onCloseModal }) => {
           password: '',
           passwordRepeat: '',
         }}
-        validationSchema={replacePasswordSchema}
+        validationSchema={updateUserInfoSchema}
         onSubmit={handleSubmit}
       >
         {({ values }) => (

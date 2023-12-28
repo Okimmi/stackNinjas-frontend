@@ -53,7 +53,7 @@ export const UserLogoModal = ({ isOpen, onClose }) => {
     <DropdownContainer className="dropdown-container" isOpen={isOpen}>
       <DropdownItem onClick={handleButtonSettingClick}>
         <IconSetting src={settingIcon} alt="Setting" />
-        Settings
+        Setting
       </DropdownItem>
       <DropdownItem onClick={handleButtonLogoutClick}>
         <IconLogout src={logoutIcon} alt="Log out" />

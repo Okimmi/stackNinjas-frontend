@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import logo from '../icons/Ellipse 1.jpg';
 import {
   Title,
@@ -11,12 +13,11 @@ import {
 } from '../SettingModal.styled';
 import { ToastContainer, toast } from 'react-toastify';
 import { useRef, useState } from 'react';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAvatar } from '../../../../redux/auth/selectors';
 import { refreshUser } from '../../../../redux/auth/operations';
 
-export const BASE_URL = 'https://stackninjas-backend.onrender.com';
+const BASE_URL = 'https://stackninjas-backend.onrender.com';
 
 export const UploadPhoto = () => {
   const input = useRef();
