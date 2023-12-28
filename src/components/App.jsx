@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from '../redux/hooks/useAuth';
 import { refreshUser } from '../redux/auth/operations.js';
 import { useEffect } from 'react';
-import { Blocks } from 'react-loader-spinner';
+import Loader from './Loader/Loader'
 import { HomePage } from 'pages/HomePage/HomePage';
 import { MainPage } from 'pages/MainPage/MainPage';
 
@@ -23,19 +23,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <Blocks
-      height="200"
-      width="200"
-      color="#407BFF"
-      ariaLabel="blocks-loading"
-      wrapperStyle={{
-        position: 'fixed',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-      }}
-      wrapperClass="blocks-wrapper"
-      visible={true}
+    <Loader
     />
   ) : (
     <>
