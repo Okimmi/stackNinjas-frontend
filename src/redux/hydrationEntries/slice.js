@@ -20,7 +20,7 @@ const handleRejected = (state, action) => {
 
 const hydrationEntriesInitialState = { 
   items: [],
-  progressToday: null,
+  progressToday: 0,
   itemsMonth: [],
   loading: false,
   error: null,
@@ -28,16 +28,11 @@ const hydrationEntriesInitialState = {
 };
 
 const hydrationEntriesSlice = createSlice({
-  name: "contacts",
+  name: "hydrationEntries",
   initialState: hydrationEntriesInitialState,
-  reducers: {
-    // // select/unselect contact
-    // toggleCompleted(state, action) {
-    //   const index = state.items.findIndex(
-    //     contact => contact.id === action.payload.id);
-    //   state.items[index].selected = !state.items[index].selected;
-    // },
-  },
+  reducers: { 
+    // actions
+  }, 
   extraReducers: (builder) => 
     builder
 
@@ -47,6 +42,9 @@ const hydrationEntriesSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.items = action.payload.data;
+        
+        console.log('SliseToday',  action.payload);
+
         state.progressToday = action.payload.progress;
       })
       .addCase(getTodayEntriesThunk.rejected, handleRejected)
@@ -57,6 +55,7 @@ const hydrationEntriesSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.itemsMonth = action.payload;
+        console.log('SliseMonth',  action.payload);
       })
       .addCase(getMonthProgressThunk.rejected, handleRejected)
 
@@ -81,7 +80,6 @@ const hydrationEntriesSlice = createSlice({
         // пересчитать прогресс за день
       })
       .addCase(getEntryFromIdThunk.rejected, handleRejected)
-
 
       // hydrationEntries/deleteEntry
       .addCase(deleteEntryThunk.pending, handlePending)
@@ -115,7 +113,7 @@ const hydrationEntriesSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.items = action.payload;
-        state.progressToday = null;
+        state.progressToday = 0;
         state.itemsMonth = action.payload;
       })
       .addCase(clearEntriesThunk.rejected, handleRejected)

@@ -6,10 +6,13 @@ import { $instance } from "../constants";
 //====================
 // get list Entries hydrationEntries for today
 export const getTodayEntriesThunk = createAsyncThunk(
-  "hydrationEntries/getToday",
+  "getToday",
   async (_, thunkAPI) => {
     try {
-      const { data } = await $instance.get("/api/hydrationEntries/today");
+      const { data } = await $instance.get("/api/hydration-entries/today");
+      
+      console.log(data);
+
       return data;
     } 
     catch (e) {
@@ -20,10 +23,14 @@ export const getTodayEntriesThunk = createAsyncThunk(
 
 // get progress hydrationEntries for Month
 export const getMonthProgressThunk = createAsyncThunk(
-  "hydrationEntries/getMonthProgress",
-  async (_, thunkAPI) => {
+  "getMonthProgress",
+  async (date, thunkAPI) => {
+    const {month, year} = date;
     try {
-      const { data } = await $instance.get("/api/hydrationEntries/month-progress");
+      const { data } = await $instance.get(
+        `/api/hydration-entries/month-progress?month=${month}&year=${year}`
+      );
+      console.log(data);
       return data;
     } 
     catch (e) {
@@ -34,7 +41,7 @@ export const getMonthProgressThunk = createAsyncThunk(
 
 // add Entry Hydration Entries
 export const addEntryThunk = createAsyncThunk(
-  "hydrationEntries/addEntry",
+  "addEntry",
   async (entry, thunkAPI) => {
     const {time, amount,} = entry;
     try {
@@ -49,7 +56,7 @@ export const addEntryThunk = createAsyncThunk(
 
 // get Entry hydration from Id
 export const getEntryFromIdThunk = createAsyncThunk(
-  "hydrationEntries/getEntryFromId",
+  "getEntryFromId",
   async (entryId, thunkAPI) => {
     try {
       const { data } = await $instance.get(`/api/hydration-entries/${entryId}`);
@@ -63,7 +70,7 @@ export const getEntryFromIdThunk = createAsyncThunk(
 
 // delete hydration entry
 export const deleteEntryThunk = createAsyncThunk(
-  "hydrationEntries/deleteEntry",
+  "deleteEntry",
   async (entryId, thunkAPI) => {
     try {
       const { data } = await $instance.delete(`/api/hydration-entries/${entryId}`);
@@ -77,7 +84,7 @@ export const deleteEntryThunk = createAsyncThunk(
 
 // edit/update hydration entry
 export const updateEntryThunk = createAsyncThunk(
-  "hydrationEntries/updateEntry",
+  "updateEntry",
   async (entry, thunkAPI) => {
     const {id:entryId, time, amount,} = entry;
     try {
@@ -92,7 +99,7 @@ export const updateEntryThunk = createAsyncThunk(
 
 // logout user -> clear hydration entries 
 export const clearEntriesThunk = createAsyncThunk(
-  "hydrationEntries/clearEntries",
+  "clearEntries",
   async (_, thunkAPI) => {
     try {
       const data = [];
