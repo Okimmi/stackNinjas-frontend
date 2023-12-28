@@ -40,7 +40,6 @@ const Modal = ({ close, children, title }) => {
         >
           <path
             d="M6 18L18 6M6 6L18 18"
-            stroke="#407BFF"
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
