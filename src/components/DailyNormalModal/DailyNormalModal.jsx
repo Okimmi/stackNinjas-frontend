@@ -38,6 +38,9 @@ import {
   Text,
   Title,
 } from './DailyNormalModal.styled';
+import { selectEntiesMonth, selectEntiesToday } from '../../redux/hydrationEntries/selectors';
+import { addEntryThunk, getMonthProgressThunk, getTodayEntriesThunk } from '../../redux/hydrationEntries/operations';
+import axios from 'axios';
 
 
 //const modalPlace = document.querySelector('#modal-root');
@@ -49,10 +52,42 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   const authetification = useSelector(selectUser);
   const initialDailyNorma = (dailyNormalVolume ?? authetification.dailyWaterRequirement ?? 2) / 1000;
 
+
+  const listWaterToday = useSelector(selectEntiesToday);
+  const listWaterMonth = useSelector(selectEntiesMonth);
+  // dispatch(() => getTodayEntriesThunk());
+
+  console.log(listWaterToday);
+  console.log(listWaterMonth);
+  // const day = new Date.now()
+  dispatch(() => addEntryThunk({time: "2023-12-28T20:30:28.019Z", amount: 70 }))
+
+
   useEffect(() => {
     if (!authetification) return;
     if (error) return toast.error(error.message);
-  }, [authetification, error]);
+    
+
+    const x = async (date) => {
+      const {month, year} = date;
+      try {
+        const { data } = await axios.get(
+          // "/api/hydration-entries/today"
+          `/api/hydration-entries/month-progress?month=${month}&year=${year}`
+        );
+        console.log(data);
+        return data;
+      } 
+      catch (e) {
+        console.log(e.message);
+      }
+    }
+    x({ month: 12, year: 2023 });
+
+    // dispatch(() => getTodayEntriesThunk());
+    // dispatch(() => getMonthProgressThunk({ month: 12, year: 2023 }));
+    console.log('1111');
+  }, [authetification, error, dispatch]);
 
 
   // ==== configFormik
