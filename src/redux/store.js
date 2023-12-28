@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "./auth/slice";
+import { hydrationEntriesReducer } from "./hydrationEntries/slice";
 import storage from 'redux-persist/lib/storage';
 import {
   persistStore,
@@ -19,9 +20,16 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const hydrationEntriesPersistConfig = {
+  key: 'hydrationEntries',
+  storage,
+  whitelist: ['items', 'itemsMonth'],
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    hydrationEntries: persistReducer(hydrationEntriesPersistConfig, hydrationEntriesReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
