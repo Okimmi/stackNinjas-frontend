@@ -30,12 +30,9 @@ export const register = createAsyncThunk(
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
-    // console.log(credentials);
-
     try {
       const res = await axios.post('/api/auth/signin', credentials);
       setAuthHeader(res.data.token);
-
       const resUser = await axios.get('/api/auth/current');
 
       return { user: resUser.data, token: res.data.token };
@@ -90,8 +87,11 @@ export const updateDailyNormal = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const res = await axios.patch('/api/aquatrack/daily-water-requirement', dailyNormal);
-     
+      const res = await axios.patch(
+        '/api/aquatrack/daily-water-requirement',
+        dailyNormal
+      );
+
       return res.data.dailyWaterRequirement;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

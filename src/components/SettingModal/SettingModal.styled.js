@@ -15,9 +15,7 @@ export const Backdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1000;
-  background-color: ${({ theme: { colors } }) => colors.primeryBlack};
-
+  background-color: rgba(0, 0, 0, 0.8);
   opacity: 1;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -25,6 +23,8 @@ export const Backdrop = styled.div`
 
 export const ModalContent = styled.div`
   position: absolute;
+  overflow-y: auto;
+  max-height: 80vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
@@ -102,6 +102,12 @@ export const IconUploadImage = styled(IconUpload)`
   height: 16px;
 `;
 
+export const IconUser = styled.img`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+`;
+
 export const ToggleIcon = styled.div`
   position: absolute;
   top: 50%;
@@ -145,6 +151,9 @@ export const UploadWrapper = styled.div`
   margin-left: 8px;
 `;
 
-export const Span = styled.span`
+export const UploadBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  color: ${({ theme: { colors } }) => colors.primeryBlue};
   margin-left: 8px;
 `;
