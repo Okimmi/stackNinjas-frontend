@@ -38,8 +38,8 @@ import {
   Text,
   Title,
 } from './DailyNormalModal.styled';
-// import { selectEntiesMonth, selectEntiesToday } from '../../redux/hydrationEntries/selectors';
-// import { getMonthProgressThunk, getTodayEntriesThunk } from '../../redux/hydrationEntries/operations';
+import { selectEntiesMonth, selectEntiesToday } from '../../redux/hydrationEntries/selectors';
+import { addEntryThunk, deleteEntryThunk, getEntryFromIdThunk, getMonthProgressThunk, getTodayEntriesThunk, updateEntryThunk } from '../../redux/hydrationEntries/operations';
 
 //const modalPlace = document.querySelector('#modal-root');
 
@@ -50,17 +50,21 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   const authetification = useSelector(selectUser);
   const initialDailyNorma = (dailyNormalVolume ?? authetification.dailyWaterRequirement ?? 2) / 1000;
 
-  // const listWaterToday = useSelector(selectEntiesToday);
-  // const listWaterMonth = useSelector(selectEntiesMonth);
-  // console.log(listWaterToday);
-  // console.log(listWaterMonth);
+  const listWaterToday = useSelector(selectEntiesToday);
+  const listWaterMonth = useSelector(selectEntiesMonth);
+  console.log("Today",listWaterToday);
+  console.log("Month",listWaterMonth);
 
   useEffect(() => {
     if (!authetification) return;
     if (error) return toast.error(error.message);
 
-  //   dispatch( getTodayEntriesThunk());
-  //   dispatch( getMonthProgressThunk({ month: 12, year: 2023 }));
+     dispatch( getTodayEntriesThunk());
+     dispatch( getMonthProgressThunk({ month: 12, year: 2023 }));
+     dispatch( addEntryThunk({ time: "", amount: 700 }));
+    //  dispatch( getEntryFromIdThunk());
+    //  dispatch( deleteEntryThunk());
+    //  dispatch( updateEntryThunk());
   }, [authetification, error, dispatch,]);
 
   
