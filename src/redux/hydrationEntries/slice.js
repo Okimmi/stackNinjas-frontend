@@ -19,7 +19,8 @@ const handleRejected = (state, action) => {
 };
 
 const hydrationEntriesInitialState = { 
-  data: {items: [], progress: 0},
+  items: [], 
+  progress: 0,
   itemsMonth: [],
   loading: false,
   error: null,
@@ -41,7 +42,8 @@ const hydrationEntriesSlice = createSlice({
       .addCase(getTodayEntriesThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.data = action.payload;
+        state.items = action.payload.data;
+        state.progress = action.payload.progress;
       })
       .addCase(getTodayEntriesThunk.rejected, handleRejected)
 
@@ -59,10 +61,10 @@ const hydrationEntriesSlice = createSlice({
       .addCase(addEntryThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        console.log('DO-data', action.payload);
-        console.log('DO', state.data.items);
-        state.data.items.push(action.payload);
-        console.log("AFTER", state.data.items);
+        // console.log('DO-data', action.payload);
+        // console.log('DO', state.items);
+        state.items.push(action.payload);
+        // console.log("AFTER", state.items);
         // пересчитать прогресс за день?
       })
       .addCase(addEntryThunk.rejected, handleRejected)
@@ -72,9 +74,12 @@ const hydrationEntriesSlice = createSlice({
       .addCase(getEntryFromIdThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.data.items.find(
+  console.log('DO-data', action.payload);
+        state.items.find(
           entry => entry.id === action.payload.id
         );
+  console.log('AFTER', state.items);
+
         // пересчитать прогресс за день?
       })
       .addCase(getEntryFromIdThunk.rejected, handleRejected)
@@ -84,10 +89,12 @@ const hydrationEntriesSlice = createSlice({
       .addCase(deleteEntryThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        const index = state.data.items.findIndex(
+  console.log('DO-data', action.payload);
+        const index = state.items.findIndex(
           contact => contact.id === action.payload.id
         );
-        state.data.items.splice(index, 1);
+        state.items.splice(index, 1);
+  console.log('AFTER', state.items);
         // пересчитать прогресс за день?
       })
       .addCase(deleteEntryThunk.rejected, handleRejected)
@@ -97,11 +104,13 @@ const hydrationEntriesSlice = createSlice({
       .addCase(updateEntryThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
+  console.log('DO-data', action.payload);
         const index = state.items.findIndex(
           entry => entry.id === action.payload.id
         );
-        state.data.items[index].time = action.payload.time;
-        state.data.items[index].amount = action.payload.amount;
+        state.items[index].time = action.payload.time;
+        state.items[index].amount = action.payload.amount;
+  console.log('AFTER', state.items);
         // пересчитать прогресс за день?
       })
       .addCase(updateEntryThunk.rejected, handleRejected)
@@ -111,7 +120,8 @@ const hydrationEntriesSlice = createSlice({
       .addCase(clearEntriesThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.data = action.payload;
+        state.items = action.payload;
+        state.progress = 0;
         state.itemsMonth = action.payload;
       })
       .addCase(clearEntriesThunk.rejected, handleRejected)

@@ -63,10 +63,6 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
 
      dispatch( getTodayEntriesThunk());
      dispatch( getMonthProgressThunk({ month: 12, year: 2023 }));
-
-    //  dispatch( getEntryFromIdThunk());
-    //  dispatch( deleteEntryThunk());
-    //  dispatch( updateEntryThunk());
   }, [authetification, error, dispatch,]);
 
 
@@ -101,14 +97,28 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   // Press Save
   const handleSubmit = async values => {
     console.log(values);
-    const { waterVolume } = values;
-    dispatch(updateDailyNormal({ dailyWaterRequirement: waterVolume * 1000 }));
+    //const { waterVolume } = values;
+    //dispatch(updateDailyNormal({ dailyWaterRequirement: waterVolume * 1000 }));
 
-    const d= new Date('2023-12-29 10:56:21');
+// +++ add
+    // const d= new Date('2023-12-29 10:56:21');
+    // const s = d.toJSON(); // "2023-12-29T10:56:21.000Z"
+    // dispatch( addEntryThunk({ time: s, amount: 10 }));
+    // console.log(s);
+// findId 
+    dispatch( getEntryFromIdThunk("658ec9e9911c08519bec2492"));
+// +++ deleteId
+    // dispatch( deleteEntryThunk("658eca38911c08519bec24a1"));
+// update
+    const d= new Date('2023-12-29 10:00:00');
     const s = d.toJSON(); // "2023-12-29T10:56:21.000Z"
     dispatch( addEntryThunk({ time: s, amount: 10 }));
-    
-    console.log(s);
+
+    dispatch( updateEntryThunk({
+      id: "658ec9e9911c08519bec2492",
+      time: s,
+      amount: 7,
+    }));
 
     if (!error) {
       toast.success('Goal set! Stay hydrated and track your progress!');

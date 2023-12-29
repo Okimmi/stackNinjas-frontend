@@ -23,7 +23,7 @@ const authPersistConfig = {
 const hydrationEntriesPersistConfig = {
   key: 'hydrationEntries',
   storage,
-  whitelist: ['data', 'itemsMonth', ],
+  whitelist: ['items', 'itemsMonth', ],
 };
 
 export const store = configureStore({

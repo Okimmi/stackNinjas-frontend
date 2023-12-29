@@ -60,8 +60,10 @@ export const getEntryFromIdThunk = createAsyncThunk(
   "hydrationEntries/getEntryFromId",
   async (entryId, thunkAPI) => {
     try {
+      console.log("ID", entryId);
       const { data } = await $instance.get(`/api/hydration-entries/${entryId}`);
       
+      console.log('FindIDresponce', data);
       return data;
     } 
     catch (e) {
@@ -75,8 +77,10 @@ export const deleteEntryThunk = createAsyncThunk(
   "hydrationEntries/deleteEntry",
   async (entryId, thunkAPI) => {
     try {
+      console.log("ID", entryId);
       const { data } = await $instance.delete(`/api/hydration-entries/${entryId}`);
-      
+      console.log('DeleteIDresponce', data);
+
       return data;
     } 
     catch (e) {
@@ -91,7 +95,10 @@ export const updateEntryThunk = createAsyncThunk(
   async (entry, thunkAPI) => {
     const {id:entryId, time, amount,} = entry;
     try {
-      const { data } = await $instance.put(`/api/hydration-entries/${entryId}${entryId}`, { time, amount });
+      console.log("UpdateRequest", entryId, time, amount);
+      const { data } = await $instance.put(`/api/hydration-entries/${entryId}`, { time, amount });
+      
+      console.log('UpdateResponce', data);
       return data;
     } 
     catch (e) {
