@@ -1,4 +1,9 @@
 import styled from "styled-components";
+const getBorder = props => {
+  if ((!!props.dailyProgress?parseInt(props.dailyProgress) : 101) <= 100) {
+    return props.theme.colors.secondary5; 
+  } else {return props.theme.colors.primeryWhite}
+}
 export const CalendarItem = styled.div `
 display:flex;
 flex-direction: column;
@@ -14,9 +19,9 @@ export const DateWrapper = styled.div `
 display:flex;
 width: 32px;
 height: 32px;
-background-color: ${(props) =>props.theme.colors.primeryWhite};;
+background-color: ${(props) =>props.theme.colors.primeryWhite};
 border-radius:20px;
-border: 1px;
+border: 1px solid ${getBorder};
 justify-content: center;
 align-items: center;
 margin-bottom: 4px;
