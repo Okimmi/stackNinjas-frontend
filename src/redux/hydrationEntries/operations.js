@@ -95,10 +95,10 @@ export const updateEntryThunk = createAsyncThunk(
   async (entry, thunkAPI) => {
     const {id:entryId, time, amount,} = entry;
     try {
-      console.log("UpdateRequest", entryId, time, amount);
+      console.log("UpdateRequest:", entryId, time, amount);
       const { data } = await $instance.put(`/api/hydration-entries/${entryId}`, { time, amount });
       
-      console.log('UpdateResponce', data);
+      console.log('UpdateResponce:', data);
       return data;
     } 
     catch (e) {
