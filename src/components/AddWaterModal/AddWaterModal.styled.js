@@ -50,7 +50,7 @@ export const BtnWrapper = styled.div`
     align-items: center;
     gap: 10px;
     border-radius: 30px;
-    border: 1px solid #407BFF;
+    border: 1px solid ${props => props.theme.colors.primeryBlue};
     background:  ${props => props.theme.colors.primeryWhite};
     box-shadow: 0px 2px 4px 0px rgba(64, 123, 255, 0.2);
     cursor: pointer;
@@ -69,8 +69,8 @@ export const BtnWrapper = styled.div`
     align-items: center;
     gap: 10px;
     border-radius: 40px;
-    background: #d7e3ff;
-    color: #407BFF;
+    background: ${props => props.theme.colors.secondary6};
+    color: ${props => props.theme.colors.primeryBlue};
     font-size: 18px;
     font-weight: 700;
     line-height: 1.33;
@@ -108,12 +108,12 @@ export const FormStyled = styled.form`
     outline: none;
     border-radius: 6px;
     padding: 12px 10px;
-    border: 1px solid #407BFF;
+    border: 1px solid ${props => props.theme.colors.primeryBlue};
     margin-bottom: 24px;
     appearance: none;
     font-size: 16px;
     appearance: none;
-    color: #407bff;
+    color: ${props => props.theme.colors.primeryBlue};
   font-weight: 400;
  line-height: 1.25;
    letter-spacing: 0em;
@@ -146,7 +146,7 @@ export const BtnSaveWrapper = styled.div`
   gap: 16px;
 
   p {
-    color: #407BFF;
+    color: ${props => props.theme.colors.primeryBlue};
     font-size: 18px;
     font-weight: 700;
     align-items: center;
@@ -163,7 +163,7 @@ export const BtnSaveWrapper = styled.div`
     gap: 10px;
     border-radius: 10px;
     border: none;
-    background: #407BFF;
+    background: ${props => props.theme.colors.primeryBlue};
     color: ${props => props.theme.colors.primeryWhite};
     box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
     &:hover, &:focus{
@@ -227,14 +227,14 @@ export const TimeGlobalStyles = createGlobalStyle`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #d7e3ff;
+    background-color: ${props => props.theme.colors.secondary6};
     border-radius: 10px;
-    border:1px solid #9ebbff;
-    color:#407BFF
+    border:1px solid ${props => props.theme.colors.secondary4};
+    color: ${props => props.theme.colors.primeryBlue};
   }
 
 .react-datepicker__header.react-datepicker__header--time.react-datepicker__header--time--only{
-  background-color:#407BFF;
+  background-color: ${props => props.theme.colors.primeryBlue};
   color: ${props => props.theme.colors.primeryWhite};
 }
 .react-datepicker__header .react-datepicker-time__header{
@@ -246,29 +246,29 @@ export const TimeGlobalStyles = createGlobalStyle`
 }
 
 .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list::-webkit-scrollbar-track {
-  background-color: #d7e3ff
+  background-color: ${props => props.theme.colors.secondary6};
 }
 
 .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list::-webkit-scrollbar-thumb {
   background-color: ${props => props.theme.colors.primeryWhite};
   border-radius: 6px;
     background: ${props => props.theme.colors.primeryWhite};
-    border: solid 1px #407BFF;
+    border: solid 1px ${props => props.theme.colors.primeryBlue};
     height: 20px;
 }
 
 .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item--selected{
-  background-color: #407BFF !important;
+  background-color: ${props => props.theme.colors.primeryBlue}; !important;
     color: ${props => props.theme.colors.primeryWhite};
     font-weight: bold;
 }
 
 .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item:hover{
 
-      border-left: 2px solid #FF9D43;
-      border-right: 2px solid #FF9D43;
-      border-top: 2px solid #FF9D43;
-      border-bottom: 2px solid #FF9D43;
+      border-left: 2px solid ${props => props.theme.colors.secondary5};
+      border-right: 2px solid ${props => props.theme.colors.secondary5};
+      border-top: 2px solid ${props => props.theme.colors.secondary5};
+      border-bottom: 2px solid ${props => props.theme.colors.secondary5};
     
 }
 .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item{

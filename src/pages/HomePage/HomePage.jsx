@@ -44,6 +44,8 @@ import edit from '../../icons/Edit.svg';
 import delet from '../../icons/Delete.svg';
 import { useSelector } from 'react-redux';
 import { selectDailyWaterRequirement } from '../../redux/auth/selectors.js';
+import AddWaterModal from 'components/AddWaterModal/AddWaterModal.jsx';
+import Modal from 'shared/Modal/Modal.jsx';
 import {MonthStatesTable} from '../../components/MonthStatesTable/MonthStatesTable.jsx'
 
 export const HomePage = () => {
@@ -52,6 +54,8 @@ export const HomePage = () => {
 
   const [showDailyNormalModal, setDailyNormalModal] = useState(false);
   const toggleModal = () => setDailyNormalModal(!showDailyNormalModal);
+
+  const [showAddWaterModal, setShowAddWaterModal] = useState(false);
 
   const handleSliderChange = event => {
     setSliderValue(event.target.value);
@@ -82,6 +86,14 @@ export const HomePage = () => {
 
   const onCancelEdit = () => {
     setEditingEntryData(null);
+  };
+
+   const addWaterModalShow = () => {
+    setShowAddWaterModal(true);
+  }
+
+  const closeAddWaterModal = () => {
+    setShowAddWaterModal(false);
   };
 
   const onAdd = () => {
@@ -196,7 +208,7 @@ export const HomePage = () => {
                 </Percents>
               </DivToday>
 
-              <AddWaterButton type="button">
+                <AddWaterButton onClick={addWaterModalShow} type="button">
                 <DivAddWater>
                   <ImgPlus src={plus} width={24} height={24} alt="Plus" />
                   <AddWater>Add Water</AddWater>
@@ -269,7 +281,7 @@ export const HomePage = () => {
                   ))}
                 </div>
                 <div>
-                  <ButtonAddWater onClick={onAdd}>
+                  <ButtonAddWater onClick={addWaterModalShow}>
                     <ImgPlusAdd
                       src={plusAdd}
                       width={12}
@@ -288,6 +300,16 @@ export const HomePage = () => {
       </Background>
 
       {showDailyNormalModal && <DailyNormalModal closeModal={toggleModal} />}
+       {showAddWaterModal && (
+        <Modal close={closeAddWaterModal} title={'Add water'}>
+          <AddWaterModal/>
+        </Modal>
+      )}
+        {/* {showEditWaterModal && (
+        <Modal close={closeModal} title={'Edit water'}>
+          <EditWaterModal/>
+        </Modal>
+      )} */}
     </>
   );
 };

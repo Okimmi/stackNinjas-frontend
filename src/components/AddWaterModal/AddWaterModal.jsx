@@ -53,7 +53,7 @@ const AddWaterModal = () => {
     }
     const newTime = new Date(time);
     const saveWater = { amount: value, time: newTime };
-
+    
     // dispatch();
     // dispatch();
   };
