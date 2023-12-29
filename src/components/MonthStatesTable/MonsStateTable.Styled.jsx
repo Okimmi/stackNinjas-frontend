@@ -29,6 +29,8 @@ export const PaginationBTN = styled.button `
 color:${(props) =>props.theme.colors.primeryBlue};
 border: none;
 background-color: inherit;
+padding: 0px;
+cursor: pointer;
 `
 
 
