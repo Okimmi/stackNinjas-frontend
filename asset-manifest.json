@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/stackNinjas-frontend/static/css/main.5ca734df.css",
-    "main.js": "/stackNinjas-frontend/static/js/main.d96c2fee.js",
+    "main.css": "/stackNinjas-frontend/static/css/main.66df5fb4.css",
+    "main.js": "/stackNinjas-frontend/static/js/main.2365cd48.js",
     "static/media/Roboto-Medium.ttf": "/stackNinjas-frontend/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/Roboto-Regular.ttf": "/stackNinjas-frontend/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
     "static/media/Roboto-Bold.ttf": "/stackNinjas-frontend/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
@@ -33,18 +33,20 @@
     "static/media/signIn.svg": "/stackNinjas-frontend/static/media/signIn.870af65d61b35cf143624ceeb90468b1.svg",
     "static/media/Plus.svg": "/stackNinjas-frontend/static/media/Plus.d614a7c0eddd72fb847dfe1e184fc40b.svg",
     "static/media/show_icon.svg": "/stackNinjas-frontend/static/media/show_icon.054bcb83c278f3920dc3ef23282ae113.svg",
+    "static/media/minus.svg": "/stackNinjas-frontend/static/media/minus.7cd15a07fce68ca6df20fa9878386b13.svg",
     "static/media/logoutIcon.svg": "/stackNinjas-frontend/static/media/logoutIcon.1ab73ef24bbb64a7a3f18c7901172751.svg",
     "static/media/statisticIcon.svg": "/stackNinjas-frontend/static/media/statisticIcon.39c6f2f5a0d69a5c53775d403cc20fbd.svg",
     "static/media/upload.svg": "/stackNinjas-frontend/static/media/upload.a522f37d5a6928d649f835e04a12332d.svg",
+    "static/media/pluss.svg": "/stackNinjas-frontend/static/media/pluss.a825844368d25850e9fa030c4bd74f44.svg",
     "static/media/closeIcon.svg": "/stackNinjas-frontend/static/media/closeIcon.1773ad9c2d64c8e5f8dac9cb5fb2c98a.svg",
     "static/media/outline.svg": "/stackNinjas-frontend/static/media/outline.522b2c595a77d1df50c4eaf35b522689.svg",
     "static/media/iconCloseModal.svg": "/stackNinjas-frontend/static/media/iconCloseModal.ab90ef00ef05bfa9d7c86c52baecfe7d.svg",
     "static/media/PlusAdd.svg": "/stackNinjas-frontend/static/media/PlusAdd.f009a02ac759b50fd6c43db8c00baf79.svg",
-    "main.5ca734df.css.map": "/stackNinjas-frontend/static/css/main.5ca734df.css.map",
-    "main.d96c2fee.js.map": "/stackNinjas-frontend/static/js/main.d96c2fee.js.map"
+    "main.66df5fb4.css.map": "/stackNinjas-frontend/static/css/main.66df5fb4.css.map",
+    "main.2365cd48.js.map": "/stackNinjas-frontend/static/js/main.2365cd48.js.map"
   },
   "entrypoints": [
-    "static/css/main.5ca734df.css",
-    "static/js/main.d96c2fee.js"
+    "static/css/main.66df5fb4.css",
+    "static/js/main.2365cd48.js"
   ]
 }
