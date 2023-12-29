@@ -1,5 +1,7 @@
 // hydrationEntries
-export const selectEntiesToday = state => state.hydrationEntries.data;
+export const selectEntiesToday = state => state.hydrationEntries.items;
+
+export const selectProgress = state => state.hydrationEntries.progress;
 
 export const selectEntiesMonth = state => state.hydrationEntries.itemsMonth;
 

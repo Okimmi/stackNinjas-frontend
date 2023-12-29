@@ -24,7 +24,6 @@ const hydrationEntriesInitialState = {
   itemsMonth: [],
   loading: false,
   error: null,
-  showModal: false,
 };
 
 const hydrationEntriesSlice = createSlice({
