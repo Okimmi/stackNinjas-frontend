@@ -7,7 +7,7 @@ import closeIcon from '../../images/header/closeIcon.svg';
 import {
   ButtonContainer,
   Content,
-  IconClose,
+  IconCloseBtn,
   LogoutOverlay,
   Title,
   TitleWrap,
@@ -39,20 +39,23 @@ export const UserLogoutModal = ({ isLogoutActive, onLogoutClose }) => {
   };
 
   return (
-    <Dialog
-      open={isLogoutActive}
-      onClose={onLogoutClose}
-    >
+    <Dialog open={isLogoutActive} onClose={onLogoutClose}>
       <LogoutOverlay onClick={onLogoutClose} />
       <Content>
         <TitleWrap>
-          <Title> Log out</Title>
-          <IconClose onClick={onLogoutClose} src={closeIcon} alt="Close" />
+          <Title>Log out</Title>
+          <IconCloseBtn onClick={onLogoutClose}>
+            <img className="logCloseIcon" src={closeIcon} alt="Close" />
+          </IconCloseBtn>
         </TitleWrap>
         <p>Do you really want to leave?</p>
         <ButtonContainer>
-          <button onClick={handleConfirmLogout}>Log out</button>
-          <button onClick={handleCancelClick}>Cancel</button>
+          <button className="logoutBtn logout" onClick={handleConfirmLogout}>
+            Log out
+          </button>
+          <button className="logoutBtn" onClick={handleCancelClick}>
+            Cancel
+          </button>
         </ButtonContainer>
       </Content>
     </Dialog>
