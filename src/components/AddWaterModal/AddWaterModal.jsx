@@ -1,7 +1,7 @@
-import "react-datepicker/dist/react-datepicker.css";
-import DatePicker from "react-datepicker";
-import { useState } from "react";
-import Notiflix from "notiflix";
+import 'react-datepicker/dist/react-datepicker.css';
+import DatePicker from 'react-datepicker';
+import { useState } from 'react';
+import Notiflix from 'notiflix';
 // import { useDispatch } from "react-redux";
 
 import {
@@ -14,7 +14,7 @@ import {
   StyledIncrementIcon,
   TimeGlobalStyles,
   ValueText,
-} from "./AddWaterModal.styled";
+} from './AddWaterModal.styled';
 
 const AddWaterModal = () => {
   const [value, setValue] = useState(0);
@@ -22,17 +22,17 @@ const AddWaterModal = () => {
 
   // const dispatch = useDispatch();
 
-  const handleUpdate = (evt) => {
+  const handleUpdate = evt => {
     const { name } = evt.currentTarget;
 
     switch (name) {
-      case "decrement":
-        setValue((state) => Math.max(state - 50, 0));
+      case 'decrement':
+        setValue(state => Math.max(state - 50, 0));
         break;
-      case "increment":
-        setValue((state) => Math.min(state + 50, 5000));
+      case 'increment':
+        setValue(state => Math.min(state + 50, 5000));
         break;
-      case "input":
+      case 'input':
         const value = Number(evt.target.value);
         const inputValue = Math.min(Math.max(value), 5000);
         setValue(inputValue);
@@ -41,19 +41,19 @@ const AddWaterModal = () => {
     }
   };
 
-  const handleSave = async (evt) => {
+  const handleSave = async evt => {
     evt.preventDefault();
     if (value === 0) {
-      Notiflix.Notify.warning("Please enter a non-zero value for water.");
+      Notiflix.Notify.warning('Please enter a non-zero value for water.');
       return;
     }
-    if (value < 0 || value === "") {
-      Notiflix.Notify.warning("Please enter a valid positive value for water.");
+    if (value < 0 || value === '') {
+      Notiflix.Notify.warning('Please enter a valid positive value for water.');
       return;
     }
-    const newTime = new Date(time);
-    const saveWater = { amount: value, time: newTime };
-    
+    // const newTime = new Date(time);
+    // const saveWater = { amount: value, time: newTime };
+
     // dispatch();
     // dispatch();
   };
@@ -82,7 +82,7 @@ const AddWaterModal = () => {
           <StyledDateWrapper>
             <DatePicker
               selected={time}
-              onChange={(date) => {
+              onChange={date => {
                 setTime(date);
               }}
               showTimeSelect
@@ -103,13 +103,13 @@ const AddWaterModal = () => {
             name="input"
             type="number"
             value={value}
-            onChange={(evt) => {
+            onChange={evt => {
               if (
-                (evt.nativeEvent.inputType === "deleteContentBackward" ||
-                  evt.nativeEvent.inputType === "deleteContentForward") &&
+                (evt.nativeEvent.inputType === 'deleteContentBackward' ||
+                  evt.nativeEvent.inputType === 'deleteContentForward') &&
                 value === 0
               ) {
-                setValue("");
+                setValue('');
               } else {
                 handleUpdate(evt);
               }
