@@ -28,7 +28,6 @@ export const Content = styled.div`
 
   @media screen and (min-width: 768px) {
     top: 200px;
-
     width: 592px;
     height: 208px;
     align-items: flex-start;
@@ -79,17 +78,19 @@ export const Content = styled.div`
   }
 `;
 
-export const IconCloseBtn = styled.button`
+export const CloseBtn = styled.button`
   background-color: transparent;
   border: none;
   width: 24px;
   height: 24px;
   cursor: pointer;
+  padding: 0;
+  margin: 0;
+`;
 
-  .logCloseIcon {
-    width: 24px;
-    height: 24px;
-  }
+export const IconClose = styled.img`
+  width: 24px;
+  height: 24px;
 `;
 
 export const TitleWrap = styled.div`

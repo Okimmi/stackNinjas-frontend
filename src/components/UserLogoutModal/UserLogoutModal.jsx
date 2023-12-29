@@ -6,8 +6,9 @@ import { logOut } from '../../redux/auth/operations';
 import closeIcon from '../../images/header/closeIcon.svg';
 import {
   ButtonContainer,
+  CloseBtn,
   Content,
-  IconCloseBtn,
+  IconClose,
   LogoutOverlay,
   Title,
   TitleWrap,
@@ -44,9 +45,9 @@ export const UserLogoutModal = ({ isLogoutActive, onLogoutClose }) => {
       <Content>
         <TitleWrap>
           <Title>Log out</Title>
-          <IconCloseBtn onClick={onLogoutClose}>
-            <img className="logCloseIcon" src={closeIcon} alt="Close" />
-          </IconCloseBtn>
+          <CloseBtn onClick={onLogoutClose}>
+            <IconClose size={24} src={closeIcon} alt="Close"/> 
+          </CloseBtn>
         </TitleWrap>
         <p>Do you really want to leave?</p>
         <ButtonContainer>

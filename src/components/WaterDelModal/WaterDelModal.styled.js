@@ -19,7 +19,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 280px;
-  height: 280px;
+  height: 260px;
   padding: 32px 24px;
   justify-content: center;
   align-items: center;
@@ -45,7 +45,10 @@ export const Content = styled.div`
     font-weight: 500;
     line-height: 1.1;
   }
-  button {
+  .waterDelBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: ${props => props.theme.colors.secondary6};
     color: ${props => props.theme.colors.primeryBlue};
 
@@ -61,20 +64,40 @@ export const Content = styled.div`
 
     &:hover {
       box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-      background-color: ${props => props.theme.colors.secondary3};
-      color: ${props => props.theme.colors.primeryWhite};
     }
     @media screen and (min-width: 768px) {
+      padding: 10px 30px;
+      font-size: 18px;
+      line-height: 1.33;
       width: 160px;
       height: 44px;
     }
   }
+  .waterDelBtn.del {
+    background-color: ${props => props.theme.colors.secondary3};
+    color: ${props => props.theme.colors.primeryWhite};
+  }
 `;
 
-export const IconClose = styled.img``;
+export const CloseBtn = styled.button`
+  background-color: transparent;
+  border: none;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+`;
+
+export const IconClose = styled.img`
+  width: 24px;
+  height: 24px;
+`;
+
 export const TitleWrap = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
 `;
