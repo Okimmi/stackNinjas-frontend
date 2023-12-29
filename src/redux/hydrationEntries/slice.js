@@ -59,7 +59,10 @@ const hydrationEntriesSlice = createSlice({
       .addCase(addEntryThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
+        console.log('DO-data', action.payload);
+        console.log('DO', state.data.items);
         state.data.items.push(action.payload);
+        console.log("AFTER", state.data.items);
         // пересчитать прогресс за день?
       })
       .addCase(addEntryThunk.rejected, handleRejected)

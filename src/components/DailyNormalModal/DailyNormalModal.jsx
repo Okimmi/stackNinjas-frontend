@@ -55,18 +55,22 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   console.log("Today",listWaterToday);
   console.log("Month",listWaterMonth);
 
+
+
   useEffect(() => {
     if (!authetification) return;
     if (error) return toast.error(error.message);
 
      dispatch( getTodayEntriesThunk());
      dispatch( getMonthProgressThunk({ month: 12, year: 2023 }));
-     dispatch( addEntryThunk({ time: "", amount: 700 }));
+
     //  dispatch( getEntryFromIdThunk());
     //  dispatch( deleteEntryThunk());
     //  dispatch( updateEntryThunk());
   }, [authetification, error, dispatch,]);
 
+
+ 
   
   // ==== configFormik
   const configFormik = useFormik({
@@ -99,6 +103,12 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
     console.log(values);
     const { waterVolume } = values;
     dispatch(updateDailyNormal({ dailyWaterRequirement: waterVolume * 1000 }));
+
+    const d= new Date('2023-12-29 10:56:21');
+    const s = d.toJSON(); // "2023-12-29T10:56:21.000Z"
+    dispatch( addEntryThunk({ time: s, amount: 10 }));
+    
+    console.log(s);
 
     if (!error) {
       toast.success('Goal set! Stay hydrated and track your progress!');
