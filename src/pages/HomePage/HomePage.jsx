@@ -45,7 +45,7 @@ import delet from '../../icons/Delete.svg';
 import { useSelector } from 'react-redux';
 import { selectDailyWaterRequirement } from '../../redux/auth/selectors.js';
 import AddWaterModal from 'components/AddWaterModal/AddWaterModal.jsx';
-import Modal from 'shared/Modal/Modal.jsx';
+import Modal from '../../components/Global/Modal/Modal.jsx';
 import { MonthStatesTable } from '../../components/MonthStatesTable/MonthStatesTable.jsx';
 
 export const HomePage = () => {
