@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 export const Wrapper = styled.div`
-  position: relative;
+  /* position: relative; */
   padding: 24px 20px 40px 20px;
   margin: 0 auto;
   margin-top: 56px;

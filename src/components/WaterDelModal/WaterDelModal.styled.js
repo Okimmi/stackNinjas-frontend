@@ -60,7 +60,6 @@ export const ButtonContainer = styled.div`
       height: 44px;
     }
   }
-
   .deleteBtn.delete {
     background-color: ${props => props.theme.colors.secondary3};
     color: ${props => props.theme.colors.primeryWhite};

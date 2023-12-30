@@ -1,7 +1,7 @@
 import { WhyDrinkWater } from 'components/WhyDrinkWater/WhyDrinkWater';
 import { WaterconsumTracker } from 'components/WaterconsumTracker/WaterconsumTracker';
 import {
-  BGElementMainPage,
+  // BGElementMainPage,
   BGImgMainPage,
   MainPageContainer,
 } from './MainPage.styled';
@@ -12,7 +12,7 @@ export const MainPage = () => {
       <WaterconsumTracker />
       <WhyDrinkWater />
       <BGImgMainPage />
-      <BGElementMainPage />
+      {/* <BGElementMainPage /> */}
     </MainPageContainer>
   );
 };

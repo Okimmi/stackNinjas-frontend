@@ -63,7 +63,6 @@ export const ButtonContainer = styled.div`
       height: 44px;
     }
   }
-
   .logoutBtn.logout {
     background-color: ${props => props.theme.colors.secondary3};
     color: ${props => props.theme.colors.primeryWhite};
