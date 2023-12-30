@@ -1,4 +1,5 @@
 export  const calendarData = (monthData, days) => {
+ 
   const dayList = []; 
   for (let i = 1; i <= days; i += 1) {
     const index = monthData.findIndex(({ date }) => date === i);
@@ -14,8 +15,9 @@ export  const calendarData = (monthData, days) => {
 export function findData(state) {   
   return state.map(
     ({ date, entriesQuantity, dailyWaterRequirement, dailyProgress }) => {
+      const forIdex = date.indexOf(",")
       return {
-        date: Number(date.slice(0, 2)),
+        date: Number(date.slice(0, forIdex)),
         entriesQuantity,
         dailyWaterRequirement,
         dailyProgress,
