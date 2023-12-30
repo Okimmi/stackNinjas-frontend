@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 // import axios from 'axios';
-import { $instance } from "../constants";
+import { $instance } from '../constants';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -91,9 +91,25 @@ export const updateDailyNormal = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const res = await $instance.patch('/api/aquatrack/daily-water-requirement', dailyNormal);
-     
+      const res = await $instance.patch(
+        '/api/aquatrack/daily-water-requirement',
+        dailyNormal
+      );
+
       return res.data.dailyWaterRequirement;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateAvatar = createAsyncThunk(
+  'auth/updateAvatar',
+  async (avatar, thunkAPI) => {
+    try {
+      const res = await $instance.patch('/api/auth/avatars', avatar);
+
+      return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

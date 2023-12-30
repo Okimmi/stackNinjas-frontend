@@ -11,8 +11,8 @@ import {
 } from './MonsStateTable.Styled';
 
 import { DayState } from 'components/DayState/DayState';
-import { calendarData, findData, daysInMonth  } from './helpers';
-import axios from 'axios';
+import { calendarData, findData, daysInMonth } from './helpers';
+import { $instance } from '../../redux/constants';
 
 const date = new Date();
 
@@ -40,7 +40,7 @@ export const MonthStatesTable = () => {
 
   const getMonthState = async ({ month, year }) => {
     try {
-      const response = await axios.get(
+      const response = await $instance.get(
         `/api/hydration-entries//month-progress?month=${month + 1}&year=${year}`
       );
       setMonthState(response.data);
@@ -61,46 +61,38 @@ export const MonthStatesTable = () => {
     setToday(newDate.getTime());
   };
 
- 
   const currentDate = new Date(today);
- 
- 
-  const btnDisable = () =>  date - currentDate >= 86400000 ? false : true;
 
+  const btnDisable = () => (date - currentDate >= 86400000 ? false : true);
 
   const dayList = calendarData(findData(monthState), daysInMonth(currentDate));
 
   return (
     <>
-        <Heder>
-          <Title>Month</Title>
-          <Pagination>
-            <PaginationBTN type="button" onClick={decrementMonth}>
-              <SlArrowLeft size={14} />
-            </PaginationBTN>
-            <PaginationText>
-              {currentDate.toLocaleString('en-GB', { month: 'long' })}, &nbsp;
-              {currentDate.getFullYear()}
-            </PaginationText>
-            <PaginationBTN
-              type="button"
-              onClick={incrementMonth}
-              disabled={btnDisable()}
-            >
-              <SlArrowRight size={14} />
-            </PaginationBTN>
-          </Pagination>
-        </Heder>
-        <CalendarList>
-          {dayList.map(
-            ({
-              date,
-              entriesQuantity,
-              dailyWaterRequirement,
-              dailyProgress,
-            }) => (
-              <li  key={date}>
-                <DayState               
+      <Heder>
+        <Title>Month</Title>
+        <Pagination>
+          <PaginationBTN type="button" onClick={decrementMonth}>
+            <SlArrowLeft size={14} />
+          </PaginationBTN>
+          <PaginationText>
+            {currentDate.toLocaleString('en-GB', { month: 'long' })}, &nbsp;
+            {currentDate.getFullYear()}
+          </PaginationText>
+          <PaginationBTN
+            type="button"
+            onClick={incrementMonth}
+            disabled={btnDisable()}
+          >
+            <SlArrowRight size={14} />
+          </PaginationBTN>
+        </Pagination>
+      </Heder>
+      <CalendarList>
+        {dayList.map(
+          ({ date, entriesQuantity, dailyWaterRequirement, dailyProgress }) => (
+            <li key={date}>
+              <DayState
                 key={date}
                 day={date}
                 month={currentDate.toLocaleString('en-GB', { month: 'long' })}
@@ -112,10 +104,10 @@ export const MonthStatesTable = () => {
                 toggleModal={toggleModal}
                 closeModal={closeModal}
               />
-              </li>
-            )
-          )}
-        </CalendarList>
+            </li>
+          )
+        )}
+      </CalendarList>
     </>
   );
 };
