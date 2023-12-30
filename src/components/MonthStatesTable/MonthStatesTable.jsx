@@ -35,7 +35,7 @@ export const MonthStatesTable = () => {
     setTargetElement(prev => (prev === id ? 0 : id));
     setPosition(position);
   };
-
+  
   const closeModal = () => setTargetElement(null);
 
   const getMonthState = async ({ month, year }) => {

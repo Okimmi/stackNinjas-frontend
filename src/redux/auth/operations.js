@@ -31,14 +31,11 @@ export const register = createAsyncThunk(
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
-    // console.log(credentials);
-
     try {
       const res = await $instance.post('/api/auth/signin', credentials);
       setAuthHeader(res.data.token);
-
       const resUser = await $instance.get('/api/auth/current');
-
+      
       return { user: resUser.data, token: res.data.token };
     } catch (AxiosError) {
       console.log(AxiosError);
@@ -97,19 +94,6 @@ export const updateDailyNormal = createAsyncThunk(
       );
 
       return res.data.dailyWaterRequirement;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const updateAvatar = createAsyncThunk(
-  'auth/updateAvatar',
-  async (avatar, thunkAPI) => {
-    try {
-      const res = await $instance.patch('/api/auth/avatars', avatar);
-
-      return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

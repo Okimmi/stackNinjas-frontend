@@ -1,10 +1,12 @@
 import { useEffect, useRef} from 'react';
+import { useSelector } from 'react-redux';
 
 import { Modal, IconContainer, DataText } from './DaysGeneralStats.Styled';
 import { IoMdClose } from 'react-icons/io';
+import { selectDailyWaterRequirement } from '../../redux/auth/selectors';
 
 export const DaysGeneralStats = ({ day, dailyNorma, dailyProgress, entries, month, onClose, modalPosition }) => {
- 
+ const defaultDailyNorma =useSelector(selectDailyWaterRequirement)
   const modalRef = useRef(null);
   useEffect(() => {
     const handleKeyDown = event => {
@@ -40,7 +42,7 @@ export const DaysGeneralStats = ({ day, dailyNorma, dailyProgress, entries, mont
         <IoMdClose size={16} onClick={onClose} />
       </IconContainer>
       <p>
-        Daily norma: <DataText>{dailyNorma?dailyNorma:'2L'}</DataText>
+        Daily norma: <DataText>{dailyNorma?dailyNorma:`${defaultDailyNorma/1000} L`}</DataText>
       </p>
       <p>
         Fulfillment of the daily norm: <DataText>{dailyProgress?Number.parseInt(dailyProgress):100}%</DataText>

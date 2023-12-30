@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-// import { useFormik } from 'formik';
+import axios from 'axios';
 
 import { useState } from 'react';
 import {
@@ -19,8 +19,15 @@ import {
   Wrapper,
 } from './SettingsFormModal.styled';
 import { EyeIcon, HideIcon, Title, ToggleIcon } from '../SettingModal.styled';
+import { BASE_URL } from '../SettingUploadPhoto/SettingUploadPhoto';
 
-const replacePassword = yup.object().shape({
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '../../../redux/auth/selectors';
+import { refreshUser } from '../../../redux/auth/operations';
+
+import { ToastContainer, toast } from 'react-toastify';
+
+const updateUserInfoSchema = yup.object().shape({
   name: yup
     .string()
     .matches(/^[a-zA-Zа-яА-Я\s'-]*$/, 'Name should not contain numbers'),
@@ -30,165 +37,210 @@ const replacePassword = yup.object().shape({
     .email('Invalid email format')
     .matches(/^[-?\w.?%?]+@\w+.{1}\w{2,4}$/),
 
-  outdatedPassword: yup.string(),
-  // .required('Please Enter your outdated password password'),
+  passwordOutdated: yup.string(),
 
-  newPassword: yup
+  password: yup
     .string()
+    .test({
+      name: 'password',
+      test: function (value) {
+        const passwordOutdated = this.parent.passwordOutdated;
+        return (
+          !(passwordOutdated && passwordOutdated.trim().length > 0) ||
+          (value && value.trim().length > 0)
+        );
+      },
+      message: 'New password is required',
+    })
     .min(8, 'Too short')
     .max(48, 'Too long')
-    .required('Please Enter your password')
     .matches(/[a-zA-Z]/, 'Must contain at least one letter'),
 
-  repeadPassword: yup
+  passwordRepeat: yup
     .string()
-    // .required()
+    .test({
+      name: 'passwordRepeat',
+      test: function (value) {
+        const password = this.parent.password;
+        return (
+          !(password && password.trim().length > 0) ||
+          (value && value.trim().length > 0)
+        );
+      },
+      message: 'Repeat password is required',
+    })
     .oneOf([yup.ref('password'), null], 'Passwords must match'),
 });
 
-export const FormModal = ({ onClose }) => {
+export const FormModal = ({ onCloseModal }) => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   const toggle = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (values, { resetForm }) => {
-    const {
-      name,
-      email,
-      outdatedPassword,
-      newPassword,
-      repeadPassword,
-      picked,
-    } = values;
-
-    console.log(
-      name,
-      email,
-      outdatedPassword,
-      newPassword,
-      repeadPassword,
-      picked
+  const handleSubmit = async (values, { resetForm }) => {
+    const filledFields = Object.fromEntries(
+      Object.entries(values).filter(
+        ([key, value]) => value !== '' && value !== undefined
+      )
     );
-    resetForm();
+
+    const hasChanges = Object.entries(filledFields).some(
+      ([key, value]) => value !== user[key]
+    );
+
+    if (!hasChanges) {
+      toast.warning('No changes made. Profile data remains the same.');
+      return;
+    }
+
+    try {
+      const response = await axios.put(
+        `${BASE_URL}/api/auth/profile`,
+        filledFields,
+        {
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+
+      if (response.status === 200) {
+        dispatch(refreshUser());
+        onCloseModal();
+        resetForm();
+        toast.success('Your profile data was successfully updated');
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
     <>
       <Base
         initialValues={{
-          picked: '',
-          gender: '',
+          gender: '' || user.gender,
           name: '',
           email: '',
-          outdatedPassword: '',
-          newPassword: '',
-          repeadPassword: '',
+          passwordOutdated: '',
+          password: '',
+          passwordRepeat: '',
         }}
-        validationSchema={replacePassword}
+        validationSchema={updateUserInfoSchema}
         onSubmit={handleSubmit}
       >
-        <FormUser>
-          <Wrapper>
-            <TopicGender>Your gender identity</TopicGender>
-            <RadioWrapper>
-              <GenderWrapper>
-                <RadioField type="radio" name="picked" value="Girl" />
-                <Gender>Girl</Gender>
-              </GenderWrapper>
-              <RadioField type="radio" name="picked" value="Man" />
-              <Gender>Man</Gender>
-            </RadioWrapper>
+        {({ values }) => (
+          <FormUser>
+            <Wrapper>
+              <TopicGender>Your gender identity</TopicGender>
+              <RadioWrapper>
+                <GenderWrapper>
+                  <RadioField
+                    type="radio"
+                    name="gender"
+                    value="girl"
+                    checked={values.gender === 'girl'}
+                  />
 
-            <Title>Your name</Title>
+                  <Gender>Girl</Gender>
+                </GenderWrapper>
+                <RadioField
+                  type="radio"
+                  name="gender"
+                  value="man"
+                  checked={values.gender === 'man'}
+                />
+                <Gender>Man</Gender>
+              </RadioWrapper>
 
-            <NameWrapper>
+              <Title>Your name</Title>
+
+              <NameWrapper>
+                <FieldForm
+                  type="text"
+                  name="name"
+                  placeholder={user.name || 'Enter your name'}
+                  // style={
+                  //   formik.errors.David && formik.touched.myField
+                  //     ? { borderColor: 'red' }
+                  //     : null
+                  // }
+                  style={{ color: '#407BFF' }}
+                />{' '}
+              </NameWrapper>
+
+              <Title>Your email</Title>
               <FieldForm
-                type="text"
-                name="name"
-                placeholder="David"
-                autoComplete="off"
-                // style={
-                //   formik.errors.David && formik.touched.myField
-                //     ? { borderColor: 'red' }
-                //     : null
-                // }
-                style={{ color: '#407BFF' }}
-              />{' '}
-            </NameWrapper>
-
-            <Title>Your email</Title>
-            <FieldForm
-              id="email"
-              type={showPassword ? 'text' : 'password'}
-              name="email"
-              placeholder="david01@gmail.com"
-              autoComplete="off"
-              title="email"
-            />
-          </Wrapper>
-
-          <Wrapper>
-            <TopicGender>Password</TopicGender>
-            <Password htmlFor="">Outdated password:</Password>
-            <Container>
-              <FieldForm
-                id="outdatedPassword"
-                name="outdatedPassword"
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Password"
-                title="outdatedPassword"
-                autoComplete="off"
+                id="email"
+                name="email"
+                placeholder={user.email || 'Email'}
+                title="email"
+                autoComplete="on"
               />
+            </Wrapper>
 
-              <ToggleIcon onClick={toggle}>
-                {showPassword ? <EyeIcon /> : <HideIcon />}
-              </ToggleIcon>
+            <Wrapper>
+              <TopicGender>Password</TopicGender>
+              <Password htmlFor="passwordOutdated">Outdated password:</Password>
+              <Container>
+                <FieldForm
+                  id="passwordOutdated"
+                  name="passwordOutdated"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder={'Password'}
+                  title="passwordOutdated"
+                  autoComplete="on"
+                />
 
-              <ErrMessage name="outdatedPassword" component="p" />
-            </Container>
-            <Password htmlFor="">New password:</Password>
+                <ToggleIcon onClick={toggle}>
+                  {showPassword ? <EyeIcon /> : <HideIcon />}
+                </ToggleIcon>
+                <ErrMessage name="passwordOutdated" component="p" />
+              </Container>
 
-            <Container>
-              <FieldForm
-                name="newPassword"
-                id="newPassword"
-                type={showPassword ? 'text' : 'password'}
-                title="newPassword"
-                placeholder="Password"
-                autoComplete="off"
-              />
-              <ErrMessage name="newPassword" component="p" />
-              <ToggleIcon onClick={toggle}>
-                {showPassword ? <EyeIcon /> : <HideIcon />}
-              </ToggleIcon>
-            </Container>
+              <Password htmlFor="password">New password:</Password>
 
-            <Password htmlFor="">Repeat new password:</Password>
+              <Container>
+                <FieldForm
+                  name="password"
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  title="Password"
+                  placeholder="Password"
+                  autoComplete="on"
+                />
 
-            <Container>
-              <FieldForm
-                name="repeadPassword"
-                id="repeadPassword"
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Password"
-                autoComplete="off"
-              />
-              <ToggleIcon onClick={toggle}>
-                {showPassword ? <EyeIcon /> : <HideIcon />}
-              </ToggleIcon>
+                <ToggleIcon onClick={toggle}>
+                  {showPassword ? <EyeIcon /> : <HideIcon />}
+                </ToggleIcon>
+                <ErrMessage name="password" component="p" />
+              </Container>
 
-              <ErrMessage
-                name="repeadPassword"
-                component="p"
-                autoComplete="off"
-              />
-            </Container>
-          </Wrapper>
-          <SaveBtn type="submit">Save</SaveBtn>
-        </FormUser>
+              <Password htmlFor="passwordRepeat">Repeat new password:</Password>
+
+              <Container>
+                <FieldForm
+                  name="passwordRepeat"
+                  id="passwordRepeat"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Password"
+                  autoComplete="on"
+                />
+                <ToggleIcon onClick={toggle}>
+                  {showPassword ? <EyeIcon /> : <HideIcon />}
+                </ToggleIcon>
+
+                <ErrMessage name="passwordRepeat" component="p" />
+              </Container>
+            </Wrapper>
+            <SaveBtn type="submit">Save</SaveBtn>
+          </FormUser>
+        )}
       </Base>
+      <ToastContainer />
     </>
   );
 };
