@@ -1,51 +1,38 @@
 import styled from 'styled-components';
 
-export const WaterDelOverlay = styled.div`
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2000;
-`;
-
 export const Content = styled.div`
-  position: absolute;
-  top: 80px;
-  left: 50%;
-  transform: translate(-50%);
-
-  border-radius: 10px;
-  background: ${props => props.theme.colors.primeryWhite};
-  color: ${props => props.theme.colors.primeryBlack};
+  width: 232px;
   display: flex;
   flex-direction: column;
-  width: 280px;
-  height: 260px;
-  padding: 32px 24px;
-  justify-content: center;
   align-items: center;
   gap: 24px;
-  z-index: 3000;
 
   @media screen and (min-width: 768px) {
-    top: 200px;
-
-    width: 592px;
-    height: 208px;
+    width: 544px;
     align-items: flex-start;
   }
+`;
 
-  @media screen and (min-width: 1440px) {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+export const Question = styled.p`
+  color: ${props => props.theme.colors.primeryBlack};
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.1;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 24px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: flex-end;
   }
 
-  p {
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.1;
-  }
-  .waterDelBtn {
+  .deleteBtn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,46 +60,8 @@ export const Content = styled.div`
       height: 44px;
     }
   }
-  .waterDelBtn.del {
+  .deleteBtn.delete {
     background-color: ${props => props.theme.colors.secondary3};
     color: ${props => props.theme.colors.primeryWhite};
-  }
-`;
-
-export const CloseBtn = styled.button`
-  background-color: transparent;
-  border: none;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
-`;
-
-export const IconClose = styled.img`
-  width: 24px;
-  height: 24px;
-`;
-
-export const TitleWrap = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-`;
-export const Title = styled.h2`
-  font-size: 26px;
-  font-weight: 500;
-  line-height: 1.2;
-`;
-export const ButtonContainer = styled.h2`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 24px;
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-    justify-content: flex-end;
   }
 `;

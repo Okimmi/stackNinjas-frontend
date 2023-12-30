@@ -1,26 +1,16 @@
 import { useDispatch } from 'react-redux';
-import { Dialog } from '@headlessui/react';
 import { useNavigate } from 'react-router-dom';
 
 import { logOut } from '../../redux/auth/operations';
-import closeIcon from '../../images/header/closeIcon.svg';
-import {
-  ButtonContainer,
-  CloseBtn,
-  Content,
-  IconClose,
-  LogoutOverlay,
-  Title,
-  TitleWrap,
-} from './UserLogoutModal.styled';
 import { clearUserData } from '../../redux/auth/slice';
+import { ButtonContainer, Content, Question } from './UserLogoutModal.styled';
 
-export const UserLogoutModal = ({ isLogoutActive, onLogoutClose }) => {
+export const UserLogoutModal = ({ close }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleCancelClick = () => {
-    onLogoutClose();
+    close();
   };
 
   const handleConfirmLogout = () => {
@@ -28,7 +18,7 @@ export const UserLogoutModal = ({ isLogoutActive, onLogoutClose }) => {
       dispatch(logOut())
         .then(() => {
           dispatch(clearUserData());
-          onLogoutClose();
+          close();
           navigate('/');
         })
         .catch(error => {
@@ -40,25 +30,16 @@ export const UserLogoutModal = ({ isLogoutActive, onLogoutClose }) => {
   };
 
   return (
-    <Dialog open={isLogoutActive} onClose={onLogoutClose}>
-      <LogoutOverlay onClick={onLogoutClose} />
-      <Content>
-        <TitleWrap>
-          <Title>Log out</Title>
-          <CloseBtn onClick={onLogoutClose}>
-            <IconClose size={24} src={closeIcon} alt="Close"/> 
-          </CloseBtn>
-        </TitleWrap>
-        <p>Do you really want to leave?</p>
-        <ButtonContainer>
-          <button className="logoutBtn logout" onClick={handleConfirmLogout}>
-            Log out
-          </button>
-          <button className="logoutBtn" onClick={handleCancelClick}>
-            Cancel
-          </button>
-        </ButtonContainer>
-      </Content>
-    </Dialog>
+    <Content>
+      <Question>Do you really want to leave?</Question>
+      <ButtonContainer>
+        <button className="logoutBtn logout" onClick={handleConfirmLogout}>
+          Log out
+        </button>
+        <button className="logoutBtn" onClick={handleCancelClick}>
+          Cancel
+        </button>
+      </ButtonContainer>
+    </Content>
   );
 };
