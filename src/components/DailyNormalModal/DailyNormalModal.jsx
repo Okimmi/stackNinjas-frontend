@@ -38,8 +38,6 @@ import {
   Text,
   Title,
 } from './DailyNormalModal.styled';
-import { selectEntiesMonth, selectEntiesToday } from '../../redux/hydrationEntries/selectors';
-import { addEntryThunk, deleteEntryThunk, getEntryFromIdThunk, getMonthProgressThunk, getTodayEntriesThunk, updateEntryThunk } from '../../redux/hydrationEntries/operations';
 
 //const modalPlace = document.querySelector('#modal-root');
 
@@ -50,25 +48,14 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   const authetification = useSelector(selectUser);
   const initialDailyNorma = (dailyNormalVolume ?? authetification.dailyWaterRequirement ?? 2) / 1000;
 
-  const listWaterToday = useSelector(selectEntiesToday);
-  const listWaterMonth = useSelector(selectEntiesMonth);
-  console.log("Today",listWaterToday);
-  console.log("Month",listWaterMonth);
-
-
-
   useEffect(() => {
     if (!authetification) return;
     if (error) return toast.error(error.message);
 
-     dispatch( getTodayEntriesThunk());
-     dispatch( getMonthProgressThunk({ month: 12, year: 2023 }));
+
   }, [authetification, error, dispatch,]);
 
-
- 
-  
-  // ==== configFormik
+    // ==== configFormik
   const configFormik = useFormik({
     initialValues: {
       gender: '',
@@ -94,31 +81,12 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
     }),
   });
 
+
   // Press Save
   const handleSubmit = async values => {
     console.log(values);
-    //const { waterVolume } = values;
-    //dispatch(updateDailyNormal({ dailyWaterRequirement: waterVolume * 1000 }));
-
-// +++ add
-    // const d= new Date('2023-12-29 10:56:21');
-    // const s = d.toJSON(); // "2023-12-29T10:56:21.000Z"
-    // dispatch( addEntryThunk({ time: s, amount: 10 }));
-    // console.log(s);
-// findId 
-    dispatch( getEntryFromIdThunk("658ec9e9911c08519bec2492"));
-// +++ deleteId
-    // dispatch( deleteEntryThunk("658eca38911c08519bec24a1"));
-// update
-    const d= new Date('2023-12-29 10:00:00');
-    const s = d.toJSON(); // "2023-12-29T10:56:21.000Z"
-    dispatch( addEntryThunk({ time: s, amount: 10 }));
-
-    dispatch( updateEntryThunk({
-      id: "658ec9e9911c08519bec2492",
-      time: s,
-      amount: 7,
-    }));
+    const { waterVolume } = values;
+    dispatch(updateDailyNormal({ dailyWaterRequirement: waterVolume * 1000 }));
 
     if (!error) {
       toast.success('Goal set! Stay hydrated and track your progress!');
@@ -127,6 +95,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
       setTimeout(() => { closeModal(); }, 3000);
     }
   };
+  
   
   return (
     <>

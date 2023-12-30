@@ -5,6 +5,8 @@ import { $instance } from "../constants";
 // hydrationEntries
 //====================
 // get list Entries hydrationEntries for today
+// Example:
+    //  dispatch( getTodayEntriesThunk());
 export const getTodayEntriesThunk = createAsyncThunk(
   "hydrationEntries/getToday",
   async (_, thunkAPI) => {
@@ -20,6 +22,8 @@ export const getTodayEntriesThunk = createAsyncThunk(
 );
 
 // get progress hydrationEntries for Month
+// Example:
+    //  dispatch( getMonthProgressThunk({ month: 12, year: 2023 }));
 export const getMonthProgressThunk = createAsyncThunk(
   "hydrationEntries/getMonthProgress",
   async (date, thunkAPI) => {
@@ -38,6 +42,10 @@ export const getMonthProgressThunk = createAsyncThunk(
 );
 
 // add Entry Hydration Entries
+// Example:
+    // const d= new Date('2023-12-29 10:56:21');
+    // const s = d.toJSON(); // "2023-12-29T10:56:21.000Z"
+    // dispatch( addEntryThunk({ time: s, amount: 10 }));
 export const addEntryThunk = createAsyncThunk(
   "hydrationEntries/addEntry",
   async (entry, thunkAPI) => {
@@ -56,6 +64,8 @@ export const addEntryThunk = createAsyncThunk(
 );
 
 // get Entry hydration from Id
+// Example:
+    // dispatch( getEntryFromIdThunk("658ec9e9911c08519bec2492"));
 export const getEntryFromIdThunk = createAsyncThunk(
   "hydrationEntries/getEntryFromId",
   async (entryId, thunkAPI) => {
@@ -73,6 +83,8 @@ export const getEntryFromIdThunk = createAsyncThunk(
 );
 
 // delete hydration entry
+// Example:
+  // dispatch( deleteEntryThunk("658eca38911c08519bec24a1"));
 export const deleteEntryThunk = createAsyncThunk(
   "hydrationEntries/deleteEntry",
   async (entryId, thunkAPI) => {
@@ -90,6 +102,16 @@ export const deleteEntryThunk = createAsyncThunk(
 );
 
 // edit/update hydration entry
+// Example:
+    // const d= new Date('2023-12-29 10:00:00');
+    // const s = d.toJSON(); // "2023-12-29T10:56:21.000Z"
+    // dispatch( addEntryThunk({ time: s, amount: 10 }));
+
+    // dispatch( updateEntryThunk({
+    //   id: "658ec9e9911c08519bec2492",
+    //   time: s,
+    //   amount: 7,
+    // }));
 export const updateEntryThunk = createAsyncThunk(
   "hydrationEntries/updateEntry",
   async (entry, thunkAPI) => {
