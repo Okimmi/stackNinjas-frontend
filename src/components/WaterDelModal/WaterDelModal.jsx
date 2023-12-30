@@ -1,22 +1,9 @@
 // import { useDispatch } from 'react-redux';
-import { Dialog } from '@headlessui/react';
 // import { useNavigate } from 'react-router-dom';
 
+import { ButtonContainer, Content, Question } from './WaterDelModal.styled';
 
-import closeIcon from '../../images/header/closeIcon.svg';
-
-import {
-  ButtonContainer,
-  Content,
-  IconClose,
-  Question,
-  Title,
-  TitleWrap,
-   WaterDelOverlay,
-} from './WaterDelModal.styled';
-
-
-export const WaterDelModal = ({  close }) => {
+export const WaterDelModal = ({ close }) => {
   //   const navigate = useNavigate();
   //   const dispatch = useDispatch();
 
