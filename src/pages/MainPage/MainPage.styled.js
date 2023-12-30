@@ -22,7 +22,8 @@ export const MainPageContainer = styled.div`
 `;
 
 export const BGImgMainPage = styled.div`
-  position: absolute;
+  position: fixed;
+  /* position: absolute; */
   top: 60px;
   left: 0;
   right: 0;
