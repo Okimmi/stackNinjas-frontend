@@ -51,6 +51,7 @@ import AddWaterModal from 'components/AddWaterModal/AddWaterModal.jsx';
 import Modal from '../../components/Global/Modal/Modal.jsx';
 import { MonthStatesTable } from '../../components/MonthStatesTable/MonthStatesTable.jsx';
 import { TelegramBotInvite } from 'components/TelegramBotInvite/TelegramBotInvite.jsx';
+import { WaterDelModal } from 'components/WaterDelModal/WaterDelModal.jsx';
 
 export const HomePage = () => {
   const isTelegramBotStarted = useSelector(selectIsTelegramBotStarted);
@@ -70,12 +71,23 @@ export const HomePage = () => {
   const [editingEntryData, setEditingEntryData] = useState(null);
   // const [newEntryData, setNewEntryData] = useState({ amount: '' });
 
+  const [isDeleteModal, setIsDeleteModal] = useState(false);
+
+  const handleOnDeleteModal = () => {
+    setIsDeleteModal(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setIsDeleteModal(false);
+  };
+
   const onEditClick = item => {
     setEditingEntryData({ ...item });
   };
 
   const onDeleteClick = item => {
     setData(data.filter(i => i.id !== item.id));
+    handleOnDeleteModal();
   };
 
   const onSaveEdit = () => {
@@ -301,6 +313,7 @@ export const HomePage = () => {
             <MonthStatesTable></MonthStatesTable>
           </DivTodayAndMonth>
         </Div2>
+
         {!isTelegramBotStarted && <TelegramBotInvite />}
       </Background>
 
@@ -315,6 +328,15 @@ export const HomePage = () => {
           <EditWaterModal/>
         </Modal>
       )} */}
+      {isDeleteModal && (
+        <Modal
+          close={handleCloseDeleteModal}
+          id={'waterId'}
+          title={'Delete entry'}
+        >
+          <WaterDelModal close={handleCloseDeleteModal} id={'waterId'} />
+        </Modal>
+      )}
     </>
   );
 };
