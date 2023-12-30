@@ -8,9 +8,9 @@ import {
 } from './UserLogoModal.styled';
 import settingIcon from '../../images/header/settingIcon.svg';
 import logoutIcon from '../../images/header/logoutIcon.svg';
-import { UserLogoutModal } from '../../components/UserLogoutModal/UserLogoutModal';
+import { UserLogoutModal } from '../UserLogoutModal/UserLogoutModal.jsx';
 import { SettingModal } from 'components/SettingModal/SettingModal';
-import Modal from "../Global/Modal/Modal.jsx"
+import Modal from '../Global/Modal/Modal.jsx';
 
 export const UserLogoModal = ({ isOpen, onClose }) => {
   const [logoutActive, setLogoutActive] = useState(false);
@@ -52,13 +52,9 @@ export const UserLogoModal = ({ isOpen, onClose }) => {
           <DropdownOverlay onClick={onClose} />
         </>
       )}
-      {/* <UserLogoutModal
-        isLogoutActive={logoutActive}
-        onLogoutClose={handleCloseLogout}
-      /> */}
       {logoutActive && (
         <Modal close={handleCloseLogout} title={'Log out'}>
-          <UserLogoutModal />
+          <UserLogoutModal close={handleCloseLogout} />
         </Modal>
       )}
 

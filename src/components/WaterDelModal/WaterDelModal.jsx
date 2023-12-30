@@ -9,36 +9,34 @@ import {
   ButtonContainer,
   Content,
   IconClose,
+  Question,
   Title,
   TitleWrap,
    WaterDelOverlay,
 } from './WaterDelModal.styled';
 
 
-export const WaterDelModal = ({ isLogoutActive, onLogoutClose }) => {
+export const WaterDelModal = ({  close }) => {
   //   const navigate = useNavigate();
   //   const dispatch = useDispatch();
 
   const handleCancelClick = () => {
-    onLogoutClose();
+    close();
   };
 
   const handleConfirmLogout = () => {};
 
   return (
-    <Dialog open={isLogoutActive} onClose={onLogoutClose}>
-      <WaterDelOverlay onClick={onLogoutClose} />
-      <Content>
-        <TitleWrap>
-          <Title> Delete entry</Title>
-          <IconClose onClick={onLogoutClose} src={closeIcon} alt="Close" />
-        </TitleWrap>
-        <p>Are you sure you want to delete the entry?</p>
-        <ButtonContainer>
-          <button onClick={handleConfirmLogout}>Delete</button>
-          <button onClick={handleCancelClick}>Cancel</button>
-        </ButtonContainer>
-      </Content>
-    </Dialog>
+    <Content>
+      <Question>Are you sure you want to delete the entry?</Question>
+      <ButtonContainer>
+        <button className="deleteBtn delete" onClick={handleConfirmLogout}>
+          Delete
+        </button>
+        <button className="deleteBtn" onClick={handleCancelClick}>
+          Cancel
+        </button>
+      </ButtonContainer>
+    </Content>
   );
 };

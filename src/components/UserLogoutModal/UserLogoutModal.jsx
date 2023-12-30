@@ -2,22 +2,15 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { logOut } from '../../redux/auth/operations';
-import closeIcon from '../../images/header/closeIcon.svg';
-import {
-  ButtonContainer,
-  Content,
-  IconClose,
-  Title,
-  TitleWrap,
-} from './UserLogoutModal.styled';
 import { clearUserData } from '../../redux/auth/slice';
+import { ButtonContainer, Content, Question } from './UserLogoutModal.styled';
 
-export const UserLogoutModal = ({ onLogoutClose }) => {
+export const UserLogoutModal = ({ close }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleCancelClick = () => {
-    onLogoutClose();
+    close();
   };
 
   const handleConfirmLogout = () => {
@@ -25,7 +18,7 @@ export const UserLogoutModal = ({ onLogoutClose }) => {
       dispatch(logOut())
         .then(() => {
           dispatch(clearUserData());
-          onLogoutClose();
+          close();
           navigate('/');
         })
         .catch(error => {
@@ -38,14 +31,14 @@ export const UserLogoutModal = ({ onLogoutClose }) => {
 
   return (
     <Content>
-      <TitleWrap>
-        <Title> Log out</Title>
-        <IconClose onClick={onLogoutClose} src={closeIcon} alt="Close" />
-      </TitleWrap>
-      <p>Do you really want to leave?</p>
+      <Question>Do you really want to leave?</Question>
       <ButtonContainer>
-        <button onClick={handleConfirmLogout}>Log out</button>
-        <button onClick={handleCancelClick}>Cancel</button>
+        <button className="logoutBtn logout" onClick={handleConfirmLogout}>
+          Log out
+        </button>
+        <button className="logoutBtn" onClick={handleCancelClick}>
+          Cancel
+        </button>
       </ButtonContainer>
     </Content>
   );
