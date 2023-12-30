@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const LogoutOverlay = styled.div`
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 2000;
 `;
 
@@ -28,7 +28,6 @@ export const Content = styled.div`
 
   @media screen and (min-width: 768px) {
     top: 200px;
-
     width: 592px;
     height: 208px;
     align-items: flex-start;
@@ -45,7 +44,10 @@ export const Content = styled.div`
     font-weight: 500;
     line-height: 1.1;
   }
-  button {
+  .logoutBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: ${props => props.theme.colors.secondary6};
     color: ${props => props.theme.colors.primeryBlue};
 
@@ -61,20 +63,40 @@ export const Content = styled.div`
 
     &:hover {
       box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-      background-color: ${props => props.theme.colors.secondary3};
-      color: ${props => props.theme.colors.primeryWhite};
     }
     @media screen and (min-width: 768px) {
+      padding: 10px 30px;
+      font-size: 18px;
+      line-height: 1.33;
       width: 160px;
       height: 44px;
     }
   }
+  .logoutBtn.logout {
+    background-color: ${props => props.theme.colors.secondary3};
+    color: ${props => props.theme.colors.primeryWhite};
+  }
 `;
 
-export const IconClose = styled.img``;
+export const CloseBtn = styled.button`
+  background-color: transparent;
+  border: none;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+`;
+
+export const IconClose = styled.img`
+  width: 24px;
+  height: 24px;
+`;
+
 export const TitleWrap = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
 `;
