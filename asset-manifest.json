@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/stackNinjas-frontend/static/css/main.2a5bd5ea.css",
-    "main.js": "/stackNinjas-frontend/static/js/main.c32ffd28.js",
+    "main.js": "/stackNinjas-frontend/static/js/main.e6cc3e5f.js",
     "static/media/Roboto-Medium.ttf": "/stackNinjas-frontend/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/Roboto-Regular.ttf": "/stackNinjas-frontend/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
     "static/media/Roboto-Bold.ttf": "/stackNinjas-frontend/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
@@ -16,7 +16,6 @@
     "static/media/Frame.png": "/stackNinjas-frontend/static/media/Frame.5cf01c3bb663daa1eb28.png",
     "static/media/BgElMainPage-desk.png": "/stackNinjas-frontend/static/media/BgElMainPage-desk.aebdcb013b3a8eef40c4.png",
     "static/media/Main_Page.png": "/stackNinjas-frontend/static/media/Main_Page.0fdfaf15928336e9b794.png",
-    "static/media/BgMainPage-mob.png": "/stackNinjas-frontend/static/media/BgMainPage-mob.a0d79c3b82dd6a1f5639.png",
     "static/media/Glass.svg": "/stackNinjas-frontend/static/media/Glass.e2aa7db804dc747bc28de024eb58a526.svg",
     "static/media/Background.svg": "/stackNinjas-frontend/static/media/Background.31291302a4b0733cc1b42191c530491f.svg",
     "static/media/Bubles720.svg": "/stackNinjas-frontend/static/media/Bubles720.b302bf13877dc20b86b25d238c27ae80.svg",
@@ -40,15 +39,15 @@
     "static/media/upload.svg": "/stackNinjas-frontend/static/media/upload.a522f37d5a6928d649f835e04a12332d.svg",
     "static/media/x.svg": "/stackNinjas-frontend/static/media/x.b9394abe38477bc28556bb36a7dddf85.svg",
     "static/media/pluss.svg": "/stackNinjas-frontend/static/media/pluss.a825844368d25850e9fa030c4bd74f44.svg",
-    "static/media/closeIcon.svg": "/stackNinjas-frontend/static/media/closeIcon.1773ad9c2d64c8e5f8dac9cb5fb2c98a.svg",
+    "static/media/closeIcon.svg": "/stackNinjas-frontend/static/media/closeIcon.5b588da640c5cc1b565a23c86ecf392f.svg",
     "static/media/outline.svg": "/stackNinjas-frontend/static/media/outline.522b2c595a77d1df50c4eaf35b522689.svg",
     "static/media/iconCloseModal.svg": "/stackNinjas-frontend/static/media/iconCloseModal.ab90ef00ef05bfa9d7c86c52baecfe7d.svg",
     "static/media/PlusAdd.svg": "/stackNinjas-frontend/static/media/PlusAdd.f009a02ac759b50fd6c43db8c00baf79.svg",
     "main.2a5bd5ea.css.map": "/stackNinjas-frontend/static/css/main.2a5bd5ea.css.map",
-    "main.c32ffd28.js.map": "/stackNinjas-frontend/static/js/main.c32ffd28.js.map"
+    "main.e6cc3e5f.js.map": "/stackNinjas-frontend/static/js/main.e6cc3e5f.js.map"
   },
   "entrypoints": [
     "static/css/main.2a5bd5ea.css",
-    "static/js/main.c32ffd28.js"
+    "static/js/main.e6cc3e5f.js"
   ]
 }
