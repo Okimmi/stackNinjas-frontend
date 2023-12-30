@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { ReactComponent as CloseIcon } from './icons/outline.svg';
-import { ReactComponent as IconUpload } from './icons/upload.svg';
-import { ReactComponent as Eye } from './icons/blueEye.svg';
-import { ReactComponent as Hide } from './icons/icon_show_hide.svg';
+import { ReactComponent as CloseIcon } from './setting-modal-icons/outline.svg';
+import { ReactComponent as IconUpload } from './setting-modal-icons/upload.svg';
+import { ReactComponent as Eye } from './setting-modal-icons/blueEye.svg';
+import { ReactComponent as Hide } from './setting-modal-icons/icon_show_hide.svg';
 
 export const Container = styled.div`
   padding: 0 20px;

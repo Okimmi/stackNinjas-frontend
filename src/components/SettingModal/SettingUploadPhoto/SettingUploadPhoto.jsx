@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import defaultAvatar from '../icons/default_user_avatar.svg';
+import defaultAvatar from '../setting-modal-icons/default_user_avatar.svg';
 import {
   Title,
   MainWrapper,
