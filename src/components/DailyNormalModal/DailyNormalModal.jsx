@@ -39,7 +39,6 @@ import {
   Title,
 } from './DailyNormalModal.styled';
 
-
 //const modalPlace = document.querySelector('#modal-root');
 
 const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
@@ -52,10 +51,11 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   useEffect(() => {
     if (!authetification) return;
     if (error) return toast.error(error.message);
-  }, [authetification, error]);
 
 
-  // ==== configFormik
+  }, [authetification, error, dispatch,]);
+
+    // ==== configFormik
   const configFormik = useFormik({
     initialValues: {
       gender: '',
@@ -81,6 +81,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
     }),
   });
 
+
   // Press Save
   const handleSubmit = async values => {
     console.log(values);
@@ -94,6 +95,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
       setTimeout(() => { closeModal(); }, 3000);
     }
   };
+  
   
   return (
     <>
