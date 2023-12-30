@@ -11,6 +11,7 @@ export const Container = styled.div`
 
 export const Backdrop = styled.div`
   position: fixed;
+  z-index: 2000;
   top: 0;
   left: 0;
   width: 100%;
@@ -24,7 +25,6 @@ export const Backdrop = styled.div`
 export const ModalContent = styled.div`
   position: absolute;
   overflow-y: auto;
-  max-height: 80vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
@@ -38,7 +38,7 @@ export const ModalContent = styled.div`
   @media screen and (max-width: 768px) {
     max-width: 320px;
     padding: 32px 12px;
-    min-height: 852px;
+    max-height: 100vh;
   }
 
   @media screen and (min-width: 768px) {
@@ -98,6 +98,7 @@ export const IconCloseModal = styled(CloseIcon)`
 `;
 
 export const IconUploadImage = styled(IconUpload)`
+  margin-right: 8px;
   width: 16px;
   height: 16px;
 `;
@@ -148,12 +149,5 @@ export const MainWrapper = styled.div`
 export const UploadWrapper = styled.div`
   display: flex;
   align-self: center;
-  margin-left: 8px;
-`;
-
-export const UploadBtn = styled.button`
-  border: none;
-  background-color: transparent;
-  color: ${({ theme: { colors } }) => colors.primeryBlue};
   margin-left: 8px;
 `;

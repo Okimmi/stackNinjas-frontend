@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import axios from 'axios';
 
 import { useState } from 'react';
 import {
@@ -18,13 +19,13 @@ import {
   Wrapper,
 } from './SettingsFormModal.styled';
 import { EyeIcon, HideIcon, Title, ToggleIcon } from '../SettingModal.styled';
+import { BASE_URL } from '../SettingUploadPhoto/SettingUploadPhoto';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/auth/selectors';
-import axios from 'axios';
 import { refreshUser } from '../../../redux/auth/operations';
-import { ToastContainer, toast } from 'react-toastify';
 
-const BASE_URL = 'https://stackninjas-backend.onrender.com';
+import { ToastContainer, toast } from 'react-toastify';
 
 const updateUserInfoSchema = yup.object().shape({
   name: yup
@@ -40,10 +41,16 @@ const updateUserInfoSchema = yup.object().shape({
 
   password: yup
     .string()
-    .when(['passwordOutdated', 'passwordRepeat'], {
-      is: (passwordOutdated, passwordRepeat) =>
-        passwordOutdated && passwordRepeat,
-      then: yup.string().required('Password is required'),
+    .test({
+      name: 'password',
+      test: function (value) {
+        const passwordOutdated = this.parent.passwordOutdated;
+        return (
+          !(passwordOutdated && passwordOutdated.trim().length > 0) ||
+          (value && value.trim().length > 0)
+        );
+      },
+      message: 'New password is required',
     })
     .min(8, 'Too short')
     .max(48, 'Too long')
@@ -51,6 +58,17 @@ const updateUserInfoSchema = yup.object().shape({
 
   passwordRepeat: yup
     .string()
+    .test({
+      name: 'passwordRepeat',
+      test: function (value) {
+        const password = this.parent.password;
+        return (
+          !(password && password.trim().length > 0) ||
+          (value && value.trim().length > 0)
+        );
+      },
+      message: 'Repeat password is required',
+    })
     .oneOf([yup.ref('password'), null], 'Passwords must match'),
 });
 
@@ -60,34 +78,41 @@ export const FormModal = ({ onCloseModal }) => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
-  // const [userUpdate, setUserUpdate] = useState(user);
-
   const toggle = () => {
     setShowPassword(!showPassword);
   };
 
   const handleSubmit = async (values, { resetForm }) => {
+    const filledFields = Object.fromEntries(
+      Object.entries(values).filter(
+        ([key, value]) => value !== '' && value !== undefined
+      )
+    );
+
+    const hasChanges = Object.entries(filledFields).some(
+      ([key, value]) => value !== user[key]
+    );
+
+    if (!hasChanges) {
+      toast.warning('No changes made. Profile data remains the same.');
+      return;
+    }
+
     try {
-      const isFormEmpty = Object.values(values).every(value => !value);
-
-      if (isFormEmpty) {
-        toast.warning('Please enter some data before submitting the form.');
-        return;
-      }
-
-      const response = await axios.put(`${BASE_URL}/api/auth/profile`, values, {
-        headers: { 'Content-Type': 'application/json' },
-      });
+      const response = await axios.put(
+        `${BASE_URL}/api/auth/profile`,
+        filledFields,
+        {
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
 
       if (response.status === 200) {
-        // setUserUpdate(response.data);
         dispatch(refreshUser());
         onCloseModal();
         resetForm();
         toast.success('Your profile data was successfully updated');
       }
-
-      toast.error('Failed to update profile. Please try again.');
     } catch (error) {
       console.log(error.message);
     }
