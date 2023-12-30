@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { $instance } from '../../../redux/constants';
 
 import defaultAvatar from '../setting-modal-icons/default_user_avatar.svg';
 import {
@@ -37,7 +37,7 @@ export const UploadPhoto = () => {
 
       formData.append('avatar', img);
 
-      const { data } = await axios.patch(
+      const { data } = await $instance.patch(
         `${BASE_URL}/api/auth/avatars`,
         formData,
         {

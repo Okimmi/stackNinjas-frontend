@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import axios from 'axios';
+import { $instance } from '../../../redux/constants';
 
 import { useState } from 'react';
 import {
@@ -99,7 +99,7 @@ export const FormModal = ({ onCloseModal }) => {
     }
 
     try {
-      const response = await axios.put(
+      const response = await $instance.put(
         `${BASE_URL}/api/auth/profile`,
         filledFields,
         {
