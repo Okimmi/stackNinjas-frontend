@@ -1,5 +1,3 @@
-import { $instance } from '../../../redux/constants';
-
 import defaultAvatar from '../setting-modal-icons/default_user_avatar.svg';
 import {
   Title,
@@ -10,63 +8,28 @@ import {
   IconUploadImage,
   IconUser,
 } from '../SettingModal.styled';
-import { ToastContainer, toast } from 'react-toastify';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAvatar } from '../../../redux/auth/selectors';
-import { refreshUser } from '../../../redux/auth/operations';
+import { updateAvatar } from '../../../redux/auth/operations';
 
 export const BASE_URL = 'https://stackninjas-backend.onrender.com';
 
 export const UploadPhoto = () => {
   const input = useRef();
   const dispatch = useDispatch();
-  const current = useSelector(selectAvatar);
-
-  const [img, setImg] = useState(null);
-  const [avatar, setAvatar] = useState(current);
-
-  const sendFile = async () => {
-    if (!img) {
-      toast.error('Please, choose your avatar');
-      return;
-    }
-
-    try {
-      const formData = new FormData();
-
-      formData.append('avatar', img);
-
-      const { data } = await $instance.patch(
-        `${BASE_URL}/api/auth/avatars`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        }
-      );
-
-      setAvatar(data.avatar);
-      dispatch(refreshUser());
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  const currentAvatar = useSelector(selectAvatar);
 
   const handleFileChange = e => {
-    setImg(e.target.files[0]);
-    sendFile();
+    dispatch(updateAvatar(e.target.files[0]));
   };
 
   return (
     <>
       <Title>Your photo</Title>
-
       <MainWrapper>
-        {' '}
-        {avatar ? (
-          <IconUser src={avatar} alt="user_photo" />
+        {currentAvatar ? (
+          <IconUser src={currentAvatar} alt="user_photo" />
         ) : (
           <IconUser src={defaultAvatar} alt="user_default_photo" />
         )}
@@ -83,7 +46,6 @@ export const UploadPhoto = () => {
             Upload a photo
           </Label>
         </UploadWrapper>
-        <ToastContainer />
       </MainWrapper>
     </>
   );

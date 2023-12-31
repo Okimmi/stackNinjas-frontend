@@ -35,7 +35,7 @@ export const logIn = createAsyncThunk(
       const res = await $instance.post('/api/auth/signin', credentials);
       setAuthHeader(res.data.token);
       const resUser = await $instance.get('/api/auth/current');
-      
+
       return { user: resUser.data, token: res.data.token };
     } catch (AxiosError) {
       console.log(AxiosError);
@@ -51,7 +51,7 @@ export const logOut = createAsyncThunk(
       await $instance.post('/users/logout');
       clearAuthHeader();
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -71,7 +71,7 @@ export const refreshUser = createAsyncThunk(
       const res = await $instance.get('/api/auth/current');
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -95,7 +95,27 @@ export const updateDailyNormal = createAsyncThunk(
 
       return res.data.dailyWaterRequirement;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const updateAvatar = createAsyncThunk(
+  'auth/updateAvatar',
+  async (avatar, thunkAPI) => {
+    try {
+      const formData = new FormData();
+      formData.append('avatar', avatar);
+
+      const res = await $instance.patch('/api/auth/avatars', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      return res.data.avatar;
+    } catch (error) {
+      console.dir(error);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
