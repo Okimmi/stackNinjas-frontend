@@ -1,4 +1,5 @@
 import styled from "styled-components";
+const disableBTN = props=>{return props.disabled? "grey": props.theme.colors.primeryBlue}
 
 // Heder styles
 export const Heder = styled.div `
@@ -19,6 +20,7 @@ gap: 12px;
 align-items: center;
 `
 
+
 export const PaginationText = styled.p `
 color:${(props) =>props.theme.colors.primeryBlue};
   font-size: 16px;
@@ -26,7 +28,7 @@ color:${(props) =>props.theme.colors.primeryBlue};
   line-height: 1.25;
 `
 export const PaginationBTN = styled.button `
-color:${(props) =>props.theme.colors.primeryBlue};
+color:${disableBTN};
 border: none;
 background-color: inherit;
 padding: 0px;

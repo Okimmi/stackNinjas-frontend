@@ -31,7 +31,7 @@ export const DayState = props => {
       <DateWrapper onClick={handleModal}  dailyProgress={dailyProgress}>
         <Day> {`${day}`}</Day>
       </DateWrapper>
-      <DailyProgress>{dailyProgress?Number.parseInt(dailyProgress):100}%</DailyProgress>
+      <DailyProgress>{dailyProgress?Number.parseInt(dailyProgress):0}%</DailyProgress>
       {targetDay === day && (
         <DaysGeneralStats
           day={day}
