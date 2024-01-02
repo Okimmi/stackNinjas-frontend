@@ -6,9 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import {
   BackgroundImg,
   BackgroundImg320,
-  BackgroundImg720,
   BottleMobil,
   BottleStyled,
+  BottleTablet,
   ErMsg,
   FormBtnStyled,
   SightInContainer,
@@ -131,12 +131,10 @@ export const AuthForm = () => {
           </StyledForm>
         </Formik>
         {screenSize.isDesctopScreen && <BottleStyled />}
-        {screenSize.isTabletScreen && <BottleStyled />}
+        {screenSize.isTabletScreen && <BottleTablet />}
         {screenSize.isMobileScreen && <BottleMobil />}
       </SightInContainer>
-      {screenSize.isDesctopScreen && <BackgroundImg />}
-      {screenSize.isTabletScreen && <BackgroundImg720 />}
-      {screenSize.isMobileScreen && <BackgroundImg320 />}
+      {screenSize.isMobileScreen ? <BackgroundImg320 /> : <BackgroundImg/>}
 
       <ToastContainer
         position="top-right"

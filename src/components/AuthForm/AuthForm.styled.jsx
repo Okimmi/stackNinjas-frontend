@@ -1,6 +1,7 @@
 import { Form, ErrorMessage, Field  } from 'formik';
 import styled from 'styled-components';
 import { ReactComponent as Bottle } from '../../images/AuthForm/Bottle.svg';
+import { ReactComponent as Bottle720 } from '../../images/AuthForm/Bottle720.svg';
 import { ReactComponent as Background } from '../../images/AuthForm/Background.svg';
 import { ReactComponent as Bubles720 } from '../../images/AuthForm/Bubles720.svg';
 import { ReactComponent as Bubles320 } from '../../images/AuthForm/Bubles320.svg';
@@ -71,22 +72,12 @@ export const ForFormContainer = styled.div`
 `  
 export  const BottleStyled = styled(Bottle)`
     z-index: -1;
-
-  @media screen and (min-width: 768px) {
-    position: absolute;
-    top: 52px;
-    left: calc(50% - 170px);
-    width: 736px;
-    height: 548px;
-  }
-  @media screen and (min-width: 1440px) {
     margin-top: 107px;
     position:static;
     width: 916px;
     height: 680px;
     grid-column: 1/3;
     grid-row: 1;
-  }
 `
 
 export  const BottleMobil = styled(Bottle320)`
@@ -94,6 +85,15 @@ export  const BottleMobil = styled(Bottle320)`
     position: absolute;
     bottom: calc(0% + 20px);
     left:50%;
+    transform: translateX(-50%);
+
+`
+
+export  const BottleTablet = styled(Bottle720)`
+    z-index: -1;
+    position: absolute;
+    bottom: calc(0% + 165px);
+    left:55%;
     transform: translateX(-50%)
     
 `
