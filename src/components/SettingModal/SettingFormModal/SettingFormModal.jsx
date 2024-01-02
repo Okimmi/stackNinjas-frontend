@@ -4,6 +4,7 @@ import { useState } from 'react';
 import {
   Base,
   Container,
+  ErrEmailMessage,
   ErrMessage,
   FieldForm,
   FormUser,
@@ -25,12 +26,12 @@ import { updateUserData } from '../../../redux/auth/operations';
 
 import { ToastContainer, toast } from 'react-toastify';
 
-function isValueRequired(value, referenceValue) {
+const isValueRequired = (value, referenceValue) => {
   return (
     !(referenceValue && referenceValue.trim().length > 0) ||
     (value && value.trim().length > 0)
   );
-}
+};
 
 function outdatedPasswordIsRequired(value) {
   const password = this.parent.password;
@@ -177,6 +178,7 @@ export const FormModal = () => {
                 title="email"
                 autoComplete="on"
               />
+              <ErrEmailMessage name="email" component="p" />
             </Wrapper>
 
             <Wrapper>

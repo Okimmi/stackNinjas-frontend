@@ -72,7 +72,7 @@ const authSlice = createSlice({
       state.isRefreshing = true;
     });
     builder.addCase(updateAvatar.pending, state => {
-      state.isRefreshing = true;
+      state.isRefreshing = false;
     });
     builder.addCase(updateUserData.pending, state => {
       state.isRefreshing = true;

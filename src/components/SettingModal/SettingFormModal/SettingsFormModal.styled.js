@@ -100,6 +100,14 @@ export const ErrMessage = styled(ErrorMessage)`
   line-height: 1.28;
 `;
 
+export const ErrEmailMessage = styled(ErrorMessage)`
+  margin-top: 4px;
+  color: ${({ theme: { colors } }) => colors.secondary3};
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+`;
+
 export const FieldForm = styled(Field)`
   width: 100%;
   padding: 12px 10px;
