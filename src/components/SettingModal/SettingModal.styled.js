@@ -111,7 +111,7 @@ export const IconUser = styled.img`
 
 export const ToggleIcon = styled.div`
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 10px;
   transform: translateY(-50%);
   cursor: pointer;

@@ -92,7 +92,8 @@ export const LabelsPassword = styled.label`
 `;
 
 export const ErrMessage = styled(ErrorMessage)`
-  margin-top: 4px;
+  margin-top: 0;
+  margin-bottom: 12px;
   color: ${({ theme: { colors } }) => colors.secondary3};
   font-size: 14px;
   font-weight: 400;
@@ -157,7 +158,7 @@ export const SaveBtn = styled.button`
     min-width: 160px;
     font-size: 18px;
     font-weight: 500;
-    line-height: 1.333; /* 133.333% */
+    line-height: 1.333;
     padding: 10px 30px;
   }
 `;

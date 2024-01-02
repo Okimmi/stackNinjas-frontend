@@ -1,5 +1,4 @@
 import * as yup from 'yup';
-import { $instance } from '../../../redux/constants';
 
 import { useState } from 'react';
 import {
@@ -19,13 +18,34 @@ import {
   Wrapper,
 } from './SettingsFormModal.styled';
 import { EyeIcon, HideIcon, Title, ToggleIcon } from '../SettingModal.styled';
-import { BASE_URL } from '../SettingUploadPhoto/SettingUploadPhoto';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/auth/selectors';
-import { refreshUser } from '../../../redux/auth/operations';
+import { updateUserData } from '../../../redux/auth/operations';
 
 import { ToastContainer, toast } from 'react-toastify';
+
+function isValueRequired(value, referenceValue) {
+  return (
+    !(referenceValue && referenceValue.trim().length > 0) ||
+    (value && value.trim().length > 0)
+  );
+}
+
+function outdatedPasswordIsRequired(value) {
+  const password = this.parent.password;
+  return isValueRequired(value, password);
+}
+
+function newPasswordIsRequired(value) {
+  const passwordOutdated = this.parent.passwordOutdated;
+  return isValueRequired(value, passwordOutdated);
+}
+
+function passwordRepeatIsRequired(value) {
+  const password = this.parent.password;
+  return isValueRequired(value, password);
+}
 
 const updateUserInfoSchema = yup.object().shape({
   name: yup
@@ -37,19 +57,17 @@ const updateUserInfoSchema = yup.object().shape({
     .email('Invalid email format')
     .matches(/^[-?\w.?%?]+@\w+.{1}\w{2,4}$/),
 
-  passwordOutdated: yup.string(),
+  passwordOutdated: yup.string().test({
+    name: 'passwordOutdated',
+    test: outdatedPasswordIsRequired,
+    message: 'Outdated password is required',
+  }),
 
   password: yup
     .string()
     .test({
       name: 'password',
-      test: function (value) {
-        const passwordOutdated = this.parent.passwordOutdated;
-        return (
-          !(passwordOutdated && passwordOutdated.trim().length > 0) ||
-          (value && value.trim().length > 0)
-        );
-      },
+      test: newPasswordIsRequired,
       message: 'New password is required',
     })
     .min(8, 'Too short')
@@ -60,19 +78,13 @@ const updateUserInfoSchema = yup.object().shape({
     .string()
     .test({
       name: 'passwordRepeat',
-      test: function (value) {
-        const password = this.parent.password;
-        return (
-          !(password && password.trim().length > 0) ||
-          (value && value.trim().length > 0)
-        );
-      },
+      test: passwordRepeatIsRequired,
       message: 'Repeat password is required',
     })
     .oneOf([yup.ref('password'), null], 'Passwords must match'),
 });
 
-export const FormModal = ({ onCloseModal }) => {
+export const FormModal = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const user = useSelector(selectUser);
@@ -82,7 +94,7 @@ export const FormModal = ({ onCloseModal }) => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = async (values, { resetForm }) => {
+  const handleSubmit = (values, { resetForm }) => {
     const filledFields = Object.fromEntries(
       Object.entries(values).filter(
         ([key, value]) => value !== '' && value !== undefined
@@ -98,24 +110,9 @@ export const FormModal = ({ onCloseModal }) => {
       return;
     }
 
-    try {
-      const response = await $instance.put(
-        `${BASE_URL}/api/auth/profile`,
-        filledFields,
-        {
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
-
-      if (response.status === 200) {
-        dispatch(refreshUser());
-        onCloseModal();
-        resetForm();
-        toast.success('Your profile data was successfully updated');
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
+    dispatch(updateUserData(filledFields));
+    resetForm();
+    toast.success('Your profile data was successfully updated');
   };
 
   return (
@@ -198,8 +195,8 @@ export const FormModal = ({ onCloseModal }) => {
                 <ToggleIcon onClick={toggle}>
                   {showPassword ? <EyeIcon /> : <HideIcon />}
                 </ToggleIcon>
-                <ErrMessage name="passwordOutdated" component="p" />
               </Container>
+              <ErrMessage name="passwordOutdated" component="p" />
 
               <Password htmlFor="password">New password:</Password>
 
@@ -216,8 +213,8 @@ export const FormModal = ({ onCloseModal }) => {
                 <ToggleIcon onClick={toggle}>
                   {showPassword ? <EyeIcon /> : <HideIcon />}
                 </ToggleIcon>
-                <ErrMessage name="password" component="p" />
               </Container>
+              <ErrMessage name="password" component="p" />
 
               <Password htmlFor="passwordRepeat">Repeat new password:</Password>
 
@@ -232,9 +229,8 @@ export const FormModal = ({ onCloseModal }) => {
                 <ToggleIcon onClick={toggle}>
                   {showPassword ? <EyeIcon /> : <HideIcon />}
                 </ToggleIcon>
-
-                <ErrMessage name="passwordRepeat" component="p" />
               </Container>
+              <ErrMessage name="passwordRepeat" component="p" />
             </Wrapper>
             <SaveBtn type="submit">Save</SaveBtn>
           </FormUser>
