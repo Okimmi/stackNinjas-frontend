@@ -4,6 +4,11 @@ export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 
 export const selectUser = state => state.auth.user;
 
+export const selectUserId = state => state.auth.user._id;
+
+export const selectIsTelegramBotStarted = state =>
+  Boolean(state.auth.user.chatId);
+
 export const selectAvatar = state => state.auth.user?.avatar;
 
 export const selectIsRefreshing = state => state.auth.isRefreshing;

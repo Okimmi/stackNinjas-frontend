@@ -43,12 +43,17 @@ import glass from '../../icons/Glass.svg';
 import edit from '../../icons/Edit.svg';
 import delet from '../../icons/Delete.svg';
 import { useSelector } from 'react-redux';
-import { selectDailyWaterRequirement } from '../../redux/auth/selectors.js';
+import {
+  selectDailyWaterRequirement,
+  selectIsTelegramBotStarted,
+} from '../../redux/auth/selectors.js';
 import AddWaterModal from 'components/AddWaterModal/AddWaterModal.jsx';
 import Modal from '../../components/Global/Modal/Modal.jsx';
 import { MonthStatesTable } from '../../components/MonthStatesTable/MonthStatesTable.jsx';
+import { TelegramBotInvite } from 'components/TelegramBotInvite/TelegramBotInvite.jsx';
 
 export const HomePage = () => {
+  const isTelegramBotStarted = useSelector(selectIsTelegramBotStarted);
   const [sliderValue, setSliderValue] = useState(0);
   const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
 
@@ -296,6 +301,7 @@ export const HomePage = () => {
             <MonthStatesTable></MonthStatesTable>
           </DivTodayAndMonth>
         </Div2>
+        {!isTelegramBotStarted && <TelegramBotInvite />}
       </Background>
 
       {showDailyNormalModal && <DailyNormalModal closeModal={toggleModal} />}
