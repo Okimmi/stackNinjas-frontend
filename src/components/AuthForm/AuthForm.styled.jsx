@@ -10,32 +10,23 @@ import { ReactComponent as Bottle320 } from '../../images/AuthForm/Bottle320.svg
 
 import { theme } from 'components/GlobalStyle';
 
+
+
 export  const BackgroundImg = styled(Background)`
     position: absolute;
-    z-index: -1;
-    top: 0;
+    z-index: -2;
+    top: 109px;
     left: 0;
     width: 100%;
 
     
 `
 
-// export  const BublleWraper = styled.div`
-//   background-image: url(../../images/AuthForm/Bubles720.svg);
-//     position: absolute;
-//     z-index: -1;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-
-    
-// `
-
 
 
 export  const BackgroundImg720 = styled(Bubles720)`
     position: absolute;
-    z-index: -1;
+    z-index: -2;
     top: 0;
     left: 0;
     width: 100%;
@@ -44,7 +35,7 @@ export  const BackgroundImg720 = styled(Bubles720)`
 
 export  const BackgroundImg320 = styled(Bubles320)`
     position: absolute;
-    z-index: -1;
+    z-index: -2;
     top: 0;
     left: 0;
     width: 100%;
@@ -72,7 +63,6 @@ export const ForFormContainer = styled.div`
 `  
 export  const BottleStyled = styled(Bottle)`
     z-index: -1;
-    margin-top: 107px;
     position:static;
     width: 916px;
     height: 680px;
@@ -92,9 +82,9 @@ export  const BottleMobil = styled(Bottle320)`
 export  const BottleTablet = styled(Bottle720)`
     z-index: -1;
     position: absolute;
-    bottom: calc(0% + 165px);
+    bottom: calc(0% + 27px);
     left:55%;
-    transform: translateX(-50%)
+    transform: translateX(-50%);
     
 `
 
@@ -110,7 +100,7 @@ export const FormHead = styled.h2`
 
 export  const StyledForm = styled(Form)`
 
- @media screen and (min-width: 320px) {
+ @media screen and (min-width: 250px) {
     display: flex;
     flex-direction:column;
     border-radius: 5px;
