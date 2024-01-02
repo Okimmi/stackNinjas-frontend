@@ -83,6 +83,7 @@ export const FieldInput = styled.input.attrs(props => ({
 `
 export const FieldTextAbove = styled.p`
   width: 100%;
+  initial-letter: 1.25; // 20/16=1.25
   margin-bottom: 8px;
   color: ${props => props.theme.colors.primeryBlack};
   background-color:  ${props => props.theme.colors.primeryWhite};

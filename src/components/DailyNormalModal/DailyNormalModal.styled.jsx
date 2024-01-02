@@ -3,7 +3,7 @@ import { Field } from 'formik';
 
 
 export const Title = styled.h2`
-  font-size: 26;
+  font-size: 26px;
   font-weight: 700;
   line-height: 1.23; // 32/26=1.23;
   text-align: left;
@@ -28,10 +28,14 @@ export const ItemFormula = styled.li`
   margin-bottom: 16px;
 `;
 export const Formula = styled.p`
+  font-size: 18px;
+  line-height: 1.33;
   color:  ${props => props.theme.colors.primeryBlack};
 `;
 
 export const FormulaColorText = styled.span`
+  font-size: 18px;
+  line-height: 1.33;
   color: ${props => props.theme.colors.primeryBlue};
 `;
 

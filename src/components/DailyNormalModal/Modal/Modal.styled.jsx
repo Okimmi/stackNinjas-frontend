@@ -43,10 +43,9 @@ export const ModalContainer = styled.div`
   overflow-y: auto;
 
   /* Mobile responsive container */
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 330px) {
     max-width: 90%;
     min-width: 280px;
-    padding: 32px 12px;
   }
 
   /* Tablet adaptive container */
