@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
 
-import logo from '../../images/header/logo.svg';
+import logo from '../../images/svg/logo.svg';
 import {
   HeaderStyled,
   HeaderWrap,
