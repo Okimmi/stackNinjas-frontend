@@ -12,9 +12,9 @@ import { useEffect, useState } from 'react';
 import {
   BackgroundImg,
   BackgroundImg320,
-  BackgroundImg720,
   BottleMobil,
   BottleStyled,
+  BottleTablet,
   ErMsg,
   FormBtnStyled,
   SightInContainer,
@@ -51,7 +51,7 @@ export const SignUpAuthForm = () => {
   const [screenSize, setScreenSize] = useState({
     isDesctopScreen: typeof window !== 'undefined' && window.innerWidth >= 1440,
     isTabletScreen: window.innerWidth >= 768 && window.innerWidth < 1440,
-    isMobileScreen: window.innerWidth >= 320 && window.innerWidth < 768,
+    isMobileScreen: window.innerWidth < 768,
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -61,7 +61,7 @@ export const SignUpAuthForm = () => {
       setScreenSize({
         isDesctopScreen: window.innerWidth >= 1440,
         isTabletScreen: window.innerWidth >= 768 && window.innerWidth < 1440,
-        isMobileScreen: window.innerWidth >= 320 && window.innerWidth < 768,
+        isMobileScreen: window.innerWidth < 768,
       });
     };
 
@@ -168,12 +168,10 @@ export const SignUpAuthForm = () => {
           </StyledForm>
         </Formik>
         {screenSize.isDesctopScreen && <BottleStyled />}
-        {screenSize.isTabletScreen && <BottleStyled />}
+        {screenSize.isTabletScreen && <BottleTablet />}
         {screenSize.isMobileScreen && <BottleMobil />}
       </SightInContainer>
-      {screenSize.isDesctopScreen && <BackgroundImg />}
-      {screenSize.isTabletScreen && <BackgroundImg720 />}
-      {screenSize.isMobileScreen && <BackgroundImg320 />}
+      {screenSize.isMobileScreen ? <BackgroundImg320 /> : <BackgroundImg />}
 
       <ToastContainer
         position="top-right"
