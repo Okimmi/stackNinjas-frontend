@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DailyNormalModal from 'components/DailyNormalModal/DailyNormalModal.jsx';
 import {
   ImgEdit,
@@ -45,32 +45,16 @@ import delet from '../../icons/Delete.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectDailyWaterRequirement, selectAmount, selectTime } from '../../redux/auth/selectors.js';
 import {MonthStatesTable} from '../../components/MonthStatesTable/MonthStatesTable.jsx'
-import {addHydrationEntry} from '../../redux/auth/operations.js'
 
 export const HomePage = () => {
-  const [sliderValue, setSliderValue] = useState(0);
-  const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
-  // const amount = useSelector(selectAmount);
-  // const time = useSelector(selectTime);
-  // const dateTime = new Date(time);
 
-  // const hours = dateTime.getHours();
-  // const minutes = dateTime.getMinutes();
+  const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
   const [showDailyNormalModal, setDailyNormalModal] = useState(false);
   const toggleModal = () => setDailyNormalModal(!showDailyNormalModal);
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-
-    const hydrationData = {
-      amount: sliderValue, // You may adjust this based on your logic
-      time: new Date().toISOString(), // Assuming you want the current time
-    }
   
-    dispatch(addHydrationEntry(hydrationData));
-  const handleSliderChange = event => {
-    setSliderValue(event.target.value);
-  };
 
   const [data, setData] = useState([]);
   const [editingEntryData, setEditingEntryData] = useState(null);
@@ -196,14 +180,14 @@ export const HomePage = () => {
               <DivToday>
                 <Today>Today</Today>
                 <SliderDiv>
-                  <SliderInput
-                    type="range"
-                    min="1"
-                    max="100"
-                    value={sliderValue}
-                    onChange={handleSliderChange}
-                  />
-                </SliderDiv>
+        <SliderInput
+          type="range"
+          min="1"
+          max="100"
+          // value={progress}
+          // onChange={handleSliderChange}
+        />
+      </SliderDiv>
                 <Percents>
                   <Per>0%</Per>
                   <Per>50%</Per>
