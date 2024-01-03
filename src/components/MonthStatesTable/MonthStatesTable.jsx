@@ -1,4 +1,4 @@
-import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
+// import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -8,11 +8,14 @@ import {
   Title,
   PaginationText,
   PaginationBTN,
+  PaginationBtnRight,
 } from './MonsStateTable.Styled';
 import { selectEntiesMonth } from '../../redux/hydrationEntries/selectors';
 import { getMonthProgressThunk } from '../../redux/hydrationEntries/operations';
 import { DayState } from 'components/DayState/DayState';
 import { calendarData, findData, daysInMonth } from './helpers';
+import { ReactComponent as BtnLeft} from '../../images/month/BtnLeft.svg';
+import { ReactComponent as BtnRight} from '../../images/month/BtnRight.svg';
 
 
 const date = new Date();
@@ -67,7 +70,7 @@ export const MonthStatesTable = () => {
   const currentDate = new Date(today);
  
  
-  const btnDisable = () =>  date - currentDate >= 86400000 ? false : true;
+  const isBtnDisable = () =>  date - currentDate >= 86400000 ? false : true;
 
 
   const dayList = calendarData(findData(monthState), daysInMonth(currentDate));
@@ -78,7 +81,7 @@ export const MonthStatesTable = () => {
           <Title>Month</Title>
           <Pagination>
             <PaginationBTN type="button" onClick={decrementMonth}>
-              <SlArrowLeft size={14} />
+              <BtnLeft size={14} />
             </PaginationBTN>
             <PaginationText>
               {currentDate.toLocaleString('en-GB', { month: 'long' })}, &nbsp;
@@ -87,9 +90,9 @@ export const MonthStatesTable = () => {
             <PaginationBTN
               type="button"
               onClick={incrementMonth}
-              disabled={btnDisable()}
+              disabled={isBtnDisable()}
             >
-              <SlArrowRight size={14} />
+              <PaginationBtnRight   disabled={isBtnDisable()} size={14} />
             </PaginationBTN>
           </Pagination>
         </Heder>
