@@ -130,7 +130,7 @@ export const FormModal = () => {
         validationSchema={updateUserInfoSchema}
         onSubmit={handleSubmit}
       >
-        {({ values }) => (
+        {({ values, errors, touched }) => (
           <FormUser>
             <Wrapper>
               <TopicGender>Your gender identity</TopicGender>
@@ -177,7 +177,15 @@ export const FormModal = () => {
                 placeholder={user.email || 'Email'}
                 title="email"
                 autoComplete="on"
+                hasErrors={touched.email && errors.email}
               />
+
+              {touched.email && errors.email && (
+                <ErrEmailMessage name="email" component="p">
+                  {errors.email}
+                </ErrEmailMessage>
+              )}
+
               <ErrEmailMessage name="email" component="p" />
             </Wrapper>
 
@@ -192,7 +200,16 @@ export const FormModal = () => {
                   placeholder={'Password'}
                   title="passwordOutdated"
                   autoComplete="on"
+                  hasErrors={
+                    touched.passwordOutdated && errors.passwordOutdated
+                  }
                 />
+
+                {touched.passwordOutdated && errors.passwordOutdated && (
+                  <ErrMessage name="passwordOutdated" component="p">
+                    {errors.passwordOutdated}
+                  </ErrMessage>
+                )}
 
                 <ToggleIcon onClick={toggle}>
                   {showPassword ? <EyeIcon /> : <HideIcon />}
@@ -210,7 +227,14 @@ export const FormModal = () => {
                   title="Password"
                   placeholder="Password"
                   autoComplete="on"
+                  hasErrors={touched.password && errors.password}
                 />
+
+                {touched.password && errors.password && (
+                  <ErrMessage name="password" component="p">
+                    {errors.password}
+                  </ErrMessage>
+                )}
 
                 <ToggleIcon onClick={toggle}>
                   {showPassword ? <EyeIcon /> : <HideIcon />}
@@ -227,7 +251,15 @@ export const FormModal = () => {
                   type={showPassword ? 'text' : 'password'}
                   placeholder="Password"
                   autoComplete="on"
+                  hasErrors={touched.passwordRepeat && errors.passwordRepeat}
                 />
+
+                {touched.passwordRepeat && errors.passwordRepeat && (
+                  <ErrMessage name="passwordRepeat" component="p">
+                    {errors.passwordRepeat}
+                  </ErrMessage>
+                )}
+
                 <ToggleIcon onClick={toggle}>
                   {showPassword ? <EyeIcon /> : <HideIcon />}
                 </ToggleIcon>

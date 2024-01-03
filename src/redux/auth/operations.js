@@ -122,7 +122,7 @@ export const updateAvatar = createAsyncThunk(
 
 export const updateUserData = createAsyncThunk(
   'auth/updateUserData',
-  async (data, thunkAPI) => {
+  async ({ repeadPassword, ...data }, thunkAPI) => {
     try {
       const res = await $instance.put('/api/auth/profile', data);
 

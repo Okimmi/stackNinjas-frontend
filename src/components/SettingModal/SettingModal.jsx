@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
+
 import {
   Backdrop,
   ButtonCloseModal,
@@ -6,7 +8,7 @@ import {
   ModalContent,
   Topic,
 } from './SettingModal.styled';
-import { createPortal } from 'react-dom';
+
 import { UploadPhoto } from './SettingUploadPhoto/SettingUploadPhoto';
 import { FormModal } from './SettingFormModal/SettingFormModal';
 

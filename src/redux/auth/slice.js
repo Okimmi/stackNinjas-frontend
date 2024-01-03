@@ -98,11 +98,9 @@ const authSlice = createSlice({
       state.isError = action.payload;
     });
     builder.addCase(updateAvatar.rejected, (state, action) => {
-      state.isRefreshing = false;
       state.isError = action.payload;
     });
     builder.addCase(updateUserData.rejected, (state, action) => {
-      state.isRefreshing = false;
       state.isError = action.payload;
     });
   },

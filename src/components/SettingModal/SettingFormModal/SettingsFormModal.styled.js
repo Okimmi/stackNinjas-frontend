@@ -92,7 +92,6 @@ export const LabelsPassword = styled.label`
 `;
 
 export const ErrMessage = styled(ErrorMessage)`
-  margin-top: 0;
   margin-bottom: 12px;
   color: ${({ theme: { colors } }) => colors.secondary3};
   font-size: 14px;
@@ -112,8 +111,16 @@ export const FieldForm = styled(Field)`
   width: 100%;
   padding: 12px 10px;
   border-radius: 6px;
-  border: 1px solid ${({ theme: { colors } }) => colors.secondary6};
-  color: ${({ theme: { colors } }) => colors.primeryBlue};
+  border: 1px solid ${({ hasErrors }) => (hasErrors ? '#EF5050' : '#D7E3FF')};
+  color: ${({ hasErrors }) => (hasErrors ? '#EF5050' : '#407BFF')};
+
+  &:focus-within {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: ${({ theme: { colors } }) => colors.secondary4};
+  }
 
   @media screen and (max-width: 768px) {
     max-width: 392px;
