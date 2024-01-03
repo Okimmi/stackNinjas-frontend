@@ -3,6 +3,27 @@ import { Field } from 'formik';
 
 export const ContainerForModal = styled.div`
   /* outline: 1px solid red; */
+
+  /* Mobile responsive container */
+  @media screen and (max-width: 320px) {
+    width: 256px; // 280px-2*12 = 256
+    min-width: 256px;
+  }
+
+  /* Mobile adaptive container */
+  @media screen and (min-width: 320px) {
+    width: 256px; // 280px-2*12 = 256
+  }
+
+  /* Tablet adaptive container */
+  @media screen and (min-width: 768px) {
+    width: 656px; // 704px - 2*24 = 656;
+  }
+
+  /* Desktop adaptive container */
+  @media screen and (min-width: 1440px) {
+    width: 521px; // 569px - 2*24 = 521;
+  }
 `
 
 export const Title = styled.h2`
