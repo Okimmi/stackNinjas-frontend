@@ -16,6 +16,9 @@ export const ModalBackdrop = styled.div`
   body > & {
     overflow: hidden;
   }
+  body + & {
+    overflow: hidden;
+}
 `;
 
 export const ModalContainer = styled.div`
@@ -43,10 +46,18 @@ export const ModalContainer = styled.div`
   overflow-y: auto;
 
   /* Mobile responsive container */
-  @media screen and (max-width: 330px) {
-    max-width: 90%;
+  @media screen and (max-width: 320px) {
+    /* max-width: 90%; */
+    max-width: 280px; //320px-2*12;
     min-width: 280px;
   }
+
+  /* Mobile adaptive container */
+  @media screen and (min-width: 320px) {
+    max-width: 280px; //320px-2*12;
+    min-width: 280px;
+  }
+
 
   /* Tablet adaptive container */
   @media screen and (min-width: 768px) {

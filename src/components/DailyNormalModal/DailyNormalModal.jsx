@@ -42,6 +42,13 @@ import {
 
 //const modalPlace = document.querySelector('#modal-root');
 
+// // Когда модальное окно скрыто...
+// const scrollY = document.body.style.top;
+// document.body.style.position = '';
+// document.body.style.top = '';
+// window.scrollTo(0, parseInt(scrollY || '0') * -1);
+
+
 const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   const dispatch = useDispatch();
 
@@ -55,6 +62,11 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
 
 
   }, [authetification, error, dispatch,]);
+
+  const scrollY = document.body.style.top;
+  document.body.style.position = '';
+  document.body.style.top = '';
+  window.scrollTo(0, parseInt(scrollY || '0') * -1);
 
     // ==== configFormik
   const configFormik = useFormik({
@@ -85,7 +97,6 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
 
   // Press Save
   const handleSubmit = async values => {
-    console.log(values);
     const { waterVolume } = values;
     dispatch(updateDailyNormal({ dailyWaterRequirement: waterVolume * 1000 }));
 
