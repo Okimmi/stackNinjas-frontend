@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 // import PropTypes from 'prop-types';
 
@@ -16,8 +17,12 @@ const Modal = ({ close, children, title }) => {
       }
     };
     document.addEventListener('keydown', closeModalEsc);
+    disableBodyScroll(document.body);
 
-    return () => document.removeEventListener('keydown', closeModalEsc);
+    return () => {
+      document.removeEventListener('keydown', closeModalEsc);
+      enableBodyScroll(document.body);
+    }
   }, [close]);
 
   const closeModal = ({ target, currentTarget }) => {
