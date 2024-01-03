@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import DailyNormalModal from 'components/DailyNormalModal/DailyNormalModal.jsx';
 import {
   ImgEdit,
@@ -42,8 +42,8 @@ import plusAdd from '../../icons/PlusAdd.svg';
 import glass from '../../icons/Glass.svg';
 import edit from '../../icons/Edit.svg';
 import delet from '../../icons/Delete.svg';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectDailyWaterRequirement, selectAmount, selectTime } from '../../redux/auth/selectors.js';
+import { useSelector} from 'react-redux';
+import { selectDailyWaterRequirement } from '../../redux/auth/selectors.js';
 import {MonthStatesTable} from '../../components/MonthStatesTable/MonthStatesTable.jsx'
 
 export const HomePage = () => {
@@ -51,10 +51,6 @@ export const HomePage = () => {
   const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
   const [showDailyNormalModal, setDailyNormalModal] = useState(false);
   const toggleModal = () => setDailyNormalModal(!showDailyNormalModal);
-
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.user);
-  
 
   const [data, setData] = useState([]);
   const [editingEntryData, setEditingEntryData] = useState(null);
