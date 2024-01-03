@@ -1,6 +1,7 @@
 import React, { useEffect, } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, FormikProvider, useFormik } from 'formik';
+
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
@@ -40,14 +41,7 @@ import {
   Title,
 } from './DailyNormalModal.styled';
 
-//const modalPlace = document.querySelector('#modal-root');
-
-// // Когда модальное окно скрыто...
-// const scrollY = document.body.style.top;
-// document.body.style.position = '';
-// document.body.style.top = '';
-// window.scrollTo(0, parseInt(scrollY || '0') * -1);
-
+// const modalPlace = document.querySelector('#modal-root');
 
 const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   const dispatch = useDispatch();
@@ -55,18 +49,13 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   const error = useSelector(selectIsError);
   const authetification = useSelector(selectUser);
   const initialDailyNorma = (dailyNormalVolume ?? authetification.dailyWaterRequirement ?? 2) / 1000;
+  
 
   useEffect(() => {
     if (!authetification) return;
     if (error) return toast.error(error.message);
-
-
+    
   }, [authetification, error, dispatch,]);
-
-  const scrollY = document.body.style.top;
-  document.body.style.position = '';
-  document.body.style.top = '';
-  window.scrollTo(0, parseInt(scrollY || '0') * -1);
 
     // ==== configFormik
   const configFormik = useFormik({
@@ -113,6 +102,8 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
     <>
       <Modal 
           closeModal={closeModal} 
+          media={{mobile:'320px', tablet: '768px', desktop: '1440px'}}
+          width={{mobile:'280px', tablet: '704px', desktop: '569px'}}
           // portalParent={modalPlace}
         >
         <ContainerForModal>      
