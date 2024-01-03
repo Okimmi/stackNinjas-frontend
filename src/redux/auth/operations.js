@@ -13,7 +13,6 @@ const setAuthHeader = token => {
 const clearAuthHeader = () => {
   $instance.defaults.headers.common.Authorization = '';
 };
-
 export const register = createAsyncThunk(
   'auth/register',
   async (newUser, thunkAPI) => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import DailyNormalModal from 'components/DailyNormalModal/DailyNormalModal.jsx';
 import {
   ImgEdit,
@@ -58,6 +58,7 @@ export const HomePage = () => {
   const [sliderValue, setSliderValue] = useState(0);
   const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
 
+  const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
   const [showDailyNormalModal, setDailyNormalModal] = useState(false);
   const toggleModal = () => setDailyNormalModal(!showDailyNormalModal);
 
@@ -210,14 +211,14 @@ export const HomePage = () => {
               <DivToday>
                 <Today>Today</Today>
                 <SliderDiv>
-                  <SliderInput
-                    type="range"
-                    min="1"
-                    max="100"
-                    value={sliderValue}
-                    onChange={handleSliderChange}
-                  />
-                </SliderDiv>
+        <SliderInput
+          type="range"
+          min="1"
+          max="100"
+           //value={progress}
+          // onChange={handleSliderChange}
+        />
+      </SliderDiv>
                 <Percents>
                   <Per>0%</Per>
                   <Per>50%</Per>
@@ -264,13 +265,14 @@ export const HomePage = () => {
                           alt="Glass"
                         />
 
-                        <SpanCount>{'200 ml'}</SpanCount>
-                        <SpanDate>{'14:00 PM'}</SpanDate>
-                      </DivFirstPart>
+                        <SpanCount>{item.amount} ml</SpanCount>
+        <SpanDate>
+          {new Date(item.time).getHours().toString().padStart(2, '0')}:
+          {new Date(item.time).getMinutes().toString().padStart(2, '0')}
+        </SpanDate>
+        </DivFirstPart>
                       <div>
-                        {/* ДОДАТИ ДАНІ З ФОРМИ
-              <span >{item.amount}</span>
-              <SpanDate>{item.date}</SpanDate> */}
+
                         <ButtonEdit
                           disabled={item.id === editingEntryData?.id}
                           onClick={() => onEditClick(item)}
