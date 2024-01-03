@@ -27,15 +27,14 @@ export const ListFormula = styled.ul`
   }
 `;
 export const ItemFormula = styled.li`
-  margin-right: 24px;
   margin-bottom: 16px;
   &:last-child {
-    margin-right: 0;
     margin-bottom: 0;
   }
   
   /* Tablet adaptive container */
   @media screen and (min-width: 768px) {
+    margin-right: 24px;
     margin-bottom: 0;
   }
 `;
@@ -124,7 +123,7 @@ export const Text =  styled.p`
 
   /* Tablet adaptive container */
   @media screen and (min-width: 768px) {
-    width: 330px;
+    width: 328px;
   }
 `;
 export const RequiredText =  styled.p`

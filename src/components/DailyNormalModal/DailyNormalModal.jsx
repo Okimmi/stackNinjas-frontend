@@ -111,14 +111,14 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
             <ListFormula>
               <ItemFormula>
                 <Formula>
-                  For&nbsp;girl:&nbsp;
+                  For girl:&nbsp;
                   <FormulaColorText>V=(M*0,03)&nbsp;+&nbsp;(T*0,4)</FormulaColorText>
                 </Formula>
               </ItemFormula>
 
               <ItemFormula>
                 <Formula>
-                  For&nbsp;man:&nbsp;
+                  For man:&nbsp;
                   <FormulaColorText>V=(M*0,04)&nbsp;+&nbsp;(T*0,6)</FormulaColorText>
                 </Formula>
               </ItemFormula>
