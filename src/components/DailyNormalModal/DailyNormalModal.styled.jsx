@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { Field } from 'formik';
 
+export const ContainerForModal = styled.div`
+  /* outline: 1px solid red; */
+`
 
 export const Title = styled.h2`
-  font-size: 26;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 500;
   line-height: 1.23; // 32/26=1.23;
   text-align: left;
   margin-bottom: 24px;
@@ -24,18 +27,31 @@ export const ListFormula = styled.ul`
   }
 `;
 export const ItemFormula = styled.li`
-  margin-right: 24px;
   margin-bottom: 16px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Tablet adaptive container */
+  @media screen and (min-width: 768px) {
+    margin-right: 24px;
+    margin-bottom: 0;
+  }
 `;
 export const Formula = styled.p`
+  font-size: 18px;
+  line-height: 1.33;
   color:  ${props => props.theme.colors.primeryBlack};
 `;
 
 export const FormulaColorText = styled.span`
+  font-size: 18px;
+  line-height: 1.33;
   color: ${props => props.theme.colors.primeryBlue};
 `;
 
 export const BoxTextPostScriptum = styled.div`
+  width: 100%;
   padding: 10px;
   margin-bottom: 24px;
   border: 1px solid ${props => props.theme.colors.secondary6};
@@ -45,7 +61,7 @@ export const BoxTextPostScriptum = styled.div`
 
 export const PSText = styled.p`
   font-size: 12px;
-  line-height: 16px;
+  line-height: 1.33;  // 16/12=1.33
   text-align: left;
   vertical-align: top;
   height: auto;
@@ -56,9 +72,9 @@ export const MarkPSText =  styled.span`
 `;
 
 export const SubTitle =  styled.h3`
-  font-weight: 700;
+  font-weight: 500;
   font-size: 18px;
-  initial-letter: 1.11; // 20/18=1.11
+  line-height: 1.11;  // 20/18=1.11 */
   text-align: left;
   margin-bottom: 16px;
   color: ${props => props.theme.colors.primeryBlack};
@@ -75,6 +91,7 @@ export const BoxGender =  styled.div`
 `;
 
 export const LabelGender = styled.label`
+  line-height: 1.25;  // 20/16=1.25 */
   margin-right: 24px;
 `;
 
@@ -100,20 +117,21 @@ export const Text =  styled.p`
   width: 190px;
   font-size: 16px;
   font-weight: 400;
-  initial-letter: 1.25; // 20/16=1.25
+  line-height: 1.25;  // 20/16=1.25 */
   text-align: left;
   color: ${props => props.theme.colors.primeryBlack};
 
   /* Tablet adaptive container */
   @media screen and (min-width: 768px) {
-    width: 330px;
+    width: 328px;
   }
 `;
 export const RequiredText =  styled.p`
   display: block;
+  padding-left: 6px;
   font-size: 18px;
   font-weight: 700;
-  initial-letter: 1.33; // 24/18=1.33
+  line-height: 1.33;  // 24/18=1.33
   text-align: center;
   color: ${props => props.theme.colors.primeryBlue};
 `;
@@ -137,7 +155,7 @@ export const BoxButton = styled.div`
 `
 export const ButtonSave = styled.button`
   display: block;
-  width: 256px;
+  width: 100%;
   height: 36px;
   padding: 8px 30px;
   border: none;

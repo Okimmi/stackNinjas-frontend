@@ -49,7 +49,7 @@ export const FieldInput = styled.input.attrs(props => ({
     props.theme.colors.secondary8,
 }))`
   display: block;
-  width: calc(100% - 2*4px);
+  width: 100%; //calc(100% - 2*4px);
   outline: 1px solid ${(props) => props.$valid};
     // colorsValid[props.valid] ?? 'rgba(33, 33, 33, 0.2)'}; 
   background-color:  ${props => props.theme.colors.primeryWhite};;
@@ -59,7 +59,7 @@ export const FieldInput = styled.input.attrs(props => ({
   border: none;
   /* margin-top: 4px; */
   padding: 12px 10px;
-
+  line-height: 1.25;
 
   &:hover,
   &:focus-within {
@@ -83,6 +83,7 @@ export const FieldInput = styled.input.attrs(props => ({
 `
 export const FieldTextAbove = styled.p`
   width: 100%;
+  initial-letter: 1.25; // 20/16=1.25
   margin-bottom: 8px;
   color: ${props => props.theme.colors.primeryBlack};
   background-color:  ${props => props.theme.colors.primeryWhite};
@@ -97,7 +98,7 @@ export const FieldFeedback = styled.span`
   top: 50%;
   right: 12px;
   transform: translateY(-50%);
-  font-size: 0.875rem;
+  font-size: 0;
 `
 export const FieldHelpText = styled.div`
   padding-left: 4px;

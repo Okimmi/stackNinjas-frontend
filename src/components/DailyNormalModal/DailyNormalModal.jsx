@@ -1,6 +1,7 @@
 import React, { useEffect, } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, FormikProvider, useFormik } from 'formik';
+
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
@@ -26,6 +27,7 @@ import {
   BoxWaterDrink,
   BoxWeight,
   ButtonSave,
+  ContainerForModal,
   FieldGenger,
   Formula,
   FormulaColorText,
@@ -39,7 +41,7 @@ import {
   Title,
 } from './DailyNormalModal.styled';
 
-//const modalPlace = document.querySelector('#modal-root');
+// const modalPlace = document.querySelector('#modal-root');
 
 const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   const dispatch = useDispatch();
@@ -47,12 +49,12 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   const error = useSelector(selectIsError);
   const authetification = useSelector(selectUser);
   const initialDailyNorma = (dailyNormalVolume ?? authetification.dailyWaterRequirement ?? 2) / 1000;
+  
 
   useEffect(() => {
     if (!authetification) return;
     if (error) return toast.error(error.message);
-
-
+    
   }, [authetification, error, dispatch,]);
 
     // ==== configFormik
@@ -84,7 +86,6 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
 
   // Press Save
   const handleSubmit = async values => {
-    console.log(values);
     const { waterVolume } = values;
     dispatch(updateDailyNormal({ dailyWaterRequirement: waterVolume * 1000 }));
 
@@ -102,7 +103,8 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
       <Modal 
           closeModal={closeModal} 
           // portalParent={modalPlace}
-        >      
+        >
+        <ContainerForModal>      
           <Title>My daily norma</Title>
 
           <BoxFormula>
@@ -110,14 +112,14 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
               <ItemFormula>
                 <Formula>
                   For girl:&nbsp;
-                  <FormulaColorText>V=(M*0,03) + (T*0,4)</FormulaColorText>
+                  <FormulaColorText>V=(M*0,03)&nbsp;+&nbsp;(T*0,4)</FormulaColorText>
                 </Formula>
               </ItemFormula>
 
               <ItemFormula>
                 <Formula>
                   For man:&nbsp;
-                  <FormulaColorText>V=(M*0,04) + (T*0,6)</FormulaColorText>
+                  <FormulaColorText>V=(M*0,04)&nbsp;+&nbsp;(T*0,6)</FormulaColorText>
                 </Formula>
               </ItemFormula>
             </ListFormula>
@@ -213,6 +215,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
               </BoxForm>
             </Form>
           </FormikProvider>
+        </ContainerForModal>
       </Modal>
     </>
   );
