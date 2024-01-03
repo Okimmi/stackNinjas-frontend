@@ -9,6 +9,7 @@ import {
   BackgroundImg720,
   BottleMobil,
   BottleStyled,
+  BottomBtnBox,
   ErMsg,
   FormBtnStyled,
   SightInContainer,
@@ -126,8 +127,10 @@ export const AuthForm = () => {
 
             <ErMsg component="span" name="password" />
             <FormBtnStyled type="submit">Sign In</FormBtnStyled>
-
+            <BottomBtnBox>
             <SightUp onClick={() => navigate('/signup')}>Sign up</SightUp>
+            <SightUp onClick={() => navigate('/forgot-password')}>Forgot Password</SightUp>
+            </BottomBtnBox>
           </StyledForm>
         </Formik>
         {screenSize.isDesctopScreen && <BottleStyled />}

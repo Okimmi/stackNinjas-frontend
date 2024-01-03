@@ -2,7 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 // import axios from 'axios';
 import { $instance } from '../constants';
 
+
 import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 // axios.defaults.baseURL = 'https://stackninjas-backend.onrender.com/';
 
@@ -132,3 +134,29 @@ export const updateUserData = createAsyncThunk(
     }
   }
 );
+
+export const  restoreUserPass = createAsyncThunk(
+  'auth/restoreUserPass',
+  async (data, thunkAPI) => {
+    try {
+      const res = await $instance.post('/api/auth/restore-password', data);
+      if (res.status === 200) {
+        toast.success(`${res.data.message}`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+        }
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+
