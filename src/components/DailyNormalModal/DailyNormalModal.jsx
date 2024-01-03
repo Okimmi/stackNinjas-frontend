@@ -26,6 +26,7 @@ import {
   BoxWaterDrink,
   BoxWeight,
   ButtonSave,
+  ContainerForModal,
   FieldGenger,
   Formula,
   FormulaColorText,
@@ -102,22 +103,23 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
       <Modal 
           closeModal={closeModal} 
           // portalParent={modalPlace}
-        >      
+        >
+        <ContainerForModal>      
           <Title>My daily norma</Title>
 
           <BoxFormula>
             <ListFormula>
               <ItemFormula>
                 <Formula>
-                  For girl:&nbsp;
-                  <FormulaColorText>V=(M*0,03) + (T*0,4)</FormulaColorText>
+                  For&nbsp;girl:&nbsp;
+                  <FormulaColorText>V=(M*0,03)&nbsp;+&nbsp;(T*0,4)</FormulaColorText>
                 </Formula>
               </ItemFormula>
 
               <ItemFormula>
                 <Formula>
-                  For man:&nbsp;
-                  <FormulaColorText>V=(M*0,04) + (T*0,6)</FormulaColorText>
+                  For&nbsp;man:&nbsp;
+                  <FormulaColorText>V=(M*0,04)&nbsp;+&nbsp;(T*0,6)</FormulaColorText>
                 </Formula>
               </ItemFormula>
             </ListFormula>
@@ -213,6 +215,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
               </BoxForm>
             </Form>
           </FormikProvider>
+        </ContainerForModal>
       </Modal>
     </>
   );
