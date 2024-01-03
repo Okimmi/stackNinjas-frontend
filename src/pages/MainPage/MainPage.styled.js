@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import bgImgmob from '../../images/mainPage/BgMainPage-mob.png';
 import bgImgtab from '../../images/mainPage/BgMainPage-tab.png';
 import bgImgdesk from '../../images/mainPage/BgMainPage-desk.png';
 import bgImElemgdesk from '../../images/mainPage/BgElMainPage-desk.png';
@@ -23,7 +22,6 @@ export const MainPageContainer = styled.div`
 
 export const BGImgMainPage = styled.div`
   position: fixed;
-  /* position: absolute; */
   top: 60px;
   left: 0;
   right: 0;
@@ -35,45 +33,10 @@ export const BGImgMainPage = styled.div`
   background-position: bottom;
   background-repeat: no-repeat;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 769px) {
     background-image: url(${bgImElemgdesk}), url(${bgImgdesk});
     background-size: contain;
     background-position: top, bottom;
     background-repeat: no-repeat, no-repeat;
   }
 `;
-
-// export const BGImgMainPage = styled.div`
-//   content: url(${bgImgmob});
-//   position: absolute;
-//   top: -60px;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   z-index: -1;
-
-//   @media screen and (min-width: 768px) {
-//     content: url(${bgImgtab});
-//     top: -64px;
-//   }
-
-//   @media screen and (min-width: 1440px) {
-//     content: url(${bgImgdesk});
-//     top: 300px;
-//   }
-// `;
-
-// export const BGElementMainPage = styled.div`
-//   @media screen and (min-width: 1440px) {
-//     content: url(${bgImElemgdesk});
-//     position: absolute;
-//     top: 45px;
-//     left: 0;
-//     right: 0;
-//     bottom: 0;
-//     z-index: -1;
-//     background-repeat: no-repeat;
-//     background-size: contain;
-//     background-position: center;
-//   }
-// `;

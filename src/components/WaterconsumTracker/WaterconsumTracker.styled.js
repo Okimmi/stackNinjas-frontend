@@ -88,7 +88,7 @@ export const ButtonTryTracker = styled.button`
   font-weight: 500;
   line-height: 1.25;
   cursor: pointer;
-  width: 280px;
+  width: 100%;
   height: 36px;
 
   &:hover,
