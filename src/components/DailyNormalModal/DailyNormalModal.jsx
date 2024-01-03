@@ -10,7 +10,8 @@ import { updateDailyNormal } from '../../redux/auth/operations';
 import { selectIsError, selectUser, } from '../../redux/auth/selectors';
 
 // components
-import Modal from 'components/DailyNormalModal/Modal/Modal';
+// import Modal from 'components/DailyNormalModal/Modal/Modal';
+import Modal from 'components/Global/Modal/Modal';
 import { NumberInputLiveFeedback } from './NumberInputLiveFeedback/NumberInputLiveFeedback';
 import CalcFieldDailyNormal from './CalcFieldDailyNormal/CalcFieldDailyNormal';
 
@@ -38,7 +39,7 @@ import {
   PSText,
   SubTitle,
   Text,
-  Title,
+  // Title,
 } from './DailyNormalModal.styled';
 
 // const modalPlace = document.querySelector('#modal-root');
@@ -101,11 +102,13 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   return (
     <>
       <Modal 
+          close={closeModal} 
           closeModal={closeModal} 
+          title={'My daily norma'}
           // portalParent={modalPlace}
         >
         <ContainerForModal>      
-          <Title>My daily norma</Title>
+          {/* <Title>My daily norma</Title> */}
 
           <BoxFormula>
             <ListFormula>
