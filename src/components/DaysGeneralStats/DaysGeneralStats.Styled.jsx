@@ -16,14 +16,14 @@ export const Modal = styled.div`
   left: 0;
   width: 280px;
   height: 188px;
-  color: #2f2f2f;
+  color: ${(props) =>props.theme.colors.primeryBlack};;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background-color: #ffffff;
+  background-color: ${(props) =>props.theme.colors.primeryWhite};;
   border-radius: 10px;
   box-shadow: 0 4px 4px 0 rgba(64, 123, 255, 0.3);
   padding: 24px 13px 24px 13px;
@@ -57,7 +57,7 @@ export const IconContainer = styled.div`
   font-weight: 400;
 `;
 export const DataText = styled.span`
-  color: #407bff;
+  color: ${(props) =>props.theme.colors.primeryBlue};;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.33;

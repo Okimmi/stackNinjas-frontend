@@ -1,71 +1,67 @@
 import { useState } from 'react';
-
 import {
   DropdownContainer,
   DropdownItem,
+  DropdownOverlay,
   IconLogout,
   IconSetting,
 } from './UserLogoModal.styled';
 import settingIcon from '../../images/header/settingIcon.svg';
 import logoutIcon from '../../images/header/logoutIcon.svg';
-import { UserLogoutModal } from '../../components/UserLogoutModal/UserLogoutModal';
+import { UserLogoutModal } from '../UserLogoutModal/UserLogoutModal.jsx';
+import { SettingModal } from 'components/SettingModal/SettingModal';
+import Modal from '../Global/Modal/Modal.jsx';
 
 export const UserLogoModal = ({ isOpen, onClose }) => {
-  const [LogoutActive, SetLogoutActive] = useState(false);
+  const [logoutActive, setLogoutActive] = useState(false);
+  const [settingModalIsOpen, setSettingModalIsOpen] = useState(false);
 
   const handleOnSetting = () => {
-    // КОД ДЛЯ ВІДКРИТТЯ МОДАЛКИ НАЛАШТУВАНЬ ПРОФІЛЮ ЮЗЕРА
+    setSettingModalIsOpen(true);
+    onClose();
+  };
+
+  const handleCloseSetting = () => {
+    setSettingModalIsOpen(false);
     onClose();
   };
 
   const handleOnLogout = () => {
-    SetLogoutActive(true);
+    setLogoutActive(true);
     onClose();
   };
 
   const handleCloseLogout = () => {
-    SetLogoutActive(false);
+    setLogoutActive(false);
   };
 
-  // useEffect(() => {
-  //   const handleEscKeyPress = event => {
-  //     if (event.code === 'Escape' && isOpen) {
-  //       onClose();
-  //     }
-  //   };
-
-  //   const handleOutsideClick = event => {
-  //     if (!event.target.closest('.dropdown-container') && isOpen) {
-  //       onClose();
-  //     }
-  //   };
-
-  //   window.addEventListener('click', handleOutsideClick);
-  //   window.addEventListener('keydown', handleEscKeyPress);
-
-  //   return () => {
-  //     window.removeEventListener('click', handleOutsideClick);
-  //     window.removeEventListener('keydown', handleEscKeyPress);
-  //   };
-  // }, [isOpen, onClose]);
-
   return (
-    isOpen && (
-      <DropdownContainer className="dropdown-container" onClick={onClose}>
-        <DropdownItem onClick={handleOnSetting}>
-          <IconSetting src={settingIcon} alt="Setting" />
-          Setting
-        </DropdownItem>
-        <DropdownItem onClick={handleOnLogout}>
-          <IconLogout src={logoutIcon} alt="Log out" />
-          Log out
-        </DropdownItem>
+    <>
+      {isOpen && (
+        <>
+          <DropdownContainer className="dropdown-container">
+            <DropdownItem onClick={handleOnSetting}>
+              <IconSetting src={settingIcon} alt="Setting" />
+              Setting
+            </DropdownItem>
+            <DropdownItem onClick={handleOnLogout}>
+              <IconLogout src={logoutIcon} alt="Log out" />
+              Log out
+            </DropdownItem>
+          </DropdownContainer>
+          <DropdownOverlay onClick={onClose} />
+        </>
+      )}
+      {logoutActive && (
+        <Modal close={handleCloseLogout} title={'Log out'}>
+          <UserLogoutModal close={handleCloseLogout} />
+        </Modal>
+      )}
 
-        <UserLogoutModal
-          isLogoutActive={LogoutActive}
-          onLogoutClose={handleCloseLogout}
-        />
-      </DropdownContainer>
-    )
+      <SettingModal
+        isModalOpen={settingModalIsOpen}
+        onModalClose={handleCloseSetting}
+      />
+    </>
   );
 };

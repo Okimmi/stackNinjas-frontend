@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Field } from 'formik';
 
+
 export const Title = styled.h2`
   font-size: 26;
   font-weight: 700;
@@ -16,8 +17,14 @@ export const ListFormula = styled.ul`
   display: flex;
   flex-direction: column;
   margin-bottom: 12px;
+
+  /* Tablet adaptive container */
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 export const ItemFormula = styled.li`
+  margin-right: 24px;
   margin-bottom: 16px;
 `;
 export const Formula = styled.p`
@@ -96,6 +103,11 @@ export const Text =  styled.p`
   initial-letter: 1.25; // 20/16=1.25
   text-align: left;
   color: ${props => props.theme.colors.primeryBlack};
+
+  /* Tablet adaptive container */
+  @media screen and (min-width: 768px) {
+    width: 330px;
+  }
 `;
 export const RequiredText =  styled.p`
   display: block;
@@ -113,15 +125,48 @@ export const BoxWaterDrink =  styled.div`
 export const BoxForm = styled.div`
   margin: 0 auto;
 `
+export const BoxButton = styled.div`
+  display: flex;
+  justify-content: center;
 
+  /* Tablet adaptive container */
+  @media screen and (min-width: 768px) {
+    justify-content: right;
+  }
+
+`
 export const ButtonSave = styled.button`
   display: block;
   width: 256px;
   height: 36px;
   padding: 8px 30px;
+  border: none;
+  outline: none;
   border-radius: 10px;
+  
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33; // 24/18=1.33
+
   color: ${props => props.theme.colors.primeryWhite};
   background-color: ${props => props.theme.colors.primeryBlue};
-  box-shadow: none;
+  box-shadow: 0px 4px 8px rgba(64, 123, 255, 0.34);  cursor: pointer;
+
+  /* Tablet adaptive container */
+  @media screen and (min-width: 768px) {
+    width: 160px;
+    height: 44px;
+  }
+
+  &:hover, &:focus {
+    box-shadow: 0px 4px 14px rgba(64, 123, 255, 0.54);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transition: opacity 0.3s ease;
+  }
+  &:active{
+    box-shadow: none;
+    text-shadow: none;
+  }
 `;
 

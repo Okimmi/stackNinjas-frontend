@@ -19,11 +19,11 @@ import {
   Styledlabel,
 } from './AuthForm.styled';
 import { useNavigate } from 'react-router-dom';
-import { logIn, refreshUser } from '../../redux/auth/operations';
+import { logIn } from '../../redux/auth/operations';
 import iconeye from '../../images/AuthForm/show_icon.svg';
 import hidepas from '../../images/AuthForm/hide_icon.svg';
 import { useEffect, useState } from 'react';
-import { selectIsError, selectIsLoggedIn } from '../../redux/auth/selectors';
+import { selectIsError } from '../../redux/auth/selectors';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -41,29 +41,26 @@ const SignupSchema = Yup.object().shape({
 });
 
 export const AuthForm = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const error = useSelector(selectIsError);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
   const [showPassword, setShowPassword] = useState(false);
 
   const [screenSize, setScreenSize] = useState({
     isDesctopScreen: typeof window !== 'undefined' && window.innerWidth >= 1440,
-    isTabletScreen: window.innerWidth >= 768 && window.innerWidth <= 1439,
-    isMobileScreen: window.innerWidth >= 320 && window.innerWidth <= 768,
+    isTabletScreen: window.innerWidth >= 768 && window.innerWidth < 1440,
+    isMobileScreen: window.innerWidth >= 320 && window.innerWidth < 768,
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  if (isSubmitted) {
+  useEffect(() => {
     toast.error(error);
-  }
-
+  }, [error]);
   useEffect(() => {
     const handleWindowResize = () => {
       setScreenSize({
         isDesctopScreen: window.innerWidth >= 1440,
-        isTabletScreen: window.innerWidth >= 768 && window.innerWidth <= 1440,
-        isMobileScreen: window.innerWidth >= 320 && window.innerWidth <= 768,
+        isTabletScreen: window.innerWidth >= 768 && window.innerWidth < 1440,
+        isMobileScreen: window.innerWidth >= 320 && window.innerWidth < 768,
       });
     };
 
@@ -90,10 +87,6 @@ export const AuthForm = () => {
                 password: values.password,
               })
             );
-            setIsSubmitted(true);
-            if (isLoggedIn) {
-              dispatch(refreshUser());
-            }
           }}
         >
           <StyledForm>
@@ -134,7 +127,7 @@ export const AuthForm = () => {
             <ErMsg component="span" name="password" />
             <FormBtnStyled type="submit">Sign In</FormBtnStyled>
 
-            <SightUp onClick={() => navigate('/signup')}>Sight Up</SightUp>
+            <SightUp onClick={() => navigate('/signup')}>Sign up</SightUp>
           </StyledForm>
         </Formik>
         {screenSize.isDesctopScreen && <BottleStyled />}

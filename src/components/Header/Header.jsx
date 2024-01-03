@@ -20,7 +20,6 @@ export const Header = () => {
           <LogoStyled to="/" src={logo} alt="Logo" />
         </StyledNavLink>
         {authentificated ? <UserLogo /> : <AuthNav />}
-        {/* {authentificated ? <AuthNav /> : <UserLogo />} */}
       </HeaderWrap>
     </HeaderStyled>
   );

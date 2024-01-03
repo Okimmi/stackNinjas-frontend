@@ -1,4 +1,9 @@
 import styled from "styled-components";
+const getBorder = props => {
+  if ((!!props.dailyProgress?parseInt(props.dailyProgress) : 101) <= 100) {
+    return props.theme.colors.secondary5; 
+  } else {return props.theme.colors.primeryWhite}
+}
 export const CalendarItem = styled.div `
 display:flex;
 flex-direction: column;
@@ -14,9 +19,9 @@ export const DateWrapper = styled.div `
 display:flex;
 width: 32px;
 height: 32px;
-background-color: #FFFFFF;
+background-color: ${(props) =>props.theme.colors.primeryWhite};
 border-radius:20px;
-border: 1px;
+border: 1px solid ${getBorder};
 justify-content: center;
 align-items: center;
 margin-bottom: 4px;
@@ -26,7 +31,7 @@ height: 34px;
 }
 `
 export const Day = styled.p`
-color: #2F2F2F;
+color: ${(props) =>props.theme.colors.primeryBlack};;
 font-size: 14px;
 font-weight: 400;
 line-height: 1.29;
@@ -36,7 +41,7 @@ line-height: 1.29;
   line-height: 1.25;
 }`
 export const DailyProgress = styled.p`
-color: #9EBBFF;
+color: ${(props) =>props.theme.colors.secondary4};;
 font-size: 10px;
 font-weight: 400;
 line-height: 1.6;

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { ReactComponent as CloseIcon } from './icons/outline.svg';
-import { ReactComponent as IconUpload } from './icons/upload.svg';
-import { ReactComponent as Eye } from './icons/blueEye.svg';
-import { ReactComponent as Hide } from './icons/icon_show_hide.svg';
+import { ReactComponent as CloseIcon } from './setting-modal-icons/outline.svg';
+import { ReactComponent as IconUpload } from './setting-modal-icons/upload.svg';
+import { ReactComponent as Eye } from './setting-modal-icons/blueEye.svg';
+import { ReactComponent as Hide } from './setting-modal-icons/icon_show_hide.svg';
 
 export const Container = styled.div`
   padding: 0 20px;
@@ -11,12 +11,12 @@ export const Container = styled.div`
 
 export const Backdrop = styled.div`
   position: fixed;
+  z-index: 2000;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${({ theme: { colors } }) => colors.primeryBlack};
-
+  background-color: rgba(0, 0, 0, 0.8);
   opacity: 1;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -24,6 +24,7 @@ export const Backdrop = styled.div`
 
 export const ModalContent = styled.div`
   position: absolute;
+  overflow-y: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
@@ -37,7 +38,7 @@ export const ModalContent = styled.div`
   @media screen and (max-width: 768px) {
     max-width: 320px;
     padding: 32px 12px;
-    min-height: 852px;
+    max-height: 100vh;
   }
 
   @media screen and (min-width: 768px) {
@@ -97,13 +98,20 @@ export const IconCloseModal = styled(CloseIcon)`
 `;
 
 export const IconUploadImage = styled(IconUpload)`
+  margin-right: 8px;
   width: 16px;
   height: 16px;
 `;
 
+export const IconUser = styled.img`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+`;
+
 export const ToggleIcon = styled.div`
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 10px;
   transform: translateY(-50%);
   cursor: pointer;
@@ -141,9 +149,5 @@ export const MainWrapper = styled.div`
 export const UploadWrapper = styled.div`
   display: flex;
   align-self: center;
-  margin-left: 8px;
-`;
-
-export const Span = styled.span`
   margin-left: 8px;
 `;

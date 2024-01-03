@@ -3,13 +3,11 @@ import styled from 'styled-components';
 export const WhyDrinkWaterStyled = styled.div`
   display: flex;
   flex-direction: column;
-
-  box-shadow: 0px 4px 14px 0px ${props => props.theme.colors.primeryBlue};
-
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
   background-color: ${props => props.theme.colors.secondary2};
   border-radius: 10px;
   padding: 24px 16px;
-  width: 280px;
+  width: 100%;
 
   @media screen and (min-width: 768px) {
     padding: 32px 24px;
@@ -28,13 +26,15 @@ export const WhyDrinkWaterStyled = styled.div`
 
   ul {
     list-style: none;
-    padding: 0;
     display: flex;
     flex-direction: column;
     gap: 16px;
 
     li {
-      line-height: 1.1;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.25;
+      color: ${props => props.theme.colors.primeryBlack};
       position: relative;
       padding-left: 16px;
 

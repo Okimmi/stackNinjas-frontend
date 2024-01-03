@@ -42,19 +42,45 @@ import plusAdd from '../../icons/PlusAdd.svg';
 import glass from '../../icons/Glass.svg';
 import edit from '../../icons/Edit.svg';
 import delet from '../../icons/Delete.svg';
-import { useSelector} from 'react-redux';
-import { selectDailyWaterRequirement } from '../../redux/auth/selectors.js';
-import {MonthStatesTable} from '../../components/MonthStatesTable/MonthStatesTable.jsx'
+import { useSelector } from 'react-redux';
+import {
+  selectDailyWaterRequirement,
+  selectIsTelegramBotStarted,
+} from '../../redux/auth/selectors.js';
+import AddWaterModal from 'components/AddWaterModal/AddWaterModal.jsx';
+import Modal from '../../components/Global/Modal/Modal.jsx';
+import { MonthStatesTable } from '../../components/MonthStatesTable/MonthStatesTable.jsx';
+import { TelegramBotInvite } from 'components/TelegramBotInvite/TelegramBotInvite.jsx';
+import { WaterDelModal } from 'components/WaterDelModal/WaterDelModal.jsx';
 
 export const HomePage = () => {
+  const isTelegramBotStarted = useSelector(selectIsTelegramBotStarted);
+  const [sliderValue, setSliderValue] = useState(0);
+  const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
 
   const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
   const [showDailyNormalModal, setDailyNormalModal] = useState(false);
   const toggleModal = () => setDailyNormalModal(!showDailyNormalModal);
 
+  const [showAddWaterModal, setShowAddWaterModal] = useState(false);
+
+  const handleSliderChange = event => {
+    setSliderValue(event.target.value);
+  };
+
   const [data, setData] = useState([]);
   const [editingEntryData, setEditingEntryData] = useState(null);
-  const [newEntryData, setNewEntryData] = useState({ amount: '' });
+  // const [newEntryData, setNewEntryData] = useState({ amount: '' });
+
+  const [isDeleteModal, setIsDeleteModal] = useState(false);
+
+  const handleOnDeleteModal = () => {
+    setIsDeleteModal(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setIsDeleteModal(false);
+  };
 
   const onEditClick = item => {
     setEditingEntryData({ ...item });
@@ -62,6 +88,7 @@ export const HomePage = () => {
 
   const onDeleteClick = item => {
     setData(data.filter(i => i.id !== item.id));
+    handleOnDeleteModal();
   };
 
   const onSaveEdit = () => {
@@ -79,17 +106,25 @@ export const HomePage = () => {
     setEditingEntryData(null);
   };
 
-  const onAdd = () => {
-    setData([
-      ...data,
-      {
-        ...newEntryData,
-        id: Date.now().toString(),
-        date: new Date().toISOString(),
-      },
-    ]);
-    setNewEntryData({ amount: '' });
+  const addWaterModalShow = () => {
+    setShowAddWaterModal(true);
   };
+
+  const closeAddWaterModal = () => {
+    setShowAddWaterModal(false);
+  };
+
+  // const onAdd = () => {
+  //   setData([
+  //     ...data,
+  //     {
+  //       ...newEntryData,
+  //       id: Date.now().toString(),
+  //       date: new Date().toISOString(),
+  //     },
+  //   ]);
+  //   setNewEntryData({ amount: '' });
+  // };
 
   return (
     <>
@@ -157,7 +192,7 @@ export const HomePage = () => {
             <MyDailyNormaDiv>
               <MyDailyNorma>My daily norma</MyDailyNorma>
               <Div>
-                <Litr>{dailyWaterRequirement/1000} L</Litr>
+                <Litr>{dailyWaterRequirement / 1000} L</Litr>
                 <Edit onClick={toggleModal}>Edit</Edit>
               </Div>
             </MyDailyNormaDiv>
@@ -191,7 +226,7 @@ export const HomePage = () => {
                 </Percents>
               </DivToday>
 
-              <AddWaterButton type="button">
+              <AddWaterButton onClick={addWaterModalShow} type="button">
                 <DivAddWater>
                   <ImgPlus src={plus} width={24} height={24} alt="Plus" />
                   <AddWater>Add Water</AddWater>
@@ -265,7 +300,7 @@ export const HomePage = () => {
                   ))}
                 </div>
                 <div>
-                  <ButtonAddWater onClick={onAdd}>
+                  <ButtonAddWater onClick={addWaterModalShow}>
                     <ImgPlusAdd
                       src={plusAdd}
                       width={12}
@@ -279,11 +314,31 @@ export const HomePage = () => {
             </DivTodayList>
             <MonthStatesTable></MonthStatesTable>
           </DivTodayAndMonth>
-          
         </Div2>
+
+        {!isTelegramBotStarted && <TelegramBotInvite />}
       </Background>
 
       {showDailyNormalModal && <DailyNormalModal closeModal={toggleModal} />}
+      {showAddWaterModal && (
+        <Modal close={closeAddWaterModal} title={'Add water'}>
+          <AddWaterModal />
+        </Modal>
+      )}
+      {/* {showEditWaterModal && (
+        <Modal close={closeModal} title={'Edit water'}>
+          <EditWaterModal/>
+        </Modal>
+      )} */}
+      {isDeleteModal && (
+        <Modal
+          close={handleCloseDeleteModal}
+          id={'waterId'}
+          title={'Delete entry'}
+        >
+          <WaterDelModal close={handleCloseDeleteModal} id={'waterId'} />
+        </Modal>
+      )}
     </>
   );
 };

@@ -60,12 +60,12 @@ export const WaterconsumTrackerStyled = styled.div`
     }
   }
   img {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
 
     @media screen and (min-width: 768px) {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
     }
   }
 `;
@@ -80,7 +80,7 @@ export const Titlelist = styled.h6`
 export const ButtonTryTracker = styled.button`
   background-color: ${props => props.theme.colors.primeryBlue};
   color: ${props => props.theme.colors.primeryWhite};
-  box-shadow: 0px 4px 8px 0px ${props => props.theme.colors.primeryBlue};
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   border: none;
   border-radius: 10px;
   padding: 8px 30px;
@@ -88,12 +88,12 @@ export const ButtonTryTracker = styled.button`
   font-weight: 500;
   line-height: 1.25;
   cursor: pointer;
-  width: 280px;
+  width: 100%;
   height: 36px;
 
   &:hover,
   &:focus {
-    box-shadow: 0px 4px 14px 0px ${props => props.theme.colors.primeryBlue};
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
   }
   &:active {
     box-shadow: none;
@@ -106,7 +106,7 @@ export const ButtonTryTracker = styled.button`
     line-height: 1.3;
     padding: 10px 30px;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1440px) {
     width: 384px;
   }
 `;
