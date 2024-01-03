@@ -86,7 +86,6 @@ export const SignUpAuthForm = () => {
               register({
                 email: values.email,
                 password: values.password,
-                passwordRepeat: values.passwordRepeat,
               })
             );
             toast.error(error);

@@ -159,4 +159,27 @@ export const  restoreUserPass = createAsyncThunk(
   }
 );
 
+export const  newUserPass = createAsyncThunk(
+  'auth/restoreUserPass',
+  async (data, thunkAPI) => {
+    try {
+      const res = await $instance.post('/api/auth/restore-password', data);
+      if (res.status === 200) {
+        toast.success(`${res.data.message}`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+        }
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
 

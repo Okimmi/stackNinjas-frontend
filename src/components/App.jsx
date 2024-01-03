@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import Loader from './Loader/Loader';
 import { HomePage } from 'pages/HomePage/HomePage';
 import { MainPage } from 'pages/MainPage/MainPage';
+import { RestorePass } from './RestorePass/RestorePass';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ export const App = () => {
               />
             }
           />
+          <Route path="/change-password" element={<RestorePass/>} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
