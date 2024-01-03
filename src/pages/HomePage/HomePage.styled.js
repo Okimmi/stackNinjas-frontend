@@ -393,22 +393,28 @@ export const DivTodayList = styled.div`
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  padding-right: 4px;
   &::-webkit-scrollbar {
     width: 4px; 
+    border-radius: 8px;
   }
   
   &::-webkit-scrollbar-thumb {
     background-color: ${theme.colors.secondary4}; 
+    border-radius: 8px;
   }
   
   &::-webkit-scrollbar-track {
     background-color: ${theme.colors.secondary6}; 
+    border-radius: 8px;
   }
 `;
 
 export const PToday = styled.p`
   font-size: 24px;
   margin-bottom: 16px;
+  font-weight: 500;
+  line-height: 1.23;
   color: ${theme.colors.primeryBlack};
   
 `
