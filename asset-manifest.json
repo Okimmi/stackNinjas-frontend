@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/stackNinjas-frontend/static/css/main.2a5bd5ea.css",
-    "main.js": "/stackNinjas-frontend/static/js/main.53a8f402.js",
+    "main.js": "/stackNinjas-frontend/static/js/main.fe8f7ec5.js",
     "static/media/Roboto-Medium.ttf": "/stackNinjas-frontend/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/Roboto-Regular.ttf": "/stackNinjas-frontend/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
     "static/media/Roboto-Bold.ttf": "/stackNinjas-frontend/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
@@ -43,10 +43,10 @@
     "static/media/iconCloseModal.svg": "/stackNinjas-frontend/static/media/iconCloseModal.ab90ef00ef05bfa9d7c86c52baecfe7d.svg",
     "static/media/PlusAdd.svg": "/stackNinjas-frontend/static/media/PlusAdd.f009a02ac759b50fd6c43db8c00baf79.svg",
     "main.2a5bd5ea.css.map": "/stackNinjas-frontend/static/css/main.2a5bd5ea.css.map",
-    "main.53a8f402.js.map": "/stackNinjas-frontend/static/js/main.53a8f402.js.map"
+    "main.fe8f7ec5.js.map": "/stackNinjas-frontend/static/js/main.fe8f7ec5.js.map"
   },
   "entrypoints": [
     "static/css/main.2a5bd5ea.css",
-    "static/js/main.53a8f402.js"
+    "static/js/main.fe8f7ec5.js"
   ]
 }
