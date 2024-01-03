@@ -102,8 +102,6 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
     <>
       <Modal 
           closeModal={closeModal} 
-          media={{mobile:'320px', tablet: '768px', desktop: '1440px'}}
-          width={{mobile:'280px', tablet: '704px', desktop: '569px'}}
           // portalParent={modalPlace}
         >
         <ContainerForModal>      
