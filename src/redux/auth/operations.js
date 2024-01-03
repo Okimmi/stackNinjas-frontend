@@ -12,17 +12,6 @@ const setAuthHeader = token => {
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
-export const addHydrationEntry = createAsyncThunk(
-  'hydration/addEntry',
-  async (hydrationData, thunkAPI) => {
-    try {
-      const res = await axios.post('/api/hydration-entries', hydrationData);
-      return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.message);
-    }
-  }
-);
 export const register = createAsyncThunk(
   'auth/register',
   async (newUser, thunkAPI) => {
@@ -40,8 +29,6 @@ export const register = createAsyncThunk(
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
-    // console.log(credentials);
-
     try {
       const res = await axios.post('/api/auth/signin', credentials);
       setAuthHeader(res.data.token);

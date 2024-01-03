@@ -180,7 +180,7 @@ export const HomePage = () => {
           type="range"
           min="1"
           max="100"
-          // value={progress}
+           //value={progress}
           // onChange={handleSliderChange}
         />
       </SliderDiv>
