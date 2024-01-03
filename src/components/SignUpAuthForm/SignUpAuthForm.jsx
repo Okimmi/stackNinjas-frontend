@@ -12,7 +12,6 @@ import { useEffect, useState } from 'react';
 import {
   BackgroundImg,
   BackgroundImg320,
-  BackgroundImg720,
   BottleMobil,
   BottleStyled,
   BottleTablet,
@@ -52,7 +51,7 @@ export const SignUpAuthForm = () => {
   const [screenSize, setScreenSize] = useState({
     isDesctopScreen: typeof window !== 'undefined' && window.innerWidth >= 1440,
     isTabletScreen: window.innerWidth >= 768 && window.innerWidth < 1440,
-    isMobileScreen: window.innerWidth  < 768,
+    isMobileScreen: window.innerWidth < 768,
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -172,7 +171,7 @@ export const SignUpAuthForm = () => {
         {screenSize.isTabletScreen && <BottleTablet />}
         {screenSize.isMobileScreen && <BottleMobil />}
       </SightInContainer>
-      {screenSize.isMobileScreen ? <BackgroundImg320 /> : <BackgroundImg/>}
+      {screenSize.isMobileScreen ? <BackgroundImg320 /> : <BackgroundImg />}
 
       <ToastContainer
         position="top-right"
