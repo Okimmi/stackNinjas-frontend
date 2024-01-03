@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/stackNinjas-frontend/static/css/main.2a5bd5ea.css",
-    "main.js": "/stackNinjas-frontend/static/js/main.579bcc2a.js",
+    "main.js": "/stackNinjas-frontend/static/js/main.5a9249ae.js",
     "static/media/Roboto-Medium.ttf": "/stackNinjas-frontend/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/Roboto-Regular.ttf": "/stackNinjas-frontend/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
     "static/media/Roboto-Bold.ttf": "/stackNinjas-frontend/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
@@ -10,8 +10,9 @@
     "static/media/logo.svg": "/stackNinjas-frontend/static/media/logo.c26d3c0b5ece3e8563320496404cbbe3.svg",
     "static/media/BgMainPage-desk.png": "/stackNinjas-frontend/static/media/BgMainPage-desk.f64e661baefac36f8e09.png",
     "static/media/Bottle.png": "/stackNinjas-frontend/static/media/Bottle.a98f5fce758f6d1e28dc.png",
-    "static/media/Bottle.svg": "/stackNinjas-frontend/static/media/Bottle.eae0ede6ab50a01d35fc5a77b8179a75.svg",
+    "static/media/Bottle720.svg": "/stackNinjas-frontend/static/media/Bottle720.e345b5f3be80dfe65dec213ecda46295.svg",
     "static/media/Bottle320.svg": "/stackNinjas-frontend/static/media/Bottle320.6899e336d0dd2224787e52162a67eec4.svg",
+    "static/media/Bottle.svg": "/stackNinjas-frontend/static/media/Bottle.05319803494bfa5eb7bc2425958b3366.svg",
     "static/media/Background.png": "/stackNinjas-frontend/static/media/Background.d714952956cc9515d876.png",
     "static/media/Frame.png": "/stackNinjas-frontend/static/media/Frame.5cf01c3bb663daa1eb28.png",
     "static/media/BgElMainPage-desk.png": "/stackNinjas-frontend/static/media/BgElMainPage-desk.aebdcb013b3a8eef40c4.png",
@@ -43,10 +44,10 @@
     "static/media/iconCloseModal.svg": "/stackNinjas-frontend/static/media/iconCloseModal.ab90ef00ef05bfa9d7c86c52baecfe7d.svg",
     "static/media/PlusAdd.svg": "/stackNinjas-frontend/static/media/PlusAdd.f009a02ac759b50fd6c43db8c00baf79.svg",
     "main.2a5bd5ea.css.map": "/stackNinjas-frontend/static/css/main.2a5bd5ea.css.map",
-    "main.579bcc2a.js.map": "/stackNinjas-frontend/static/js/main.579bcc2a.js.map"
+    "main.5a9249ae.js.map": "/stackNinjas-frontend/static/js/main.5a9249ae.js.map"
   },
   "entrypoints": [
     "static/css/main.2a5bd5ea.css",
-    "static/js/main.579bcc2a.js"
+    "static/js/main.5a9249ae.js"
   ]
 }
