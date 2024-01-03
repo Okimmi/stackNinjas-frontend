@@ -6,6 +6,7 @@ import {
   register,
   updateAvatar,
   updateDailyNormal,
+  updateUserData,
 } from './operations';
 
 const initialState = {
@@ -53,6 +54,10 @@ const authSlice = createSlice({
       state.user.avatar = action.payload;
       state.isRefreshing = false;
     });
+    builder.addCase(updateUserData.fulfilled, (state, action) => {
+      state.user = action.payload;
+      state.isRefreshing = false;
+    });
     //pending
     builder.addCase(refreshUser.pending, state => {
       state.isRefreshing = true;
@@ -67,6 +72,9 @@ const authSlice = createSlice({
       state.isRefreshing = true;
     });
     builder.addCase(updateAvatar.pending, state => {
+      state.isRefreshing = false;
+    });
+    builder.addCase(updateUserData.pending, state => {
       state.isRefreshing = true;
     });
     //rejected
@@ -85,6 +93,10 @@ const authSlice = createSlice({
       state.isError = action.payload;
     });
     builder.addCase(updateAvatar.rejected, (state, action) => {
+      state.isRefreshing = false;
+      state.isError = action.payload;
+    });
+    builder.addCase(updateUserData.rejected, (state, action) => {
       state.isRefreshing = false;
       state.isError = action.payload;
     });

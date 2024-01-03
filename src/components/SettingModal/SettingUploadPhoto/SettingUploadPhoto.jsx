@@ -13,8 +13,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectAvatar } from '../../../redux/auth/selectors';
 import { updateAvatar } from '../../../redux/auth/operations';
 
-export const BASE_URL = 'https://stackninjas-backend.onrender.com';
-
 export const UploadPhoto = () => {
   const input = useRef();
   const dispatch = useDispatch();
