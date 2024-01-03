@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import DailyNormalModal from 'components/DailyNormalModal/DailyNormalModal.jsx';
 import {
   ImgEdit,
@@ -55,18 +55,11 @@ import { WaterDelModal } from 'components/WaterDelModal/WaterDelModal.jsx';
 
 export const HomePage = () => {
   const isTelegramBotStarted = useSelector(selectIsTelegramBotStarted);
-  const [sliderValue, setSliderValue] = useState(0);
-  const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
-
   const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
   const [showDailyNormalModal, setDailyNormalModal] = useState(false);
   const toggleModal = () => setDailyNormalModal(!showDailyNormalModal);
 
   const [showAddWaterModal, setShowAddWaterModal] = useState(false);
-
-  const handleSliderChange = event => {
-    setSliderValue(event.target.value);
-  };
 
   const [data, setData] = useState([]);
   const [editingEntryData, setEditingEntryData] = useState(null);
@@ -211,14 +204,14 @@ export const HomePage = () => {
               <DivToday>
                 <Today>Today</Today>
                 <SliderDiv>
-        <SliderInput
-          type="range"
-          min="1"
-          max="100"
-           //value={progress}
-          // onChange={handleSliderChange}
-        />
-      </SliderDiv>
+                  <SliderInput
+                    type="range"
+                    min="1"
+                    max="100"
+                    //value={progress}
+                    // onChange={handleSliderChange}
+                  />
+                </SliderDiv>
                 <Percents>
                   <Per>0%</Per>
                   <Per>50%</Per>
@@ -266,13 +259,19 @@ export const HomePage = () => {
                         />
 
                         <SpanCount>{item.amount} ml</SpanCount>
-        <SpanDate>
-          {new Date(item.time).getHours().toString().padStart(2, '0')}:
-          {new Date(item.time).getMinutes().toString().padStart(2, '0')}
-        </SpanDate>
-        </DivFirstPart>
+                        <SpanDate>
+                          {new Date(item.time)
+                            .getHours()
+                            .toString()
+                            .padStart(2, '0')}
+                          :
+                          {new Date(item.time)
+                            .getMinutes()
+                            .toString()
+                            .padStart(2, '0')}
+                        </SpanDate>
+                      </DivFirstPart>
                       <div>
-
                         <ButtonEdit
                           disabled={item.id === editingEntryData?.id}
                           onClick={() => onEditClick(item)}
