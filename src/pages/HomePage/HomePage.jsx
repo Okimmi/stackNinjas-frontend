@@ -223,9 +223,11 @@ export const HomePage = () => {
                   />
                 </SliderDiv>
                 <Percents>
-                  <Per>0%</Per>
-                  <Per>50%</Per>
-                  <Per>100%</Per>
+
+                <Per className={progressFlag === 0 ? 'flagged' : ''}>0%</Per>
+                <Per className={progressFlag === 1 ? 'flagged' : ''}>50%</Per>
+                <Per className={progressFlag === 2 ? 'flagged' : ''}>100%</Per>
+
                 </Percents>
               </DivToday>
 
@@ -241,6 +243,7 @@ export const HomePage = () => {
           <DivTodayAndMonth>
             <PToday>Today</PToday>
             <DivTodayList>
+
               <div>
                 {editingEntryData ? (
                   <div style={{ marginTop: 20, display: 'flex', gap: 10 }}>
