@@ -22,7 +22,7 @@ export const ContainerForModal = styled.div`
 
   /* Desktop adaptive container */
   @media screen and (min-width: 1440px) {
-    width: 521px; // 569px - 2*24 = 521;
+    width: 544px; // 592px - 2*24 = 544;
   }
 `
 
@@ -60,8 +60,8 @@ export const ItemFormula = styled.li`
   }
 `;
 export const Formula = styled.p`
-  font-size: 18px;
-  line-height: 1.33;
+  font-size: 16px;
+  line-height: 1.25;
   color:  ${props => props.theme.colors.primeryBlack};
 `;
 
