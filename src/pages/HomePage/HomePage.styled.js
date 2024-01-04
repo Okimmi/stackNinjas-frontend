@@ -97,7 +97,7 @@ export const MyDailyNormaDiv = styled.div`
     background-color: ${theme.colors.primeryWhite};
     border: 1px solid ${theme.colors.secondary2};
     padding: 7px 19px 7px 19px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
     margin-bottom: 8px;
     @media screen and (min-width: 1440px) {
       margin-top: 52px;
@@ -105,15 +105,15 @@ export const MyDailyNormaDiv = styled.div`
 `;
 export const MyDailyNorma = styled.p`
     font-size: 18px;
-    height: 24px;
+    line-height: 1.33;
     margin-bottom: 12px;
     font-weight: 500;
 `;
 export const Litr = styled.p`
     font-size: 20px;
-    height: 22px;
+    line-height: 1;
     color: ${theme.colors.primeryBlue};
-    font-weight: bold;
+    font-weight: 700;
 `;
 export const Edit = styled.button`
     font-size: 16px;
@@ -125,7 +125,7 @@ export const Edit = styled.button`
     cursor: pointer;
     
     &:hover {
-      color: ${theme.colors.primeryBlue};
+      color: ${theme.colors.secondary5};
     }
 `;
 export const Div = styled.div`
@@ -185,6 +185,7 @@ z-index: -1;
 
 export const Today = styled.p`
     font-size: 18px;
+    line-height: 1.33;
     color: ${theme.colors.primeryBlue};
     &::before {
         content: '';
@@ -197,11 +198,12 @@ export const Today = styled.p`
         left: 265px;
         z-index: -1;
         @media screen and (min-width: 768px) {
-          left: 341px;
+          left: 334px;
           top: 555px;
         }
         @media screen and (min-width: 1440px) {
           top: 685px;
+          left: 369px;
         }
       }
 `;
@@ -226,7 +228,12 @@ export const SliderInput = styled.input`
   
   @media screen and (min-width: 768px) {
     margin-top: 16px;
+    width: 325px;
     }
+    @media screen and (min-width: 1440px) {
+      width: 360px;
+      
+      }
   &:hover {
     opacity: 1;
   }
@@ -265,6 +272,7 @@ export const SliderInput = styled.input`
     z-index: -1;
     @media screen and (min-width: 768px) {
       top: 555px;
+      
     }
     @media screen and (min-width: 1440px) {
       top: 685px;
@@ -281,18 +289,19 @@ export const SliderInput = styled.input`
     left: 132px;
     z-index: -1;
     @media screen and (min-width: 768px) {
-      left: 174px;
+      left: 170px;
       top: 555px;
     }
     @media screen and (min-width: 1440px) {
       top: 685px;
+      left: 190px;
       }
   }
 `;
 
 export const SliderDiv = styled.div`
   padding-left: 10px;
-    padding-right: 14px
+    padding-right: 14px;
     
 `;
 
@@ -307,6 +316,7 @@ font-weight: 400;
   font-weight: 500;
 }
 `;
+
 export const Percents = styled.div`
 display: flex;
 justify-content: space-between;
@@ -321,6 +331,7 @@ width: 100%;
 }
 @media screen and (min-width: 1440px) {
   top: 675px;
+  width: 390px;
 }
 `;
 
@@ -335,6 +346,9 @@ top: 105%;
   border-radius: 10px;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   border: none;
+  @media screen and (max-width: 320px) {
+    margin-top: 52px;
+  }
   @media screen and (min-width: 768px) {
     width: 336px;
     height: 44px;
@@ -367,6 +381,7 @@ export const DivAddWater = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  
 `;
 
 export const DivTodayAndMonth = styled.div`
@@ -376,19 +391,19 @@ export const DivTodayAndMonth = styled.div`
   width: 100%;
   margin-top: 40px;
   margin-bottom: 40px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.30);
   border-radius: 10px;
   padding: 24px 8px 24px 8px;
 
   @media screen and (min-width: 768px) {
     padding: 32px 24px 32px 24px;
-    margin-top: 40px;
+    margin-top: 80px;
     height: 688px;
   }
   @media screen and (min-width: 1440px) {
     padding: 32px 24px 32px 24px;
-    margin-top: 20px;
     margin-bottom: 0px;
+    margin-top: 0px;
     height: 680px;
     width: 592px;
   }
@@ -422,8 +437,13 @@ export const PToday = styled.p`
   font-weight: 500;
   line-height: 1.23;
   color: ${theme.colors.primeryBlack};
-  
-`
+  @media screen and (min-width: 736px) {
+    font-size: 26px;
+  }
+  @media screen and (min-width: 1440px) {
+    font-size: 26px;
+  }
+`;
 export const ButtonAddWater = styled.button`
   font-size: 18px;
   font-weight: 500;
@@ -470,7 +490,7 @@ export const ButtonEdit = styled.button`
       z-index: 5; 
     }
   }
-`
+`;
 export const ButtonDelete = styled.button`
   width: 16px;
   height: 16px;
@@ -498,7 +518,7 @@ export const ButtonDelete = styled.button`
       }
     }
   }
-`
+`;
 export const DivListItem = styled.div`
   display: flex;
   align-items: center;
@@ -529,11 +549,17 @@ export const SpanDate = styled.span`
   margin-left: 12px;
   font-size: 12px;
   color: ${theme.colors.primeryBlack};
+  @media screen and (min-width: 768px) {
+    margin-left: 16px;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-left: 16px;
+  }
 `;
 
 export const SpanWater = styled.span`
   font-size: 18px;
-  color: ${theme.colors.primeryBlue}
+  color: ${theme.colors.primeryBlue};
   gap: 12px;
 `;
 
@@ -542,7 +568,7 @@ export const SvgPlus = styled.svg`
 
   @media screen and (min-width: 768px) {
     width: 12px;
-    height: 12px
+    height: 12px;
   }
 
 `;
@@ -551,15 +577,14 @@ export const SpanCount = styled.span`
   margin-left: 12px;
   font-size: 18px;
   color: ${theme.colors.primeryBlue};
+  line-height: 1.33;
+
 `;
 
 export const DivFirstPart = styled.div`
   display: flex;
   align-items: center;
-  @media screen and (min-width: 1440px) {
   
-    
-  }
 `;
 
 export const DivFlex = styled.div`
@@ -578,14 +603,14 @@ export const DivFlex = styled.div`
 
 export const DivLeftPart = styled.div`
 
-`
+`;
 
 export const Div2 = styled.div`
 @media screen and (min-width: 1440px) {
   display: flex;
   justify-content: space-between;
 }
-`
+`;
 // export const DivSettings = styled.div`
 //   display: flex;
 //   align-items: center;
@@ -601,24 +626,34 @@ export const Div2 = styled.div`
 
 export const PDiv = styled.p`
   color: ${theme.colors.primeryBlue}
-`
+`;
 
 export const ImgPlus = styled.img`
   fill: ${theme.colors.primeryWhite};
-`
+`;
 
 export const ImgPlusAdd = styled.img`
   fill: ${theme.colors.primeryBlue};
-`
+`;
 
 export const ImgGlass = styled.img`
   fill: ${theme.colors.primeryBlue};
-`
+  width: 26px;
+  height: 26px;
+  @media screen and (min-width: 736px) {
+    width: 36px;
+  height: 36px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 36px;
+  height: 36px;
+  }
+`;
 
 export const ImgEdit = styled.img`
 
-`
+`;
 
 export const ImgDelete = styled.img`
 
-`
+`;

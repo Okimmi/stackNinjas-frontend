@@ -194,8 +194,8 @@ export const HomePage = () => {
                 </SliderDiv>
                 <Percents>
                 <Per className={progressFlag === 0 ? 'flagged' : ''}>0%</Per>
-<Per className={progressFlag === 1 ? 'flagged' : ''}>50%</Per>
-<Per className={progressFlag === 2 ? 'flagged' : ''}>100%</Per>
+                <Per className={progressFlag === 1 ? 'flagged' : ''}>50%</Per>
+                <Per className={progressFlag === 2 ? 'flagged' : ''}>100%</Per>
                 </Percents>
               </DivToday>
 
@@ -217,8 +217,7 @@ export const HomePage = () => {
                       <DivFirstPart>
                         <ImgGlass
                           src={glass}
-                          width={26}
-                          height={26}
+                          
                           alt="Glass"
                         />
 
