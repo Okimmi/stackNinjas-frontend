@@ -1,10 +1,20 @@
-import styled from "styled-components";
-import { Notify } from "notiflix";
-import { createGlobalStyle } from "styled-components";
-import "react-datepicker/dist/react-datepicker.css";
-import { ReactComponent as IncrementIcon } from "../../icons/pluss.svg";
-import { ReactComponent as DecrementIcon } from "../../icons/minus.svg";
+import styled from 'styled-components';
+import { Notify } from 'notiflix';
+import { createGlobalStyle } from 'styled-components';
+import 'react-datepicker/dist/react-datepicker.css';
+import { ReactComponent as IncrementIcon } from '../../icons/pluss.svg';
+import { ReactComponent as DecrementIcon } from '../../icons/minus.svg';
 
+export const ModalWrapper = styled.div`
+  width: 256px;
+
+  @media screen and (min-width: 768px) {
+    width: 656px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 544px;
+  }
+`;
 export const StyledIncrementIcon = styled(IncrementIcon)`
   stroke: blue;
 `;
@@ -51,10 +61,11 @@ export const BtnWrapper = styled.div`
     gap: 10px;
     border-radius: 30px;
     border: 1px solid ${props => props.theme.colors.primeryBlue};
-    background:  ${props => props.theme.colors.primeryWhite};
+    background: ${props => props.theme.colors.primeryWhite};
     box-shadow: 0px 2px 4px 0px rgba(64, 123, 255, 0.2);
     cursor: pointer;
-    &:hover, &:focus{
+    &:hover,
+    &:focus {
       box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
       transition: opacity 0.3s ease;
     }
@@ -114,13 +125,14 @@ export const FormStyled = styled.form`
     font-size: 16px;
     appearance: none;
     color: ${props => props.theme.colors.primeryBlue};
-  font-weight: 400;
- line-height: 1.25;
-   letter-spacing: 0em;
-  text-align: left;
-  &:hover, &:focus{
-    background-color: rgb(232, 240, 254);
-  }
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0em;
+    text-align: left;
+    &:hover,
+    &:focus {
+      background-color: rgb(232, 240, 254);
+    }
   }
 
   label:nth-child(2) {
@@ -166,7 +178,8 @@ export const BtnSaveWrapper = styled.div`
     background: ${props => props.theme.colors.primeryBlue};
     color: ${props => props.theme.colors.primeryWhite};
     box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-    &:hover, &:focus{
+    &:hover,
+    &:focus {
       box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
       transition: opacity 0.3s ease;
     }
@@ -180,7 +193,7 @@ export const BtnSaveWrapper = styled.div`
   @media screen and (min-width: 768px) {
     gap: 24px;
     flex-direction: row;
-    
+
     justify-content: flex-end;
 
     button {
@@ -192,14 +205,14 @@ export const BtnSaveWrapper = styled.div`
 Notify.init({
   timeout: 2000,
   warning: {
-    background: "#ff9d43",
+    background: '#ff9d43',
     timeout: 8000,
-    textColor: "#ffffff",
-    childClassName: "notiflix-notify-warning",
-    notiflixIconColor: "rgba(0,0,0,0.2)",
-    fontAwesomeClassName: "fas fa-exclamation-circle",
-    fontAwesomeIconColor: "rgba(0,0,0,0.2)",
-    backOverlayColor: "rgba(238,191,49,0.2)",
+    textColor: '#ffffff',
+    childClassName: 'notiflix-notify-warning',
+    notiflixIconColor: 'rgba(0,0,0,0.2)',
+    fontAwesomeClassName: 'fas fa-exclamation-circle',
+    fontAwesomeIconColor: 'rgba(0,0,0,0.2)',
+    backOverlayColor: 'rgba(238,191,49,0.2)',
   },
 });
 

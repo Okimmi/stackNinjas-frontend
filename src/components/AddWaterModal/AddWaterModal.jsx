@@ -2,7 +2,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
 import { useState } from 'react';
 import Notiflix from 'notiflix';
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+
+import { addEntryThunk, getTodayEntriesThunk } from "../../redux/hydrationEntries/operations";
 
 import {
   AmountText,
@@ -14,13 +16,14 @@ import {
   StyledIncrementIcon,
   TimeGlobalStyles,
   ValueText,
+  ModalWrapper
 } from './AddWaterModal.styled';
 
-const AddWaterModal = () => {
+const AddWaterModal = ({close}) => {
   const [value, setValue] = useState(0);
   const [time, setTime] = useState(new Date());
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleUpdate = evt => {
     const { name } = evt.currentTarget;
@@ -51,15 +54,25 @@ const AddWaterModal = () => {
       Notiflix.Notify.warning('Please enter a valid positive value for water.');
       return;
     }
-    // const newTime = new Date(time);
-    // const saveWater = { amount: value, time: newTime };
+    const newTime = new Date(time);
+    const saveWater = { amount: value, time: newTime };
 
-    // dispatch();
-    // dispatch();
+    dispatch(addEntryThunk(saveWater))
+    .then(() => {
+      Notiflix.Notify.success("Water value added successfully!");
+      dispatch(getTodayEntriesThunk());
+      close()
+    })
+    .catch((error) => {
+      Notiflix.Notify.failure(
+        `Failed to add water value: ${error.message}`
+      );
+    });
+
   };
 
   return (
-    <>
+    <ModalWrapper>
       <ValueText>Choose a value:</ValueText>
       <AmountText>Amount of water:</AmountText>
       <BtnWrapper>
@@ -123,7 +136,7 @@ const AddWaterModal = () => {
           <button onClick={handleSave}>Save</button>
         </BtnSaveWrapper>
       </FormStyled>
-    </>
+    </ModalWrapper>
   );
 };
 
