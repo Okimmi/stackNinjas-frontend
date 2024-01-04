@@ -1,4 +1,6 @@
 import styled from "styled-components";
+// import { ReactComponent as BtnLeft} from '../../images/month/BtnLeft.svg';
+import { ReactComponent as BtnRight} from '../../images/month/BtnRight.svg';
 const disableBTN = props=>{return props.disabled? "grey": props.theme.colors.primeryBlue}
 
 // Heder styles
@@ -17,7 +19,8 @@ color: ${(props) =>props.theme.colors.primeryBlack};
 export const Pagination = styled.div `
 display: flex;
 gap: 12px;
-align-items: center;
+/* align-items: baseline; */
+align-content: baseline;
 `
 
 
@@ -26,13 +29,18 @@ color:${(props) =>props.theme.colors.primeryBlue};
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
+  width: 124px;
+  text-align: center;
 `
 export const PaginationBTN = styled.button `
-color:${disableBTN};
+color: ${(props) =>props.theme.colors.primeryBlue};
 border: none;
 background-color: inherit;
 padding: 0px;
 cursor: pointer;
+`
+export const PaginationBtnRight = styled(BtnRight)`
+  fill: ${disableBTN} ;
 `
 
 

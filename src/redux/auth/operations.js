@@ -1,12 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import axios from 'axios';
 import { $instance } from '../constants';
 
 
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-
-// axios.defaults.baseURL = 'https://stackninjas-backend.onrender.com/';
 
 const setAuthHeader = token => {
   $instance.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -15,7 +12,6 @@ const setAuthHeader = token => {
 const clearAuthHeader = () => {
   $instance.defaults.headers.common.Authorization = '';
 };
-
 export const register = createAsyncThunk(
   'auth/register',
   async (newUser, thunkAPI) => {

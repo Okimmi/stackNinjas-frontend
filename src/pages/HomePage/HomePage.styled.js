@@ -280,7 +280,7 @@ export const SliderInput = styled.input`
     left: 132px;
     z-index: -1;
     @media screen and (min-width: 768px) {
-      left: 170px;
+      left: 174px;
       top: 555px;
     }
     @media screen and (min-width: 1440px) {

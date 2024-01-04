@@ -55,17 +55,11 @@ import { WaterDelModal } from 'components/WaterDelModal/WaterDelModal.jsx';
 
 export const HomePage = () => {
   const isTelegramBotStarted = useSelector(selectIsTelegramBotStarted);
-  const [sliderValue, setSliderValue] = useState(0);
   const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
-
   const [showDailyNormalModal, setDailyNormalModal] = useState(false);
   const toggleModal = () => setDailyNormalModal(!showDailyNormalModal);
 
   const [showAddWaterModal, setShowAddWaterModal] = useState(false);
-
-  const handleSliderChange = event => {
-    setSliderValue(event.target.value);
-  };
 
   const [data, setData] = useState([]);
   const [editingEntryData, setEditingEntryData] = useState(null);
@@ -214,8 +208,8 @@ export const HomePage = () => {
                     type="range"
                     min="1"
                     max="100"
-                    value={sliderValue}
-                    onChange={handleSliderChange}
+                    //value={progress}
+                    // onChange={handleSliderChange}
                   />
                 </SliderDiv>
                 <Percents>
@@ -264,13 +258,20 @@ export const HomePage = () => {
                           alt="Glass"
                         />
 
-                        <SpanCount>{'200 ml'}</SpanCount>
-                        <SpanDate>{'14:00 PM'}</SpanDate>
+                        <SpanCount>{item.amount} ml</SpanCount>
+                        <SpanDate>
+                          {new Date(item.time)
+                            .getHours()
+                            .toString()
+                            .padStart(2, '0')}
+                          :
+                          {new Date(item.time)
+                            .getMinutes()
+                            .toString()
+                            .padStart(2, '0')}
+                        </SpanDate>
                       </DivFirstPart>
                       <div>
-                        {/* ДОДАТИ ДАНІ З ФОРМИ
-              <span >{item.amount}</span>
-              <SpanDate>{item.date}</SpanDate> */}
                         <ButtonEdit
                           disabled={item.id === editingEntryData?.id}
                           onClick={() => onEditClick(item)}
