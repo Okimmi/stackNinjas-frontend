@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { selectUser } from '../../redux/auth/selectors';
-import openIcon from '../../images/header/openUserMenuIcon.svg';
+import openIcon from '../../images/svg/user-logo-open-menu.svg';
 import { UserLogoModal } from 'components/UserLogoModal/UserLogoModal';
 import {
   IconOpenUserMenu,

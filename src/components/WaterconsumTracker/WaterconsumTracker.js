@@ -3,10 +3,10 @@ import {
   Titlelist,
   WaterconsumTrackerStyled,
 } from './WaterconsumTracker.styled';
-import habitDriveIcon from '../../images/mainPage/habitDriveIcon.svg';
+import habitDriveIcon from '../../images/svg/main-page-habits.svg';
 
-import statisticIcon from '../../images/mainPage/statisticIcon.svg';
-import settingIcon from '../../images/mainPage/settingIcon.svg';
+import statisticIcon from '../../images/svg/main-page-statistic.svg';
+import settingIcon from '../../images/svg/main-page-settings.svg';
 import { Link } from 'react-router-dom';
 
 export const WaterconsumTracker = () => {

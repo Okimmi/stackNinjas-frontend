@@ -1,4 +1,10 @@
 import { useState } from 'react';
+
+import Modal from '../Global/Modal/Modal.jsx';
+import { UserLogoutModal } from '../UserLogoutModal/UserLogoutModal.jsx';
+import { SettingModal } from 'components/SettingModal/SettingModal';
+import settingIcon from '../../images/svg/user-logo-modal-settings.svg';
+import logoutIcon from '../../images/svg/user-logo-modal-logout.svg';
 import {
   DropdownContainer,
   DropdownItem,
@@ -6,11 +12,6 @@ import {
   IconLogout,
   IconSetting,
 } from './UserLogoModal.styled';
-import settingIcon from '../../images/header/settingIcon.svg';
-import logoutIcon from '../../images/header/logoutIcon.svg';
-import { UserLogoutModal } from '../UserLogoutModal/UserLogoutModal.jsx';
-import { SettingModal } from 'components/SettingModal/SettingModal';
-import Modal from '../Global/Modal/Modal.jsx';
 
 export const UserLogoModal = ({ isOpen, onClose }) => {
   const [logoutActive, setLogoutActive] = useState(false);
