@@ -190,18 +190,18 @@ const ModalDevelopers = ({ onClose }) => {
               <div className="team-name">
                 <center>
                   <div className="team-content">
-                    <h2>Olena Kim</h2>
+                    <h2>Valentyna Marchenko</h2>
                     <p>Frontend developer</p>
                     <div className="team-icon-wrapper">
                       <a
-                        href="https://www.linkedin.com/in/olena-kim"
+                        href="https://www.linkedin.com/in/marchenko-valentyna-5a796a184"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <FaLinkedin className="icon logo-linkedin" />
                       </a>
                       <a
-                        href="https://github.com/Okimmi"
+                        href="https://github.com/ValentynaJasochka"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -274,18 +274,18 @@ const ModalDevelopers = ({ onClose }) => {
               <div className="team-name">
                 <center>
                   <div className="team-content">
-                    <h2>Sergii</h2>
+                    <h2>Serhii Khabuzov</h2>
                     <p>Frontend developer</p>
                     <div className="team-icon-wrapper">
                       <a
-                        href="http://linkedin.com/in/ivan-malakhovskyi"
+                        href="https://www.linkedin.com/in/serhii-khabuzov"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <FaLinkedin className="icon logo-linkedin" />
                       </a>
                       <a
-                        href="https://github.com/Ivan-Malakhovskyi"
+                        href="https://github.com/Arag0rn"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

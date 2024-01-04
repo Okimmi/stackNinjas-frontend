@@ -6,7 +6,8 @@ import oleksandrSylych from '../../images/modalDevelopers/oleksandr-sylych.jpg';
 import yuriiPetrovskyi from '../../images/modalDevelopers/yurii-petrovskyi.jpg';
 import ivanMalakhovskyi from '../../images/modalDevelopers/ivan-malakhovskyi.jpg';
 import alinaMitolap from '../../images/modalDevelopers/alina-mitolap.jpg';
-
+import valentynaMarchenko from '../../images/modalDevelopers/valentyna-marchenko.jpg';
+import serhiiKhabuzov from '../../images/modalDevelopers/serhii-khabuzov.jpg';
 
 export const Overlay = styled.div`
   position: fixed;
@@ -158,9 +159,18 @@ export const SwipeContainer = styled.div`
   .box-5 .team-name::before {
     background-image: url(${defoultPhoto});
   }
+
+  .box-5 .logo-linkedin {
+    cursor: initial;
+  }
+  .box-5 .logo-linkedin:hover {
+    color: ${props => props.theme.colors.primeryBlue};
+    background-color: ${props => props.theme.colors.primeryWhite};
+  }
+
   .box-6,
   .box-6 .team-name::before {
-    background-image: url(${defoultPhoto});
+    background-image: url(${valentynaMarchenko});
   }
   .box-7,
   .box-7 .team-name::before {
@@ -172,6 +182,6 @@ export const SwipeContainer = styled.div`
   }
   .box-9,
   .box-9 .team-name::before {
-    background-image: url(${defoultPhoto});
+    background-image: url(${serhiiKhabuzov});
   }
 `;

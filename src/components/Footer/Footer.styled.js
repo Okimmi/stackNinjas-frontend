@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
 export const FooterStyled = styled.div`
-  /* position: fixed;
-  bottom: 0; */
   width: 100%;
   height: 56px;
   padding: 4px 0;
   box-sizing: border-box;
-  background-color: ${props => props.theme.colors.primeryWhite};
+  background-color: rgba(255, 255, 255, 0.5);
 
   @media screen and (min-width: 768px) {
     height: 64px;
