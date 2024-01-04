@@ -113,7 +113,8 @@ const EditWaterModal = ({ data, close }) => {
               showTimeSelect
               showTimeSelectOnly
               timeIntervals={5}
-              dateFormat="HH:mm"
+              dateFormat="kk:mm"
+              timeFormat="kk:mm"
               minTime={new Date(2023, 1, 1, 0, 0)}
               maxTime={new Date()}
               timeZone="UTC"
