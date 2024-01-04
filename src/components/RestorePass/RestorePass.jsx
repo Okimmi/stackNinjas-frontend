@@ -19,7 +19,7 @@ import {
   Styledlabel,
 } from 'components/AuthForm/AuthForm.styled';
 import { useNavigate } from 'react-router-dom';
-import {  updateUserData } from '../../redux/auth/operations';
+import {  newUserPass } from '../../redux/auth/operations';
 import { useEffect, useState } from 'react';
 import { selectIsError } from '../../redux/auth/selectors';
 import iconeye from '../../images/AuthForm/show_icon.svg';
@@ -82,7 +82,7 @@ export const RestorePass = () => {
               
               action.resetForm();
               dispatch(
-                updateUserData({
+                newUserPass({
                 password: values.password,
                 }))
                 toast.error(error);

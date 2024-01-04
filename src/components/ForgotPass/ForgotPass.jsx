@@ -34,7 +34,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 
-export const FogotPass = () => {
+export const ForgotPass = () => {
 
     const error = useSelector(selectIsError);
     

@@ -2,7 +2,7 @@ import { SharedLayout } from './SharedLayout';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { SignUpPage } from 'pages/SignUpPage/SignUpPage';
 import { SignInPage } from 'pages/SignInPage/SignInPage';
-import { ForgotPasswordPage } from 'pages/ForgotPasswordPage/SignUpPage';
+import { ForgotPasswordPage } from 'pages/ForgotPasswordPage/ForgotPasswordPage';
 import { GlobalStyle } from './GlobalStyle';
 import { RestrictedRoute } from './RestrictedRoute';
 import { useDispatch } from 'react-redux';
@@ -40,7 +40,7 @@ export const App = () => {
             }
           />
           <Route
-            path="/forgot-password"
+            path="/change-password"
             element={
               <RestrictedRoute
                 redirectTo="/"
@@ -48,7 +48,7 @@ export const App = () => {
               />
             }
           />
-          <Route path="/change-password" element={<RestorePass/>} />
+          <Route path="/forgot-password" element={<RestorePass/>} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>

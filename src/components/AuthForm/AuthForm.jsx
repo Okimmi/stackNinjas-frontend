@@ -129,7 +129,7 @@ export const AuthForm = () => {
             <FormBtnStyled type="submit">Sign In</FormBtnStyled>
             <BottomBtnBox>
             <SightUp onClick={() => navigate('/signup')}>Sign up</SightUp>
-            <SightUp onClick={() => navigate('/forgot-password')}>Forgot Password</SightUp>
+            <SightUp onClick={() => navigate('/change-password')}>Forgot Password</SightUp>
             </BottomBtnBox>
           </StyledForm>
         </Formik>

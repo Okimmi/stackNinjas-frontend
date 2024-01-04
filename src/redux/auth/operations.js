@@ -140,6 +140,7 @@ export const  restoreUserPass = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const res = await $instance.post('/api/auth/restore-password', data);
+   
       if (res.status === 200) {
         toast.success(`${res.data.message}`, {
           position: "top-right",
@@ -163,7 +164,7 @@ export const  newUserPass = createAsyncThunk(
   'auth/restoreUserPass',
   async (data, thunkAPI) => {
     try {
-      const res = await $instance.post('/api/auth/restore-password', data);
+      const res = await $instance.post('/restore-password/:restorePasswordToken', data);
       if (res.status === 200) {
         toast.success(`${res.data.message}`, {
           position: "top-right",
