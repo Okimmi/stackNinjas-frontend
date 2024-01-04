@@ -57,27 +57,19 @@ import { selectEntiesToday, selectProgress } from '../../redux/hydrationEntries/
 
 
 export const HomePage = () => {
-  
   let progress = useSelector(selectProgress);
-  let progressFlag0 = false;
-  let progressFlag50 = false;
-  let progressFlag100 = false;
-  if(progress>100) {
-    progress=100;
+  const [progressFlag, setProgressFlag] = useState(0);
+
+  useEffect(()=>{
+  if (progress < 25) {
+  setProgressFlag(0)
+  } else if (progress >= 25 && progress < 75) {
+  setProgressFlag(1)
+  } else if (progress >= 75) {
+  setProgressFlag(2)
   }
-  if (progress > 0 && progress < 24) {
-    progressFlag0 = true;
-    progressFlag50 = false;
-    progressFlag100 = false;
-  } else if (progress >= 24 && progress <= 74) {
-    progressFlag0 = false;
-    progressFlag50 = true;
-    progressFlag100 = false;
-  } else if (progress > 74 && progress <= 100) {
-    progressFlag0 = false;
-    progressFlag50 = false;
-    progressFlag100 = true;
-  }
+  },[progress])
+  
   const isTelegramBotStarted = useSelector(selectIsTelegramBotStarted);
   const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
   const [showDailyNormalModal, setDailyNormalModal] = useState(false);
@@ -201,9 +193,9 @@ export const HomePage = () => {
                   />
                 </SliderDiv>
                 <Percents>
-                <Per className={progressFlag0 ? 'flagged' : ''}>0%</Per>
-                <Per className={progressFlag50 ? 'flagged' : ''}>50%</Per>
-                <Per className={progressFlag100 ? 'flagged' : ''}>100%</Per>
+                <Per className={progressFlag === 0 ? 'flagged' : ''}>0%</Per>
+<Per className={progressFlag === 1 ? 'flagged' : ''}>50%</Per>
+<Per className={progressFlag === 2 ? 'flagged' : ''}>100%</Per>
                 </Percents>
               </DivToday>
 
