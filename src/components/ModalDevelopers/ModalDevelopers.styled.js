@@ -4,6 +4,9 @@ import olenaKim from '../../images/modalDevelopers/olena-kim.jpg';
 import nataliaYarema from '../../images/modalDevelopers/natalia-yarema.jpg';
 import oleksandrSylych from '../../images/modalDevelopers/oleksandr-sylych.jpg';
 import yuriiPetrovskyi from '../../images/modalDevelopers/yurii-petrovskyi.jpg';
+import ivanMalakhovskyi from '../../images/modalDevelopers/ivan-malakhovskyi.jpg';
+import alinaMitolap from '../../images/modalDevelopers/alina-mitolap.jpg';
+
 
 export const Overlay = styled.div`
   position: fixed;
@@ -149,7 +152,7 @@ export const SwipeContainer = styled.div`
   }
   .box-4,
   .box-4 .team-name::before {
-    background-image: url(${defoultPhoto});
+    background-image: url(${ivanMalakhovskyi});
   }
   .box-5,
   .box-5 .team-name::before {
@@ -161,7 +164,7 @@ export const SwipeContainer = styled.div`
   }
   .box-7,
   .box-7 .team-name::before {
-    background-image: url(${defoultPhoto});
+    background-image: url(${alinaMitolap});
   }
   .box-8,
   .box-8 .team-name::before {

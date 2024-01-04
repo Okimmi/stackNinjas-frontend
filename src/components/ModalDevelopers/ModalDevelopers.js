@@ -140,18 +140,18 @@ const ModalDevelopers = ({ onClose }) => {
               <div className="team-name">
                 <center>
                   <div className="team-content">
-                    <h2>Olena Kim</h2>
+                    <h2>Ivan Malakhovskyi</h2>
                     <p>Frontend developer</p>
                     <div className="team-icon-wrapper">
                       <a
-                        href="https://www.linkedin.com/in/olena-kim"
+                        href="http://linkedin.com/in/ivan-malakhovskyi"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <FaLinkedin className="icon logo-linkedin" />
                       </a>
                       <a
-                        href="https://github.com/Okimmi"
+                        href="https://github.com/Ivan-Malakhovskyi"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -218,18 +218,18 @@ const ModalDevelopers = ({ onClose }) => {
               <div className="team-name">
                 <center>
                   <div className="team-content">
-                    <h2>Olena Kim</h2>
+                    <h2>Alina Mitolap</h2>
                     <p>Frontend developer</p>
                     <div className="team-icon-wrapper">
                       <a
-                        href="https://www.linkedin.com/in/olena-kim"
+                        href="https://www.linkedin.com/in/alina-mitolap"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <FaLinkedin className="icon logo-linkedin" />
                       </a>
                       <a
-                        href="https://github.com/Okimmi"
+                        href="https://github.com/mitolapka"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -274,18 +274,18 @@ const ModalDevelopers = ({ onClose }) => {
               <div className="team-name">
                 <center>
                   <div className="team-content">
-                    <h2>Olena Kim</h2>
+                    <h2>Sergii</h2>
                     <p>Frontend developer</p>
                     <div className="team-icon-wrapper">
                       <a
-                        href="https://www.linkedin.com/in/olena-kim"
+                        href="http://linkedin.com/in/ivan-malakhovskyi"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <FaLinkedin className="icon logo-linkedin" />
                       </a>
                       <a
-                        href="https://github.com/Okimmi"
+                        href="https://github.com/Ivan-Malakhovskyi"
                         target="_blank"
                         rel="noopener noreferrer"
                       >

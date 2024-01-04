@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const FooterStyled = styled.div`
+  /* position: fixed;
+  bottom: 0; */
   width: 100%;
   height: 56px;
   padding: 4px 0;

@@ -4,7 +4,6 @@ import bgImgdesk from '../../images/mainPage/BgMainPage-desk.png';
 import bgImElemgdesk from '../../images/mainPage/BgElMainPage-desk.png';
 
 export const MainPageContainer = styled.div`
-  height: 100vh;
 
   .mainPage-wrapper {
     display: flex;
