@@ -52,13 +52,32 @@ import Modal from '../../components/Global/Modal/Modal.jsx';
 import { MonthStatesTable } from '../../components/MonthStatesTable/MonthStatesTable.jsx';
 import { TelegramBotInvite } from 'components/TelegramBotInvite/TelegramBotInvite.jsx';
 import { WaterDelModal } from 'components/WaterDelModal/WaterDelModal.jsx';
-import { getTodayEntriesThunk } from '../../redux/hydrationEntries/operations.js';
+import { deleteEntryThunk, getTodayEntriesThunk } from '../../redux/hydrationEntries/operations.js';
 import { selectEntiesToday, selectProgress } from '../../redux/hydrationEntries/selectors.js';
 
 
 export const HomePage = () => {
-  const listWater = useSelector(selectEntiesToday);
-  const progress = useSelector(selectProgress);
+  
+  let progress = useSelector(selectProgress);
+  let progressFlag0 = false;
+  let progressFlag50 = false;
+  let progressFlag100 = false;
+  if(progress>100) {
+    progress=100;
+  }
+  if (progress > 0 && progress < 24) {
+    progressFlag0 = true;
+    progressFlag50 = false;
+    progressFlag100 = false;
+  } else if (progress >= 24 && progress <= 74) {
+    progressFlag0 = false;
+    progressFlag50 = true;
+    progressFlag100 = false;
+  } else if (progress > 74 && progress <= 100) {
+    progressFlag0 = false;
+    progressFlag50 = false;
+    progressFlag100 = true;
+  }
   const isTelegramBotStarted = useSelector(selectIsTelegramBotStarted);
   const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
   const [showDailyNormalModal, setDailyNormalModal] = useState(false);
@@ -70,9 +89,14 @@ export const HomePage = () => {
   const [editingEntryData, setEditingEntryData] = useState(null);
 
   const [isDeleteModal, setIsDeleteModal] = useState(false);
-  useEffect(() => {dispatch(getTodayEntriesThunk())}, [dispatch]);
   // const [editModal, setEditModal] = useState(false);
   const [editId, setEditId] = useState("");
+
+ const listWater = useSelector(selectEntiesToday);
+
+ useEffect(() => {
+  dispatch(getTodayEntriesThunk());
+}, [isDeleteModal, dispatch]);
 
   // const handleOnDeleteModal = () => {
   //   setIsDeleteModal(true);
@@ -92,10 +116,18 @@ export const HomePage = () => {
     setEditingEntryData({ ...item });
   };
 
-  const onDeleteClick = (id) => {
+  const onDeleteClick = async (id) => {
     setEditId(id);
     setIsDeleteModal(true);
-  };
+
+    const response = await dispatch(deleteEntryThunk(id));
+
+    if (response.success) {
+        setIsDeleteModal(false);
+        setEditingEntryData(null);
+    }
+};
+
 
   // const onSaveEdit = () => {
   //   const nextData = data.map(item => {
@@ -165,12 +197,13 @@ export const HomePage = () => {
                     min="1"
                     max="100"
                     value={progress}
+                    
                   />
                 </SliderDiv>
                 <Percents>
-                  <Per>0%</Per>
-                  <Per>50%</Per>
-                  <Per>100%</Per>
+                <Per className={progressFlag0 ? 'flagged' : ''}>0%</Per>
+                <Per className={progressFlag50 ? 'flagged' : ''}>50%</Per>
+                <Per className={progressFlag100 ? 'flagged' : ''}>100%</Per>
                 </Percents>
               </DivToday>
 
@@ -222,6 +255,7 @@ export const HomePage = () => {
                             alt="Edit"
                           />
                         </ButtonEdit>
+
                         <ButtonDelete
                           onClick={() => onDeleteClick(item._id)}
                         >
@@ -232,6 +266,7 @@ export const HomePage = () => {
                             alt="Delete"
                           />
                         </ButtonDelete>
+
                       </div>
                     </DivListItem>
                   ))}
