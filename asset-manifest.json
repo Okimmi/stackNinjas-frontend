@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/stackNinjas-frontend/static/css/main.2a5bd5ea.css",
-    "main.js": "/stackNinjas-frontend/static/js/main.2a303543.js",
+    "main.js": "/stackNinjas-frontend/static/js/main.4a42aaec.js",
     "static/media/Roboto-Medium.ttf": "/stackNinjas-frontend/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/Roboto-Regular.ttf": "/stackNinjas-frontend/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
     "static/media/Roboto-Bold.ttf": "/stackNinjas-frontend/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
@@ -19,6 +19,7 @@
     "static/media/Main_Page.png": "/stackNinjas-frontend/static/media/Main_Page.0fdfaf15928336e9b794.png",
     "static/media/Glass.svg": "/stackNinjas-frontend/static/media/Glass.e2aa7db804dc747bc28de024eb58a526.svg",
     "static/media/Background.svg": "/stackNinjas-frontend/static/media/Background.31291302a4b0733cc1b42191c530491f.svg",
+    "static/media/glass_of_water.svg": "/stackNinjas-frontend/static/media/glass_of_water.531f15b9b83476bb9d6c285f7be6bb59.svg",
     "static/media/Bubles720.svg": "/stackNinjas-frontend/static/media/Bubles720.b302bf13877dc20b86b25d238c27ae80.svg",
     "static/media/Bubles320.svg": "/stackNinjas-frontend/static/media/Bubles320.e2dcf32984352ed0fda8a9605daa6d07.svg",
     "static/media/user-logo-modal-settings.svg": "/stackNinjas-frontend/static/media/user-logo-modal-settings.44eda8398dfadd71f5b9e72fb914a6e6.svg",
@@ -45,10 +46,10 @@
     "static/media/pluss.svg": "/stackNinjas-frontend/static/media/pluss.a825844368d25850e9fa030c4bd74f44.svg",
     "static/media/PlusAdd.svg": "/stackNinjas-frontend/static/media/PlusAdd.f009a02ac759b50fd6c43db8c00baf79.svg",
     "main.2a5bd5ea.css.map": "/stackNinjas-frontend/static/css/main.2a5bd5ea.css.map",
-    "main.2a303543.js.map": "/stackNinjas-frontend/static/js/main.2a303543.js.map"
+    "main.4a42aaec.js.map": "/stackNinjas-frontend/static/js/main.4a42aaec.js.map"
   },
   "entrypoints": [
     "static/css/main.2a5bd5ea.css",
-    "static/js/main.2a303543.js"
+    "static/js/main.4a42aaec.js"
   ]
 }
