@@ -46,7 +46,6 @@ const CalcFieldDailyNormal = (props) => {
   return (
     <>
       <RequiredText>{ volume.toFixed(2) }&nbsp;L</RequiredText>
-      {/* <div {...props} {...field}></div> */}
     </>
   );
 };
