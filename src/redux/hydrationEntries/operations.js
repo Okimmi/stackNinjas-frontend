@@ -115,7 +115,7 @@ export const deleteEntryThunk = createAsyncThunk(
 export const updateEntryThunk = createAsyncThunk(
   "hydrationEntries/updateEntry",
   async (entry, thunkAPI) => {
-    const {id:entryId, time, amount,} = entry;
+    const {entryId, time, amount,} = entry;
     try {
       console.log("UpdateRequest:", entryId, time, amount);
       const { data } = await $instance.put(`/api/hydration-entries/${entryId}`, { time, amount });
