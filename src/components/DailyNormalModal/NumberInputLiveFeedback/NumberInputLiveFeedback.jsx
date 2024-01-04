@@ -19,7 +19,7 @@ export const NumberInputLiveFeedback = ({ label, aboveText, helpText, ...props }
   const [field, meta] = useField(props);
 
   // Show inline feedback if EITHER
-  // - the input is focused AND value is longer than 2 characters
+  // - the input is focused AND value is longer than > 0 characters
   // - or, the has been visited (touched === true)
   const [didFocus, setDidFocus] = useState(false);
   const handleFocus = () => setDidFocus(true);
@@ -44,8 +44,6 @@ export const NumberInputLiveFeedback = ({ label, aboveText, helpText, ...props }
               type={props.type}
               name={props.name}
               color={theme.colors.primeryBlue}
-              // pattern="^[a-zA-Zа-яА-ЯіІїЇєЄ]+(([' \-][a-zA-Zа-яА-ЯіІїЇєЄ])?[a-zA-Zа-яА-ЯіІїЇєЄ]*)*$"
-              // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               
               {...props}
               {...field}

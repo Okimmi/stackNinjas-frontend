@@ -21,13 +21,9 @@ export const FieldBox = styled.div.attrs(props => ({
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  /* position: relative; */
-  color: ${props => props.theme.colors.primeryBlack};
+    color: ${props => props.theme.colors.primeryBlack};
   background-color: ${props => props.theme.colors.primeryWhite};
   color: ${(props) => props.$valid};
-
-  /* margin-bottom: 1rem;
-  margin-top: 1rem; */
 `
 
 export const FieldLabel = styled.label`
@@ -51,13 +47,10 @@ export const FieldInput = styled.input.attrs(props => ({
   display: block;
   width: 100%; //calc(100% - 2*4px);
   outline: 1px solid ${(props) => props.$valid};
-    // colorsValid[props.valid] ?? 'rgba(33, 33, 33, 0.2)'}; 
   background-color:  ${props => props.theme.colors.primeryWhite};;
-  /* color: ${props => props.theme.colors.primeryBlue}; */
   color:${props => props.$valid}; 
   border-radius: 4px;
   border: none;
-  /* margin-top: 4px; */
   padding: 12px 10px;
   line-height: 1.25;
 
@@ -68,18 +61,6 @@ export const FieldInput = styled.input.attrs(props => ({
     color:${props => props.$valid };
     transition: outline 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
-
-  /* Chrome, Safari, Edge, Opera */
-  /* -webkit-outer-spin-button,
-  -webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  } */
-
-  /* Firefox */
-  /* input[type=number] {
-    -moz-appearance: textfield;
-  } */
 `
 export const FieldTextAbove = styled.p`
   width: 100%;
