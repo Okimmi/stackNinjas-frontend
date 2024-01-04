@@ -186,11 +186,11 @@ export const HomePage = () => {
                   />
                 </SliderDiv>
                 <Percents>
-                  <Per className={progressFlag === 0 ? 'flagged' : ''}>0%</Per>
-                  <Per className={progressFlag === 1 ? 'flagged' : ''}>50%</Per>
-                  <Per className={progressFlag === 2 ? 'flagged' : ''}>
-                    100%
-                  </Per>
+
+                <Per className={progressFlag === 0 ? 'flagged' : ''}>0%</Per>
+                <Per className={progressFlag === 1 ? 'flagged' : ''}>50%</Per>
+                <Per className={progressFlag === 2 ? 'flagged' : ''}>100%</Per>
+
                 </Percents>
               </DivToday>
 
@@ -206,6 +206,7 @@ export const HomePage = () => {
           <DivTodayAndMonth>
             <PToday>Today</PToday>
             <DivTodayList>
+
               <div>
                 {listWater.map(item => (
                   <DivListItem key={item._id} className="delete-line">
