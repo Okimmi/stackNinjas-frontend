@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { ReactComponent as IconUpload } from './setting-modal-icons/upload.svg';
-import { ReactComponent as Eye } from './setting-modal-icons/blueEye.svg';
-import { ReactComponent as Hide } from './setting-modal-icons/icon_show_hide.svg';
+import { ReactComponent as IconUpload } from '../../images/SettingModal/upload.svg';
+import { ReactComponent as Eye } from '../../images/SettingModal/blueEye.svg';
+import { ReactComponent as Hide } from '../../images/SettingModal/icon_show_hide.svg';
 
 export const ModalContent = styled.div`
   @media screen and (max-width: 768px) {

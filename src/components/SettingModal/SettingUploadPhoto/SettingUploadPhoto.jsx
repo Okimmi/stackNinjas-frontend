@@ -1,4 +1,4 @@
-import defaultAvatar from '../setting-modal-icons/default_user_avatar.svg';
+import defaultAvatar from '../../../images/SettingModal/default_user_avatar.svg';
 import {
   Title,
   MainWrapper,
