@@ -48,7 +48,7 @@ export const App = () => {
               />
             }
           />
-          <Route path="/forgot-password" element={<RestorePass/>} />
+          <Route path="/forgot-password/:restorePasswordToken" element={<RestorePass/>} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>

@@ -50,6 +50,10 @@ export const RestorePass = () => {
     });
     const navigate = useNavigate();
 
+    const tokenMatch = window.location.pathname.match(/\/forgot-password\/(.+)$/);
+    const token = tokenMatch ? tokenMatch[1] : null;
+
+
   
     useEffect(() => {
       toast.error(error);
@@ -84,6 +88,7 @@ export const RestorePass = () => {
               dispatch(
                 newUserPass({
                 password: values.password,
+                token
                 }))
                 toast.error(error);
                 if (!error) {
