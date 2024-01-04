@@ -8,6 +8,7 @@ import {
   BackgroundImg320,
   BottleMobil,
   BottleStyled,
+  BottleTablet,
   BottomBtnBox,
   ErMsg,
   FormBtnStyled,
