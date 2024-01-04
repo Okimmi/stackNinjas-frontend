@@ -1,5 +1,5 @@
-import { IconLogin,  StyledNavLink } from './AuthNav.styled';
-import loginIcon from '../../images/header/signIn.svg';
+import { IconLogin, StyledNavLink } from './AuthNav.styled';
+import loginIcon from '../../images/svg/heder-sign-in.svg';
 export const AuthNav = () => {
   return (
     <>

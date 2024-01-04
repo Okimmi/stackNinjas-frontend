@@ -11,10 +11,9 @@ export const WaterDelModal = ({ close, waterId }) => {
   };
 
   const handleConfirmDelete = () => {
-    //dispatch(deleteEntryThunk(waterId));
+    dispatch(deleteEntryThunk(waterId));
     close();
   };
-
 
   return (
     <Content>

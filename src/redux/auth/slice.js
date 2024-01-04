@@ -4,6 +4,7 @@ import {
   logOut,
   refreshUser,
   register,
+  restoreUserPass,
   updateAvatar,
   updateDailyNormal,
   updateUserData,
@@ -44,6 +45,10 @@ const authSlice = createSlice({
       state.isRefreshing = false;
       state.isError = null;
     });
+    builder.addCase(restoreUserPass.fulfilled, (state, action) => {
+      state.isRefreshing = false;
+      state.isError = null;
+    });
     builder.addCase(refreshUser.fulfilled, (state, action) => {
       state.user = action.payload;
       state.isLoggedIn = true;
@@ -60,7 +65,7 @@ const authSlice = createSlice({
       state.isError = null;
     });
     builder.addCase(updateUserData.fulfilled, (state, action) => {
-      state.user = action.payload;
+      state.user = { ...state.user, ...action.payload };
       state.isRefreshing = false;
       state.isError = null;
     });
@@ -78,6 +83,9 @@ const authSlice = createSlice({
       state.isRefreshing = true;
     });
     builder.addCase(updateUserData.pending, state => {
+      state.isRefreshing = true;
+    });
+    builder.addCase(restoreUserPass.pending, state => {
       state.isRefreshing = true;
     });
     //rejected
@@ -98,10 +106,12 @@ const authSlice = createSlice({
       state.isError = action.payload;
     });
     builder.addCase(updateAvatar.rejected, (state, action) => {
-      state.isRefreshing = false;
       state.isError = action.payload;
     });
     builder.addCase(updateUserData.rejected, (state, action) => {
+      state.isError = action.payload;
+    });
+    builder.addCase(restoreUserPass.rejected, (state, action) => {
       state.isRefreshing = false;
       state.isError = action.payload;
     });

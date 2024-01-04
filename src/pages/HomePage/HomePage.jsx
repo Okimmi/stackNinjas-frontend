@@ -52,24 +52,26 @@ import Modal from '../../components/Global/Modal/Modal.jsx';
 import { MonthStatesTable } from '../../components/MonthStatesTable/MonthStatesTable.jsx';
 import { TelegramBotInvite } from 'components/TelegramBotInvite/TelegramBotInvite.jsx';
 import { WaterDelModal } from 'components/WaterDelModal/WaterDelModal.jsx';
-import { deleteEntryThunk, getTodayEntriesThunk } from '../../redux/hydrationEntries/operations.js';
-import { selectEntiesToday, selectProgress } from '../../redux/hydrationEntries/selectors.js';
-
+import { getTodayEntriesThunk } from '../../redux/hydrationEntries/operations.js';
+import {
+  selectEntiesToday,
+  selectProgress,
+} from '../../redux/hydrationEntries/selectors.js';
 
 export const HomePage = () => {
   let progress = useSelector(selectProgress);
   const [progressFlag, setProgressFlag] = useState(0);
 
-  useEffect(()=>{
-  if (progress < 25) {
-  setProgressFlag(0)
-  } else if (progress >= 25 && progress < 75) {
-  setProgressFlag(1)
-  } else if (progress >= 75) {
-  setProgressFlag(2)
-  }
-  },[progress])
-  
+  useEffect(() => {
+    if (progress < 25) {
+      setProgressFlag(0);
+    } else if (progress >= 25 && progress < 75) {
+      setProgressFlag(1);
+    } else if (progress >= 75) {
+      setProgressFlag(2);
+    }
+  }, [progress]);
+
   const isTelegramBotStarted = useSelector(selectIsTelegramBotStarted);
   const dailyWaterRequirement = useSelector(selectDailyWaterRequirement);
   const [showDailyNormalModal, setDailyNormalModal] = useState(false);
@@ -82,13 +84,13 @@ export const HomePage = () => {
 
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   // const [editModal, setEditModal] = useState(false);
-  const [editId, setEditId] = useState("");
+  const [editId, setEditId] = useState('');
 
- const listWater = useSelector(selectEntiesToday);
+  const listWater = useSelector(selectEntiesToday);
 
- useEffect(() => {
-  dispatch(getTodayEntriesThunk());
-}, [isDeleteModal, dispatch]);
+  useEffect(() => {
+    dispatch(getTodayEntriesThunk());
+  }, [isDeleteModal, dispatch]);
 
   // const handleOnDeleteModal = () => {
   //   setIsDeleteModal(true);
@@ -96,7 +98,7 @@ export const HomePage = () => {
 
   const handleCloseDeleteModal = () => {
     setIsDeleteModal(false);
-    setEditId("");
+    setEditId('');
   };
 
   // const closeEditModal = () => {
@@ -108,18 +110,10 @@ export const HomePage = () => {
     setEditingEntryData({ ...item });
   };
 
-  const onDeleteClick = async (id) => {
+  const onDeleteClick = async id => {
     setEditId(id);
     setIsDeleteModal(true);
-
-    const response = await dispatch(deleteEntryThunk(id));
-
-    if (response.success) {
-        setIsDeleteModal(false);
-        setEditingEntryData(null);
-    }
-};
-
+  };
 
   // const onSaveEdit = () => {
   //   const nextData = data.map(item => {
@@ -189,13 +183,14 @@ export const HomePage = () => {
                     min="1"
                     max="100"
                     value={progress}
-                    
                   />
                 </SliderDiv>
                 <Percents>
+
                 <Per className={progressFlag === 0 ? 'flagged' : ''}>0%</Per>
                 <Per className={progressFlag === 1 ? 'flagged' : ''}>50%</Per>
                 <Per className={progressFlag === 2 ? 'flagged' : ''}>100%</Per>
+
                 </Percents>
               </DivToday>
 
@@ -211,68 +206,62 @@ export const HomePage = () => {
           <DivTodayAndMonth>
             <PToday>Today</PToday>
             <DivTodayList>
-                <div>
-                  {listWater.map(item => (
-                    <DivListItem key={item._id} className="delete-line">
-                      <DivFirstPart>
-                        <ImgGlass
-                          src={glass}
-                          
-                          alt="Glass"
+
+              <div>
+                {listWater.map(item => (
+                  <DivListItem key={item._id} className="delete-line">
+                    <DivFirstPart>
+                      <ImgGlass
+                        src={glass}
+                        width={26}
+                        height={26}
+                        alt="Glass"
+                      />
+
+                      <SpanCount>{item.amount} ml</SpanCount>
+                      <SpanDate>
+                        {new Date(item.time)
+                          .getHours()
+                          .toString()
+                          .padStart(2, '0')}
+                        :
+                        {new Date(item.time)
+                          .getMinutes()
+                          .toString()
+                          .padStart(2, '0')}
+                      </SpanDate>
+                    </DivFirstPart>
+                    <div>
+                      <ButtonEdit
+                        disabled={item.id === editingEntryData?.id}
+                        onClick={() => onEditClick(item)}
+                      >
+                        <ImgEdit src={edit} width={16} height={16} alt="Edit" />
+                      </ButtonEdit>
+
+                      <ButtonDelete onClick={() => onDeleteClick(item._id)}>
+                        <ImgDelete
+                          src={delet}
+                          width={14}
+                          height={14}
+                          alt="Delete"
                         />
-
-                        <SpanCount>{item.amount} ml</SpanCount>
-                        <SpanDate>
-                          {new Date(item.time)
-                            .getHours()
-                            .toString()
-                            .padStart(2, '0')}
-                          :
-                          {new Date(item.time)
-                            .getMinutes()
-                            .toString()
-                            .padStart(2, '0')}
-                        </SpanDate>
-                      </DivFirstPart>
-                      <div>
-                        <ButtonEdit
-                          disabled={item.id === editingEntryData?.id}
-                          onClick={() => onEditClick(item)}
-                        >
-                          <ImgEdit
-                            src={edit}
-                            width={16}
-                            height={16}
-                            alt="Edit"
-                          />
-                        </ButtonEdit>
-
-                        <ButtonDelete
-                          onClick={() => onDeleteClick(item._id)}
-                        >
-                          <ImgDelete
-                            src={delet}
-                            width={14}
-                            height={14}
-                            alt="Delete"
-                          />
-                        </ButtonDelete>
-
-                      </div>
-                    </DivListItem>
-                  ))}
-                </div>
-                <div>
-                  <ButtonAddWater onClick={addWaterModalShow}>
-                    <ImgPlusAdd
-                      src={plusAdd}
-                      width={12}
-                      height={12}
-                      alt="PlusAdd"
-                    />
-                    Add water
-                  </ButtonAddWater>
-                </div>
+                      </ButtonDelete>
+                    </div>
+                  </DivListItem>
+                ))}
+              </div>
+              <div>
+                <ButtonAddWater onClick={addWaterModalShow}>
+                  <ImgPlusAdd
+                    src={plusAdd}
+                    width={12}
+                    height={12}
+                    alt="PlusAdd"
+                  />
+                  Add water
+                </ButtonAddWater>
+              </div>
             </DivTodayList>
             <MonthStatesTable></MonthStatesTable>
           </DivTodayAndMonth>

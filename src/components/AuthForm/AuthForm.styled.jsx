@@ -215,3 +215,8 @@ export const StyledBtn = styled.div`
     cursor: pointer;
     
 `
+
+export const BottomBtnBox = styled.div`
+    display: flex;
+    justify-content: space-between;
+`

@@ -27,15 +27,11 @@ export const ModalStyled = styled.div`
   }
 `;
 
-export const CloseButton = styled.div`
-  position: absolute;
-  top: 36px;
-  right: 24px;
+export const CloseButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
   outline: none;
-  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,6 +45,14 @@ export const CloseButton = styled.div`
 `;
 
 export const Title = styled.h2`
-  line-height: 36px;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.23;
+`;
+
+export const Container = styled.div`
   margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
 `;
