@@ -107,6 +107,7 @@ export const MyDailyNorma = styled.p`
     font-size: 18px;
     height: 24px;
     margin-bottom: 12px;
+    font-weight: 500;
 `;
 export const Litr = styled.p`
     font-size: 20px;
@@ -299,8 +300,13 @@ export const Per = styled.p`
 font-size: 12px;
 color: ${theme.colors.primeryBlue};
 z-index: 2;
-`;
+font-weight: 400;
 
+&.flagged {
+  font-size: 16px; 
+  font-weight: 500;
+}
+`;
 export const Percents = styled.div`
 display: flex;
 justify-content: space-between;
@@ -354,7 +360,7 @@ export const AddWater = styled.p`
   color: ${theme.colors.primeryWhite};
   margin-left: 10px;
   cursor: pointer;
-  
+  font-weight: 500;
 `;
 
 export const DivAddWater = styled.div`
@@ -393,27 +399,34 @@ export const DivTodayList = styled.div`
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  padding-right: 4px;
   &::-webkit-scrollbar {
     width: 4px; 
+    border-radius: 8px;
   }
   
   &::-webkit-scrollbar-thumb {
     background-color: ${theme.colors.secondary4}; 
+    border-radius: 8px;
   }
   
   &::-webkit-scrollbar-track {
     background-color: ${theme.colors.secondary6}; 
+    border-radius: 8px;
   }
 `;
 
 export const PToday = styled.p`
   font-size: 24px;
   margin-bottom: 16px;
+  font-weight: 500;
+  line-height: 1.23;
   color: ${theme.colors.primeryBlack};
   
 `
 export const ButtonAddWater = styled.button`
   font-size: 18px;
+  font-weight: 500;
   color: ${theme.colors.primeryBlue};
   background-color: transparent;
   border: none;

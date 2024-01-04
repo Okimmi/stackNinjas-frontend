@@ -9,6 +9,7 @@ display: flex;
 margin-bottom: 16px;
 justify-content: space-between;
 align-items:baseline;
+margin-top: 24px;
 `
 export const Title = styled.div `
 color: ${(props) =>props.theme.colors.primeryBlack};
