@@ -1,8 +1,8 @@
 import * as yup from 'yup';
 
 import { useState } from 'react';
+
 import {
-  Base,
   Container,
   ErrEmailMessage,
   ErrMessage,
@@ -12,7 +12,6 @@ import {
   GenderWrapper,
   NameWrapper,
   Password,
-  RadioField,
   RadioWrapper,
   SaveBtn,
   TopicGender,
@@ -25,6 +24,7 @@ import { selectUser } from '../../../redux/auth/selectors';
 import { updateUserData } from '../../../redux/auth/operations';
 
 import { ToastContainer, toast } from 'react-toastify';
+import { Field, Formik } from 'formik';
 
 const isValueRequired = (value, referenceValue) => {
   return (
@@ -96,8 +96,10 @@ export const FormModal = () => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
+    const { passwordRepeat, ...restFields } = values;
+
     const filledFields = Object.fromEntries(
-      Object.entries(values).filter(
+      Object.entries(restFields).filter(
         ([key, value]) => value !== '' && value !== undefined
       )
     );
@@ -118,7 +120,7 @@ export const FormModal = () => {
 
   return (
     <>
-      <Base
+      <Formik
         initialValues={{
           gender: '' || user.gender,
           name: '',
@@ -130,13 +132,13 @@ export const FormModal = () => {
         validationSchema={updateUserInfoSchema}
         onSubmit={handleSubmit}
       >
-        {({ values }) => (
+        {({ values, errors, touched }) => (
           <FormUser>
             <Wrapper>
               <TopicGender>Your gender identity</TopicGender>
               <RadioWrapper>
                 <GenderWrapper>
-                  <RadioField
+                  <Field
                     type="radio"
                     name="gender"
                     value="girl"
@@ -145,7 +147,7 @@ export const FormModal = () => {
 
                   <Gender>Girl</Gender>
                 </GenderWrapper>
-                <RadioField
+                <Field
                   type="radio"
                   name="gender"
                   value="man"
@@ -161,12 +163,6 @@ export const FormModal = () => {
                   type="text"
                   name="name"
                   placeholder={user.name || 'Enter your name'}
-                  // style={
-                  //   formik.errors.David && formik.touched.myField
-                  //     ? { borderColor: 'red' }
-                  //     : null
-                  // }
-                  style={{ color: '#407BFF' }}
                 />{' '}
               </NameWrapper>
 
@@ -177,7 +173,15 @@ export const FormModal = () => {
                 placeholder={user.email || 'Email'}
                 title="email"
                 autoComplete="on"
+                hasErrors={touched.email && errors.email}
               />
+
+              {touched.email && errors.email && (
+                <ErrEmailMessage name="email" component="p">
+                  {errors.email}
+                </ErrEmailMessage>
+              )}
+
               <ErrEmailMessage name="email" component="p" />
             </Wrapper>
 
@@ -192,7 +196,16 @@ export const FormModal = () => {
                   placeholder={'Password'}
                   title="passwordOutdated"
                   autoComplete="on"
+                  hasErrors={
+                    touched.passwordOutdated && errors.passwordOutdated
+                  }
                 />
+
+                {touched.passwordOutdated && errors.passwordOutdated && (
+                  <ErrMessage name="passwordOutdated" component="p">
+                    {errors.passwordOutdated}
+                  </ErrMessage>
+                )}
 
                 <ToggleIcon onClick={toggle}>
                   {showPassword ? <EyeIcon /> : <HideIcon />}
@@ -210,7 +223,14 @@ export const FormModal = () => {
                   title="Password"
                   placeholder="Password"
                   autoComplete="on"
+                  hasErrors={touched.password && errors.password}
                 />
+
+                {touched.password && errors.password && (
+                  <ErrMessage name="password" component="p">
+                    {errors.password}
+                  </ErrMessage>
+                )}
 
                 <ToggleIcon onClick={toggle}>
                   {showPassword ? <EyeIcon /> : <HideIcon />}
@@ -227,7 +247,15 @@ export const FormModal = () => {
                   type={showPassword ? 'text' : 'password'}
                   placeholder="Password"
                   autoComplete="on"
+                  hasErrors={touched.passwordRepeat && errors.passwordRepeat}
                 />
+
+                {touched.passwordRepeat && errors.passwordRepeat && (
+                  <ErrMessage name="passwordRepeat" component="p">
+                    {errors.passwordRepeat}
+                  </ErrMessage>
+                )}
+
                 <ToggleIcon onClick={toggle}>
                   {showPassword ? <EyeIcon /> : <HideIcon />}
                 </ToggleIcon>
@@ -237,7 +265,7 @@ export const FormModal = () => {
             <SaveBtn type="submit">Save</SaveBtn>
           </FormUser>
         )}
-      </Base>
+      </Formik>
       <ToastContainer />
     </>
   );

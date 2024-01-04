@@ -1,55 +1,19 @@
-import { useEffect } from 'react';
-import {
-  Backdrop,
-  ButtonCloseModal,
-  IconCloseModal,
-  ModalContent,
-  Topic,
-} from './SettingModal.styled';
-import { createPortal } from 'react-dom';
+import { ModalContent } from './SettingModal.styled';
 import { UploadPhoto } from './SettingUploadPhoto/SettingUploadPhoto';
 import { FormModal } from './SettingFormModal/SettingFormModal';
-
-const modalRoot = document.getElementById('modal-root');
+import Modal from 'components/Global/Modal/Modal';
 
 export const SettingModal = ({ isModalOpen, onModalClose }) => {
-  useEffect(() => {
-    const handleKeyDown = e => {
-      if (e.code === 'Escape') {
-        onModalClose();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [onModalClose]);
-
-  const handleClickBackDrop = e => {
-    if (e.currentTarget === e.target) {
-      onModalClose();
-    }
-  };
-
-  return createPortal(
+  return (
     <>
       {isModalOpen && (
-        <Backdrop onClick={handleClickBackDrop}>
+        <Modal close={onModalClose} title={'Setting'}>
           <ModalContent>
-            <Topic>Setting</Topic>
-            <ButtonCloseModal type="button" onClick={onModalClose}>
-              <IconCloseModal />
-            </ButtonCloseModal>
-
             <UploadPhoto />
-
-            <FormModal onClose={onModalClose} />
+            <FormModal />
           </ModalContent>
-        </Backdrop>
+        </Modal>
       )}
-    </>,
-    modalRoot
+    </>
   );
 };

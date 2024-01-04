@@ -122,7 +122,7 @@ export const updateUserData = createAsyncThunk(
   'auth/updateUserData',
   async (data, thunkAPI) => {
     try {
-      const res = await $instance.put('/api/auth/profile', data);
+      const res = await $instance.patch('/api/auth/profile', data);
 
       return res.data;
     } catch (error) {
