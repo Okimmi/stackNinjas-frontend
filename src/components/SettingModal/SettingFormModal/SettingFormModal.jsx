@@ -1,8 +1,8 @@
 import * as yup from 'yup';
 
 import { useState } from 'react';
+
 import {
-  Base,
   Container,
   ErrEmailMessage,
   ErrMessage,
@@ -12,7 +12,6 @@ import {
   GenderWrapper,
   NameWrapper,
   Password,
-  RadioField,
   RadioWrapper,
   SaveBtn,
   TopicGender,
@@ -25,6 +24,7 @@ import { selectUser } from '../../../redux/auth/selectors';
 import { updateUserData } from '../../../redux/auth/operations';
 
 import { ToastContainer, toast } from 'react-toastify';
+import { Field, Formik } from 'formik';
 
 const isValueRequired = (value, referenceValue) => {
   return (
@@ -96,8 +96,10 @@ export const FormModal = () => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
+    const { passwordRepeat, ...restFields } = values;
+
     const filledFields = Object.fromEntries(
-      Object.entries(values).filter(
+      Object.entries(restFields).filter(
         ([key, value]) => value !== '' && value !== undefined
       )
     );
@@ -118,7 +120,7 @@ export const FormModal = () => {
 
   return (
     <>
-      <Base
+      <Formik
         initialValues={{
           gender: '' || user.gender,
           name: '',
@@ -136,7 +138,7 @@ export const FormModal = () => {
               <TopicGender>Your gender identity</TopicGender>
               <RadioWrapper>
                 <GenderWrapper>
-                  <RadioField
+                  <Field
                     type="radio"
                     name="gender"
                     value="girl"
@@ -145,7 +147,7 @@ export const FormModal = () => {
 
                   <Gender>Girl</Gender>
                 </GenderWrapper>
-                <RadioField
+                <Field
                   type="radio"
                   name="gender"
                   value="man"
@@ -161,12 +163,6 @@ export const FormModal = () => {
                   type="text"
                   name="name"
                   placeholder={user.name || 'Enter your name'}
-                  // style={
-                  //   formik.errors.David && formik.touched.myField
-                  //     ? { borderColor: 'red' }
-                  //     : null
-                  // }
-                  style={{ color: '#407BFF' }}
                 />{' '}
               </NameWrapper>
 
@@ -269,7 +265,7 @@ export const FormModal = () => {
             <SaveBtn type="submit">Save</SaveBtn>
           </FormUser>
         )}
-      </Base>
+      </Formik>
       <ToastContainer />
     </>
   );

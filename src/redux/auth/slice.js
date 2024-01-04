@@ -60,7 +60,7 @@ const authSlice = createSlice({
       state.isError = null;
     });
     builder.addCase(updateUserData.fulfilled, (state, action) => {
-      state.user = action.payload;
+      state.user = { ...state.user, ...action.payload };
       state.isRefreshing = false;
       state.isError = null;
     });

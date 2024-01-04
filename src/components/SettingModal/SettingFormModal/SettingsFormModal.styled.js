@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Formik, Form, ErrorMessage, Field } from 'formik';
+import { Form, ErrorMessage, Field } from 'formik';
 
 export const TopicGender = styled.label`
   margin-bottom: 12px;
@@ -21,7 +21,7 @@ export const Title = styled.label`
   color: ${({ theme: { colors } }) => colors.primeryBlack};
   font-size: 18px;
   font-weight: 500;
-  line-height: 1.111; /* 111.111% */
+  line-height: 1.111;
 `;
 
 export const LabelGender = styled.label`
@@ -39,12 +39,10 @@ export const Gender = styled.span`
   margin-left: 8px;
 `;
 
-export const Base = styled(Formik)``;
-
 export const RadioWrapper = styled.div`
   margin-bottom: 24px;
 
-  @media screen and (min-width: 1140px) {
+  @media screen and (min-width: 1440px) {
     margin-bottom: 52px;
   }
 `;
@@ -61,8 +59,8 @@ export const Wrapper = styled.div`
     margin-bottom: 24px;
   }
 
-  @media screen and (min-width: 1140px) {
-    flex-basis: calc((100% - 24px) / 2);
+  @media screen and (min-width: 1440px) {
+    flex-basis: calc(50% - 48px);
   }
 `;
 
@@ -79,13 +77,11 @@ export const Container = styled.div`
 `;
 
 export const FormUser = styled(Form)`
-  @media screen and (min-width: 1140px) {
+  @media screen and (min-width: 1440px) {
     display: flex;
     flex-wrap: wrap;
   }
 `;
-
-export const LabelForm = styled.label``;
 
 export const LabelsPassword = styled.label`
   position: relative;
@@ -130,8 +126,6 @@ export const FieldForm = styled(Field)`
     max-width: 392px;
   }
 `;
-
-export const RadioField = styled(Field)``;
 
 export const SaveBtn = styled.button`
   color: ${({ theme: { colors } }) => colors.primeryWhite};
