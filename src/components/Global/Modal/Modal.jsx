@@ -4,7 +4,13 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 // import PropTypes from 'prop-types';
 
-import { CloseButton, ModalStyled, Overlay, Title } from './Modal.styled';
+import {
+  CloseButton,
+  Container,
+  ModalStyled,
+  Overlay,
+  Title,
+} from './Modal.styled';
 import { ReactComponent as Close } from '../../../icons/x.svg';
 
 const modalRoot = document.querySelector('#modal-root');
@@ -22,7 +28,7 @@ const Modal = ({ close, children, title }) => {
     return () => {
       document.removeEventListener('keydown', closeModalEsc);
       enableBodyScroll(document.body);
-    }
+    };
   }, [close]);
 
   const closeModal = ({ target, currentTarget }) => {
@@ -34,10 +40,12 @@ const Modal = ({ close, children, title }) => {
   return createPortal(
     <Overlay onClick={closeModal}>
       <ModalStyled>
-        <Title>{title}</Title>
-        <CloseButton onClick={close}>
-          <Close />
-        </CloseButton>
+        <Container>
+          <Title>{title}</Title>
+          <CloseButton onClick={close}>
+            <Close />
+          </CloseButton>
+        </Container>
         {children}
       </ModalStyled>
     </Overlay>,
