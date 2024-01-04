@@ -4,19 +4,22 @@ import bgImgdesk from '../../images/mainPage/BgMainPage-desk.png';
 import bgImElemgdesk from '../../images/mainPage/BgElMainPage-desk.png';
 
 export const MainPageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  height: 100vh;
 
-  @media screen and (min-width: 768px) {
-    gap: 60px;
-  }
+  .mainPage-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    @media screen and (min-width: 768px) {
+      gap: 60px;
+    }
 
-  @media screen and (min-width: 1440px) {
-    flex-direction: row;
-    align-items: flex-end;
-    gap: 81px;
-    padding: 56px 0 0 110px;
+    @media screen and (min-width: 1440px) {
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 81px;
+      padding: 56px 0 0 110px;
+    }
   }
 `;
 
