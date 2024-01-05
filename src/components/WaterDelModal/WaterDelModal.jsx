@@ -29,11 +29,11 @@ export const WaterDelModal = ({ close, waterId }) => {
     <Content>
       <Question>Are you sure you want to delete the entry?</Question>
       <ButtonContainer>
-        <button className="deleteBtn delete" onClick={handleConfirmDelete}>
-          Delete
-        </button>
         <button className="deleteBtn" onClick={handleCancelClick}>
           Cancel
+        </button>
+        <button className="deleteBtn delete" onClick={handleConfirmDelete}>
+          Delete
         </button>
       </ButtonContainer>
     </Content>
