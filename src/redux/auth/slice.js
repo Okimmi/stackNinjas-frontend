@@ -92,6 +92,7 @@ const authSlice = createSlice({
     //rejected
     builder.addCase(refreshUser.rejected, (state, action) => {
       state.isRefreshing = false;
+      state.isError = action.payload;
     });
     builder.addCase(updateDailyNormal.rejected, (state, action) => {
       state.isRefreshing = false;
