@@ -60,7 +60,7 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    flex-basis: calc(50% - 48px);
+    flex-basis: calc((100% - 2 * 62px) / 2);
   }
 `;
 

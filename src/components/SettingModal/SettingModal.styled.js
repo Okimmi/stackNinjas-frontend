@@ -6,16 +6,16 @@ import { ReactComponent as Hide } from '../../images/SettingModal/icon_show_hide
 
 export const ModalContent = styled.div`
   @media screen and (max-width: 768px) {
-    min-width: 280px;
+    width: 256px;
     max-height: 100vh;
   }
 
   @media screen and (min-width: 768px) {
-    min-width: 704px;
+    width: 656px;
   }
 
   @media screen and (min-width: 1440px) {
-    min-width: 1008px;
+    width: 960px;
   }
 `;
 
