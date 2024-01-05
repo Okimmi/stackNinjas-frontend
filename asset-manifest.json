@@ -1,10 +1,17 @@
 {
   "files": {
-    "main.css": "/stackNinjas-frontend/static/css/main.8664b0ad.css",
-    "main.js": "/stackNinjas-frontend/static/js/main.834a15fd.js",
+    "main.css": "/stackNinjas-frontend/static/css/main.4e823938.css",
+    "main.js": "/stackNinjas-frontend/static/js/main.40dc2a0d.js",
+    "static/media/serhii-khabuzov.jpg": "/stackNinjas-frontend/static/media/serhii-khabuzov.015963b0f71b5748d478.jpg",
     "static/media/Roboto-Medium.ttf": "/stackNinjas-frontend/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/Roboto-Regular.ttf": "/stackNinjas-frontend/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
+    "static/media/yurii-petrovskyi.jpg": "/stackNinjas-frontend/static/media/yurii-petrovskyi.daf5017a90cc549dff0c.jpg",
     "static/media/Roboto-Bold.ttf": "/stackNinjas-frontend/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
+    "static/media/ivan-malakhovskyi.jpg": "/stackNinjas-frontend/static/media/ivan-malakhovskyi.ef1f07b21e36b2db9c12.jpg",
+    "static/media/alina-mitolap.jpg": "/stackNinjas-frontend/static/media/alina-mitolap.59aba5c9c1c3a6c7c2d8.jpg",
+    "static/media/olena-kim.jpg": "/stackNinjas-frontend/static/media/olena-kim.3ec5b8132b530e4faf16.jpg",
+    "static/media/natalia-yarema.jpg": "/stackNinjas-frontend/static/media/natalia-yarema.af2a3cd8ff7242c897b9.jpg",
+    "static/media/valentyna-marchenko.jpg": "/stackNinjas-frontend/static/media/valentyna-marchenko.a071e48269d213a59420.jpg",
     "static/media/Botle_Home.png": "/stackNinjas-frontend/static/media/Botle_Home.c961ca127c00af4ff220.png",
     "static/media/BgMainPage-tab.png": "/stackNinjas-frontend/static/media/BgMainPage-tab.0c4824a52fdfb0d79a06.png",
     "static/media/logo.svg": "/stackNinjas-frontend/static/media/logo.c26d3c0b5ece3e8563320496404cbbe3.svg",
@@ -41,15 +48,16 @@
     "static/media/user-logo-modal-logout.svg": "/stackNinjas-frontend/static/media/user-logo-modal-logout.1ab73ef24bbb64a7a3f18c7901172751.svg",
     "static/media/default_user_avatar.svg": "/stackNinjas-frontend/static/media/default_user_avatar.5aa40be1a916f097fa08b7a4b1fd49c7.svg",
     "static/media/main-page-statistic.svg": "/stackNinjas-frontend/static/media/main-page-statistic.39c6f2f5a0d69a5c53775d403cc20fbd.svg",
+    "static/media/footer-heart.svg": "/stackNinjas-frontend/static/media/footer-heart.52d7a5bb3355ca28196c650585233611.svg",
     "static/media/upload.svg": "/stackNinjas-frontend/static/media/upload.a522f37d5a6928d649f835e04a12332d.svg",
     "static/media/x.svg": "/stackNinjas-frontend/static/media/x.b9394abe38477bc28556bb36a7dddf85.svg",
     "static/media/pluss.svg": "/stackNinjas-frontend/static/media/pluss.a825844368d25850e9fa030c4bd74f44.svg",
     "static/media/PlusAdd.svg": "/stackNinjas-frontend/static/media/PlusAdd.f009a02ac759b50fd6c43db8c00baf79.svg",
-    "main.8664b0ad.css.map": "/stackNinjas-frontend/static/css/main.8664b0ad.css.map",
-    "main.834a15fd.js.map": "/stackNinjas-frontend/static/js/main.834a15fd.js.map"
+    "main.4e823938.css.map": "/stackNinjas-frontend/static/css/main.4e823938.css.map",
+    "main.40dc2a0d.js.map": "/stackNinjas-frontend/static/js/main.40dc2a0d.js.map"
   },
   "entrypoints": [
-    "static/css/main.8664b0ad.css",
-    "static/js/main.834a15fd.js"
+    "static/css/main.4e823938.css",
+    "static/js/main.40dc2a0d.js"
   ]
 }
