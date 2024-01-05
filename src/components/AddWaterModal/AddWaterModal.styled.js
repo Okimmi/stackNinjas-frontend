@@ -168,11 +168,13 @@ export const BtnSaveWrapper = styled.div`
   button {
     width: 100%;
     display: flex;
-    padding: 10px 30px;
     justify-content: center;
     align-items: center;
     outline: none;
     gap: 10px;
+    padding: 8px 30px;
+    font-size: 16px;
+    line-height: 1.25;
     border-radius: 10px;
     border: none;
     background: ${props => props.theme.colors.primeryBlue};
@@ -183,9 +185,7 @@ export const BtnSaveWrapper = styled.div`
       box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
       transition: opacity 0.3s ease;
     }
-    font-size: 18px;
     font-weight: 500;
-    line-height: 1.33;
     cursor: pointer;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
       box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -193,11 +193,12 @@ export const BtnSaveWrapper = styled.div`
   @media screen and (min-width: 768px) {
     gap: 24px;
     flex-direction: row;
-
     justify-content: flex-end;
-
     button {
       width: 160px;
+      font-size: 18px;
+      padding: 10px 30px;
+      line-height: 1.33;
     }
   }
 `;
@@ -283,8 +284,5 @@ export const TimeGlobalStyles = createGlobalStyle`
       border-top: 2px solid ${props => props.theme.colors.secondary5};
       border-bottom: 2px solid ${props => props.theme.colors.secondary5};
     
-}
-.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item{
-
 }
   `;

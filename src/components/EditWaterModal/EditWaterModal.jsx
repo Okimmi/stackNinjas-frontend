@@ -8,7 +8,6 @@ import {
   AmountText,
   BtnSaveWrapper,
   BtnWrapper,
-  FormStyled,
   StyledDateWrapper,
   StyledDecrementIcon,
   StyledIncrementIcon,
@@ -18,6 +17,7 @@ import {
 } from "../AddWaterModal/AddWaterModal.styled";
 import {
   EnteredText,
+  FormStyledIn,
   SvgGlass,
   TimeValue,
   WaterEditContainer,
@@ -101,7 +101,7 @@ const EditWaterModal = ({ data, close }) => {
           <StyledIncrementIcon aria-label="increment_button" />
         </button>
       </BtnWrapper>
-      <FormStyled>
+      <FormStyledIn>
         <label>
           Recording time:
           <StyledDateWrapper>
@@ -147,7 +147,7 @@ const EditWaterModal = ({ data, close }) => {
           <p>{counterValue}ml</p>
           <button onClick={handleSave}>Save</button>
         </BtnSaveWrapper>
-      </FormStyled>
+      </FormStyledIn>
     </ModalWrapper>
   );
 };

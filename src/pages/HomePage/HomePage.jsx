@@ -278,7 +278,7 @@ export const HomePage = () => {
         </Modal>
       )}
       {showEditWaterModal && (
-        <Modal close={editWaterModalShow} title={'Edit water'}>
+        <Modal close={editWaterModalShow} title={'Edit the entered amount of water'}>
           <EditWaterModal data={dataForEditModal} close={editWaterModalShow} />
         </Modal>
       )}

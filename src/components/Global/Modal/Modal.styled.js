@@ -48,6 +48,11 @@ export const Title = styled.h2`
   font-size: 26px;
   font-weight: 500;
   line-height: 1.23;
+  max-width: 200px;
+
+  @media screen and (min-width: 768px) {
+    min-width: 384px;
+  }
 `;
 
 export const Container = styled.div`
