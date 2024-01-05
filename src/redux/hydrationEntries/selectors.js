@@ -3,7 +3,7 @@ export const selectEntiesToday = state => state.hydrationEntries.items;
 
 export const selectProgress = state => state.hydrationEntries.progress;
 
-export const selectEntiesMonth = state => state.hydrationEntries.itemsMonth;
+export const selectEntriesMonth = state => state.hydrationEntries.itemsMonth;
 
 export const selectLoading = state => state.hydrationEntries.loading;
 

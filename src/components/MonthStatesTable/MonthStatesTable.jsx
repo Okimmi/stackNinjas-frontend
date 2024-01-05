@@ -9,7 +9,10 @@ import {
   PaginationBTN,
   PaginationBtnRight,
 } from './MonsStateTable.Styled';
-import { selectEntiesMonth, selectEntiesToday } from '../../redux/hydrationEntries/selectors';
+import {
+  selectEntriesMonth,
+  selectEntiesToday,
+} from '../../redux/hydrationEntries/selectors';
 import { getMonthProgressThunk } from '../../redux/hydrationEntries/operations';
 import { DayState } from 'components/DayState/DayState';
 import { calendarData, findData, daysInMonth } from './helpers';
@@ -26,7 +29,7 @@ export const MonthStatesTable = () => {
   const [targetElement, setTargetElement] = useState(null);
   const [position, setPosition] = useState(0);
   const dispatch = useDispatch();
-  const monthState = useSelector(selectEntiesMonth);
+  const monthState = useSelector(selectEntriesMonth);
   const dayState = useSelector(selectEntiesToday);
 
   useEffect(() => {
@@ -44,7 +47,6 @@ export const MonthStatesTable = () => {
   };
 
   const closeModal = () => setTargetElement(null);
-
 
   const incrementMonth = () => {
     const newDate = subtractMonths(new Date(today), -1);

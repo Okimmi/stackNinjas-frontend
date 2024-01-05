@@ -2,9 +2,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
 import { useState } from 'react';
 import Notiflix from 'notiflix';
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 
-import { addEntryThunk, getTodayEntriesThunk } from "../../redux/hydrationEntries/operations";
+import { addEntryThunk } from '../../redux/hydrationEntries/operations';
 
 import {
   AmountText,
@@ -16,10 +16,10 @@ import {
   StyledIncrementIcon,
   TimeGlobalStyles,
   ValueText,
-  ModalWrapper
+  ModalWrapper,
 } from './AddWaterModal.styled';
 
-const AddWaterModal = ({close}) => {
+const AddWaterModal = ({ close }) => {
   const [value, setValue] = useState(0);
   const [time, setTime] = useState(new Date());
 
@@ -58,17 +58,13 @@ const AddWaterModal = ({close}) => {
     const saveWater = { amount: value, time: newTime };
 
     dispatch(addEntryThunk(saveWater))
-    .then(() => {
-      Notiflix.Notify.success("Water value added successfully!");
-      dispatch(getTodayEntriesThunk());
-      close()
-    })
-    .catch((error) => {
-      Notiflix.Notify.failure(
-        `Failed to add water value: ${error.message}`
-      );
-    });
-
+      .then(() => {
+        Notiflix.Notify.success('Water value added successfully!');
+        close();
+      })
+      .catch(error => {
+        Notiflix.Notify.failure(`Failed to add water value: ${error.message}`);
+      });
   };
 
   return (

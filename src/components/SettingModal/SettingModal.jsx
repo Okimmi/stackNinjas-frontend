@@ -10,7 +10,7 @@ export const SettingModal = ({ isModalOpen, onModalClose }) => {
         <Modal close={onModalClose} title={'Setting'}>
           <ModalContent>
             <UploadPhoto />
-            <FormModal />
+            <FormModal close={onModalClose} />
           </ModalContent>
         </Modal>
       )}

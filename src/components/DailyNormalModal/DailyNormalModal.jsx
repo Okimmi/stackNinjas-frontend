@@ -1,13 +1,12 @@
-import React, { useEffect, } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, FormikProvider, useFormik } from 'formik';
 
 import * as Yup from 'yup';
-import { toast } from 'react-toastify';
 
 // redux-auth
 import { updateDailyNormal } from '../../redux/auth/operations';
-import { selectIsError, selectUser, } from '../../redux/auth/selectors';
+import { selectIsError, selectUser } from '../../redux/auth/selectors';
 
 // components
 import Modal from 'components/Global/Modal/Modal';
@@ -39,6 +38,7 @@ import {
   SubTitle,
   Text,
 } from './DailyNormalModal.styled';
+import Notiflix from 'notiflix';
 
 // const modalPlace = document.querySelector('#modal-root');
 
@@ -47,16 +47,15 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
 
   const error = useSelector(selectIsError);
   const authetification = useSelector(selectUser);
-  const initialDailyNorma = (dailyNormalVolume ?? authetification.dailyWaterRequirement ?? 2) / 1000;
-  
+  const initialDailyNorma =
+    (dailyNormalVolume ?? authetification.dailyWaterRequirement ?? 2) / 1000;
 
   useEffect(() => {
     if (!authetification) return;
-    if (error) return toast.error(error.message);
-    
-  }, [authetification, error, dispatch,]);
+    if (error) return Notiflix.Notify.failure(`${error}`);
+  }, [authetification, error, dispatch]);
 
-    // ==== configFormik
+  // ==== configFormik
   const configFormik = useFormik({
     initialValues: {
       gender: '',
@@ -67,21 +66,21 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
     onSubmit: async values => handleSubmit(values),
     validationSchema: Yup.object({
       gender: Yup.string(),
-      weight: Yup
-        .number('Only number')
+      weight: Yup.number('Only number')
         .integer('Only integer number')
         .positive('Only positive')
         .lessThan(700, 'You have a lot hard weigth')
         .required('Required'),
-      activeTraningHours: Yup
-        .number('Only number')
+      activeTraningHours: Yup.number('Only number')
         .positive('Only positive')
         .lessThan(24, 'You cannot active more 24 hours')
         .integer('Only integer number'),
-      waterVolume: Yup.number().lessThan(15, 'You can could drown in that much water'),
+      waterVolume: Yup.number().lessThan(
+        15,
+        'You can could drown in that much water'
+      ),
     }),
   });
-
 
   // Press Save
   const handleSubmit = async values => {
@@ -89,47 +88,52 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
     dispatch(updateDailyNormal({ dailyWaterRequirement: waterVolume * 1000 }));
 
     if (!error) {
-      toast.success('Goal set! Stay hydrated and track your progress!');
-      console.log('Goal set! Stay hydrated and track your progress!');
-      
-      setTimeout(() => { closeModal(); }, 3000);
+      Notiflix.Notify.success(
+        'Goal set! Stay hydrated and track your progress!'
+      );
+
+      setTimeout(() => {
+        closeModal();
+      }, 3000);
     }
   };
-  
-  
+
   return (
     <>
-      <Modal 
-          close={closeModal} 
-          closeModal={closeModal} 
-          title={'My daily norma'}
-          // portalParent={modalPlace}
-        >
-        <ContainerForModal>      
-
+      <Modal
+        close={closeModal}
+        closeModal={closeModal}
+        title={'My daily norma'}
+        // portalParent={modalPlace}
+      >
+        <ContainerForModal>
           <BoxFormula>
             <ListFormula>
               <ItemFormula>
                 <Formula>
                   For girl:&nbsp;
-                  <FormulaColorText>V=(M*0,03)&nbsp;+&nbsp;(T*0,4)</FormulaColorText>
+                  <FormulaColorText>
+                    V=(M*0,03)&nbsp;+&nbsp;(T*0,4)
+                  </FormulaColorText>
                 </Formula>
               </ItemFormula>
 
               <ItemFormula>
                 <Formula>
                   For man:&nbsp;
-                  <FormulaColorText>V=(M*0,04)&nbsp;+&nbsp;(T*0,6)</FormulaColorText>
+                  <FormulaColorText>
+                    V=(M*0,04)&nbsp;+&nbsp;(T*0,6)
+                  </FormulaColorText>
                 </Formula>
               </ItemFormula>
             </ListFormula>
 
             <BoxTextPostScriptum>
               <PSText>
-                <MarkPSText>*&nbsp;</MarkPSText>V is the volume of the water norm
-                in liters per day, M is your body weight, T is the time of active
-                sports, or another type of activity commensurate in terms of loads
-                (in the absence of these, you must set 0)
+                <MarkPSText>*&nbsp;</MarkPSText>V is the volume of the water
+                norm in liters per day, M is your body weight, T is the time of
+                active sports, or another type of activity commensurate in terms
+                of loads (in the absence of these, you must set 0)
               </PSText>
             </BoxTextPostScriptum>
           </BoxFormula>
@@ -209,9 +213,10 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
                 </BoxWaterDrink>
 
                 <BoxButton>
-                  <ButtonSave type="submit" onSubmit={handleSubmit}>Save</ButtonSave>
+                  <ButtonSave type="submit" onSubmit={handleSubmit}>
+                    Save
+                  </ButtonSave>
                 </BoxButton>
-
               </BoxForm>
             </Form>
           </FormikProvider>
