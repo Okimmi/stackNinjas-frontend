@@ -1,4 +1,3 @@
-// import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -10,7 +9,7 @@ import {
   PaginationBTN,
   PaginationBtnRight,
 } from './MonsStateTable.Styled';
-import { selectEntiesMonth } from '../../redux/hydrationEntries/selectors';
+import { selectEntiesMonth, selectEntiesToday } from '../../redux/hydrationEntries/selectors';
 import { getMonthProgressThunk } from '../../redux/hydrationEntries/operations';
 import { DayState } from 'components/DayState/DayState';
 import { calendarData, findData, daysInMonth } from './helpers';
@@ -28,6 +27,7 @@ export const MonthStatesTable = () => {
   const [position, setPosition] = useState(0);
   const dispatch = useDispatch();
   const monthState = useSelector(selectEntiesMonth);
+  const dayState = useSelector(selectEntiesToday);
 
   useEffect(() => {
     dispatch(
@@ -36,7 +36,7 @@ export const MonthStatesTable = () => {
         month: date.getMonth() + 1,
       })
     );
-  }, [dispatch]);
+  }, [dispatch, dayState]);
 
   const toggleModal = (id, position) => {
     setTargetElement(prev => (prev === id ? 0 : id));
@@ -45,16 +45,6 @@ export const MonthStatesTable = () => {
 
   const closeModal = () => setTargetElement(null);
 
-  // const getMonthState = async ({ month, year }) => {
-  //   try {
-  //     const response = await $instance.get(
-  //       `/api/hydration-entries//month-progress?month=${month + 1}&year=${year}`
-  //     );
-  //     setMonthState(response.data);
-  //   } catch (error) {
-  //     toast.error('Oops! Something went wrong! Try reloading the page!');
-  //   }
-  // };
 
   const incrementMonth = () => {
     const newDate = subtractMonths(new Date(today), -1);

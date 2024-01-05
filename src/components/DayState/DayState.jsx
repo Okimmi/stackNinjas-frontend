@@ -1,4 +1,3 @@
-// import { useEffect, useState } from 'react';
 import { DaysGeneralStats } from 'components/DaysGeneralStats/DaysGeneralStats';
 import {
   DateWrapper,
@@ -6,7 +5,7 @@ import {
   DailyProgress,
   CalendarItem,
 } from './DayState.Styled';
-// import { useState } from 'react';
+
 
 export const DayState = props => {
   const {
@@ -22,8 +21,7 @@ export const DayState = props => {
   } = props;
   const handleModal = e => {
     e.stopPropagation();
-    const { y: yPosition } = e.target.getBoundingClientRect();
-    toggleModal(day, Math.round(yPosition));
+    toggleModal(day, e.target.offsetTop);
   };
   
   return (
