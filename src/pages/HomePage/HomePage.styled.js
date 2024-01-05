@@ -150,9 +150,7 @@ export const ImgBottle = styled.img`
     right: 0;
     bottom: 0;
     z-index: -1;
-  }
-  
-}
+  }  
 `;
 
 
@@ -530,13 +528,19 @@ export const DivListItem = styled.div`
     height: 1px;
     background: ${theme.colors.secondary6};
     position: absolute;
-    top: 133%; 
+    top: 100%; 
     z-index: 2;
     @media screen and (min-width: 768px) {
       width: 646px;
     }
   }
-  margin-bottom: 24px;
+  /* margin-bottom: 24px; */
+  padding-top: 12px;
+  padding-bottom: 12px;
+`;
+
+export const DivListItemIsDragging = styled(DivListItem)`
+  background-color: rgba(0, 0, 0, 0.4);
 `;
 
 export const DivTodayAndButton = styled.div`
@@ -625,7 +629,7 @@ export const Div2 = styled.div`
 // `
 
 export const PDiv = styled.p`
-  color: ${theme.colors.primeryBlue}
+  color: ${theme.colors.primeryBlue};
 `;
 
 export const ImgPlus = styled.img`
