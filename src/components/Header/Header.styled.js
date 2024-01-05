@@ -32,6 +32,10 @@ export const HeaderWrap = styled.div`
   align-items: center;
   width: 100%;
   height: 48px;
+  
+  @media screen and (min-width: 320px) {
+    width: 280px;
+  }
 
   @media screen and (min-width: 320px) {
     width: 280px;
