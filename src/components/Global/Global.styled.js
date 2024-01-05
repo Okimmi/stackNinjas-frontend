@@ -1,3 +1,5 @@
+import { theme } from 'components/GlobalStyle';
+import Notiflix from 'notiflix';
 import { styled } from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -25,3 +27,20 @@ export const Wrapper = styled.div`
     padding: 20px 112px 44px 112px;
   }
 `;
+
+Notiflix.Notify.init({
+  fontSize: '16px',
+  timeout: 3000,
+  fontFamily: 'Roboto',
+  clickToClose: true,
+  cssAnimationStyle: 'from-right',
+  success: {
+    background: theme.colors.primeryBlue,
+  },
+  warning: {
+    background: theme.colors.secondary5,
+  },
+  failure: {
+    background: theme.colors.secondary3,
+  },
+});

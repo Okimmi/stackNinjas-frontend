@@ -32,7 +32,12 @@ export const App = () => {
             index
             element={isLoggedIn ? <HomePage /> : <MainPage />}
           ></Route>
-          <Route path="/signup" element={<SignUpPage />} />
+          <Route
+            path="/signup"
+            element={
+              <RestrictedRoute redirectTo="/" component={<SignUpPage />} />
+            }
+          />
           <Route
             path="/signin"
             element={
@@ -48,7 +53,10 @@ export const App = () => {
               />
             }
           />
-          <Route path="/forgot-password/:restorePasswordToken" element={<RestorePass/>} />
+          <Route
+            path="/forgot-password/:restorePasswordToken"
+            element={<RestorePass />}
+          />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>

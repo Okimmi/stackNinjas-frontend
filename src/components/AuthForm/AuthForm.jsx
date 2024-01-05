@@ -1,8 +1,6 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import {
   BackgroundImg,
   BackgroundImg320,
@@ -25,6 +23,7 @@ import iconeye from '../../images/AuthForm/show_icon.svg';
 import hidepas from '../../images/AuthForm/hide_icon.svg';
 import { useEffect, useState } from 'react';
 import { selectIsError } from '../../redux/auth/selectors';
+import Notiflix from 'notiflix';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -44,6 +43,7 @@ const SignupSchema = Yup.object().shape({
 export const AuthForm = () => {
   const error = useSelector(selectIsError);
   const [showPassword, setShowPassword] = useState(false);
+  const [sendForm, setSendForm] = useState(false);
 
   const [screenSize, setScreenSize] = useState({
     isDesctopScreen: typeof window !== 'undefined' && window.innerWidth >= 1440,
@@ -53,9 +53,6 @@ export const AuthForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    toast.error(error);
-  }, [error]);
   useEffect(() => {
     const handleWindowResize = () => {
       setScreenSize({
@@ -71,6 +68,25 @@ export const AuthForm = () => {
     };
   }, [screenSize]);
 
+  useEffect(() => {
+    if (sendForm && error) {
+      Notiflix.Notify.failure(`${error}`);
+    }
+
+    setSendForm(false);
+  }, [error, sendForm]);
+
+  const handleSubmit = async (values, action) => {
+    await dispatch(
+      logIn({
+        email: values.email,
+        password: values.password,
+      })
+    );
+    action.resetForm();
+    setSendForm(true);
+  };
+
   return (
     <>
       <SightInContainer>
@@ -80,15 +96,7 @@ export const AuthForm = () => {
             password: '',
           }}
           validationSchema={SignupSchema}
-          onSubmit={(values, action) => {
-            action.resetForm();
-            dispatch(
-              logIn({
-                email: values.email,
-                password: values.password,
-              })
-            );
-          }}
+          onSubmit={handleSubmit}
         >
           <StyledForm>
             <h2>Sign In</h2>
@@ -128,8 +136,10 @@ export const AuthForm = () => {
             <ErMsg component="span" name="password" />
             <FormBtnStyled type="submit">Sign In</FormBtnStyled>
             <BottomBtnBox>
-            <SightUp onClick={() => navigate('/signup')}>Sign up</SightUp>
-            <SightUp onClick={() => navigate('/change-password')}>Forgot Password</SightUp>
+              <SightUp onClick={() => navigate('/signup')}>Sign up</SightUp>
+              <SightUp onClick={() => navigate('/change-password')}>
+                Forgot Password
+              </SightUp>
             </BottomBtnBox>
           </StyledForm>
         </Formik>
@@ -137,20 +147,7 @@ export const AuthForm = () => {
         {screenSize.isTabletScreen && <BottleTablet />}
         {screenSize.isMobileScreen && <BottleMobil />}
       </SightInContainer>
-      {screenSize.isMobileScreen ? <BackgroundImg320 /> : <BackgroundImg/>}
-
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
+      {screenSize.isMobileScreen ? <BackgroundImg320 /> : <BackgroundImg />}
     </>
   );
 };

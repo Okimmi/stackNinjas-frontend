@@ -1,6 +1,5 @@
-import styled from "styled-components";
-import Notiflix from "notiflix";
-import { ReactComponent as GlassSvg } from "../../icons/glass_of_water.svg";
+import styled from 'styled-components';
+import { ReactComponent as GlassSvg } from '../../icons/glass_of_water.svg';
 
 export const ModalWrapper = styled.div`
   width: 256px;
@@ -89,18 +88,3 @@ export const FormStyledIn = styled.form`
     }
   }
 `;
-
-Notiflix.Notify.init({
-  timeout: 2000,
-  fontFamily: "Roboto",
-  success: {
-    background: "#407bff",
-    timeout: 8000,
-    textColor: "#d7e3ff",
-    childClassName: "notiflix-notify-success",
-    notiflixIconColor: "rgba(0,0,0,0.2)",
-    fontAwesomeClassName: "fas fa-exclamation-circle",
-    fontAwesomeIconColor: "rgba(0,0,0,0.4)",
-    backOverlayColor: "rgba(238,191,49,0.2)",
-  },
-});

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Notify } from 'notiflix';
 import { createGlobalStyle } from 'styled-components';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ReactComponent as IncrementIcon } from '../../icons/pluss.svg';
@@ -202,20 +201,6 @@ export const BtnSaveWrapper = styled.div`
     }
   }
 `;
-
-Notify.init({
-  timeout: 2000,
-  warning: {
-    background: '#ff9d43',
-    timeout: 8000,
-    textColor: '#ffffff',
-    childClassName: 'notiflix-notify-warning',
-    notiflixIconColor: 'rgba(0,0,0,0.2)',
-    fontAwesomeClassName: 'fas fa-exclamation-circle',
-    fontAwesomeIconColor: 'rgba(0,0,0,0.2)',
-    backOverlayColor: 'rgba(238,191,49,0.2)',
-  },
-});
 
 export const StyledDateWrapper = styled.div`
   position: relative;
