@@ -478,6 +478,7 @@ export const ButtonEdit = styled.button`
   padding: 0;
   cursor: pointer;
   position: relative;
+  background: none;
   &:hover, &:focus{
     &::after {
       content: ''; 
@@ -498,6 +499,7 @@ export const ButtonDelete = styled.button`
   margin-left: 18px;
   padding: 0;
   cursor: pointer;
+  background: none;
   &:hover, &:focus{
     &::after {
       content: ''; 
