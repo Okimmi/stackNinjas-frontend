@@ -40,8 +40,8 @@ import {
 import plus from '../../icons/Plus.svg';
 import plusAdd from '../../icons/PlusAdd.svg';
 import glass from '../../icons/Glass.svg';
-import edit from '../../icons/Edit.svg';
-import delet from '../../icons/Delete.svg';
+import edit from '../../icons/Pencil.svg';
+import delet from '../../icons/Trash.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectDailyWaterRequirement,
@@ -215,6 +215,7 @@ export const HomePage = () => {
                       <ImgGlass
                         src={glass}
                         width={26}
+                        
                         height={26}
                         alt="Glass"
                       />
@@ -242,6 +243,7 @@ export const HomePage = () => {
                           src={delet}
                           width={14}
                           height={14}
+                          fill-opacity='0'
                           alt="Delete"
                         />
                       </ButtonDelete>
