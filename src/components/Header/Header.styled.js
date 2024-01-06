@@ -30,8 +30,16 @@ export const HeaderWrap = styled.div`
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  width: 280px;
+  width: 100%;
   height: 48px;
+  
+  @media screen and (min-width: 320px) {
+    width: 280px;
+  }
+
+  @media screen and (min-width: 320px) {
+    width: 280px;
+  }
 
   @media screen and (min-width: 768px) {
     width: 704px;

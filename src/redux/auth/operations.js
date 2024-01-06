@@ -1,10 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { $instance } from '../constants';
-
-
-import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
-
 const setAuthHeader = token => {
   $instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -15,10 +10,9 @@ const clearAuthHeader = () => {
 export const register = createAsyncThunk(
   'auth/register',
   async (newUser, thunkAPI) => {
-    console.log(newUser);
     try {
       const res = await $instance.post('/api/auth/signup', newUser);
-      setAuthHeader(res.data.token);
+
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
@@ -131,24 +125,11 @@ export const updateUserData = createAsyncThunk(
   }
 );
 
-export const  restoreUserPass = createAsyncThunk(
+export const restoreUserPass = createAsyncThunk(
   'auth/restoreUserPass',
   async (data, thunkAPI) => {
     try {
       const res = await $instance.post('/api/auth/restore-password', data);
-   
-      if (res.status === 200) {
-        toast.success(`${res.data.message}`, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          });
-        }
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
@@ -156,31 +137,23 @@ export const  restoreUserPass = createAsyncThunk(
   }
 );
 
-export const  newUserPass = createAsyncThunk(
+export const newUserPass = createAsyncThunk(
   'auth/restoreUserPass',
-  async ({token, password}, thunkAPI) => {
+  async ({ token, password }, thunkAPI) => {
     try {
-      const res = await $instance.patch(`/api/auth/restore-password/${token}`, { password });
-      if (res.status === 200) {
-        toast.success(`${res.data.message}`, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          });
-        }
+      const res = await $instance.patch(`/api/auth/restore-password/${token}`, {
+        password,
+      });
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
+
 
 export const GooglelogIn = () => {
   window.location.href = 'http://localhost:3000/api/auth/google';
 };
+
 

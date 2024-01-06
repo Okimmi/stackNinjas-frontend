@@ -33,11 +33,11 @@ export const UserLogoutModal = ({ close }) => {
     <Content>
       <Question>Do you really want to leave?</Question>
       <ButtonContainer>
-        <button className="logoutBtn logout" onClick={handleConfirmLogout}>
-          Log out
-        </button>
         <button className="logoutBtn" onClick={handleCancelClick}>
           Cancel
+        </button>
+        <button className="logoutBtn logout" onClick={handleConfirmLogout}>
+          Log out
         </button>
       </ButtonContainer>
     </Content>

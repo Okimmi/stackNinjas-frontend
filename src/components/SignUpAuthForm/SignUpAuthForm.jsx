@@ -3,9 +3,6 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../../redux/auth/operations';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 import iconeye from '../../images/AuthForm/show_icon.svg';
 import hidepas from '../../images/AuthForm/hide_icon.svg';
 import { useEffect, useState } from 'react';
@@ -25,6 +22,7 @@ import {
   Styledlabel,
 } from 'components/AuthForm/AuthForm.styled';
 import { selectIsError } from '../../redux/auth/selectors';
+import Notiflix from 'notiflix';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -46,6 +44,7 @@ const SignupSchema = Yup.object().shape({
 
 export const SignUpAuthForm = () => {
   const error = useSelector(selectIsError);
+  const [sendForm, setSendForm] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
   const [screenSize, setScreenSize] = useState({
@@ -70,6 +69,17 @@ export const SignUpAuthForm = () => {
       window.removeEventListener('resize', handleWindowResize);
     };
   }, [screenSize]);
+
+  useEffect(() => {
+    if (sendForm && error) {
+      Notiflix.Notify.failure(`${error}`);
+    } else if (sendForm && !error) {
+      navigate('/signin');
+    }
+
+    setSendForm(false);
+  }, [error, sendForm, navigate]);
+
   return (
     <>
       <SightInContainer>
@@ -80,18 +90,16 @@ export const SignUpAuthForm = () => {
             passwordRepeat: '',
           }}
           validationSchema={SignupSchema}
-          onSubmit={(values, action) => {
+          onSubmit={async (values, action) => {
             action.resetForm();
-            dispatch(
+            await dispatch(
               register({
                 email: values.email,
                 password: values.password,
               })
             );
-            toast.error(error);
-            if (!error) {
-              navigate('/signin');
-            }
+
+            setSendForm(true);
           }}
         >
           <StyledForm>
@@ -171,19 +179,6 @@ export const SignUpAuthForm = () => {
         {screenSize.isMobileScreen && <BottleMobil />}
       </SightInContainer>
       {screenSize.isMobileScreen ? <BackgroundImg320 /> : <BackgroundImg />}
-
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </>
   );
 };

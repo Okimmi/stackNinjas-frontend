@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import {
   Container,
@@ -20,11 +20,11 @@ import {
 import { EyeIcon, HideIcon, Title, ToggleIcon } from '../SettingModal.styled';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../../redux/auth/selectors';
+import { selectIsError, selectUser } from '../../../redux/auth/selectors';
 import { updateUserData } from '../../../redux/auth/operations';
 
-import { ToastContainer, toast } from 'react-toastify';
 import { Field, Formik } from 'formik';
+import Notiflix from 'notiflix';
 
 const isValueRequired = (value, referenceValue) => {
   return (
@@ -85,17 +85,19 @@ const updateUserInfoSchema = yup.object().shape({
     .oneOf([yup.ref('password'), null], 'Passwords must match'),
 });
 
-export const FormModal = () => {
+export const FormModal = ({ close }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [sendForm, setSendForm] = useState(false);
 
   const user = useSelector(selectUser);
+  const error = useSelector(selectIsError);
   const dispatch = useDispatch();
 
   const toggle = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     const { passwordRepeat, ...restFields } = values;
 
     const filledFields = Object.fromEntries(
@@ -109,14 +111,27 @@ export const FormModal = () => {
     );
 
     if (!hasChanges) {
-      toast.warning('No changes made. Profile data remains the same.');
+      Notiflix.Notify.warning(
+        'No changes made. Profile data remains the same.'
+      );
       return;
     }
 
-    dispatch(updateUserData(filledFields));
+    await dispatch(updateUserData(filledFields));
+    setSendForm(true);
     resetForm();
-    toast.success('Your profile data was successfully updated');
   };
+
+  useEffect(() => {
+    if (sendForm && error) {
+      Notiflix.Notify.failure(`${error}`);
+    } else if (sendForm && !error) {
+      Notiflix.Notify.success('Your profile data was successfully updated');
+      close();
+    }
+
+    setSendForm(false);
+  }, [error, sendForm, close]);
 
   return (
     <>
@@ -266,7 +281,6 @@ export const FormModal = () => {
           </FormUser>
         )}
       </Formik>
-      <ToastContainer />
     </>
   );
 };

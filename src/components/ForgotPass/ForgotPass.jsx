@@ -1,8 +1,6 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import {
   BackgroundImg,
   BackgroundImg320,
@@ -19,9 +17,10 @@ import {
   Styledlabel,
 } from 'components/AuthForm/AuthForm.styled';
 import { useNavigate } from 'react-router-dom';
-import {  restoreUserPass } from '../../redux/auth/operations';
+import { restoreUserPass } from '../../redux/auth/operations';
 import { useEffect, useState } from 'react';
 import { selectIsError } from '../../redux/auth/selectors';
+import Notiflix from 'notiflix';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -33,93 +32,86 @@ const SignupSchema = Yup.object().shape({
     .required('Required'),
 });
 
-
 export const ForgotPass = () => {
+  const error = useSelector(selectIsError);
+  const [sendForm, setSendForm] = useState(false);
 
-    const error = useSelector(selectIsError);
-    
-    const dispatch = useDispatch();
-    const [screenSize, setScreenSize] = useState({
-      isDesctopScreen: typeof window !== 'undefined' && window.innerWidth >= 1440,
-      isTabletScreen: window.innerWidth >= 768 && window.innerWidth < 1440,
-      isMobileScreen: window.innerWidth  < 768,
-    });
-    const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [screenSize, setScreenSize] = useState({
+    isDesctopScreen: typeof window !== 'undefined' && window.innerWidth >= 1440,
+    isTabletScreen: window.innerWidth >= 768 && window.innerWidth < 1440,
+    isMobileScreen: window.innerWidth < 768,
+  });
+  const navigate = useNavigate();
 
-  
-    useEffect(() => {
-      toast.error(error);
-    }, [error]);
+  useEffect(() => {
+    if (sendForm && error) {
+      Notiflix.Notify.failure(`${error}`);
+    } else if (sendForm && !error) {
+      Notiflix.Notify.success(
+        'Password reset link sent to your email. Check your inbox.'
+      );
+      setTimeout(() => {
+        if (!error) {
+          navigate('/signin');
+        }
+      }, 3000);
+    }
 
-    useEffect(() => {
-      const handleWindowResize = () => {
-        setScreenSize({
-          isDesctopScreen: window.innerWidth >= 1440,
-          isTabletScreen: window.innerWidth >= 768 && window.innerWidth < 1440,
-          isMobileScreen: window.innerWidth  < 768,
-        });
-      };
-  
-      window.addEventListener('resize', handleWindowResize);
-      return () => {
-        window.removeEventListener('resize', handleWindowResize);
-      };
-    }, [screenSize]);
-  
-    return (
-      <>
-        <SightInContainer>
-          <Formik
-            initialValues={{
-              email: '',
-            }}
-            validationSchema={SignupSchema}
-            onSubmit={(values, action) => {
-              
-              action.resetForm();
-              dispatch(
-                restoreUserPass({
-                  email: values.email,
-                }))
-                toast.error(error);
-                if (!error) {
-                  navigate('/signin');
-                }
-            }}
-          >
-            <StyledForm>
-              <h2>Fogot Password?</h2>
-              <Styledlabel htmlFor="email">Enter your email</Styledlabel>
-              <StyledField id="email" name="email" placeholder="E-mail" />
-              <ErMsg component="span" name="email" />
+    setSendForm(false);
+  }, [error, sendForm, navigate]);
 
-  
-              <ErMsg component="span" name="password" />
-              <FormBtnStyled type="submit">Send</FormBtnStyled>
-              <BottomBtnBox>
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setScreenSize({
+        isDesctopScreen: window.innerWidth >= 1440,
+        isTabletScreen: window.innerWidth >= 768 && window.innerWidth < 1440,
+        isMobileScreen: window.innerWidth < 768,
+      });
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, [screenSize]);
+
+  return (
+    <>
+      <SightInContainer>
+        <Formik
+          initialValues={{
+            email: '',
+          }}
+          validationSchema={SignupSchema}
+          onSubmit={async (values, action) => {
+            action.resetForm();
+            await dispatch(
+              restoreUserPass({
+                email: values.email,
+              })
+            );
+            setSendForm(true);
+          }}
+        >
+          <StyledForm>
+            <h2>Fogot Password?</h2>
+            <Styledlabel htmlFor="email">Enter your email</Styledlabel>
+            <StyledField id="email" name="email" placeholder="E-mail" />
+            <ErMsg component="span" name="email" />
+
+            <ErMsg component="span" name="password" />
+            <FormBtnStyled type="submit">Send</FormBtnStyled>
+            <BottomBtnBox>
               <SightUp onClick={() => navigate('/signup')}>Sign up</SightUp>
-              </BottomBtnBox>
-            </StyledForm>
-          </Formik>
-          {screenSize.isDesctopScreen && <BottleStyled />}
+            </BottomBtnBox>
+          </StyledForm>
+        </Formik>
+        {screenSize.isDesctopScreen && <BottleStyled />}
         {screenSize.isTabletScreen && <BottleTablet />}
         {screenSize.isMobileScreen && <BottleMobil />}
       </SightInContainer>
-      {screenSize.isMobileScreen ? <BackgroundImg320 /> : <BackgroundImg/>}
-  
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-        />
-      </>
-    );
-
-}
+      {screenSize.isMobileScreen ? <BackgroundImg320 /> : <BackgroundImg />}
+    </>
+  );
+};

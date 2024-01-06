@@ -1,5 +1,4 @@
 import styled from "styled-components";
-// import { ReactComponent as BtnLeft} from '../../images/month/BtnLeft.svg';
 import { ReactComponent as BtnRight} from '../../images/month/BtnRight.svg';
 const disableBTN = props=>{return props.disabled? "grey": props.theme.colors.primeryBlue}
 
@@ -20,7 +19,6 @@ color: ${(props) =>props.theme.colors.primeryBlack};
 export const Pagination = styled.div `
 display: flex;
 gap: 12px;
-/* align-items: baseline; */
 align-content: baseline;
 `
 

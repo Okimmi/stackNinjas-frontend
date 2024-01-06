@@ -9,7 +9,6 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from '../redux/hooks/useAuth';
 import { refreshUser } from '../redux/auth/operations.js';
 import { useEffect } from 'react';
-import Loader from './Loader/Loader';
 import { HomePage } from 'pages/HomePage/HomePage';
 import { MainPage } from 'pages/MainPage/MainPage';
 import { RestorePass } from './RestorePass/RestorePass';
@@ -17,7 +16,7 @@ import { Redirect } from './AuthForm/redirect';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing, isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   
   useEffect(() => {
@@ -25,9 +24,13 @@ export const App = () => {
   }, [dispatch]);
 
 
+
   return isRefreshing ? (
     <Loader />
   ) : (
+
+  return (
+
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
@@ -35,7 +38,12 @@ export const App = () => {
             index
             element={isLoggedIn ? <HomePage /> : <MainPage />}
           ></Route>
-          <Route path="/signup" element={<SignUpPage />} />
+          <Route
+            path="/signup"
+            element={
+              <RestrictedRoute redirectTo="/" component={<SignUpPage />} />
+            }
+          />
           <Route
             path="/signin"
             element={
@@ -51,6 +59,7 @@ export const App = () => {
               />
             }
           />
+
             <Route
             path="/current/:accessToken"
             element={
@@ -61,6 +70,12 @@ export const App = () => {
             }
           />
           <Route path="/forgot-password/:restorePasswordToken" element={<RestorePass/>} />
+
+          <Route
+            path="/forgot-password/:restorePasswordToken"
+            element={<RestorePass />}
+          />
+
           <Route path="*" element={<Navigate to="/" />} />
           
         </Route>

@@ -22,7 +22,7 @@ export const Question = styled.p`
 
 export const ButtonContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   width: 100%;
   align-items: center;
   gap: 24px;
