@@ -78,15 +78,19 @@ const authSlice = createSlice({
       state.isError = null;
     });
     builder.addCase(register.pending, state => {
+      state.isRefreshing = true;
       state.isError = null;
     });
     builder.addCase(logIn.pending, state => {
+      state.isRefreshing = true;
       state.isError = null;
     });
     builder.addCase(updateUserData.pending, state => {
+      state.isRefreshing = true;
       state.isError = null;
     });
     builder.addCase(restoreUserPass.pending, state => {
+      state.isRefreshing = true;
       state.isError = null;
     });
     //rejected
@@ -107,6 +111,7 @@ const authSlice = createSlice({
       state.isError = action.payload;
     });
     builder.addCase(updateAvatar.rejected, (state, action) => {
+      state.isRefreshing = false;
       state.isError = action.payload;
     });
     builder.addCase(updateUserData.rejected, (state, action) => {

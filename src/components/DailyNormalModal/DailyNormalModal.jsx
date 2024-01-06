@@ -91,10 +91,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
       Notiflix.Notify.success(
         'Goal set! Stay hydrated and track your progress!'
       );
-
-      setTimeout(() => {
-        closeModal();
-      }, 3000);
+      closeModal();
     }
   };
 

@@ -9,22 +9,19 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from '../redux/hooks/useAuth';
 import { refreshUser } from '../redux/auth/operations.js';
 import { useEffect } from 'react';
-import Loader from './Loader/Loader';
 import { HomePage } from 'pages/HomePage/HomePage';
 import { MainPage } from 'pages/MainPage/MainPage';
 import { RestorePass } from './RestorePass/RestorePass';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing, isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
-    <Loader />
-  ) : (
+  return (
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
