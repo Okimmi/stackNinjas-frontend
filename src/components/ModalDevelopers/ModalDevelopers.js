@@ -171,7 +171,6 @@ const ModalDevelopers = ({ onClose }) => {
                     <h2>SSerg</h2>
                     <p>Frontend developer</p>
                     <div className="team-icon-wrapper">
-                      <FaLinkedin className="icon logo-linkedin" />
                       <a
                         href="https://github.com/SSSerg05"
                         target="_blank"

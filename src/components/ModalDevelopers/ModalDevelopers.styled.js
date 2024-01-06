@@ -159,15 +159,6 @@ export const SwipeContainer = styled.div`
   .box-5 .team-name::before {
     background-image: url(${defoultPhoto});
   }
-
-  .box-5 .logo-linkedin {
-    cursor: initial;
-  }
-  .box-5 .logo-linkedin:hover {
-    color: ${props => props.theme.colors.primeryBlue};
-    background-color: ${props => props.theme.colors.primeryWhite};
-  }
-
   .box-6,
   .box-6 .team-name::before {
     background-image: url(${valentynaMarchenko});
