@@ -1,5 +1,8 @@
 import { useDispatch } from 'react-redux';
-import { deleteEntryThunk } from '../../redux/hydrationEntries/operations';
+import {
+  deleteEntryThunk,
+  getTodayEntriesThunk,
+} from '../../redux/hydrationEntries/operations';
 
 import { ButtonContainer, Content, Question } from './WaterDelModal.styled';
 import Notiflix from 'notiflix';
@@ -15,6 +18,7 @@ export const WaterDelModal = ({ close, waterId }) => {
     dispatch(deleteEntryThunk(waterId))
       .then(() => {
         Notiflix.Notify.success('Water intake record successfully deleted.');
+        dispatch(getTodayEntriesThunk());
         close();
       })
       .catch(error => {

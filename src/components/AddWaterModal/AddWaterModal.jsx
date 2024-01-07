@@ -4,7 +4,10 @@ import { useState } from 'react';
 import Notiflix from 'notiflix';
 import { useDispatch } from 'react-redux';
 
-import { addEntryThunk } from '../../redux/hydrationEntries/operations';
+import {
+  addEntryThunk,
+  getTodayEntriesThunk,
+} from '../../redux/hydrationEntries/operations';
 
 import {
   AmountText,
@@ -60,6 +63,7 @@ const AddWaterModal = ({ close }) => {
     dispatch(addEntryThunk(saveWater))
       .then(() => {
         Notiflix.Notify.success('Water value added successfully!');
+        dispatch(getTodayEntriesThunk());
         close();
       })
       .catch(error => {
