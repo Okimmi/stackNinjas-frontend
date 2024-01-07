@@ -57,7 +57,6 @@ const ModalDevelopers = ({ onClose }) => {
                 <div className="team-respons">
                   <h3>Roles and Responsibilities</h3>
                   <ul>
-                    <li>Team-lead</li>
                     <li>Project structure</li>
                     <li>Routes</li>
                     <li>Telegram bot</li>
@@ -94,11 +93,12 @@ const ModalDevelopers = ({ onClose }) => {
                 <div className="team-respons">
                   <h3>Roles and Responsibilities</h3>
                   <ul>
-                    <li>Scrum master</li>
                     <li>Header</li>
                     <li>Footer</li>
                     <li>Welcome Page</li>
+                    <li>Delete water modal</li>
                     <li>Developers modal</li>
+                    <li>Log out modal</li>
                   </ul>
                 </div>
                 <div className="team-content">
@@ -200,7 +200,7 @@ const ModalDevelopers = ({ onClose }) => {
                 </div>
                 <div className="team-content">
                   <h2>SSerg</h2>
-                  <p>Frontend developer</p>
+                  <p>Fullstack developer</p>
                   <div className="team-icon-wrapper">
                     <a
                       href="https://www.linkedin.com/in/sserg-s-733503279"
@@ -291,7 +291,8 @@ const ModalDevelopers = ({ onClose }) => {
                 <div className="team-respons">
                   <h3>Roles and Responsibilities</h3>
                   <ul>
-                    <li>Today list modal</li>
+                    <li>Add water modal</li>
+                    <li>Edit the amount of water modal</li>
                   </ul>
                 </div>
                 <div className="team-content">
@@ -331,7 +332,7 @@ const ModalDevelopers = ({ onClose }) => {
                 </div>
                 <div className="team-content">
                   <h2>Serhii Khabuzov</h2>
-                  <p>Frontend developer</p>
+                  <p>Fullstack developer</p>
                   <div className="team-icon-wrapper">
                     <a
                       href="https://www.linkedin.com/in/serhii-khabuzov"
