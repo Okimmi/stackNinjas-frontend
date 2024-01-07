@@ -1,6 +1,6 @@
 import styled from "styled-components";
 const getBorder = props => {
-  if ((!!props.dailyProgress?parseInt(props.dailyProgress) : 101) <= 100) {
+  if ((!!props.dailyProgress?parseInt(props.dailyProgress) : 101) < 100) {
     return props.theme.colors.secondary5; 
   } else {return props.theme.colors.primeryWhite}
 }
