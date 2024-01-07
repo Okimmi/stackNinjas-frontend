@@ -56,7 +56,8 @@ export const SwipeContainer = styled.div`
     position: relative;
   }
 
-  .team-name:hover {
+  .team-name:hover,
+  .team-name:focus {
     backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 0, 0.2);
   }
@@ -76,7 +77,8 @@ export const SwipeContainer = styled.div`
     color: ${props => props.theme.colors.primeryWhite};
     transform: scale(0);
   }
-  .swiper-slide:hover .team-respons {
+  .swiper-slide:hover .team-respons,
+  .swiper-slide:focus .team-respons {
     transform: scale(1);
   }
   .team-respons h3 {
@@ -142,7 +144,8 @@ export const SwipeContainer = styled.div`
     margin-bottom: 5px;
   }
 
-  .swiper-slide:hover .team-content {
+  .swiper-slide:hover .team-content,
+  .swiper-slide:focus .team-content {
     opacity: 1;
   }
 
@@ -165,7 +168,8 @@ export const SwipeContainer = styled.div`
   .logo-linkedin {
     color: ${props => props.theme.colors.primeryBlue};
   }
-  .logo-linkedin:hover {
+  .logo-linkedin:hover,
+  .logo-linkedin:focus {
     background-color: ${props => props.theme.colors.primeryBlue};
     color: ${props => props.theme.colors.primeryWhite};
   }
@@ -173,7 +177,8 @@ export const SwipeContainer = styled.div`
   .logo-github {
     color: ${props => props.theme.colors.primeryBlack};
   }
-  .logo-github:hover {
+  .logo-github:hover,
+  .logo-github:focus {
     background-color: ${props => props.theme.colors.primeryBlack};
     color: ${props => props.theme.colors.primeryWhite};
   }
