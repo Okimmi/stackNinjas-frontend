@@ -45,7 +45,7 @@ export const DaysGeneralStats = ({ day, dailyNorma, dailyProgress, entries, mont
         Daily norma: <DataText>{dailyNorma?dailyNorma:`${defaultDailyNorma/1000} L`}</DataText>
       </p>
       <p>
-        Fulfillment of the daily norm: <DataText>{dailyProgress?Number.parseInt(dailyProgress):100}%</DataText>
+        Fulfillment of the daily norm: <DataText>{dailyProgress?Number.parseInt(dailyProgress):0}%</DataText>
       </p>
       <p>
         How many servings of water: <DataText>{entries?entries:0}</DataText>
