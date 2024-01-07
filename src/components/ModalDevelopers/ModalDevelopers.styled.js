@@ -59,6 +59,7 @@ export const SwipeContainer = styled.div`
   .team-name:hover,
   .team-name:focus {
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 0, 0.2);
   }
 

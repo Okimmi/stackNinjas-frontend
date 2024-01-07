@@ -10,6 +10,7 @@ export const DivSuspenseLoaderWrapper = styled.div`
   place-items: center;
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   z-index: 3000;
 
   & > div {
