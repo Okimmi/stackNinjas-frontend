@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/stackNinjas-frontend/static/css/main.4e823938.css",
-    "main.js": "/stackNinjas-frontend/static/js/main.1e4df24b.js",
+    "main.js": "/stackNinjas-frontend/static/js/main.a9701a3d.js",
     "static/media/serhii-khabuzov.jpg": "/stackNinjas-frontend/static/media/serhii-khabuzov.015963b0f71b5748d478.jpg",
     "static/media/Roboto-Medium.ttf": "/stackNinjas-frontend/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/Roboto-Regular.ttf": "/stackNinjas-frontend/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
@@ -54,10 +54,10 @@
     "static/media/pluss.svg": "/stackNinjas-frontend/static/media/pluss.a825844368d25850e9fa030c4bd74f44.svg",
     "static/media/PlusAdd.svg": "/stackNinjas-frontend/static/media/PlusAdd.f009a02ac759b50fd6c43db8c00baf79.svg",
     "main.4e823938.css.map": "/stackNinjas-frontend/static/css/main.4e823938.css.map",
-    "main.1e4df24b.js.map": "/stackNinjas-frontend/static/js/main.1e4df24b.js.map"
+    "main.a9701a3d.js.map": "/stackNinjas-frontend/static/js/main.a9701a3d.js.map"
   },
   "entrypoints": [
     "static/css/main.4e823938.css",
-    "static/js/main.1e4df24b.js"
+    "static/js/main.a9701a3d.js"
   ]
 }
