@@ -35,6 +35,27 @@ export const Title = styled.label`
   line-height: 1.111;
 `;
 
+export const UploaLoader = styled.span`
+    width: 40px;
+    height: 40px;
+    border: 5px solid ${({ theme: { colors } }) => colors.primeryWhite};
+    border-bottom-color: ${({ theme: { colors } }) => colors.primeryBlue};
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
+`;
+
 export const IconUploadImage = styled(IconUpload)`
   margin-right: 8px;
   width: 16px;

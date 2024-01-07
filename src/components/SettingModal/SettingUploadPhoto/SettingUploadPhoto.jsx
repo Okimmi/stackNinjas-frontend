@@ -7,8 +7,9 @@ import {
   Label,
   IconUploadImage,
   IconUser,
+  UploaLoader,
 } from '../SettingModal.styled';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAvatar } from '../../../redux/auth/selectors';
 import { updateAvatar } from '../../../redux/auth/operations';
@@ -18,18 +19,27 @@ export const UploadPhoto = () => {
   const dispatch = useDispatch();
   const currentAvatar = useSelector(selectAvatar);
 
-  const handleFileChange = e => {
-    dispatch(updateAvatar(e.target.files[0]));
+  const [loadingAvatar, setLoadingAvatar] = useState(false);
+
+  const handleFileChange = async e => {
+    try {
+      setLoadingAvatar(true);
+      await dispatch(updateAvatar(e.target.files[0]));
+    } catch (error) {
+      console.error(error.message);
+    } finally {
+      setLoadingAvatar(false);
+    }
   };
 
   return (
     <>
       <Title>Your photo</Title>
       <MainWrapper>
-        {currentAvatar ? (
-          <IconUser src={currentAvatar} alt="user_photo" />
+        {loadingAvatar ? (
+          <UploaLoader />
         ) : (
-          <IconUser src={defaultAvatar} alt="user_default_photo" />
+          <IconUser src={currentAvatar || defaultAvatar} alt="user_photo" />
         )}
         <UploadWrapper>
           <Label>
