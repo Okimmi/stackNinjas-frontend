@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import heart from './footer-heart.svg';
+import heart from '../../images/svg/footer-heart.svg';
 import ModalDevelopers from 'components/ModalDevelopers/ModalDevelopers';
 import { FooterStyled, FooterWrap, IconHeart } from './Footer.styled';
 

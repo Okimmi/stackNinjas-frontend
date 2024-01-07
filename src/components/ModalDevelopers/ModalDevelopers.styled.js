@@ -55,33 +55,72 @@ export const SwipeContainer = styled.div`
     justify-content: center;
     position: relative;
   }
-  .team-name::before {
-    content: '';
-    width: 0px;
-    height: 0px;
-    position: absolute;
-    inset: 0;
-    transition: all 0.3s;
-    margin: auto;
-    margin-top: 40px;
-    border: 10px;
-  }
-  .team-box .team-name::before {
-    background-image: url(${defoultPhoto});
-    background: center/cover no-repeat;
-  }
-  .team-box:hover .team-name::before {
-    width: 60%;
-    height: 60%;
-  }
 
   .team-name:hover {
     backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .team-respons {
+    position: absolute;
+    transition: all 0.3s;
+    top: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: ${props => props.theme.colors.primeryWhite};
+    transform: scale(0);
+  }
+  .swiper-slide:hover .team-respons {
+    transform: scale(1);
+  }
+  .team-respons h3 {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .team-respons ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .team-respons li {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+    position: relative;
+    padding-left: 10px;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: ${props => props.theme.colors.primeryWhite};
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 
   .team-content {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: auto;
     margin-top: 270px;
@@ -102,6 +141,11 @@ export const SwipeContainer = styled.div`
     letter-spacing: 0.5px;
     margin-bottom: 5px;
   }
+
+  .swiper-slide:hover .team-content {
+    opacity: 1;
+  }
+
   .team-icon-wrapper {
     display: flex;
     flex-direction: row;
@@ -109,11 +153,6 @@ export const SwipeContainer = styled.div`
     gap: 10px;
     justify-content: center;
   }
-
-  .swiper-slide:hover .team-content {
-    opacity: 1;
-  }
-
   .icon {
     position: relative;
     font-size: 25px;
@@ -139,49 +178,31 @@ export const SwipeContainer = styled.div`
     color: ${props => props.theme.colors.primeryWhite};
   }
 
-  .box-1,
-  .box-1 .team-name::before {
+  .box-1 {
     background-image: url(${olenaKim});
   }
-  .box-2,
-  .box-2 .team-name::before {
+  .box-2 {
     background-image: url(${nataliaYarema});
   }
-  .box-3,
-  .box-3 .team-name::before {
+  .box-3 {
     background-image: url(${oleksandrSylych});
   }
-  .box-4,
-  .box-4 .team-name::before {
+  .box-4 {
     background-image: url(${ivanMalakhovskyi});
   }
-  .box-5,
-  .box-5 .team-name::before {
+  .box-5 {
     background-image: url(${defoultPhoto});
   }
-
-  .box-5 .logo-linkedin {
-    cursor: initial;
-  }
-  .box-5 .logo-linkedin:hover {
-    color: ${props => props.theme.colors.primeryBlue};
-    background-color: ${props => props.theme.colors.primeryWhite};
-  }
-
-  .box-6,
-  .box-6 .team-name::before {
+  .box-6 {
     background-image: url(${valentynaMarchenko});
   }
-  .box-7,
-  .box-7 .team-name::before {
+  .box-7 {
     background-image: url(${alinaMitolap});
   }
-  .box-8,
-  .box-8 .team-name::before {
+  .box-8 {
     background-image: url(${yuriiPetrovskyi});
   }
-  .box-9,
-  .box-9 .team-name::before {
+  .box-9 {
     background-image: url(${serhiiKhabuzov});
   }
 `;
