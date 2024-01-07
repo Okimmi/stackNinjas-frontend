@@ -20,7 +20,7 @@ export const FooterWrap = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
   justify-content: center;
   align-items: center;
   width: 280px;
@@ -33,7 +33,7 @@ export const FooterWrap = styled.div`
     width: 704px;
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: 4px;
+    gap: 5px;
     font-size: 18px;
     line-height: 1.33;
   }
@@ -46,10 +46,10 @@ export const FooterWrap = styled.div`
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
   }
   @media screen and (min-width: 768px) {
-    gap: 5px;
+    gap: 6px;
   }
   .footer-developers {
     color: ${props => props.theme.colors.primeryBlue};
