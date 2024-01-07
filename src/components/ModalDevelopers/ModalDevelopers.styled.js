@@ -58,6 +58,7 @@ export const SwipeContainer = styled.div`
 
   .team-name:hover {
     backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.2);
   }
 
   .team-respons {
@@ -73,7 +74,6 @@ export const SwipeContainer = styled.div`
     justify-content: center;
     text-align: center;
     color: ${props => props.theme.colors.primeryWhite};
-    background-color: rgba(0, 0, 0, 0.2);
     transform: scale(0);
   }
   .swiper-slide:hover .team-respons {
