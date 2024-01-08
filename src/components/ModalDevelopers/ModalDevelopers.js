@@ -63,7 +63,6 @@ const ModalDevelopers = ({ onClose }) => {
                     <li>Routes</li>
                     <li>Telegram bot</li>
                     <li>Notifications</li>
-                    <li>Loader</li>
                   </ul>
                 </div>
                 <div className="team-content">
@@ -295,6 +294,7 @@ const ModalDevelopers = ({ onClose }) => {
                   <ul>
                     <li>Add water modal</li>
                     <li>Edit the amount of water modal</li>
+                    <li>Loader</li>
                   </ul>
                 </div>
                 <div className="team-content">
