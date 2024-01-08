@@ -1,10 +1,10 @@
 import  { useState, useEffect } from "react";
 import { useFormikContext } from "formik";
-import  { RequiredText } from "../DailyNormalModal.styled";
+import  { RequiredText, ErrorCalcFieldText, CalcBox } from "../DailyNormalModal.styled";
 
 const CalcFieldDailyNormal = (props) => {
   const {
-    values: { gender, weight, activeTraningHours },
+    values: { genderRadioGroup, weight, activeTraningHours },
     touched,
     setFieldValue, } = useFormikContext();
 
@@ -18,11 +18,11 @@ const CalcFieldDailyNormal = (props) => {
 
     if (
       weight.trim() !== '' &&
-      gender.trim() !== '' &&
-      (gender === 'girl' || gender === 'man') //&&
+      genderRadioGroup.trim() !== '' &&
+      (genderRadioGroup === 'girl' || genderRadioGroup === 'man') //&&
       // touched.weight
     ) {
-      if (gender === 'man') {
+      if (genderRadioGroup === 'man') {
         koefWeight = 0.04;
         koefActiveTime = 0.6;
       }
@@ -35,17 +35,29 @@ const CalcFieldDailyNormal = (props) => {
   }, [
     weight, 
     activeTraningHours, 
-    gender, 
+    genderRadioGroup, 
     touched.weight, 
     touched.activeTraningHours, 
-    touched.gender, 
+    touched.genderRadioGroup, 
     setFieldValue, 
     props.name
   ]);
 
+  const calcColor = ((!genderRadioGroup && weight) || 
+                    (genderRadioGroup && !weight)) ? 'red' : 'blue';
+
   return (
     <>
-      <RequiredText>{ volume.toFixed(2) }&nbsp;L</RequiredText>
+      <CalcBox>
+        <RequiredText color={calcColor}>{ volume.toFixed(2) }&nbsp;L</RequiredText>
+        {
+          !genderRadioGroup && weight && (<ErrorCalcFieldText>Need check Gender</ErrorCalcFieldText>
+        )}
+        {
+          genderRadioGroup && !weight && (<ErrorCalcFieldText>Need enter Weight</ErrorCalcFieldText>
+        )}
+
+      </CalcBox>
     </>
   );
 };
