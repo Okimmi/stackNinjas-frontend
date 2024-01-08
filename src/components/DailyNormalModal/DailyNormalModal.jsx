@@ -55,36 +55,50 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
     if (error) return Notiflix.Notify.failure(`${error}`);
   }, [authetification, error, dispatch]);
 
-  // ==== configFormik
-  const configFormik = useFormik({
+
+  // ==== configFormikCalc
+  const configFormikCalc = useFormik({
     initialValues: {
-      gender: '',
+      genderRadioGroup: '',
       weight: '',
       activeTraningHours: '',
-      waterVolume: initialDailyNorma,
     },
     onSubmit: async values => handleSubmit(values),
-    validationSchema: Yup.object({
-      gender: Yup.string(),
+    validationSchema: Yup.object().shape({
+      genderRadioGroup: Yup.string()
+      .required("A gender is required"),
+
       weight: Yup.number('Only number')
         .integer('Only integer number')
         .positive('Only positive')
         .lessThan(700, 'You have a lot hard weigth')
         .required('Required'),
+
       activeTraningHours: Yup.number('Only number')
         .positive('Only positive')
         .lessThan(24, 'You cannot active more 24 hours')
         .integer('Only integer number'),
+    }),
+  });
+
+  const configFormikWaterVolume = useFormik({
+    initialValues: {
+      waterVolume: initialDailyNorma,
+    },
+    onSubmit: async values => handleSubmit(values),
+    validationSchema: Yup.object({
       waterVolume: Yup.number().lessThan(
         15,
         'You can could drown in that much water'
       ),
     }),
-  });
+  }); 
 
   // Press Save
   const handleSubmit = async values => {
     const { waterVolume } = values;
+    console.log(values);
+
     dispatch(updateDailyNormal({ dailyWaterRequirement: waterVolume * 1000 }));
 
     if (!error) {
@@ -94,6 +108,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
       closeModal();
     }
   };
+
 
   return (
     <>
@@ -135,20 +150,28 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
             </BoxTextPostScriptum>
           </BoxFormula>
 
-          <FormikProvider value={configFormik}>
+          <FormikProvider value={configFormikCalc}>
             <Form>
               <BoxForm>
                 <BoxRate>
                   <SubTitle>Calculate your rate:</SubTitle>
 
-                  <BoxGender id="my-radio-group">
-                    <div role="group" aria-labelledby="my-radio-group">
+                  <BoxGender id="genderRadioGroup">
+                    <div 
+                      role="group" 
+                      aria-labelledby="genderRadioGroup"
+                      // label="One of these please"
+                      // value={values.radioGroup}
+                      // error={errors.radioGroup}
+                      // touched={touched.radioGroup}
+                    >
                       <LabelGender>
                         <FieldGenger
-                          id="girl"
+                          id='radioGirl'
                           value="girl"
-                          name="gender"
+                          name="genderRadioGroup"
                           type="radio"
+                          // onChange={() => test(value)}
                         />
                         For girl
                       </LabelGender>
@@ -156,8 +179,8 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
                       <LabelGender>
                         <FieldGenger
                           type="radio"
-                          id="man"
-                          name="gender"
+                          id="radioMan"
+                          name="genderRadioGroup"
                           value="man"
                         />
                         For man
@@ -194,7 +217,13 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
                     <CalcFieldDailyNormal name="calcDailyNormal" />
                   </BoxRequiredLitresPerDay>
                 </BoxRate>
+              </BoxForm>
+            </Form>
+          </FormikProvider>
 
+          <FormikProvider value={configFormikWaterVolume}>
+            <Form>
+              <BoxForm>
                 <BoxWaterDrink>
                   <SubTitle>Write down how much water you will drink:</SubTitle>
 
@@ -214,7 +243,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
                     Save
                   </ButtonSave>
                 </BoxButton>
-              </BoxForm>
+                </BoxForm>
             </Form>
           </FormikProvider>
         </ContainerForModal>

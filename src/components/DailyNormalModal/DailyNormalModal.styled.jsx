@@ -147,14 +147,38 @@ export const Text =  styled.p`
     width: 328px;
   }
 `;
+
+export const CalcBox = styled.div`
+  position: relative;
+  /* display: flex; 
+  flex-direction: column; */
+`
 export const RequiredText =  styled.p`
   display: block;
+  position: relative;
   padding-left: 6px;
   font-size: 18px;
   font-weight: 700;
   line-height: 1.33;  // 24/18=1.33
-  text-align: center;
-  color: ${props => props.theme.colors.primeryBlue};
+
+color: ${props => props.color === 'blue' ?  props.theme.colors.primeryBlue : props.theme.colors.secondary3};
+`;
+export const ErrorCalcFieldText = styled.div`
+  /* display: block; */
+  position: absolute;
+  bottom: -2rem;
+  left: 0;
+  min-width: 70px;
+  font-size: 0.75rem;
+  padding-left: 6px;
+
+  color:  ${props => props.theme.colors.secondary3};
+
+    /* Tablet adaptive container */
+    @media screen and (min-width: 768px) {
+    bottom: -1rem;
+    min-width: 150px;
+  }
 `;
 
 export const BoxWaterDrink =  styled.div`
@@ -190,7 +214,7 @@ export const ButtonSave = styled.button`
 
   color: ${props => props.theme.colors.primeryWhite};
   background-color: ${props => props.theme.colors.primeryBlue};
-  box-shadow: 0px 4px 8px rgba(64, 123, 255, 0.34);  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(196, 209, 236, 0.34);  cursor: pointer;
 
   /* Tablet adaptive container */
   @media screen and (min-width: 768px) {
