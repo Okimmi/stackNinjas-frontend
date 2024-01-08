@@ -18,19 +18,11 @@ export const App = () => {
   const dispatch = useDispatch();
   const { isLoggedIn } = useAuth();
 
-  
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-
-
-  return isRefreshing ? (
-    <Loader />
-  ) : (
-
   return (
-
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
@@ -60,16 +52,16 @@ export const App = () => {
             }
           />
 
-            <Route
+          <Route
             path="/current/:accessToken"
             element={
-              <RestrictedRoute
-                redirectTo="/"
-                component={<Redirect />}
-              />
+              <RestrictedRoute redirectTo="/" component={<Redirect />} />
             }
           />
-          <Route path="/forgot-password/:restorePasswordToken" element={<RestorePass/>} />
+          <Route
+            path="/forgot-password/:restorePasswordToken"
+            element={<RestorePass />}
+          />
 
           <Route
             path="/forgot-password/:restorePasswordToken"
@@ -77,7 +69,6 @@ export const App = () => {
           />
 
           <Route path="*" element={<Navigate to="/" />} />
-          
         </Route>
       </Routes>
 

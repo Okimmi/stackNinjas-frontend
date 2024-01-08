@@ -151,9 +151,7 @@ export const newUserPass = createAsyncThunk(
   }
 );
 
-
 export const GooglelogIn = () => {
-  window.location.href = 'http://localhost:3000/api/auth/google';
+  window.location.href =
+    'https://stackninjas-backend.onrender.com/api/auth/google';
 };
-
-
