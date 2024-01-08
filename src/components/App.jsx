@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { HomePage } from 'pages/HomePage/HomePage';
 import { MainPage } from 'pages/MainPage/MainPage';
 import { RestorePass } from './RestorePass/RestorePass';
+import { Redirect } from './AuthForm/redirect';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -50,10 +51,23 @@ export const App = () => {
               />
             }
           />
+
+          <Route
+            path="/current/:accessToken"
+            element={
+              <RestrictedRoute redirectTo="/" component={<Redirect />} />
+            }
+          />
           <Route
             path="/forgot-password/:restorePasswordToken"
             element={<RestorePass />}
           />
+
+          <Route
+            path="/forgot-password/:restorePasswordToken"
+            element={<RestorePass />}
+          />
+
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>

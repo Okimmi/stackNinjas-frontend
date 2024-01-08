@@ -150,3 +150,8 @@ export const newUserPass = createAsyncThunk(
     }
   }
 );
+
+export const GooglelogIn = () => {
+  window.location.href =
+    'https://stackninjas-backend.onrender.com/api/auth/google';
+};

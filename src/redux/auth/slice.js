@@ -23,7 +23,12 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     clearUserData: () => initialState,
+    google: (state, action) => ({
+      ...initialState,
+      token: action.payload,
+    }),
   },
+
   extraReducers: builder => {
     //fullfilled
     builder.addCase(register.fulfilled, (state, action) => {
@@ -125,5 +130,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { clearUserData } = authSlice.actions;
+export const { clearUserData , google} = authSlice.actions;
 export const authReducer = authSlice.reducer;

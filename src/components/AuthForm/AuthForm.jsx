@@ -10,6 +10,7 @@ import {
   BottomBtnBox,
   ErMsg,
   FormBtnStyled,
+  GoogleBtn,
   SightInContainer,
   SightUp,
   StyledBtn,
@@ -18,12 +19,15 @@ import {
   Styledlabel,
 } from './AuthForm.styled';
 import { useNavigate } from 'react-router-dom';
-import { logIn } from '../../redux/auth/operations';
+import { GooglelogIn, logIn } from '../../redux/auth/operations';
 import iconeye from '../../images/AuthForm/show_icon.svg';
 import hidepas from '../../images/AuthForm/hide_icon.svg';
+import google from '../../images/AuthForm/google-icon.png';
 import { useEffect, useState } from 'react';
 import { selectIsError } from '../../redux/auth/selectors';
 import Notiflix from 'notiflix';
+
+
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -52,6 +56,10 @@ export const AuthForm = () => {
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const handleGoogleAuth = () => {
+    dispatch(GooglelogIn());
+  };
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -135,6 +143,9 @@ export const AuthForm = () => {
 
             <ErMsg component="span" name="password" />
             <FormBtnStyled type="submit">Sign In</FormBtnStyled>
+            <GoogleBtn type='button' onClick={handleGoogleAuth}>
+            <img src={google} alt="Google Icon" width={20} height={20}/>
+              Enter with Google</GoogleBtn>
             <BottomBtnBox>
               <SightUp onClick={() => navigate('/signup')}>Sign up</SightUp>
               <SightUp onClick={() => navigate('/change-password')}>

@@ -220,3 +220,27 @@ export const BottomBtnBox = styled.div`
     display: flex;
     justify-content: space-between;
 `
+export const GoogleBtn = styled.button`
+
+  display: inline-flex;
+  margin-top: 15px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 30px;
+  background-color: #4285f4; 
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+  color: #ffffff; 
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover {
+      box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    }
+    &:active{
+      box-shadow: none;
+    }
+`
