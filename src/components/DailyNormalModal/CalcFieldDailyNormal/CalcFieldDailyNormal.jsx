@@ -1,18 +1,22 @@
-import  { useState, useEffect } from "react";
-import { useFormikContext } from "formik";
-import  { RequiredText, ErrorCalcFieldText, CalcBox } from "../DailyNormalModal.styled";
+import { useState, useEffect } from 'react';
+import { useFormikContext } from 'formik';
+import {
+  RequiredText,
+  ErrorCalcFieldText,
+  CalcBox,
+} from '../DailyNormalModal.styled';
 
-const CalcFieldDailyNormal = (props) => {
+const CalcFieldDailyNormal = props => {
   const {
     values: { genderRadioGroup, weight, activeTraningHours },
     touched,
-    setFieldValue, } = useFormikContext();
+    setFieldValue,
+  } = useFormikContext();
 
   // const [field, meta] = useField(props);
   const [volume, setVolume] = useState(0);
 
   useEffect(() => {
-
     let koefWeight = 0.03;
     let koefActiveTime = 0.4;
 
@@ -29,34 +33,37 @@ const CalcFieldDailyNormal = (props) => {
 
       const vol = koefWeight * weight + koefActiveTime * activeTraningHours;
 
-      setVolume(vol)
+      setVolume(vol);
       setFieldValue(props.name, `${vol}`);
     }
   }, [
-    weight, 
-    activeTraningHours, 
-    genderRadioGroup, 
-    touched.weight, 
-    touched.activeTraningHours, 
-    touched.genderRadioGroup, 
-    setFieldValue, 
-    props.name
+    weight,
+    activeTraningHours,
+    genderRadioGroup,
+    touched.weight,
+    touched.activeTraningHours,
+    touched.genderRadioGroup,
+    setFieldValue,
+    props.name,
   ]);
 
-  const calcColor = ((!genderRadioGroup && weight) || 
-                    (genderRadioGroup && !weight)) ? 'red' : 'blue';
+  const calcColor =
+    (!genderRadioGroup && weight) || (genderRadioGroup && !weight)
+      ? 'red'
+      : 'blue';
 
   return (
     <>
       <CalcBox>
-        <RequiredText color={calcColor}>{ volume.toFixed(2) }&nbsp;L</RequiredText>
-        {
-          !genderRadioGroup && weight && (<ErrorCalcFieldText>Need check Gender</ErrorCalcFieldText>
+        <RequiredText color={calcColor}>
+          {volume.toFixed(2)}&nbsp;L
+        </RequiredText>
+        {!genderRadioGroup && weight && (
+          <ErrorCalcFieldText>Please specify your gender</ErrorCalcFieldText>
         )}
-        {
-          genderRadioGroup && !weight && (<ErrorCalcFieldText>Need enter Weight</ErrorCalcFieldText>
+        {genderRadioGroup && !weight && (
+          <ErrorCalcFieldText>Please enter your weight</ErrorCalcFieldText>
         )}
-
       </CalcBox>
     </>
   );
