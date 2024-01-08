@@ -8,11 +8,17 @@ import {
   IconUploadImage,
   IconUser,
   UploaLoader,
+  UploadLoaderWrapper,
+  // ProgressBarContainer,
+  // ProgressBar,
 } from '../SettingModal.styled';
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAvatar } from '../../../redux/auth/selectors';
-import { updateAvatar } from '../../../redux/auth/operations';
+import {
+  updateAvatar,
+  // setUploadProgress,
+} from '../../../redux/auth/operations';
 
 export const UploadPhoto = () => {
   const input = useRef();
@@ -20,6 +26,14 @@ export const UploadPhoto = () => {
   const currentAvatar = useSelector(selectAvatar);
 
   const [loadingAvatar, setLoadingAvatar] = useState(false);
+
+  // const currentProgress = useSelector(state => state.auth.uploadProgress);
+
+  // const handleFileChange = e => {
+  //   dispatch(updateAvatar(e.target.files[0]));
+  //   // dispatch(updateAvatar(currentProgress));
+  //   // dispatch(setUploadProgress(currentProgress));
+  // };
 
   const handleFileChange = async e => {
     try {
@@ -37,10 +51,24 @@ export const UploadPhoto = () => {
       <Title>Your photo</Title>
       <MainWrapper>
         {loadingAvatar ? (
-          <UploaLoader />
+          <UploadLoaderWrapper>
+            <UploaLoader />
+          </UploadLoaderWrapper>
         ) : (
           <IconUser src={currentAvatar || defaultAvatar} alt="user_photo" />
         )}
+
+        {/* {currentProgress > 0 && (
+        <ProgressBarContainer>
+          <ProgressBar value={currentProgress} max="100">
+          </ProgressBar>
+        </ProgressBarContainer>
+        )} */}
+        {/* 
+        {!currentProgress && (
+          <IconUser src={currentAvatar || defaultAvatar} alt="user_photo" />
+        )}
+        <p>{currentProgress}</p> */}
         <UploadWrapper>
           <Label>
             <IconUploadImage />

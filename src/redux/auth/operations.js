@@ -103,12 +103,26 @@ export const updateAvatar = createAsyncThunk(
         headers: {
           'Content-Type': 'multipart/form-data',
         },
+        onUploadProgress: progressEvent => {
+          const currentProgress = Math.round(
+            (progressEvent.loaded / progressEvent.total) * 100
+          );
+          console.log(currentProgress);
+        },
       });
+
       return res.data.avatar;
     } catch (error) {
       console.dir(error);
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
+  }
+);
+
+export const setUploadProgress = createAsyncThunk(
+  'auth/setUploadProgress',
+  async progress => {
+    return progress;
   }
 );
 
