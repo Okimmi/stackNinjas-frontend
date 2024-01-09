@@ -4,7 +4,7 @@ import {
   // ImgEdit,
   // ImgDelete,
   // ImgGlass,
-  ImgPlusAdd,
+  // ImgPlusAdd,
   ImgPlus,
   Div2,
   DivLeftPart,
@@ -16,8 +16,8 @@ import {
   // DivListItem,
   // ButtonDelete,
   // ButtonEdit,
-  ButtonAddWater,
-  DivTodayList,
+  // ButtonAddWater,
+  // DivTodayList,
   PToday,
   MyDailyNormaDiv,
   MyDailyNorma,
@@ -58,7 +58,7 @@ import {
   selectProgress,
 } from '../../redux/hydrationEntries/selectors.js';
 import EditWaterModal from 'components/EditWaterModal/EditWaterModal.jsx';
-import ItemWaterToday from 'components/ForHomePage/ItemWaterToday/ItemWaterToday.jsx';
+// import ItemWaterToday from 'components/ForHomePage/ItemWaterToday/ItemWaterToday.jsx';
 import TodayList from 'components/ForHomePage/TodayList/TodayList.jsx';
 
 export const HomePage = () => {
