@@ -12,7 +12,7 @@ import { useEffect } from 'react';
 import { HomePage } from 'pages/HomePage/HomePage';
 import { MainPage } from 'pages/MainPage/MainPage';
 import { RestorePass } from './RestorePass/RestorePass';
-import { Redirect } from './AuthForm/redirect';
+import { Redirect } from './AuthForm/Redirect';
 
 export const App = () => {
   const dispatch = useDispatch();
