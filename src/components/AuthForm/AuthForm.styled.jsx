@@ -223,13 +223,14 @@ export const BottomBtnBox = styled.div`
 export const GoogleBtn = styled.button`
 
   display: inline-flex;
+  gap: 20px;
   margin-top: 15px;
   align-items: center;
   justify-content: center;
   padding: 10px 30px;
-  background-color: #4285f4; 
+  background-color: ${theme.colors.primeryWhite}; 
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-  color: #ffffff; 
+  color: ${theme.colors.primeryBlue}; 
   border: none;
   border-radius: 10px;
   cursor: pointer;

@@ -11,9 +11,7 @@ export const Redirect = () => {
 
 
     useEffect(() => {
-        console.log(accessToken);
        if (accessToken){
-        console.log("middle if");
         dispatch(google(accessToken))
        }; 
       }, [accessToken, dispatch]);
