@@ -10,12 +10,12 @@ import { ButtonAddWater, DivTodayList, ImgPlusAdd } from "pages/HomePage/HomePag
 const dataLists = [{id: '1', name: "list"}];
 
 export const TodayList = ({listWater, onDelete, onEdit, onAdd}) => {
-
-  const [orderedData, setOrderedData] = useState(dataLists)
+  const [orderedData, setOrderedData] = useState(dataLists);
+  const data = listWater.map((item, index) => {return {...item, order: index}})
 
   useEffect(() => {
     setOrderedData(dataLists)
-  },[dataLists]);
+  },[]);
 
   const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
@@ -71,6 +71,8 @@ export const TodayList = ({listWater, onDelete, onEdit, onAdd}) => {
           destination.index,
         )
 
+        console.log(reorderedCards)
+        
         reorderedCards.forEach((card, idx) => { 
           card.order = idx;
         });
@@ -125,7 +127,7 @@ export const TodayList = ({listWater, onDelete, onEdit, onAdd}) => {
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                   >
-                    {listWater.map((item, index) => (
+                    {data.map((item, index) => (
                       <ItemWaterToday 
                           key={item._id}
                           index={index}
