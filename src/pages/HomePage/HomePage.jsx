@@ -185,6 +185,7 @@ export const HomePage = () => {
                     min="1"
                     max="100"
                     value={progress}
+                    readOnly
                   />
                 </SliderDiv>
                 <Percents>
@@ -215,7 +216,6 @@ export const HomePage = () => {
                       <ImgGlass
                         src={glass}
                         width={26}
-                        
                         height={26}
                         alt="Glass"
                       />
@@ -243,7 +243,6 @@ export const HomePage = () => {
                           src={delet}
                           width={14}
                           height={14}
-                          fill-opacity='0'
                           alt="Delete"
                         />
                       </ButtonDelete>
@@ -278,7 +277,10 @@ export const HomePage = () => {
         </Modal>
       )}
       {showEditWaterModal && (
-        <Modal close={editWaterModalShow} title={'Edit the entered amount of water'}>
+        <Modal
+          close={editWaterModalShow}
+          title={'Edit the entered amount of water'}
+        >
           <EditWaterModal data={dataForEditModal} close={editWaterModalShow} />
         </Modal>
       )}

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 const getPosition = props => {
   if (
-    [1, 2, 3, 4, 11, 12, 13, 14, 21, 22, 23, 24, 31].includes(props.position)
+    [1, 2, 3, 4, 11, 12, 13, 14, 21, 22, 23, 24, 31].includes(props.$position)
   ) {
     return '0';
   } else {
@@ -11,26 +11,26 @@ const getPosition = props => {
 
 export const Modal = styled.div`
   position: absolute;
-  top: ${props => (props.modalPosition ? props.modalPosition : 0) -14}px; 
+  top: ${props => (props.$modalPosition ? props.$modalPosition : 0) - 14}px;
   transform: translate(0, -100%);
   left: 0;
   width: 280px;
   height: 188px;
-  color: ${(props) =>props.theme.colors.primeryBlack};;
+  color: ${props => props.theme.colors.primeryBlack};
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background-color: ${(props) =>props.theme.colors.primeryWhite};;
+  background-color: ${props => props.theme.colors.primeryWhite};
   border-radius: 10px;
   box-shadow: 0 4px 4px 0 rgba(64, 123, 255, 0.3);
   padding: 24px 13px 24px 13px;
   z-index: 1200;
 
   /* Mobile responsive container */
-  @media screen and (min-width: 320px) {   
+  @media screen and (min-width: 320px) {
   }
   @media screen and (min-width: 768px) {
     top: 0;
@@ -57,7 +57,7 @@ export const IconContainer = styled.div`
   font-weight: 400;
 `;
 export const DataText = styled.span`
-  color: ${(props) =>props.theme.colors.primeryBlue};;
+  color: ${props => props.theme.colors.primeryBlue};
   font-size: 18px;
   font-weight: 500;
   line-height: 1.33;

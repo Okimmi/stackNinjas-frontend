@@ -48,14 +48,11 @@ export const addEntryThunk = createAsyncThunk(
   'hydrationEntries/addEntry',
   async (entry, thunkAPI) => {
     const { time, amount } = entry;
-    console.log('ADD'.entry);
     try {
       const { data } = await $instance.post('/api/hydration-entries/', {
         time,
         amount,
       });
-
-      console.log('ADDresponce', data);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.response.data.message);
@@ -70,10 +67,7 @@ export const getEntryFromIdThunk = createAsyncThunk(
   'hydrationEntries/getEntryFromId',
   async (entryId, thunkAPI) => {
     try {
-      console.log('ID', entryId);
       const { data } = await $instance.get(`/api/hydration-entries/${entryId}`);
-
-      console.log('FindIDresponce', data);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.response.data.message);
@@ -88,11 +82,9 @@ export const deleteEntryThunk = createAsyncThunk(
   'hydrationEntries/deleteEntry',
   async (entryId, thunkAPI) => {
     try {
-      console.log('ID', entryId);
       const { data } = await $instance.delete(
         `/api/hydration-entries/${entryId}`
       );
-      console.log('DeleteIDresponce', data);
 
       return data;
     } catch (e) {
@@ -117,13 +109,10 @@ export const updateEntryThunk = createAsyncThunk(
   async (entry, thunkAPI) => {
     const { entryId, time, amount } = entry;
     try {
-      console.log('UpdateRequest:', entryId, time, amount);
       const { data } = await $instance.put(
         `/api/hydration-entries/${entryId}`,
         { time, amount }
       );
-
-      console.log('UpdateResponce:', data);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.response.data.message);

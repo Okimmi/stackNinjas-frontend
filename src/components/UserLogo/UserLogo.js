@@ -37,7 +37,7 @@ export const UserLogo = () => {
           <UserName>{userName}</UserName>
           <UserAvatar
             src={userAvatar}
-            defoultAvatar={userName.charAt(0).toUpperCase()}
+            $defoultAvatar={userName.charAt(0).toUpperCase()}
             alt="User avatar"
           ></UserAvatar>
         </User>

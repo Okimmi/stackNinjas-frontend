@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import {theme} from '../../components/GlobalStyle.js'
-import frame from '../../images/Frame.png'
-import bottle from '../../images/Bottle.png'
-import botle_home from '../../images/Botle_Home.png'
-import frame_18 from '../../images/Frame_18.png'
-import background from '../../images/Background.png'
-import main_page from '../../images/Main_Page.png'
+import { theme } from '../../components/GlobalStyle.js';
+import frame from '../../images/Frame.png';
+import bottle from '../../images/Bottle.png';
+import botle_home from '../../images/Botle_Home.png';
+import frame_18 from '../../images/Frame_18.png';
+import background from '../../images/Background.png';
+import main_page from '../../images/Main_Page.png';
 
 export const P = styled.h6`
-    color: ${theme.colors.primeryBlue};
+  color: ${theme.colors.primeryBlue};
 `;
 // export const Logo = styled.img`
 // //     width: 40px;
@@ -20,12 +20,12 @@ export const P = styled.h6`
 //     align-items: center;
 // `;
 export const Icon = styled.img`
-    width: 16px;
+  width: 16px;
 `;
 export const Avatar = styled.div`
-    border-radius: 50%;
-    margin-right: 4px;
-    margin-left: 8px;
+  border-radius: 50%;
+  margin-right: 4px;
+  margin-left: 8px;
 `;
 // export const UserName = styled.p`
 //     color: ${theme.colors.primeryBlue};
@@ -55,34 +55,34 @@ export const Avatar = styled.div`
 // `;
 
 export const NewDiv = styled.div`
-// position: absolute;
-// width: 118px;
-// height: 88px;
-// top: 100%;
-// right: -65px;
-// transform: translateX(-50%);
-// background-color: #fff;
-// border: none;
-// border-radius: 10px;
-// padding: 16px;
-// box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-// margin-top: 10px;
-// display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
-// `;
+  // position: absolute;
+  // width: 118px;
+  // height: 88px;
+  // top: 100%;
+  // right: -65px;
+  // transform: translateX(-50%);
+  // background-color: #fff;
+  // border: none;
+  // border-radius: 10px;
+  // padding: 16px;
+  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  // margin-top: 10px;
+  // display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
+  //
+`;
 
 // export const IconWrapper = styled.div`
 // position: relative;
 
-// `; 
+// `;
 
 export const SvgTrigger = styled.svg`
-    width: 11px;
-    height: 11px;
-    &:hover + ${NewDiv},
-    &:focus + ${NewDiv} {
-        display: block;
-        opacity: 1;
-    }
+  width: 11px;
+  height: 11px;
+  &:hover + ${NewDiv}, &:focus + ${NewDiv} {
+    display: block;
+    opacity: 1;
+  }
 `;
 // export const HeaderDiv = styled.div`
 //     display: flex;
@@ -90,51 +90,49 @@ export const SvgTrigger = styled.svg`
 //     justify-content: space-between;
 // `;
 export const MyDailyNormaDiv = styled.div`
-    margin-top: 24px;
-    border-radius: 10px;
-    width: 164px;
-    height: 74px;
-    background-color: ${theme.colors.primeryWhite};
-    border: 1px solid ${theme.colors.secondary2};
-    padding: 7px 19px 7px 19px;
-    box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
-    margin-bottom: 8px;
-    @media screen and (min-width: 1440px) {
-      margin-top: 52px;
-    }
+  margin-top: 24px;
+  border-radius: 10px;
+  width: 164px;
+  height: 74px;
+  background-color: ${theme.colors.primeryWhite};
+  border: 1px solid ${theme.colors.secondary2};
+  padding: 7px 19px 7px 19px;
+  box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
+  margin-bottom: 8px;
+  @media screen and (min-width: 1440px) {
+    margin-top: 52px;
+  }
 `;
 export const MyDailyNorma = styled.p`
-    font-size: 18px;
-    line-height: 1.33;
-    margin-bottom: 12px;
-    font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+  margin-bottom: 12px;
+  font-weight: 500;
 `;
 export const Litr = styled.p`
-    font-size: 20px;
-    line-height: 1;
-    color: ${theme.colors.primeryBlue};
-    font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  color: ${theme.colors.primeryBlue};
+  font-weight: 700;
 `;
 export const Edit = styled.button`
-    font-size: 16px;
-    height: 20px;
-    margin-left: 16px;
-    color: #8BAEFF;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    
-    &:hover {
-      color: ${theme.colors.secondary5};
-    }
+  font-size: 16px;
+  height: 20px;
+  margin-left: 16px;
+  color: #8baeff;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  &:hover {
+    color: ${theme.colors.secondary5};
+  }
 `;
 export const Div = styled.div`
   display: flex;
   align-items: end;
 `;
-export const Img = styled.img`
-
-`;
+export const Img = styled.img``;
 export const ImgBottle = styled.img`
   content: url(${frame});
   background-repeat: no-repeat;
@@ -155,65 +153,61 @@ export const ImgBottle = styled.img`
 }
 `;
 
-
 export const Background = styled.div`
-position: relative;
-
+  position: relative;
 `;
 
 export const BackgroundImage = styled.div`
-content: url(${frame_18});
-position: absolute;
-top: 108px; 
-left: -20px;
-right: 0;
-bottom: 0;
-z-index: -1;
+  content: url(${frame_18});
+  position: absolute;
+  top: 108px;
+  left: -20px;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 
+  @media screen and (min-width: 768px) {
+    content: url(${background});
+    top: 88px;
+    left: -32px;
+  }
 
-@media screen and (min-width: 768px) {
-  content: url(${background});
-  top: 88px;
-  left: -32px;
-}
-
-@media screen and (min-width: 1440px) {
-  content: url(${main_page});
-  left: -112px;
-}
+  @media screen and (min-width: 1440px) {
+    content: url(${main_page});
+    left: -112px;
+  }
 `;
 
 export const Today = styled.p`
-    font-size: 18px;
-    line-height: 1.33;
-    color: ${theme.colors.primeryBlue};
-    &::before {
-        content: '';
-        width: 1px;
-        height: 8px;
-        background: ${theme.colors.secondary6};
-        position: absolute;
-        top: 360px; 
-        transform: translateY(-50%); 
-        left: 265px;
-        z-index: -1;
-        @media screen and (min-width: 768px) {
-          left: 334px;
-          top: 555px;
-        }
-        @media screen and (min-width: 1440px) {
-          top: 685px;
-          left: 369px;
-        }
-      }
+  font-size: 18px;
+  line-height: 1.33;
+  color: ${theme.colors.primeryBlue};
+  &::before {
+    content: '';
+    width: 1px;
+    height: 8px;
+    background: ${theme.colors.secondary6};
+    position: absolute;
+    top: 360px;
+    transform: translateY(-50%);
+    left: 265px;
+    z-index: -1;
+    @media screen and (min-width: 768px) {
+      left: 334px;
+      top: 555px;
+    }
+    @media screen and (min-width: 1440px) {
+      top: 685px;
+      left: 369px;
+    }
+  }
 `;
 
 export const DivToday = styled.div`
-    margin-top: 16px;
-    @media screen and (min-width: 768px) {
-      width: 356px;
-    }
-    
+  margin-top: 16px;
+  @media screen and (min-width: 768px) {
+    width: 356px;
+  }
 `;
 
 export const SliderInput = styled.input`
@@ -225,15 +219,14 @@ export const SliderInput = styled.input`
   outline: none;
   opacity: 0.7;
   transition: opacity 0.2s;
-  
+
   @media screen and (min-width: 768px) {
     margin-top: 16px;
     width: 325px;
-    }
-    @media screen and (min-width: 1440px) {
-      width: 360px;
-      
-      }
+  }
+  @media screen and (min-width: 1440px) {
+    width: 360px;
+  }
   &:hover {
     opacity: 1;
   }
@@ -252,31 +245,36 @@ export const SliderInput = styled.input`
   &::-webkit-slider-runnable-track {
     width: 100%;
     height: 8px;
-    background: linear-gradient(to right, ${theme.colors.secondary4} 0%, ${theme.colors.secondary4} ${(props) => props.value}%, ${theme.colors.secondary6} ${(props) => props.value}%, ${theme.colors.secondary6} 100%);
+    background: linear-gradient(
+      to right,
+      ${theme.colors.secondary4} 0%,
+      ${theme.colors.secondary4} ${props => props.value}%,
+      ${theme.colors.secondary6} ${props => props.value}%,
+      ${theme.colors.secondary6} 100%
+    );
     border-radius: 5px;
     border: none;
     cursor: pointer;
     position: relative;
     z-index: 0;
   }
-  
+
   &::after {
     content: '';
     width: 1px;
     height: 8px;
     background: ${theme.colors.secondary6};
     position: absolute;
-    top: 360px;  
-    transform: translateY(-50%); 
+    top: 360px;
+    transform: translateY(-50%);
     left: 10px;
     z-index: -1;
     @media screen and (min-width: 768px) {
       top: 555px;
-      
     }
     @media screen and (min-width: 1440px) {
       top: 685px;
-      }
+    }
   }
   &::before {
     content: '';
@@ -284,8 +282,8 @@ export const SliderInput = styled.input`
     height: 8px;
     background: ${theme.colors.secondary6};
     position: absolute;
-    top: 360px;  
-    transform: translateY(-50%); 
+    top: 360px;
+    transform: translateY(-50%);
     left: 132px;
     z-index: -1;
     @media screen and (min-width: 768px) {
@@ -295,53 +293,52 @@ export const SliderInput = styled.input`
     @media screen and (min-width: 1440px) {
       top: 685px;
       left: 190px;
-      }
+    }
   }
 `;
 
 export const SliderDiv = styled.div`
   padding-left: 10px;
-    padding-right: 14px;
-    
+  padding-right: 14px;
 `;
 
 export const Per = styled.p`
-font-size: 12px;
-color: ${theme.colors.primeryBlue};
-z-index: 2;
-font-weight: 400;
+  font-size: 12px;
+  color: ${theme.colors.primeryBlue};
+  z-index: 2;
+  font-weight: 400;
 
-&.flagged {
-  font-size: 16px; 
-  font-weight: 500;
-}
+  &.flagged {
+    font-size: 16px;
+    font-weight: 500;
+  }
 `;
 
 export const Percents = styled.div`
-display: flex;
-justify-content: space-between;
-margin-top: 16px;
-z-index: 1;
-position: absolute;
-top: 350px; 
-width: 100%;
-@media screen and (min-width: 768px) {
-  width: 356px;
-  top: 545px;
-}
-@media screen and (min-width: 1440px) {
-  top: 675px;
-  width: 390px;
-}
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  z-index: 1;
+  position: absolute;
+  top: 350px;
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    width: 356px;
+    top: 545px;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 675px;
+    width: 390px;
+  }
 `;
 
 export const AddWaterButton = styled.button`
-    margin-top: 36px;
-    width: 280px;
-    height: 36px;
-    z-index: 1;
-    cursor: pointer;
-top: 105%; 
+  margin-top: 36px;
+  width: 280px;
+  height: 36px;
+  z-index: 1;
+  cursor: pointer;
+  top: 105%;
   background-color: ${theme.colors.primeryBlue};
   border-radius: 10px;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
@@ -358,14 +355,14 @@ top: 105%;
     height: 44px;
     margin-left: 36px;
   }
-  &:hover, &:focus{
+  &:hover,
+  &:focus {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
     transition: opacity 0.3s ease;
   }
-  &:active{
+  &:active {
     box-shadow: none;
   }
-
 `;
 
 export const AddWater = styled.p`
@@ -381,7 +378,6 @@ export const DivAddWater = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  
 `;
 
 export const DivTodayAndMonth = styled.div`
@@ -391,7 +387,7 @@ export const DivTodayAndMonth = styled.div`
   width: 100%;
   margin-top: 40px;
   margin-bottom: 40px;
-  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.30);
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
   border-radius: 10px;
   padding: 24px 8px 24px 8px;
 
@@ -416,17 +412,17 @@ export const DivTodayList = styled.div`
   overflow-x: hidden;
   padding-right: 4px;
   &::-webkit-scrollbar {
-    width: 4px; 
+    width: 4px;
     border-radius: 8px;
   }
-  
+
   &::-webkit-scrollbar-thumb {
-    background-color: ${theme.colors.secondary4}; 
+    background-color: ${theme.colors.secondary4};
     border-radius: 8px;
   }
-  
+
   &::-webkit-scrollbar-track {
-    background-color: ${theme.colors.secondary6}; 
+    background-color: ${theme.colors.secondary6};
     border-radius: 8px;
   }
 `;
@@ -459,7 +455,8 @@ export const ButtonAddWater = styled.button`
   &:hover {
     color: ${theme.colors.secondary5};
     & img {
-      filter: invert(86%) sepia(60%) saturate(124%) hue-rotate(327deg) brightness(94%) contrast(93%);
+      filter: invert(86%) sepia(60%) saturate(124%) hue-rotate(327deg)
+        brightness(94%) contrast(93%);
     }
   }
 
@@ -479,16 +476,17 @@ export const ButtonEdit = styled.button`
   cursor: pointer;
   position: relative;
   background: none;
-  &:hover, &:focus{
+  &:hover,
+  &:focus {
     &::after {
-      content: ''; 
+      content: '';
       position: absolute;
       top: 18px;
       left: 0;
       width: 16px;
       height: 1px;
       background-color: ${theme.colors.secondary4};
-      z-index: 5; 
+      z-index: 5;
     }
   }
 `;
@@ -500,18 +498,19 @@ export const ButtonDelete = styled.button`
   padding: 0;
   cursor: pointer;
   background: none;
-  &:hover, &:focus{
+  &:hover,
+  &:focus {
     &::after {
-      content: ''; 
+      content: '';
       position: absolute;
       top: 18px;
-      
+
       left: 94%;
       width: 16px;
       margin-top: 8px;
       height: 1px;
       background-color: ${theme.colors.secondary3};
-      z-index: 6; 
+      z-index: 6;
       @media screen and (min-width: 736px) {
         left: 97.5%;
       }
@@ -532,7 +531,7 @@ export const DivListItem = styled.div`
     height: 1px;
     background: ${theme.colors.secondary6};
     position: absolute;
-    top: 133%; 
+    top: 133%;
     z-index: 2;
     @media screen and (min-width: 768px) {
       width: 646px;
@@ -542,9 +541,9 @@ export const DivListItem = styled.div`
 `;
 
 export const DivTodayAndButton = styled.div`
-@media screen and (min-width: 768px) {
-  display: flex;
-}
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 `;
 
 export const SpanDate = styled.span`
@@ -572,7 +571,6 @@ export const SvgPlus = styled.svg`
     width: 12px;
     height: 12px;
   }
-
 `;
 
 export const SpanCount = styled.span`
@@ -580,38 +578,34 @@ export const SpanCount = styled.span`
   font-size: 18px;
   color: ${theme.colors.primeryBlue};
   line-height: 1.33;
-
 `;
 
 export const DivFirstPart = styled.div`
   display: flex;
   align-items: center;
-  
 `;
 
 export const DivFlex = styled.div`
-@media screen and (min-width: 768px) {
-  display: flex;
-   align-items: end;
-   justify-content: space-between;
-}
-@media screen and (min-width: 1440px) {
-  display: flex;
-   align-items: end;
-   justify-content: space-between;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+  }
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
     margin-top: 466px;
-}
+  }
 `;
 
-export const DivLeftPart = styled.div`
-
-`;
+export const DivLeftPart = styled.div``;
 
 export const Div2 = styled.div`
-@media screen and (min-width: 1440px) {
-  display: flex;
-  justify-content: space-between;
-}
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 // export const DivSettings = styled.div`
 //   display: flex;
@@ -627,7 +621,7 @@ export const Div2 = styled.div`
 // `
 
 export const PDiv = styled.p`
-  color: ${theme.colors.primeryBlue}
+  color: ${theme.colors.primeryBlue};
 `;
 
 export const ImgPlus = styled.img`
@@ -644,18 +638,14 @@ export const ImgGlass = styled.img`
   height: 26px;
   @media screen and (min-width: 736px) {
     width: 36px;
-  height: 36px;
+    height: 36px;
   }
   @media screen and (min-width: 1440px) {
     width: 36px;
-  height: 36px;
+    height: 36px;
   }
 `;
 
-export const ImgEdit = styled.img`
+export const ImgEdit = styled.img``;
 
-`;
-
-export const ImgDelete = styled.img`
-
-`;
+export const ImgDelete = styled.img``;

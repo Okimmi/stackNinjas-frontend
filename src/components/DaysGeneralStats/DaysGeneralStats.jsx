@@ -1,12 +1,20 @@
-import { useEffect, useRef} from 'react';
+import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 
 import { Modal, IconContainer, DataText } from './DaysGeneralStats.Styled';
 import { IoMdClose } from 'react-icons/io';
 import { selectDailyWaterRequirement } from '../../redux/auth/selectors';
 
-export const DaysGeneralStats = ({ day, dailyNorma, dailyProgress, entries, month, onClose, modalPosition }) => {
- const defaultDailyNorma =useSelector(selectDailyWaterRequirement)
+export const DaysGeneralStats = ({
+  day,
+  dailyNorma,
+  $dailyProgress,
+  entries,
+  month,
+  onClose,
+  modalPosition,
+}) => {
+  const defaultDailyNorma = useSelector(selectDailyWaterRequirement);
   const modalRef = useRef(null);
   useEffect(() => {
     const handleKeyDown = event => {
@@ -33,7 +41,7 @@ export const DaysGeneralStats = ({ day, dailyNorma, dailyProgress, entries, mont
   }, [modalRef, onClose]);
 
   return (
-    <Modal position={day} modalPosition={modalPosition} ref={modalRef}>
+    <Modal $position={day} $modalPosition={modalPosition} ref={modalRef}>
       <IconContainer>
         <DataText>
           {' '}
@@ -42,13 +50,19 @@ export const DaysGeneralStats = ({ day, dailyNorma, dailyProgress, entries, mont
         <IoMdClose size={16} onClick={onClose} />
       </IconContainer>
       <p>
-        Daily norma: <DataText>{dailyNorma?dailyNorma:`${defaultDailyNorma/1000} L`}</DataText>
+        Daily norma:{' '}
+        <DataText>
+          {dailyNorma ? dailyNorma : `${defaultDailyNorma / 1000} L`}
+        </DataText>
       </p>
       <p>
-        Fulfillment of the daily norm: <DataText>{dailyProgress?Number.parseInt(dailyProgress):0}%</DataText>
+        Fulfillment of the daily norm:{' '}
+        <DataText>
+          {$dailyProgress ? Number.parseInt($dailyProgress) : 0}%
+        </DataText>
       </p>
       <p>
-        How many servings of water: <DataText>{entries?entries:0}</DataText>
+        How many servings of water: <DataText>{entries ? entries : 0}</DataText>
       </p>
     </Modal>
   );

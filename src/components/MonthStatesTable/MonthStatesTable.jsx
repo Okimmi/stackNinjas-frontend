@@ -106,7 +106,7 @@ export const MonthStatesTable = () => {
                 day={date}
                 month={currentDate.toLocaleString('en-GB', { month: 'long' })}
                 dailyNorma={dailyWaterRequirement}
-                dailyProgress={dailyProgress}
+                $dailyProgress={dailyProgress}
                 entries={entriesQuantity}
                 targetDay={targetElement}
                 modalPosition={position}

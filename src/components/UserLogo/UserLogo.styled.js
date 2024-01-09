@@ -14,8 +14,8 @@ export const UserName = styled.span`
   color: ${props => props.theme.colors.primeryBlack};
   font-size: 16px;
   line-height: 1.33;
-  
-   @media screen and (min-width: 768px) {
+
+  @media screen and (min-width: 768px) {
     font-size: 18px;
   }
 `;
@@ -36,7 +36,7 @@ export const UserAvatar = styled.div`
   background-position: center;
 
   &:empty::before {
-    content: '${props => props.defoultAvatar || 'V'}';
+    content: '${props => props.$defoultAvatar || 'V'}';
   }
 
   ${props =>

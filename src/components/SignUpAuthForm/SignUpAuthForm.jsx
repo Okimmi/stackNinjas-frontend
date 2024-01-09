@@ -121,7 +121,6 @@ export const SignUpAuthForm = () => {
                 ) : (
                   <img
                     src={hidepas}
-                    IconEye
                     width={18}
                     height={18}
                     alt="Show Password"
@@ -152,7 +151,6 @@ export const SignUpAuthForm = () => {
                 ) : (
                   <img
                     src={hidepas}
-                    IconEye
                     width={18}
                     height={18}
                     alt="Show Password"

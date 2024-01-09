@@ -6,13 +6,12 @@ import {
   CalendarItem,
 } from './DayState.Styled';
 
-
 export const DayState = props => {
   const {
     day,
     month,
     dailyNorma,
-    dailyProgress,
+    $dailyProgress,
     entries,
     targetDay,
     modalPosition,
@@ -23,19 +22,21 @@ export const DayState = props => {
     e.stopPropagation();
     toggleModal(day, e.target.offsetTop);
   };
-  
+
   return (
     <CalendarItem>
-      <DateWrapper onClick={handleModal}  dailyProgress={dailyProgress}>
+      <DateWrapper onClick={handleModal} $dailyProgress={$dailyProgress}>
         <Day> {`${day}`}</Day>
       </DateWrapper>
-      <DailyProgress>{dailyProgress?Number.parseInt(dailyProgress):0}%</DailyProgress>
+      <DailyProgress>
+        {$dailyProgress ? Number.parseInt($dailyProgress) : 0}%
+      </DailyProgress>
       {targetDay === day && (
         <DaysGeneralStats
           day={day}
           month={month}
           dailyNorma={dailyNorma}
-          dailyProgress={dailyProgress}
+          $dailyProgress={$dailyProgress}
           entries={entries}
           onClose={closeModal}
           modalPosition={modalPosition}

@@ -53,7 +53,6 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
     if (error) return Notiflix.Notify.failure(`${error}`);
   }, [authetification, error, dispatch]);
 
-
   // ==== configFormikCalc
   const configFormikCalc = useFormik({
     initialValues: {
@@ -63,8 +62,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
     },
     onSubmit: async values => handleSubmit(values),
     validationSchema: Yup.object().shape({
-      genderRadioGroup: Yup.string()
-      .required("A gender is required"),
+      genderRadioGroup: Yup.string().required('A gender is required'),
 
       weight: Yup.number('Only number')
         .integer('Only integer number')
@@ -90,7 +88,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
         'You can could drown in that much water'
       ),
     }),
-  }); 
+  });
 
   // Press Save
   const handleSubmit = async values => {
@@ -105,7 +103,6 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
       closeModal();
     }
   };
-
 
   return (
     <>
@@ -154,8 +151,8 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
                   <SubTitle>Calculate your rate:</SubTitle>
 
                   <BoxGender id="genderRadioGroup">
-                    <div 
-                      role="group" 
+                    <div
+                      role="group"
                       aria-labelledby="genderRadioGroup"
                       // label="One of these please"
                       // value={values.radioGroup}
@@ -164,7 +161,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
                     >
                       <LabelGender>
                         <FieldGenger
-                          id='radioGirl'
+                          id="radioGirl"
                           value="girl"
                           name="genderRadioGroup"
                           type="radio"
@@ -210,7 +207,6 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
                   </BoxTime>
 
                   <CalcFieldDailyNormal name="calcDailyNormal" />
-                  
                 </BoxRate>
               </BoxForm>
             </Form>
@@ -238,7 +234,7 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
                     Save
                   </ButtonSave>
                 </BoxButton>
-                </BoxForm>
+              </BoxForm>
             </Form>
           </FormikProvider>
         </ContainerForModal>

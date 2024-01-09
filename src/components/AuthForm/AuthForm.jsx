@@ -27,8 +27,6 @@ import { useEffect, useState } from 'react';
 import { selectIsError } from '../../redux/auth/selectors';
 import Notiflix from 'notiflix';
 
-
-
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid email address')
@@ -125,7 +123,6 @@ export const AuthForm = () => {
                 ) : (
                   <img
                     src={hidepas}
-                    IconEye
                     width={18}
                     height={18}
                     alt="Show Password"
@@ -143,9 +140,10 @@ export const AuthForm = () => {
 
             <ErMsg component="span" name="password" />
             <FormBtnStyled type="submit">Sign In</FormBtnStyled>
-            <GoogleBtn type='button' onClick={handleGoogleAuth}>
-            <img src={google} alt="Google Icon" width={20} height={20}/>
-              Enter with Google</GoogleBtn>
+            <GoogleBtn type="button" onClick={handleGoogleAuth}>
+              <img src={google} alt="Google Icon" width={20} height={20} />
+              Enter with Google
+            </GoogleBtn>
             <BottomBtnBox>
               <SightUp onClick={() => navigate('/signup')}>Sign up</SightUp>
               <SightUp onClick={() => navigate('/change-password')}>

@@ -117,7 +117,6 @@ export const RestorePass = () => {
                 ) : (
                   <img
                     src={hidepas}
-                    IconEye
                     width={18}
                     height={18}
                     alt="Show Password"
@@ -148,7 +147,6 @@ export const RestorePass = () => {
                 ) : (
                   <img
                     src={hidepas}
-                    IconEye
                     width={18}
                     height={18}
                     alt="Show Password"
