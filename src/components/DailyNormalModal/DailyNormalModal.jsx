@@ -97,7 +97,6 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
   // Press Save
   const handleSubmit = async values => {
     const { waterVolume } = values;
-    console.log(values);
 
     dispatch(updateDailyNormal({ dailyWaterRequirement: waterVolume * 1000 }));
 
@@ -212,10 +211,8 @@ const DailyNormalModal = ({ closeModal, dailyNormalVolume, ...props }) => {
                     />
                   </BoxTime>
 
-                  <BoxRequiredLitresPerDay>
-                    <Text>The required amount of water in liters per day:</Text>
-                    <CalcFieldDailyNormal name="calcDailyNormal" />
-                  </BoxRequiredLitresPerDay>
+                  <CalcFieldDailyNormal name="calcDailyNormal" />
+                  
                 </BoxRate>
               </BoxForm>
             </Form>

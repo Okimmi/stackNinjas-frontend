@@ -132,6 +132,13 @@ export const BoxRequiredLitresPerDay =  styled.div`
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
+
+  margin-bottom: ${props => props.color !== 'blue' ? '3rem': '0' };
+
+  /* Tablet adaptive container */
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
 `;
 export const Text =  styled.p`
   display: block;
@@ -150,9 +157,7 @@ export const Text =  styled.p`
 
 export const CalcBox = styled.div`
   position: relative;
-  /* display: flex; 
-  flex-direction: column; */
-`
+`;
 export const RequiredText =  styled.p`
   display: block;
   position: relative;
@@ -161,15 +166,16 @@ export const RequiredText =  styled.p`
   font-weight: 700;
   line-height: 1.33;  // 24/18=1.33
 
-color: ${props => props.color === 'blue' ?  props.theme.colors.primeryBlue : props.theme.colors.secondary3};
+  color: ${props => props.color === 'blue' ?  props.theme.colors.primeryBlue : props.theme.colors.secondary3};
 `;
 export const ErrorCalcFieldText = styled.div`
   /* display: block; */
   position: absolute;
-  bottom: -2rem;
+  bottom: calc(-3rem + 5px);
   left: 0;
   min-width: 70px;
   font-size: 0.75rem;
+  line-height: 1.25;
   padding-left: 6px;
 
   color:  ${props => props.theme.colors.secondary3};
