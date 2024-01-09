@@ -35,6 +35,61 @@ export const Title = styled.label`
   line-height: 1.111;
 `;
 
+export const ProgressBarContainer = styled.div`
+  width: 100%;
+  position: relative;
+  height: 20px;
+  margin-top: 10px;
+`;
+
+export const ProgressBar = styled.progress`
+  width: 50%;
+  height: 50%;
+
+  // background-color: ${({ theme: { colors } }) => colors.primeryBlue};
+  border-radius: 4px;
+  overflow: hidden;
+
+  &::-webkit-progress-bar {
+    background-color: blue;
+    border-radius: 4px;
+    transition: width 0.3s ease-in-out;
+  }
+`;
+
+export const UploadLoaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+`;
+
+export const UploaLoader = styled.span`
+    width: 32px;
+    height: 72px;
+    display: inline-block;
+    left: 5px;
+    position: relative;
+    border: 2px solid ${({ theme: { colors } }) => colors.primeryWhite};
+    box-sizing: border-box;
+    animation: animloader 2s linear infinite alternate;
+    color: ${({ theme: { colors } }) => colors.primeryBlue};
+    border-radius: 0 0 4px 4px;
+    transform: perspective(140px) rotateX(-45deg);
+  }
+
+  @keyframes animloader {
+    0% {
+      box-shadow: 0 0 inset;
+    }
+    100% {
+      box-shadow: 0 -70px inset;
+    }
+  }
+
+`;
+
 export const IconUploadImage = styled(IconUpload)`
   margin-right: 8px;
   width: 16px;

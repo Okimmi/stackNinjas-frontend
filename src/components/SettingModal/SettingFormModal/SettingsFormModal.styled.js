@@ -35,7 +35,7 @@ export const GenderWrapper = styled.span`
   margin-right: 24px;
 `;
 
-export const Gender = styled.span`
+export const Gender = styled.label`
   margin-left: 8px;
 `;
 

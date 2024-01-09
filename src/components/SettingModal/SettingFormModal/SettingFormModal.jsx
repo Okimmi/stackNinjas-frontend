@@ -155,20 +155,22 @@ export const FormModal = ({ close }) => {
                 <GenderWrapper>
                   <Field
                     type="radio"
+                    id="girl"
                     name="gender"
                     value="girl"
                     checked={values.gender === 'girl'}
                   />
 
-                  <Gender>Girl</Gender>
+                  <Gender htmlFor="girl">Girl</Gender>
                 </GenderWrapper>
                 <Field
+                  id="man"
                   type="radio"
                   name="gender"
                   value="man"
                   checked={values.gender === 'man'}
                 />
-                <Gender>Man</Gender>
+                <Gender htmlFor="man">Man</Gender>
               </RadioWrapper>
 
               <Title>Your name</Title>

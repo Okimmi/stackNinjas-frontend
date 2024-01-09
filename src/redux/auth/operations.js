@@ -104,6 +104,7 @@ export const updateAvatar = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
+
       return res.data.avatar;
     } catch (error) {
       console.dir(error);
