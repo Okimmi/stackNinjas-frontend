@@ -51,7 +51,7 @@ export const ProgressBar = styled.progress`
   overflow: hidden;
 
   &::-webkit-progress-bar {
-    background-color: blue;
+    background-color: #eee;
     border-radius: 4px;
     transition: width 0.3s ease-in-out;
   }
