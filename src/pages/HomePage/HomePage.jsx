@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import DailyNormalModal from 'components/DailyNormalModal/DailyNormalModal.jsx';
 import {
-  ImgEdit,
-  ImgDelete,
-  ImgGlass,
+  // ImgEdit,
+  // ImgDelete,
+  // ImgGlass,
   ImgPlusAdd,
   ImgPlus,
   Div2,
   DivLeftPart,
   DivFlex,
   ImgBottle,
-  DivFirstPart,
-  SpanCount,
-  SpanDate,
-  DivListItem,
-  ButtonDelete,
-  ButtonEdit,
+  // DivFirstPart,
+  // SpanCount,
+  // SpanDate,
+  // DivListItem,
+  // ButtonDelete,
+  // ButtonEdit,
   ButtonAddWater,
   DivTodayList,
   PToday,
@@ -39,9 +39,9 @@ import {
 } from './HomePage.styled.js';
 import plus from '../../icons/Plus.svg';
 import plusAdd from '../../icons/PlusAdd.svg';
-import glass from '../../icons/Glass.svg';
-import edit from '../../icons/Pencil.svg';
-import delet from '../../icons/Trash.svg';
+// import glass from '../../icons/Glass.svg';
+// import edit from '../../icons/Pencil.svg';
+// import delet from '../../icons/Trash.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectDailyWaterRequirement,
@@ -58,6 +58,7 @@ import {
   selectProgress,
 } from '../../redux/hydrationEntries/selectors.js';
 import EditWaterModal from 'components/EditWaterModal/EditWaterModal.jsx';
+import ItemWaterToday from 'components/ForHomePage/ItemWaterToday/ItemWaterToday.jsx';
 
 export const HomePage = () => {
   let progress = useSelector(selectProgress);
@@ -210,45 +211,51 @@ export const HomePage = () => {
             <DivTodayList>
               <div>
                 {listWater.map(item => (
-                  <DivListItem key={item._id} className="delete-line">
-                    <DivFirstPart>
-                      <ImgGlass
-                        src={glass}
-                        width={26}
+                  <ItemWaterToday 
+                    key={item._id}
+                    item={item}
+                    onDelete={onDeleteClick}
+                    onEdit={editWaterModalShow}
+                  />
+                  // <DivListItem key={item._id} className="delete-line">
+                  //   <DivFirstPart>
+                  //     <ImgGlass
+                  //       src={glass}
+                  //       width={26}
                         
-                        height={26}
-                        alt="Glass"
-                      />
+                  //       height={26}
+                  //       alt="Glass"
+                  //     />
 
-                      <SpanCount>{item.amount} ml</SpanCount>
-                      <SpanDate>
-                        {new Date(item.time)
-                          .getHours()
-                          .toString()
-                          .padStart(2, '0')}
-                        :
-                        {new Date(item.time)
-                          .getMinutes()
-                          .toString()
-                          .padStart(2, '0')}
-                      </SpanDate>
-                    </DivFirstPart>
-                    <div>
-                      <ButtonEdit onClick={() => editWaterModalShow(item)}>
-                        <ImgEdit src={edit} width={16} height={16} alt="Edit" />
-                      </ButtonEdit>
+                  //     <SpanCount>{item.amount} ml</SpanCount>
+                  //     <SpanDate>
+                  //       {new Date(item.time)
+                  //         .getHours()
+                  //         .toString()
+                  //         .padStart(2, '0')}
+                  //       :
+                  //       {new Date(item.time)
+                  //         .getMinutes()
+                  //         .toString()
+                  //         .padStart(2, '0')}
+                  //     </SpanDate>
+                  //   </DivFirstPart>
+                  //   <div>
+                  //     <ButtonEdit onClick={() => editWaterModalShow(item)}>
+                  //       <ImgEdit src={edit} width={16} height={16} alt="Edit" />
+                  //     </ButtonEdit>
 
-                      <ButtonDelete onClick={() => onDeleteClick(item._id)}>
-                        <ImgDelete
-                          src={delet}
-                          width={14}
-                          height={14}
-                          fill-opacity='0'
-                          alt="Delete"
-                        />
-                      </ButtonDelete>
-                    </div>
-                  </DivListItem>
+                  //     <ButtonDelete onClick={() => onDeleteClick(item._id)}>
+                  //       <ImgDelete
+                  //         src={delet}
+                  //         width={14}
+                  //         height={14}
+                  //         fill-opacity='0'
+                  //         alt="Delete"
+                  //       />
+                  //     </ButtonDelete>
+                  //   </div>
+                  // </DivListItem>
                 ))}
               </div>
               <div>
