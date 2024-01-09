@@ -20,7 +20,6 @@ import {
   BoxFormula,
   BoxGender,
   BoxRate,
-  BoxRequiredLitresPerDay,
   BoxTextPostScriptum,
   BoxTime,
   BoxWaterDrink,
@@ -36,7 +35,6 @@ import {
   MarkPSText,
   PSText,
   SubTitle,
-  Text,
 } from './DailyNormalModal.styled';
 import Notiflix from 'notiflix';
 

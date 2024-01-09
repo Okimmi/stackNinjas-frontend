@@ -140,7 +140,7 @@ export const BoxRequiredLitresPerDay =  styled.div`
     margin-bottom: 0;
   }
 `;
-export const Text =  styled.p`
+export const TextLitresPerDay =  styled.p`
   display: block;
   width: 190px;
   font-size: 16px;

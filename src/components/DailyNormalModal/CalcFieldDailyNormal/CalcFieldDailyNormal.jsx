@@ -4,7 +4,7 @@ import {
   RequiredText,
   ErrorCalcFieldText,
   CalcBox,
-  Text,
+  TextLitresPerDay,
   BoxRequiredLitresPerDay,
 } from '../DailyNormalModal.styled';
 
@@ -56,7 +56,7 @@ const CalcFieldDailyNormal = props => {
 
   return (
     <BoxRequiredLitresPerDay color={calcColor}>
-      <Text>The required amount of water in liters per day:</Text>
+      <TextLitresPerDay>The required amount of water in liters per day:</TextLitresPerDay>
 
       <CalcBox>
         <RequiredText color={calcColor}>
