@@ -8,12 +8,10 @@ import {
   updateAvatar,
   updateDailyNormal,
   updateUserData,
-  setUploadProgress,
 } from './operations';
 
 const initialState = {
   user: { name: null, email: null },
-  uploadProgress: 0,
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -70,11 +68,6 @@ const authSlice = createSlice({
       state.isRefreshing = false;
       state.isError = null;
     });
-    builder.addCase(setUploadProgress.fulfilled, (state, action) => {
-      state.uploadProgress = action.payload.progress;
-      state.isRefreshing = false;
-      state.isError = null;
-    });
     //pending
     builder.addCase(refreshUser.pending, state => {
       state.isRefreshing = true;
@@ -100,10 +93,6 @@ const authSlice = createSlice({
       state.isRefreshing = true;
       state.isError = null;
     });
-    builder.addCase(setUploadProgress.pending, state => {
-      state.isRefreshing = true;
-      state.isError = null;
-    });
     //rejected
     builder.addCase(refreshUser.rejected, (state, action) => {
       state.isRefreshing = false;
@@ -124,12 +113,6 @@ const authSlice = createSlice({
     builder.addCase(updateAvatar.rejected, (state, action) => {
       state.isRefreshing = false;
       state.isError = action.payload;
-      state.uploadProgress = 0;
-    });
-    builder.addCase(setUploadProgress.rejected, (state, action) => {
-      state.isRefreshing = false;
-      state.isError = action.payload;
-      state.uploadProgress = 0;
     });
     builder.addCase(updateUserData.rejected, (state, action) => {
       state.isError = action.payload;

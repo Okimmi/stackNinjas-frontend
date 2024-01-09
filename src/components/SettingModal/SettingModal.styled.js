@@ -46,12 +46,12 @@ export const ProgressBar = styled.progress`
   width: 50%;
   height: 50%;
 
-  background-color: ${({ theme: { colors } }) => colors.primeryBlue};
+  // background-color: ${({ theme: { colors } }) => colors.primeryBlue};
   border-radius: 4px;
   overflow: hidden;
 
   &::-webkit-progress-bar {
-    background-color: #eee;
+    background-color: blue;
     border-radius: 4px;
     transition: width 0.3s ease-in-out;
   }
