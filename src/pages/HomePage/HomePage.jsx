@@ -38,7 +38,7 @@ import {
   DivTodayAndMonth,
 } from './HomePage.styled.js';
 import plus from '../../icons/Plus.svg';
-import plusAdd from '../../icons/PlusAdd.svg';
+// import plusAdd from '../../icons/PlusAdd.svg';
 // import glass from '../../icons/Glass.svg';
 // import edit from '../../icons/Pencil.svg';
 // import delet from '../../icons/Trash.svg';
@@ -59,6 +59,7 @@ import {
 } from '../../redux/hydrationEntries/selectors.js';
 import EditWaterModal from 'components/EditWaterModal/EditWaterModal.jsx';
 import ItemWaterToday from 'components/ForHomePage/ItemWaterToday/ItemWaterToday.jsx';
+import TodayList from 'components/ForHomePage/TodayList/TodayList.jsx';
 
 export const HomePage = () => {
   let progress = useSelector(selectProgress);
@@ -208,7 +209,15 @@ export const HomePage = () => {
 
           <DivTodayAndMonth>
             <PToday>Today</PToday>
-            <DivTodayList>
+
+            <TodayList 
+              listWater={listWater}
+              onDelete={onDeleteClick}
+              onEdit={editWaterModalShow}
+              onAdd={addWaterModalShow}
+            />
+
+            {/* <DivTodayList>
               <div>
                 {listWater.map(item => (
                   <ItemWaterToday 
@@ -216,8 +225,9 @@ export const HomePage = () => {
                     item={item}
                     onDelete={onDeleteClick}
                     onEdit={editWaterModalShow}
-                  />
-                  // <DivListItem key={item._id} className="delete-line">
+                  /> */}
+
+                  {/* // <DivListItem key={item._id} className="delete-line">
                   //   <DivFirstPart>
                   //     <ImgGlass
                   //       src={glass}
@@ -255,8 +265,9 @@ export const HomePage = () => {
                   //       />
                   //     </ButtonDelete>
                   //   </div>
-                  // </DivListItem>
-                ))}
+                  // </DivListItem> */}
+
+                {/* ))}
               </div>
               <div>
                 <ButtonAddWater onClick={addWaterModalShow}>
@@ -269,7 +280,7 @@ export const HomePage = () => {
                   Add water
                 </ButtonAddWater>
               </div>
-            </DivTodayList>
+            </DivTodayList> */}
             <MonthStatesTable></MonthStatesTable>
           </DivTodayAndMonth>
         </Div2>
