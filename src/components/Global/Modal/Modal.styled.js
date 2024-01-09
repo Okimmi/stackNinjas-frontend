@@ -18,6 +18,7 @@ export const ModalStyled = styled.div`
   max-width: 100vw;
   max-height: 100vh;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 24px 12px 24px 12px;
   border-radius: 10px;
   background-color: ${({ theme: { colors } }) => colors.primeryWhite};
