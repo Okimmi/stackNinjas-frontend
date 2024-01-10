@@ -20,9 +20,6 @@ export const UserLogoutModal = ({ close }) => {
           dispatch(clearUserData());
           close();
           navigate('/');
-        })
-        .catch(error => {
-          console.error('Log out error:', error);
         });
     } catch (error) {
       console.error(error);

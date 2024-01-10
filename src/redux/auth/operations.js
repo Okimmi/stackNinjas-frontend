@@ -106,7 +106,6 @@ export const updateAvatar = createAsyncThunk(
 
       return res.data.avatar;
     } catch (error) {
-      console.dir(error);
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
