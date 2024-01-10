@@ -5,6 +5,7 @@
   "homepage": "https://Okimmi.github.io/stackNinjas-frontend/",
   "dependencies": {
     "@headlessui/react": "^1.7.17",
+    "@hello-pangea/dnd": "^16.5.0",
     "@react-oauth/google": "^0.12.1",
     "@reduxjs/toolkit": "^2.0.1",
     "@testing-library/jest-dom": "^5.16.3",

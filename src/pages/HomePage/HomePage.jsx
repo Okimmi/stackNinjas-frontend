@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import DailyNormalModal from 'components/DailyNormalModal/DailyNormalModal.jsx';
 import {
-  ImgEdit,
-  ImgDelete,
-  ImgGlass,
-  ImgPlusAdd,
+  // ImgEdit,
+  // ImgDelete,
+  // ImgGlass,
+  // ImgPlusAdd,
   ImgPlus,
   Div2,
   DivLeftPart,
   DivFlex,
   ImgBottle,
-  DivFirstPart,
-  SpanCount,
-  SpanDate,
-  DivListItem,
-  ButtonDelete,
-  ButtonEdit,
-  ButtonAddWater,
-  DivTodayList,
+  // DivFirstPart,
+  // SpanCount,
+  // SpanDate,
+  // DivListItem,
+  // ButtonDelete,
+  // ButtonEdit,
+  // ButtonAddWater,
+  // DivTodayList,
   PToday,
   MyDailyNormaDiv,
   MyDailyNorma,
@@ -38,10 +38,10 @@ import {
   DivTodayAndMonth,
 } from './HomePage.styled.js';
 import plus from '../../icons/Plus.svg';
-import plusAdd from '../../icons/PlusAdd.svg';
-import glass from '../../icons/Glass.svg';
-import edit from '../../icons/Pencil.svg';
-import delet from '../../icons/Trash.svg';
+// import plusAdd from '../../icons/PlusAdd.svg';
+// import glass from '../../icons/Glass.svg';
+// import edit from '../../icons/Pencil.svg';
+// import delet from '../../icons/Trash.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectDailyWaterRequirement,
@@ -58,6 +58,7 @@ import {
   selectProgress,
 } from '../../redux/hydrationEntries/selectors.js';
 import EditWaterModal from 'components/EditWaterModal/EditWaterModal.jsx';
+import TodayList from 'components/ForHomePage/TodayList/TodayList.jsx';
 
 export const HomePage = () => {
   let progress = useSelector(selectProgress);
@@ -208,7 +209,15 @@ export const HomePage = () => {
 
           <DivTodayAndMonth>
             <PToday>Today</PToday>
-            <DivTodayList>
+
+              <TodayList 
+                listWater={listWater}
+                onDelete={onDeleteClick}
+                onEdit={editWaterModalShow}
+                onAdd={addWaterModalShow}
+              />
+
+            {/* <DivTodayList>
               <div>
                 {listWater.map(item => (
                   <DivListItem key={item._id} className="delete-line">
@@ -261,7 +270,7 @@ export const HomePage = () => {
                   Add water
                 </ButtonAddWater>
               </div>
-            </DivTodayList>
+            </DivTodayList> */}
             <MonthStatesTable></MonthStatesTable>
           </DivTodayAndMonth>
         </Div2>
