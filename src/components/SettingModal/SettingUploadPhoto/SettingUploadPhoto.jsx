@@ -14,6 +14,7 @@ import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAvatar } from '../../../redux/auth/selectors';
 import { updateAvatar } from '../../../redux/auth/operations';
+import Notiflix from 'notiflix';
 
 export const UploadPhoto = () => {
   const input = useRef();
@@ -26,6 +27,7 @@ export const UploadPhoto = () => {
     try {
       setLoadingAvatar(true);
       await dispatch(updateAvatar(e.target.files[0]));
+      Notiflix.Notify.success('Your avatar was successfully updated');
     } catch (error) {
       console.error(error.message);
     } finally {

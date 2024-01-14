@@ -111,9 +111,7 @@ export const FormModal = ({ close }) => {
     );
 
     if (!hasChanges) {
-      Notiflix.Notify.warning(
-        'No changes made. Profile data remains the same.'
-      );
+      close();
       return;
     }
 
@@ -134,155 +132,151 @@ export const FormModal = ({ close }) => {
   }, [error, sendForm, close]);
 
   return (
-    <>
-      <Formik
-        initialValues={{
-          gender: '' || user.gender,
-          name: '',
-          email: '',
-          passwordOutdated: '',
-          password: '',
-          passwordRepeat: '',
-        }}
-        validationSchema={updateUserInfoSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ values, errors, touched }) => (
-          <FormUser>
-            <Wrapper>
-              <TopicGender>Your gender identity</TopicGender>
-              <RadioWrapper>
-                <GenderWrapper>
-                  <Field
-                    type="radio"
-                    id="girl"
-                    name="gender"
-                    value="girl"
-                    checked={values.gender === 'girl'}
-                  />
-
-                  <Gender htmlFor="girl">Girl</Gender>
-                </GenderWrapper>
+    <Formik
+      initialValues={{
+        gender: '' || user.gender,
+        name: '',
+        email: '',
+        passwordOutdated: '',
+        password: '',
+        passwordRepeat: '',
+      }}
+      validationSchema={updateUserInfoSchema}
+      onSubmit={handleSubmit}
+    >
+      {({ values, errors, touched }) => (
+        <FormUser>
+          <Wrapper>
+            <TopicGender>Your gender identity</TopicGender>
+            <RadioWrapper>
+              <GenderWrapper>
                 <Field
-                  id="man"
                   type="radio"
+                  id="girl"
                   name="gender"
-                  value="man"
-                  checked={values.gender === 'man'}
+                  value="girl"
+                  checked={values.gender === 'girl'}
                 />
-                <Gender htmlFor="man">Man</Gender>
-              </RadioWrapper>
 
-              <Title>Your name</Title>
+                <Gender htmlFor="girl">Girl</Gender>
+              </GenderWrapper>
+              <Field
+                id="man"
+                type="radio"
+                name="gender"
+                value="man"
+                checked={values.gender === 'man'}
+              />
+              <Gender htmlFor="man">Man</Gender>
+            </RadioWrapper>
 
-              <NameWrapper>
-                <FieldForm
-                  type="text"
-                  name="name"
-                  placeholder={user.name || 'Enter your name'}
-                />{' '}
-              </NameWrapper>
+            <Title>Your name</Title>
 
-              <Title>Your email</Title>
+            <NameWrapper>
               <FieldForm
-                id="email"
-                name="email"
-                placeholder={user.email || 'Email'}
-                title="email"
+                type="text"
+                name="name"
+                placeholder={user.name || 'Enter your name'}
+              />{' '}
+            </NameWrapper>
+
+            <Title>Your email</Title>
+            <FieldForm
+              id="email"
+              name="email"
+              placeholder={user.email || 'Email'}
+              title="email"
+              autoComplete="on"
+              hasErrors={touched.email && errors.email}
+            />
+
+            {touched.email && errors.email && (
+              <ErrEmailMessage name="email" component="p">
+                {errors.email}
+              </ErrEmailMessage>
+            )}
+
+            <ErrEmailMessage name="email" component="p" />
+          </Wrapper>
+
+          <Wrapper>
+            <TopicGender>Password</TopicGender>
+            <Password htmlFor="passwordOutdated">Outdated password:</Password>
+            <Container>
+              <FieldForm
+                id="passwordOutdated"
+                name="passwordOutdated"
+                type={showPassword ? 'text' : 'password'}
+                placeholder={'Password'}
+                title="passwordOutdated"
                 autoComplete="on"
-                hasErrors={touched.email && errors.email}
+                hasErrors={touched.passwordOutdated && errors.passwordOutdated}
               />
 
-              {touched.email && errors.email && (
-                <ErrEmailMessage name="email" component="p">
-                  {errors.email}
-                </ErrEmailMessage>
+              {touched.passwordOutdated && errors.passwordOutdated && (
+                <ErrMessage name="passwordOutdated" component="p">
+                  {errors.passwordOutdated}
+                </ErrMessage>
               )}
 
-              <ErrEmailMessage name="email" component="p" />
-            </Wrapper>
+              <ToggleIcon onClick={toggle}>
+                {showPassword ? <EyeIcon /> : <HideIcon />}
+              </ToggleIcon>
+            </Container>
+            <ErrMessage name="passwordOutdated" component="p" />
 
-            <Wrapper>
-              <TopicGender>Password</TopicGender>
-              <Password htmlFor="passwordOutdated">Outdated password:</Password>
-              <Container>
-                <FieldForm
-                  id="passwordOutdated"
-                  name="passwordOutdated"
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder={'Password'}
-                  title="passwordOutdated"
-                  autoComplete="on"
-                  hasErrors={
-                    touched.passwordOutdated && errors.passwordOutdated
-                  }
-                />
+            <Password htmlFor="password">New password:</Password>
 
-                {touched.passwordOutdated && errors.passwordOutdated && (
-                  <ErrMessage name="passwordOutdated" component="p">
-                    {errors.passwordOutdated}
-                  </ErrMessage>
-                )}
+            <Container>
+              <FieldForm
+                name="password"
+                id="password"
+                type={showPassword ? 'text' : 'password'}
+                title="Password"
+                placeholder="Password"
+                autoComplete="on"
+                hasErrors={touched.password && errors.password}
+              />
 
-                <ToggleIcon onClick={toggle}>
-                  {showPassword ? <EyeIcon /> : <HideIcon />}
-                </ToggleIcon>
-              </Container>
-              <ErrMessage name="passwordOutdated" component="p" />
+              {touched.password && errors.password && (
+                <ErrMessage name="password" component="p">
+                  {errors.password}
+                </ErrMessage>
+              )}
 
-              <Password htmlFor="password">New password:</Password>
+              <ToggleIcon onClick={toggle}>
+                {showPassword ? <EyeIcon /> : <HideIcon />}
+              </ToggleIcon>
+            </Container>
+            <ErrMessage name="password" component="p" />
 
-              <Container>
-                <FieldForm
-                  name="password"
-                  id="password"
-                  type={showPassword ? 'text' : 'password'}
-                  title="Password"
-                  placeholder="Password"
-                  autoComplete="on"
-                  hasErrors={touched.password && errors.password}
-                />
+            <Password htmlFor="passwordRepeat">Repeat new password:</Password>
 
-                {touched.password && errors.password && (
-                  <ErrMessage name="password" component="p">
-                    {errors.password}
-                  </ErrMessage>
-                )}
+            <Container>
+              <FieldForm
+                name="passwordRepeat"
+                id="passwordRepeat"
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Password"
+                autoComplete="on"
+                hasErrors={touched.passwordRepeat && errors.passwordRepeat}
+              />
 
-                <ToggleIcon onClick={toggle}>
-                  {showPassword ? <EyeIcon /> : <HideIcon />}
-                </ToggleIcon>
-              </Container>
-              <ErrMessage name="password" component="p" />
+              {touched.passwordRepeat && errors.passwordRepeat && (
+                <ErrMessage name="passwordRepeat" component="p">
+                  {errors.passwordRepeat}
+                </ErrMessage>
+              )}
 
-              <Password htmlFor="passwordRepeat">Repeat new password:</Password>
-
-              <Container>
-                <FieldForm
-                  name="passwordRepeat"
-                  id="passwordRepeat"
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder="Password"
-                  autoComplete="on"
-                  hasErrors={touched.passwordRepeat && errors.passwordRepeat}
-                />
-
-                {touched.passwordRepeat && errors.passwordRepeat && (
-                  <ErrMessage name="passwordRepeat" component="p">
-                    {errors.passwordRepeat}
-                  </ErrMessage>
-                )}
-
-                <ToggleIcon onClick={toggle}>
-                  {showPassword ? <EyeIcon /> : <HideIcon />}
-                </ToggleIcon>
-              </Container>
-              <ErrMessage name="passwordRepeat" component="p" />
-            </Wrapper>
-            <SaveBtn type="submit">Save</SaveBtn>
-          </FormUser>
-        )}
-      </Formik>
-    </>
+              <ToggleIcon onClick={toggle}>
+                {showPassword ? <EyeIcon /> : <HideIcon />}
+              </ToggleIcon>
+            </Container>
+            <ErrMessage name="passwordRepeat" component="p" />
+          </Wrapper>
+          <SaveBtn type="submit">Save</SaveBtn>
+        </FormUser>
+      )}
+    </Formik>
   );
 };
