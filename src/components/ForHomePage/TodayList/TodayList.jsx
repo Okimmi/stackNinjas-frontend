@@ -6,12 +6,13 @@ import ItemWaterToday from "../ItemWaterToday/ItemWaterToday";
 
 // styles
 import { ButtonAddWater, DivTodayList, ImgPlusAdd } from "pages/HomePage/HomePage.styled";
+import { useDispatch } from "react-redux";
 
 
 
 export const TodayList = ({listWater, onDelete, onEdit, onAdd}) => {
   const dataLists = {id: 'column-1', name: "list", cards: [...listWater]}
-    
+  const dispatch = useDispatch();    
   // const data = dataLists.cards.map((item, index) => {return {...item, order: index}})
   const [orderedData, setOrderedData] = useState(listWater);
 
