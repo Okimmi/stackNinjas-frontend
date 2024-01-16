@@ -17,7 +17,7 @@ export const ModalStyled = styled.div`
   position: relative;
   max-width: 100vw;
   max-height: 100vh;
-  overflow: auto;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding: 24px 12px 24px 12px;
   border-radius: 10px;
