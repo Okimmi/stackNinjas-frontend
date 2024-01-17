@@ -23,7 +23,6 @@ import {
   TopicGender,
   Wrapper,
 } from './SettingsFormModal.styled';
-import { EyeIcon, HideIcon, Title, ToggleIcon } from '../SettingModal.styled';
 
 import {
   MainWrapper,
@@ -34,6 +33,10 @@ import {
   IconUser,
   UploaLoader,
   UploadLoaderWrapper,
+  EyeIcon,
+  HideIcon,
+  Title,
+  ToggleIcon,
 } from '../SettingModal.styled';
 
 import {
