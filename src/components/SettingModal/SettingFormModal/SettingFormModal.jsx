@@ -140,6 +140,12 @@ export const FormModal = ({ close }) => {
       return;
     }
 
+    if (!hasChanges && avatarChanged) {
+      Notiflix.Notify.success('Your profile data was successfully updated');
+      close();
+      return;
+    }
+
     await dispatch(updateUserData(filledFields));
 
     setSendForm(true);
@@ -151,8 +157,6 @@ export const FormModal = ({ close }) => {
       setLoadingAvatar(true);
       await dispatch(updateAvatar(e.target.files[0]));
       setAvatarChanged(true);
-      Notiflix.Notify.success('Your profile data was successfully updated');
-      close();
     } catch (error) {
       console.error(error.message);
     } finally {
