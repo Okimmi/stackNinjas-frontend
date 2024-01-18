@@ -7,6 +7,7 @@ import ItemWaterToday from "../ItemWaterToday/ItemWaterToday";
 // styles
 import { ButtonAddWater, DivTodayList, ImgPlusAdd } from "pages/HomePage/HomePage.styled";
 import { useDispatch } from "react-redux";
+import { updateEntryThunk } from "../../../redux/hydrationEntries/operations";
 
 
 
@@ -22,6 +23,7 @@ export const TodayList = ({listWater, onDelete, onEdit, onAdd}) => {
 
   const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
+
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
 
@@ -73,6 +75,7 @@ export const TodayList = ({listWater, onDelete, onEdit, onAdd}) => {
 
       // Moving card in the same List
       if (source.droppableId === destination.droppableId) {
+
         const reorderedCards = reorder(
           sourceList,
           source.index,
@@ -88,7 +91,29 @@ export const TodayList = ({listWater, onDelete, onEdit, onAdd}) => {
         // sourceList = reorderedCards;
 
         setOrderedData(newOrderedData);
+
         //TODO: Trigger Server Action
+        //(list, startIndex, endIndex)
+        const sourceCard = sourceList[source.index];
+        const destinationCard = sourceList[destination.index];
+
+
+console.log('sourceCard', sourceCard);
+console.log('destinationCard', destinationCard);
+        // source
+        dispatch(() => updateEntryThunk({
+          // entryId: orderedData._id, 
+          // time: newOrderedData.time, 
+          // amount: newOrderedData.amount,
+        }))
+
+
+        // destination
+        dispatch(() => updateEntryThunk({
+          // entryId: newOrderedData._id, 
+          // time: newOrderedData.time, 
+          // amount: newOrderedData.amount,
+        }))
 
         return;
       }
